@@ -6,4 +6,3 @@ O material aqui publicado foi criado no contexto das atividades de instrução n
 
 O conteúdo está em desenvolvimento contínuo, com novos assuntos sendo adicionados progressivamente.
 
-**Acesse o curso em:** https://lpluiz90.github.io/CBIAA/
