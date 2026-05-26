@@ -352,6 +352,13 @@
         <li><a href="#prevendo-palavras"><span class="num">3.4</span> Prevendo Palavras</a></li>
         <li><a href="#memoria-contextual"><span class="num">3.5</span> Memória Contextual</a></li>
         <li><a href="#quiz-3"><span class="num">—</span> Exercício 03</a></li>
+        <li class="section-divider"><a href="#sec-temperatura"><span class="num">04</span> Temperatura e Tokens</a></li>
+        <li><a href="#temperatura-conceito"><span class="num">4.1</span> Temperatura</a></li>
+        <li><a href="#temperatura-testes"><span class="num">4.2</span> Testes Práticos</a></li>
+        <li><a href="#tokens-conceito"><span class="num">4.3</span> O que são Tokens</a></li>
+        <li><a href="#tokens-idiomas"><span class="num">4.4</span> Tokens por Idioma</a></li>
+        <li class="section-divider"><a href="#sec-pratica"><span class="num">05</span> Explorando Probabilidades</a></li>
+        <li class="section-divider"><a href="#sec-aprendemos"><span class="num">06</span> O que Aprendemos</a></li>
       </ul>
     </div>
 
@@ -998,6 +1005,229 @@ projetos (5%)</pre>
           <div class="learned-item"><span class="li-num">04</span><span>A operação fundamental de um LLM é <strong>prever a próxima palavra</strong> com base em probabilidades — palavra por palavra, considerando todo o contexto disponível.</span></div>
           <div class="learned-item"><span class="li-num">05</span><span>A <strong>memória contextual</strong> — manter todo o histórico da conversa — foi o diferencial que transformou LLMs em assistentes reais, não apenas completadores de texto.</span></div>
           <div class="learned-item"><span class="li-num">06</span><span>O modelo mantém o contexto de mensagens anteriores, permitindo referências como "dele" ou "nessa área" sem repetir o sujeito — assim como em uma conversa humana natural.</span></div>
+        </div>
+
+        <!-- ══════════════════════════════════ -->
+        <!-- ITEM 04 — TEMPERATURA E TOKENS     -->
+        <!-- ══════════════════════════════════ -->
+
+        <div id="sec-temperatura" class="section-sep fade-in">
+          <span class="sep-num">Item 04</span>
+          <span class="sep-title">Temperatura e Tokens</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <!-- Temperatura: conceito -->
+        <div id="temperatura-conceito" class="card fade-in">
+          <div class="card-title">🌡️ Temperatura — Controlando a Criatividade do Modelo</div>
+          <p>Vimos que os modelos preveem a próxima palavra com base em probabilidades. Mas será que o modelo <strong>sempre escolhe a palavra com a maior probabilidade</strong>?</p>
+          <p>Na verdade, não. Existe um parâmetro chamado <strong>temperatura</strong> que controla exatamente isso: a probabilidade de o modelo escolher uma palavra diferente da mais provável. Esse recurso foi criado porque, quando o modelo sempre escolhia a opção mais provável, as respostas ficavam robóticas e previsíveis demais — sem os "truques" que nós, humanos, usamos ao escrever.</p>
+          <div class="highlight-box" style="margin:16px 0;">
+            <strong>Temperatura:</strong> parâmetro que vai de <strong style="color:var(--sky)">0</strong> (sempre a palavra mais provável) a <strong style="color:#e53935">2</strong> (palavras incomuns e criativas — ou até erros). O valor padrão nos modelos é <strong style="color:#4ec94e">1</strong>.
+          </div>
+          <div class="feature-grid-3" style="margin-top:14px;">
+            <div class="feature-box">
+              <h5>🔵 Temperatura 0</h5>
+              <p>Sempre escolhe a palavra mais provável. Respostas consistentes e previsíveis — ideal para tarefas técnicas e precisas.</p>
+            </div>
+            <div class="feature-box green">
+              <h5>🟢 Temperatura 1 (padrão)</h5>
+              <p>Equilíbrio entre precisão e criatividade. Respostas variadas, mas coerentes — o melhor ponto de partida para a maioria dos casos.</p>
+            </div>
+            <div class="feature-box red">
+              <h5>🔴 Temperatura 2</h5>
+              <p>Alta imprevisibilidade. Pode gerar respostas criativas, mas também erros, símbolos aleatórios ou incoerências.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Temperatura: testes práticos -->
+        <div id="temperatura-testes" class="card fade-in">
+          <div class="card-title">🧪 Temperatura na Prática — Testando com o Mesmo Prompt</div>
+          <p>Para entender a temperatura na prática, use o <strong>Playground da OpenAI</strong> ou o <strong>Google AI Studio</strong> e ajuste o parâmetro "Temperature". Repita o mesmo prompt várias vezes com valores diferentes e observe como as respostas mudam:</p>
+
+          <div class="prompt-wrap">
+            <div class="prompt-label prompt">▶ Prompt de teste — clique para copiar</div>
+            <pre class="prompt-block prompt">Complete a frase a seguir:
+
+Eu gosto muito de comer…</pre>
+          </div>
+
+          <div class="steps" style="margin-top:22px;">
+            <div class="step">
+              <div class="step-num" style="background:#192437;font-size:13px;min-width:36px;width:36px;height:36px;">T=0</div>
+              <div class="step-body">
+                <strong>Temperatura 0 — Respostas quase idênticas:</strong> o modelo quase sempre retorna a mesma resposta — a palavra de maior probabilidade. Rodando várias vezes, raramente aparece outra opção.
+                <div class="prompt-wrap" style="margin-top:10px;">
+                  <div class="prompt-label resposta">▶ Resultado típico (temperatura 0)</div>
+                  <pre class="prompt-block resposta">Eu gosto muito de comer chocolate.</pre>
+                </div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num green" style="font-size:13px;min-width:36px;width:36px;height:36px;">T=1</div>
+              <div class="step-body">
+                <strong>Temperatura 1 — Equilíbrio entre consistência e variedade:</strong> as respostas variam entre "chocolate", "pizza" e outras opções, mas todas ainda fazem sentido — são todas comidas.
+                <div class="prompt-wrap" style="margin-top:10px;">
+                  <div class="prompt-label resposta">▶ Resultados típicos (temperatura 1)</div>
+                  <pre class="prompt-block resposta">Eu gosto muito de comer pizza.
+Eu gosto muito de comer chocolate.
+Eu gosto muito de comer macarrão.</pre>
+                </div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num sky" style="font-size:13px;min-width:36px;width:36px;height:36px;">T=1.4</div>
+              <div class="step-body">
+                <strong>Temperatura 1.4 — Mais criatividade e elaboração:</strong> o modelo começa a adicionar complementos que antes não apareciam. A resposta ganha personalidade, mas ainda é coerente.
+                <div class="prompt-wrap" style="margin-top:10px;">
+                  <div class="prompt-label resposta">▶ Resultado típico (temperatura 1.4)</div>
+                  <pre class="prompt-block resposta">pizza! É uma delícia, não acha?</pre>
+                </div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num" style="background:#c62828;font-size:13px;min-width:36px;width:36px;height:36px;">T=2</div>
+              <div class="step-body">
+                <strong>Temperatura 2 — Caos e erros:</strong> com temperatura máxima, o modelo pode escolher palavras com probabilidade muito baixa — símbolos estranhos, mistura de idiomas, ou até retornar um erro de servidor.
+                <div class="prompt-wrap" style="margin-top:10px;">
+                  <div class="prompt-label neutro">▶ Resultado possível (temperatura 2)</div>
+                  <pre class="prompt-block neutro">sorvete nos dias quentes e pipoca quando assisto a filmes.
+
+[Ou erro do servidor — o modelo não consegue processar
+combinações de probabilidade muito baixa]</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout tip" style="margin-top:14px;">
+            <strong>Regra prática:</strong> para análise, resumo ou código, use <strong>temperatura baixa (0 a 0.5)</strong>. Para textos criativos, brainstorming ou redação, use <strong>temperatura média-alta (0.7 a 1.2)</strong>.
+          </div>
+        </div>
+
+        <!-- Tokens: conceito -->
+        <div id="tokens-conceito" class="card fade-in">
+          <div class="card-title">🔤 Tokens — A Unidade Básica dos Modelos de Linguagem</div>
+          <p>Falamos bastante sobre "palavras" até aqui, mas os modelos de linguagem não trabalham exatamente com palavras — eles trabalham com <strong>tokens</strong>.</p>
+          <p>Um token é a <strong>unidade básica de processamento</strong> em modelos de linguagem. Pode corresponder a uma palavra inteira, ou apenas a uma parte dela — isso depende do algoritmo de tokenização usado por cada empresa.</p>
+          <div class="highlight-box" style="margin:16px 0;">
+            <strong>Exemplo em português:</strong> a palavra "infeliz" pode ser dividida em dois tokens — <strong style="color:var(--sky)">"in"</strong> + <strong style="color:var(--gold)">"feliz"</strong>. O prefixo "in-" também aparece em "indivisível", "incrível", "indispensável" — o modelo aprende esse padrão como uma unidade reutilizável que pode se combinar com diferentes raízes.
+          </div>
+          <div class="feature-grid" style="margin-top:14px;">
+            <div class="feature-box gold">
+              <h5>Token = palavra inteira</h5>
+              <p>Palavras comuns e curtas geralmente formam um token só: "curso", "ia", "chat", "usar".</p>
+            </div>
+            <div class="feature-box purple">
+              <h5>Token = parte de uma palavra</h5>
+              <p>Palavras longas ou incomuns são divididas: "engenharia" pode virar "engenh" + "aria" + "."</p>
+            </div>
+          </div>
+          <div class="callout" style="margin-top:14px;">
+            <strong>Por que isso importa para você?</strong> Serviços de IA cobram por tokens — não por palavras nem por caracteres. Quanto mais tokens você usar (no prompt e na resposta), maior o custo. Além disso, cada modelo tem um <em>limite de contexto</em> em tokens: quando atingido, a conversa começa a "esquecer" as primeiras mensagens.
+          </div>
+        </div>
+
+        <!-- Tokens: comparação por idioma -->
+        <div id="tokens-idiomas" class="card fade-in">
+          <div class="card-title">🌍 Tokens Variam por Idioma</div>
+          <p>Uma das descobertas mais interessantes sobre tokenização é que <strong>o mesmo conteúdo ocupa quantidades muito diferentes de tokens dependendo do idioma</strong>. Isso acontece porque os modelos são treinados principalmente em inglês — idiomas menos representados geram mais tokens para expressar a mesma ideia.</p>
+          <p>Veja a comparação com a mesma frase em três idiomas usando o tokenizador da OpenAI:</p>
+
+          <div class="data-table-wrap" style="margin:16px 0;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Idioma</th>
+                  <th>Caracteres</th>
+                  <th>Tokens</th>
+                  <th>Por quê?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="highlight-row">
+                  <td>🇺🇸 Inglês</td>
+                  <td>135</td>
+                  <td><strong>28</strong></td>
+                  <td>Língua dominante no treinamento — palavras inteiras viram tokens únicos</td>
+                </tr>
+                <tr>
+                  <td>🇧🇷 Português</td>
+                  <td>152</td>
+                  <td><strong>37</strong></td>
+                  <td>Menos representado; palavras longas são divididas em sub-palavras</td>
+                </tr>
+                <tr class="dim-row">
+                  <td>🇬🇷 Grego</td>
+                  <td>151</td>
+                  <td><strong>113</strong></td>
+                  <td>Muito pouco representado — quase cada letra vira um token separado</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout warn">
+            <strong>Conclusão prática:</strong> escrever prompts em inglês pode ser mais econômico (menos tokens) e, em alguns modelos, produzir respostas de maior qualidade — o inglês é mais representado no treinamento. Para uso cotidiano em português, os modelos atuais já são excelentes, mas é útil conhecer essa diferença ao pensar em custo e limites de contexto.
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════ -->
+        <!-- ITEM 05 — FAÇA COMO EU FIZ        -->
+        <!-- ══════════════════════════════════ -->
+
+        <div id="sec-pratica" class="section-sep fade-in">
+          <span class="sep-num">Item 05</span>
+          <span class="sep-title">Faça como eu fiz: Explorando Probabilidades</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div id="item-05-pratica" class="card fade-in">
+          <div class="card-title">🧩 Recapitulando o que Aprendemos</div>
+          <p>Nesta aula, descobrimos como modelos de linguagem de grande escala compreendem e geram texto:</p>
+          <ul class="bullet-list">
+            <li>Os modelos são treinados com enormes volumes de texto e criam <strong>compreensões matemáticas</strong> sobre linguagem, semântica e significado.</li>
+            <li>Quando enviamos uma instrução, o texto é primeiro dividido em <strong>tokens</strong> e, em seguida, convertido em <strong>embeddings</strong> — representações numéricas que capturam significado.</li>
+            <li>O modelo gera uma palavra por vez, calculando qual próxima palavra é a <strong>mais provável</strong> no contexto.</li>
+            <li>A <strong>temperatura</strong> controla se o modelo escolherá a palavra mais provável (resposta robótica) ou palavras com menor probabilidade (respostas mais criativas e variadas).</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in" style="margin-top:0;">
+          <div class="card-title">✋ Agora é Sua Vez!</div>
+          <p>Envie o prompt abaixo para o ChatGPT e, após a confirmação, experimente com diversas frases incompletas para observar como as probabilidades mudam conforme o contexto:</p>
+          <div class="prompt-wrap">
+            <div class="prompt-label prompt">▶ Prompt — clique para copiar</div>
+            <pre class="prompt-block prompt">Vamos simular como funciona o ChatGPT. Para cada frase que eu escrever, você deve listar as 5 palavras com maior probabilidade que você usaria para completá-la, junto com a probabilidade de cada uma. Combinado? Apenas as palavras e probabilidades, sem mais nada. Me diga se entendeu.</pre>
+          </div>
+          <p style="margin-top:14px;">Após a confirmação do modelo, envie qualquer frase incompleta e observe as probabilidades sugeridas. Experimente frases de contextos diferentes — técnico, cotidiano, criativo — e perceba como as probabilidades mudam.</p>
+          <div class="callout tip" style="margin-top:12px;">
+            <strong>Ajuste também a temperatura!</strong> Para experimentar o parâmetro de temperatura, use o <strong>Google AI Studio</strong> (aistudio.google.com) — playground gratuito do modelo Gemini para qualquer conta Gmail. Altere o valor de "Temperature" e reenvie o mesmo prompt para sentir a diferença nas respostas.
+          </div>
+          <div class="callout" style="margin-top:8px;">
+            <strong>Explore o tokenizador da OpenAI:</strong> acesse <strong>platform.openai.com/tokenizer</strong> e visualize como qualquer texto é dividido em tokens. Teste a mesma frase em português, inglês e outro idioma — e veja a diferença no número de tokens gerados!
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════ -->
+        <!-- ITEM 06 — O QUE APRENDEMOS        -->
+        <!-- ══════════════════════════════════ -->
+
+        <div id="sec-aprendemos" class="section-sep fade-in">
+          <span class="sep-num">Item 06</span>
+          <span class="sep-title">O que Aprendemos</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="dark-card fade-in">
+          <p>Nesta aula você completou os fundamentos teóricos necessários para criar prompts eficazes. Você agora é capaz de:</p>
+        </div>
+        <div class="learned-grid fade-in" style="margin-top:16px;margin-bottom:16px;">
+          <div class="learned-item"><span class="li-num">01</span><span>Conceituar como as palavras são representadas nos modelos por meio de <strong>word embeddings</strong> — vetores numéricos que capturam significado e relações semânticas entre conceitos.</span></div>
+          <div class="learned-item"><span class="li-num">02</span><span>Identificar como as palavras se relacionam por <strong>semântica</strong> no espaço vetorial — palavras com significados próximos ficam próximas matematicamente dentro do modelo.</span></div>
+          <div class="learned-item"><span class="li-num">03</span><span>Simular o <strong>funcionamento interno do modelo</strong> pedindo que ele liste as probabilidades das próximas palavras — uma janela direta para seu mecanismo de previsão.</span></div>
+          <div class="learned-item"><span class="li-num">04</span><span>Explorar o parâmetro de <strong>temperatura</strong> e entender como ele controla o equilíbrio entre previsibilidade e criatividade nas respostas geradas pelo modelo.</span></div>
         </div>
 
       </div>
