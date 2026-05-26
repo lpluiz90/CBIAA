@@ -4,47 +4,1168 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Engenharia de Prompt — EsCom EAD</title>
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet"/>
 <style>
-  :root{--navy:#192437;--steel:#2d4a6b;--ice2:#eef3f6;--sky:#4a9fc8;--gold:#c89b3c;--white:#fff;--text:#1a2535;}
+
+  :root {
+    --navy:#192437;--navy2:#1e2d42;--steel:#2d4a6b;
+    --ice:#dfe6eb;--ice2:#eef3f6;--sky:#4a9fc8;
+    --gold:#c89b3c;--white:#fff;--text:#1a2535;--muted:#5a6a7e;
+    --code-bg:#1e1e1e;--code-fg:#d4d4d4;--resp-bg:#0d2818;--resp-fg:#9cdcfe;
+    --section-w:900px;--sidebar-w:252px;--radius:10px;
+  }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'Source Sans 3',sans-serif;background:var(--ice2);color:var(--text);min-height:100vh;}
-  #hero{background:linear-gradient(135deg,var(--navy) 0%,var(--steel) 60%,#2a5a8a 100%);padding:52px 60px;position:relative;overflow:hidden;}
-  #hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,.03) 39px,rgba(255,255,255,.03) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,.03) 39px,rgba(255,255,255,.03) 40px);pointer-events:none;}
-  .bc-line{font-family:'Rajdhani',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;}
-  .bc-line-1{color:rgba(255,255,255,.42);}
-  .bc-line-2{color:var(--sky);font-size:13px;}
-  .back-link{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.5);font-family:'Rajdhani',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;margin-bottom:20px;transition:color .15s;}
-  .back-link:hover{color:var(--sky);}
-  .hero-title{font-family:'Rajdhani',sans-serif;font-size:46px;font-weight:700;color:var(--white);line-height:1.05;margin-top:14px;margin-bottom:14px;}
-  .hero-subtitle{font-size:17.5px;color:rgba(255,255,255,.68);max-width:640px;line-height:1.65;margin-bottom:24px;}
-  .badge{background:rgba(255,165,0,.18);border:1px solid rgba(255,165,0,.35);color:#ffd580;padding:4px 14px;border-radius:20px;font-size:11px;font-family:'Rajdhani',sans-serif;letter-spacing:.5px;display:inline-block;}
-  .content{max-width:860px;margin:0 auto;padding:60px 48px 100px;}
-  .coming-card{background:var(--white);border-radius:12px;padding:48px 40px;text-align:center;box-shadow:0 2px 20px rgba(0,0,0,.07);}
-  .coming-icon{font-size:52px;margin-bottom:20px;}
-  .coming-card h2{font-family:'Rajdhani',sans-serif;font-size:28px;font-weight:700;color:var(--navy);margin-bottom:12px;}
-  .coming-card p{font-size:18px;color:#5a6a7e;line-height:1.7;margin-bottom:24px;}
-  .btn-home{display:inline-block;background:var(--navy);color:var(--white);text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:12px 28px;border-radius:8px;transition:background .15s;}
-  .btn-home:hover{background:var(--steel);}
-  @media(max-width:700px){#hero{padding:32px 18px;}.hero-title{font-size:28px;}.content{padding:32px 14px 60px;}.coming-card{padding:30px 18px;}}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Source Sans 3',sans-serif;background:var(--ice2);color:var(--text);display:block;min-height:100vh;}
+
+  #wrapper{display:flex;min-height:100vh;}
+
+  /* Sidebar */
+  #sidebar{width:var(--sidebar-w);min-width:var(--sidebar-w);background:var(--navy);position:sticky;top:0;height:100vh;overflow-y:auto;flex-shrink:0;z-index:50;}
+  #sidebar::-webkit-scrollbar{width:4px;}
+  #sidebar::-webkit-scrollbar-track{background:var(--navy2);}
+  #sidebar::-webkit-scrollbar-thumb{background:var(--steel);border-radius:2px;}
+  .sb-brand{padding:22px 18px 16px;border-bottom:1px solid rgba(255,255,255,.12);}
+  .sb-brand .escom-label{font-family:'Rajdhani',sans-serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:4px;}
+  .sb-brand .course-title{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;color:var(--white);line-height:1.25;}
+  .sb-brand .course-sub{font-size:13px;font-family:'Rajdhani',sans-serif;font-weight:600;color:var(--sky);margin-top:4px;line-height:1.3;}
+  .sb-section-label{font-family:'Rajdhani',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);padding:16px 18px 5px;}
+  .sb-nav{list-style:none;padding:0 7px 14px;}
+  .sb-nav li a{display:flex;align-items:center;gap:9px;padding:6px 11px;border-radius:6px;text-decoration:none;font-size:12px;color:rgba(255,255,255,.60);transition:all .15s;line-height:1.3;}
+  .sb-nav li a:hover,.sb-nav li a.active{background:rgba(255,255,255,.1);color:var(--white);}
+  .sb-nav li a .num{font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;color:var(--sky);min-width:24px;flex-shrink:0;}
+  .sb-nav li.section-divider a{color:var(--gold);font-weight:700;font-family:'Rajdhani',sans-serif;font-size:11.5px;letter-spacing:.4px;margin-top:6px;border-top:1px solid rgba(255,255,255,.08);padding-top:10px;}
+  .sb-nav li.section-divider a:hover{background:rgba(200,155,60,.15);}
+  .sb-panel{display:none;}
+  .sb-panel.active{display:block;}
+  .sb-footer{margin-top:auto;padding:14px 18px;font-size:10px;color:rgba(255,255,255,.22);border-top:1px solid rgba(255,255,255,.07);line-height:1.5;}
+
+  /* Main area */
+  #main-area{flex:1;overflow-x:hidden;}
+
+  /* Hero global */
+  #hero-global{background:linear-gradient(135deg,var(--navy) 0%,var(--steel) 60%,#2a5a8a 100%);padding:44px 60px 36px;position:relative;overflow:hidden;}
+  #hero-global::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,.03) 39px,rgba(255,255,255,.03) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,.03) 39px,rgba(255,255,255,.03) 40px);pointer-events:none;}
+
+  .hero-logo{position:fixed;top:16px;right:30px;width:140px;height:140px;object-fit:contain;filter:drop-shadow(0 2px 12px rgba(0,0,0,.45));z-index:9999;}
+
+  /* Breadcrumb */
+  .hero-breadcrumb{display:flex;flex-direction:column;align-items:flex-start;gap:2px;margin-bottom:24px;width:100%;}
+  .bc-line{font-family:'Rajdhani',sans-serif;font-size:22px !important;letter-spacing:1.5px;text-transform:uppercase;line-height:1.4;}
+  .bc-line-1{color:rgba(255,255,255,.65);}
+  .bc-line-2{color:var(--sky);font-weight:700;}
+  .bc-sep{color:var(--gold);font-size:22px !important;margin:0 10px;font-weight:700;line-height:1.4;}
+
+  /* Tabs */
+  .aulas-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;margin-bottom:0;position:relative;z-index:2;}
+  .aula-tab{font-family:'Rajdhani',sans-serif;font-size:26px;font-weight:700;letter-spacing:.4px;color:rgba(255,255,255,.95);border:2.5px solid rgba(255,255,255,.25);border-radius:8px;padding:12px 30px;cursor:pointer;transition:all .18s;white-space:nowrap;line-height:1.2;}
+  .aula-tab:hover{filter:brightness(1.2);transform:translateY(-1px);}
+  .aula-tab-1{background:#1a6fa8;border-color:#4a9fc8;}
+  .aula-tab-2{background:#2e7d52;border-color:#4caf80;}
+  .aula-tab-3{background:#7b3fa0;border-color:#b06fd6;}
+  .aula-tab-1.active{background:#4a9fc8;border-color:#fff;color:#fff;box-shadow:0 0 0 3px rgba(74,159,200,.5);}
+  .aula-tab-2.active{background:#4caf80;border-color:#fff;color:#fff;box-shadow:0 0 0 3px rgba(76,175,128,.5);}
+  .aula-tab-3.active{background:#b06fd6;border-color:#fff;color:#fff;box-shadow:0 0 0 3px rgba(176,111,214,.5);}
+
+  /* Hero dynamic */
+  .hero-dyn{display:none;margin-top:22px;}
+  .hero-dyn.active{display:block;}
+  .hero-dyn .hero-title{font-family:'Rajdhani',sans-serif;font-size:50px;font-weight:700;color:var(--white);line-height:1.05;margin-bottom:14px;}
+  .hero-dyn .hero-subtitle{font-size:18px;color:rgba(255,255,255,.68);max-width:100%;line-height:1.65;margin-bottom:22px;}
+  .hero-dyn .hero-tags{display:flex;flex-wrap:wrap;gap:9px;}
+  .hero-dyn .hero-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.78);padding:4px 13px;border-radius:20px;font-size:11.5px;font-family:'Rajdhani',sans-serif;letter-spacing:.4px;}
+
+  /* Content panels */
+  .content-panel{display:none;}
+  .content-panel.active{display:block;}
+
+  /* Content area */
+  .content{max-width:var(--section-w);margin:0 auto;padding:0 48px 80px;}
+
+  /* Objectives */
+  #objetivos{background:var(--white);border-left:4px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:24px 28px;margin:36px 0 0;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+  .obj-title{font-family:'Rajdhani',sans-serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+  .obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px 22px;}
+  .obj-item{display:flex;align-items:flex-start;gap:10px;font-size:18px;line-height:1.55;}
+  .obj-item .dot{width:7px;height:7px;background:var(--sky);border-radius:50%;margin-top:6px;flex-shrink:0;}
+
+  /* Intro card */
+  .intro-card{background:var(--navy);border-radius:var(--radius);padding:28px 32px;margin:20px 0 0;color:rgba(255,255,255,.83);font-size:18.5px;line-height:1.78;}
+  .intro-card p+p{margin-top:12px;}
+
+  /* Section separator */
+  .section-sep{display:flex;align-items:center;gap:14px;margin:52px 0 0;border-bottom:4px solid #2e9e60;padding-bottom:10px;margin-bottom:28px !important;}
+  .section-sep .sep-num{font-family:'Rajdhani',sans-serif;font-size:42px !important;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--white);background:var(--navy);padding:5px 13px;border-radius:4px;white-space:nowrap;}
+  .section-sep .sep-title{font-family:'Rajdhani',sans-serif;font-size:42px !important;font-weight:700;color:var(--navy);white-space:normal;line-height:1.1 !important;}
+  .section-sep .sep-line{flex:1;height:2px;background:linear-gradient(to right,var(--navy),transparent);border-radius:1px;}
+
+  /* Card */
+  .card{background:var(--white);border-radius:var(--radius);padding:26px 30px;margin-bottom:18px;box-shadow:0 1px 7px rgba(0,0,0,.055);}
+  .card-title{font-family:'Rajdhani',sans-serif;font-size:19px;font-weight:700;color:var(--navy);margin-bottom:13px;padding-bottom:9px;border-bottom:2px solid var(--ice);}
+  .card p{font-size:18.5px;line-height:1.80;color:var(--text);}
+  .card p+p{margin-top:11px;}
+
+  /* Bullet list */
+  .bullet-list{list-style:none;padding:0;margin:6px 0;}
+  .bullet-list li{display:block;font-size:18.5px;line-height:1.74;color:var(--text);padding:9px 0 9px 22px;border-bottom:1px solid var(--ice);position:relative;}
+  .bullet-list li:last-child{border-bottom:none;}
+  .bullet-list li::before{content:'▸';color:var(--sky);font-size:12px;position:absolute;left:0;top:11px;}
+
+  /* Prompt / code blocks */
+  .prompt-wrap{margin:16px 0;}
+  .prompt-label{font-family:'Source Code Pro',monospace;font-size:11px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;padding:5px 14px;display:inline-flex;align-items:center;gap:6px;border-radius:6px 6px 0 0;cursor:pointer;transition:opacity .15s;user-select:none;}
+  .prompt-label:hover{opacity:.82;}
+  .prompt-label.prompt{background:#1e1e1e;color:#569cd6;}
+  .prompt-label.resposta{background:#0d2818;color:#4ec94e;}
+  .prompt-label.neutro{background:#2a2a2a;color:#ce9178;}
+  pre.prompt-block{font-family:'Source Code Pro',monospace;font-size:17px;line-height:1.72;padding:16px 20px;border-radius:0 8px 8px 8px;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-word;}
+  pre.prompt-block.prompt{background:#1e1e1e;color:#d4d4d4;}
+  pre.prompt-block.resposta{background:#0d2818;color:#9cdcfe;font-style:italic;}
+  pre.prompt-block.neutro{background:#2a2a2a;color:#ce9178;}
+  .copy-ok{color:#4ec94e !important;}
+
+  /* Two-col prompt pair */
+  .prompt-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+  .prompt-pair .prompt-wrap{margin:0;}
+
+  /* Callout */
+  .callout{background:#f0f7ff;border-left:4px solid var(--sky);border-radius:0 8px 8px 0;padding:13px 17px;font-size:17.5px;color:var(--navy2);line-height:1.65;margin:13px 0;}
+  .callout.warn{background:#fff8e6;border-color:var(--gold);}
+  .callout.tip{background:#f0fff4;border-color:#2e7d32;}
+  .callout.danger{background:#fff0f0;border-color:#c62828;}
+  .callout.purple{background:#f3e5f5;border-color:#7b1fa2;}
+  .callout strong{color:var(--navy);}
+
+  /* Highlight box */
+  .highlight-box{background:var(--navy);color:rgba(255,255,255,.88);border-radius:8px;padding:18px 22px;margin:14px 0;font-size:18px;line-height:1.72;}
+  .highlight-box strong{color:var(--sky);}
+
+  /* Feature grid */
+  .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:10px 0;}
+  .feature-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:10px 0;}
+  .feature-box{background:var(--ice2);border-radius:8px;padding:16px 18px;border-left:3px solid var(--sky);}
+  .feature-box.gold{border-left-color:var(--gold);}
+  .feature-box.green{border-left-color:#2e7d32;}
+  .feature-box.purple{border-left-color:#7b1fa2;}
+  .feature-box.red{border-left-color:#c62828;}
+  .feature-box h5{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+  .feature-box p{font-size:17px;line-height:1.58;color:var(--muted);}
+
+  /* Steps */
+  .steps{margin:12px 0;}
+  .step{display:flex;gap:14px;margin-bottom:14px;align-items:flex-start;}
+  .step-num{min-width:32px;height:32px;background:var(--navy);color:#fff;border-radius:50%;font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+  .step-num.gold{background:var(--gold);}
+  .step-num.sky{background:var(--sky);}
+  .step-num.green{background:#2e7d32;}
+  .step-body{font-size:18.5px;line-height:1.68;color:var(--text);}
+  .step-body strong{color:var(--navy);}
+
+  /* Data table */
+  .data-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:17.5px;border-radius:8px;overflow:hidden;}
+  .data-table thead tr{background:var(--navy);color:#fff;}
+  .data-table thead th{padding:10px 14px;text-align:left;font-family:'Rajdhani',sans-serif;font-size:12px;letter-spacing:1px;font-weight:700;}
+  .data-table tbody tr{border-bottom:1px solid var(--ice);transition:background .12s;}
+  .data-table tbody tr:hover{background:#f5faff;}
+  .data-table tbody td{padding:8px 14px;font-family:'Source Code Pro',monospace;font-size:12.5px;}
+  .data-table .highlight-row{background:#fffbf0;}
+  .data-table .dim-row td{color:var(--muted);}
+  .data-table-wrap{max-height:380px;overflow-y:auto;border-radius:8px;border:1px solid var(--ice);margin:14px 0;}
+  .data-table-wrap::-webkit-scrollbar{width:6px;}
+  .data-table-wrap::-webkit-scrollbar-track{background:var(--ice2);}
+  .data-table-wrap::-webkit-scrollbar-thumb{background:var(--steel);border-radius:3px;}
+  .data-table-wrap .data-table{margin:0;border-radius:0;}
+  .data-table-wrap .data-table thead tr{position:sticky;top:0;z-index:2;}
+
+  /* Dark card */
+  .dark-card{background:linear-gradient(135deg,var(--navy),var(--steel));border-radius:var(--radius);padding:28px 32px;color:rgba(255,255,255,.83);font-size:18.5px;line-height:1.78;}
+  .dark-card p+p{margin-top:11px;}
+  .dark-card a{color:var(--sky);}
+
+  /* Learned grid */
+  .learned-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px;}
+  .learned-item{display:flex;align-items:flex-start;gap:11px;background:var(--ice2);border-radius:8px;padding:13px 15px;font-size:17.5px;line-height:1.58;border-left:3px solid var(--navy);}
+  .learned-item .li-num{font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;color:var(--navy);line-height:1;flex-shrink:0;min-width:28px;}
+
+  /* Inline code */
+  code.ic{background:var(--ice);padding:1px 6px;border-radius:4px;font-family:'Source Code Pro',monospace;font-size:12.5px;color:var(--navy);}
+
+  /* Tool compare */
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;}
+  .compare-col{background:var(--ice2);border-radius:8px;padding:16px 18px;}
+  .compare-col.chatgpt{border-top:3px solid #10a37f;}
+  .compare-col.gemini{border-top:3px solid #4285f4;}
+  .compare-col h4{font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;margin-bottom:10px;}
+  .compare-col.chatgpt h4{color:#10a37f;}
+  .compare-col.gemini h4{color:#4285f4;}
+  .compare-col ul{list-style:none;padding:0;}
+  .compare-col ul li{font-size:17px;line-height:1.55;padding:5px 0;border-bottom:1px solid rgba(0,0,0,.06);}
+  .compare-col ul li:last-child{border-bottom:none;}
+  .compare-col ul li::before{content:'• ';color:var(--muted);}
+
+  /* Image wrap */
+  .content-img-wrap{margin:16px 0;border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,.10);}
+  .content-img-wrap img{width:100%;display:block;max-height:380px;object-fit:cover;transition:transform .4s ease;}
+  .content-img-wrap:hover img{transform:scale(1.02);}
+  .content-img-wrap .img-cap{background:var(--navy2);color:rgba(255,255,255,.68);font-size:12px;padding:8px 14px;font-style:italic;line-height:1.5;}
+
+  /* Language example boxes */
+  .lang-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  .lang-box{background:var(--white);border-radius:10px;padding:20px 18px;box-shadow:0 2px 10px rgba(0,0,0,.06);text-align:center;}
+  .lang-box .lang-flag{font-size:32px;margin-bottom:8px;}
+  .lang-box .lang-name{font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+  .lang-box .lang-phrase{font-family:'Source Code Pro',monospace;font-size:18px;font-weight:600;color:var(--navy);background:var(--ice2);padding:10px 14px;border-radius:6px;margin-bottom:10px;}
+  .lang-box .lang-note{font-size:16px;line-height:1.55;color:var(--muted);}
+  .lang-box.pt{border-top:4px solid var(--sky);}
+  .lang-box.en{border-top:4px solid var(--gold);}
+  .lang-box.tr{border-top:4px solid #7b1fa2;}
+
+  /* Progress bar */
+  #progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(to right,var(--sky),var(--gold));z-index:999;width:0%;transition:width .1s;}
+
+  /* Fade in */
+  .fade-in{opacity:0;transform:translateY(16px);transition:opacity .42s ease,transform .42s ease;}
+  .fade-in.visible{opacity:1;transform:none;}
+
+  /* Back to top */
+  #back-to-top{position:fixed;bottom:28px;right:28px;z-index:999;background:var(--gold);color:var(--navy);border:none;border-radius:50px;padding:12px 22px;font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;letter-spacing:.5px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.25);display:flex;align-items:center;gap:8px;opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .25s,transform .25s;}
+  #back-to-top.visible{opacity:1;pointer-events:all;transform:translateY(0);}
+  #back-to-top:hover{background:#e0b050;transform:translateY(-2px);}
+
+  /* Quiz */
+  .quiz-section{margin:32px 0 8px}
+  .quiz-section-header{background:linear-gradient(135deg,#192437 0%,#1e2d42 100%);border-radius:10px 10px 0 0;padding:16px 24px;border-left:4px solid #c89b3c}
+  .quiz-section-header .qs-label{font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#c89b3c;display:block;margin-bottom:4px}
+  .quiz-section-header .qs-title{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;color:rgba(255,255,255,.9)}
+  .quiz-section-body{background:#fff;border:1px solid #dfe6eb;border-top:none;border-radius:0 0 10px 10px;padding:24px 24px 20px;box-shadow:0 3px 12px rgba(0,0,0,.07)}
+  .quiz-block{margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid #eef3f6}
+  .quiz-block:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+  .quiz-q-label{font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#4a9fc8;margin-bottom:6px}
+  .quiz-question{font-size:18.5px;font-weight:600;color:#1a2535;line-height:1.5;margin-bottom:14px}
+  .quiz-options{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+  .quiz-option{display:flex;align-items:flex-start;gap:11px;padding:10px 14px;border:2px solid #dfe6eb;border-radius:8px;cursor:pointer;font-size:17.5px;line-height:1.5;color:#1a2535;background:#f8fafc;transition:border-color .15s,background .15s;user-select:none}
+  .quiz-option:hover:not(.disabled){border-color:#4a9fc8;background:#eef3f6}
+  .quiz-option .opt-letter{font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;color:#4a9fc8;min-width:20px;height:20px;border:2px solid #4a9fc8;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;transition:all .15s}
+  .quiz-option.correct{border-color:#2e9e60;background:#eaf7f0}
+  .quiz-option.correct .opt-letter{background:#2e9e60;border-color:#2e9e60;color:#fff}
+  .quiz-option.wrong{border-color:#c0392b;background:#fdecea}
+  .quiz-option.wrong .opt-letter{background:#c0392b;border-color:#c0392b;color:#fff}
+  .quiz-option.disabled{cursor:default;opacity:.55}
+  .quiz-option.correct.disabled,.quiz-option.wrong.disabled{opacity:1}
+  .quiz-feedback{display:none;align-items:flex-start;gap:10px;padding:10px 14px;border-radius:8px;font-size:17px;line-height:1.55;margin-top:4px}
+  .quiz-feedback.show{display:flex}
+  .quiz-feedback.acerto{background:#eaf7f0;border-left:4px solid #2e9e60;color:#1a4a2e}
+  .quiz-feedback.erro{background:#fdecea;border-left:4px solid #c0392b;color:#5a1a1a}
+  .quiz-feedback .fb-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+  .quiz-retry{display:none;margin-top:10px;font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#4a9fc8;background:none;border:2px solid #4a9fc8;border-radius:6px;padding:5px 16px;cursor:pointer;transition:background .15s,color .15s}
+  .quiz-retry:hover{background:#4a9fc8;color:#fff}
+  .quiz-retry.show{display:inline-block}
+
+  /* Responsive */
+  @media(max-width:900px){
+    :root{--sidebar-w:0px;--section-w:100%;--radius:8px;}
+    #sidebar{display:none;}
+    #main-area{width:100%;}
+    #hero-global{padding:28px 20px 24px;}
+    .bc-line{font-size:14px !important;}
+    .bc-sep{font-size:14px !important;}
+    .hero-dyn .hero-title{font-size:28px;}
+    .hero-logo{width:83px;height:83px;top:12px;right:12px;}
+    .aula-tab{font-size:18px;padding:9px 18px;}
+    .content{padding:0 14px 60px;}
+    #objetivos{padding:18px 16px;margin:20px 0 0;}
+    .obj-grid{grid-template-columns:1fr;gap:8px;}
+    .obj-item{font-size:17.5px;}
+    .intro-card{padding:20px 18px;font-size:17.5px;}
+    .section-sep{margin:36px 0 16px !important;gap:10px;flex-wrap:wrap;}
+    .section-sep .sep-num{font-size:30px !important;padding:5px 13px;}
+    .section-sep .sep-title{font-size:30px !important;}
+    .section-sep .sep-line{display:none;}
+    .card{padding:18px 16px;margin-bottom:14px;}
+    .card-title{font-size:18px;margin-bottom:10px;padding-bottom:8px;}
+    .card p{font-size:17.5px;line-height:1.72;}
+    .prompt-label{font-size:10px;padding:4px 10px;letter-spacing:1px;}
+    pre.prompt-block{font-size:11.5px;padding:12px 14px;line-height:1.65;}
+    .prompt-pair,.obj-grid,.feature-grid,.feature-grid-3,.lang-grid,.compare,.learned-grid{grid-template-columns:1fr;}
+    .data-table thead th{font-size:11px;padding:8px 10px;}
+    .data-table tbody td{font-size:11px;padding:6px 10px;}
+    .callout{font-size:17px;padding:10px 14px;}
+    .dark-card{padding:20px 18px;font-size:17.5px;}
+    .highlight-box{padding:14px 16px;font-size:17px;}
+    .learned-item{font-size:17px;padding:11px 13px;}
+    #back-to-top{bottom:16px;right:16px;padding:10px 16px;font-size:17px;}
+  }
+  @media(max-width:480px){
+    #hero-global{padding:22px 14px 22px;}
+    .hero-dyn .hero-title{font-size:22px;}
+    .hero-logo{width:60px;height:60px;top:10px;right:10px;}
+    .content{padding:0 10px 50px;}
+    .card{padding:14px 12px;}
+    .card-title{font-size:17px;}
+    pre.prompt-block{font-size:10.5px;padding:10px 12px;}
+    .section-sep .sep-title{font-size:24px !important;}
+    .aula-tab{font-size:17px;padding:7px 12px;}
+    .bc-line{font-size:12px !important;}
+  }
+
 </style>
 </head>
 <body>
-<div id="hero">
-  <a class="back-link" href="../../index.html">← Voltar ao Início</a>
-  <div class="bc-line bc-line-1">EsCom EAD · Módulo Introdução</div>
-  <div class="bc-line bc-line-2">Engenharia de Prompt</div>
-  <h1 class="hero-title">Engenharia de Prompt</h1>
-  <p class="hero-subtitle">Aprenda a estruturar instruções eficazes para extrair o melhor dos modelos de IA generativa.</p>
-  <span class="badge">Em breve</span>
-</div>
-<div class="content">
-  <div class="coming-card">
-    <div class="coming-icon">🛠️</div>
-    <h2>Aula em Produção</h2>
-    <p>Esta aula está sendo preparada e estará disponível em breve.<br>Volte à página inicial para acessar as aulas já publicadas.</p>
-    <a class="btn-home" href="../../index.html">← Ir para o Início</a>
-  </div>
-</div>
+
+<div id="progress-bar"></div>
+<button id="back-to-top" aria-label="Voltar ao topo">&#8679; Voltar ao topo</button>
+
+<div id="wrapper">
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <nav id="sidebar">
+    <div class="sb-brand">
+      <div class="escom-label">EsCom EAD · Módulo Introdução</div>
+      <div class="course-title">Engenharia de Prompt</div>
+      <div class="course-sub">Criando prompts eficazes para IA Generativa</div>
+    </div>
+
+    <!-- Sidebar Panel 1 — Visão Geral -->
+    <div class="sb-panel" id="sb-panel-1">
+      <div class="sb-section-label">Navegação</div>
+      <ul class="sb-nav">
+        <li><a href="#objetivos"><span class="num">—</span> Objetivos</a></li>
+        <li><a href="#introducao"><span class="num">—</span> Introdução</a></li>
+        <li class="section-divider"><a href="#sec-visao"><span class="num">01</span> O que Vamos Aprender</a></li>
+        <li><a href="#topico-llm"><span class="num">1.1</span> Modelos de Linguagem</a></li>
+        <li><a href="#topico-prompt"><span class="num">1.2</span> Engenharia de Prompt</a></li>
+        <li><a href="#topico-tecnicas"><span class="num">1.3</span> Técnicas Científicas</a></li>
+        <li><a href="#topico-programatico"><span class="num">1.4</span> Técnicas Programáticas</a></li>
+      </ul>
+    </div>
+
+    <!-- Sidebar Panel 2 — Preparando o Ambiente -->
+    <div class="sb-panel" id="sb-panel-2">
+      <div class="sb-section-label">Navegação</div>
+      <ul class="sb-nav">
+        <li><a href="#objetivos"><span class="num">—</span> Objetivos</a></li>
+        <li><a href="#introducao"><span class="num">—</span> Introdução</a></li>
+        <li class="section-divider"><a href="#sec-ambiente"><span class="num">01</span> Preparando o Ambiente</a></li>
+        <li><a href="#chatgpt-conta"><span class="num">1.1</span> Criando sua Conta</a></li>
+        <li><a href="#chatgpt-passos"><span class="num">1.2</span> Primeiros Passos</a></li>
+        <li><a href="#ferramentas-alt"><span class="num">1.3</span> Outras Ferramentas</a></li>
+        <li><a href="#quiz-2"><span class="num">—</span> Exercício Prático</a></li>
+      </ul>
+    </div>
+
+    <!-- Sidebar Panel 3 — Modelos de Linguagem -->
+    <div class="sb-panel" id="sb-panel-3">
+      <div class="sb-section-label">Navegação</div>
+      <ul class="sb-nav">
+        <li><a href="#objetivos"><span class="num">—</span> Objetivos</a></li>
+        <li><a href="#introducao"><span class="num">—</span> Introdução</a></li>
+        <li class="section-divider"><a href="#sec-modelos"><span class="num">01</span> Modelos de Linguagem</a></li>
+        <li><a href="#padroes-linguagem"><span class="num">1.1</span> Padrões da Linguagem</a></li>
+        <li><a href="#word-embeddings"><span class="num">1.2</span> Word Embeddings</a></li>
+        <li><a href="#operacoes-matematicas"><span class="num">1.3</span> Operações Matemáticas</a></li>
+        <li><a href="#prevendo-palavras"><span class="num">1.4</span> Prevendo Palavras</a></li>
+        <li><a href="#memoria-contextual"><span class="num">1.5</span> Memória Contextual</a></li>
+        <li><a href="#quiz-3"><span class="num">—</span> Exercício Prático</a></li>
+      </ul>
+    </div>
+
+    <div class="sb-footer">
+      <span style="display:block;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.12);line-height:1.6;">
+        Exército Brasileiro<br>CComGEx<br>Escola de Comunicações
+      </span>
+      <span style="display:block;font-size:9px;color:rgba(255,255,255,.25);line-height:1.6;">
+        Divisão de Ensino<br>Seção de Tecnologia da Informação e Comunicações<br>Maj Luiz Paulo - Tu 2011 - Ch Sec A
+      </span>
+    </div>
+  </nav>
+
+  <!-- ═══ ÁREA PRINCIPAL ═══ -->
+  <div id="main-area">
+
+    <!-- HERO ÚNICO FIXO -->
+    <section id="hero-global">
+      <div class="hero-breadcrumb">
+        <span class="bc-line bc-line-1">Escola de Comunicações</span>
+        <span class="bc-line bc-line-1">Fundamentos: programação, SQL, nuvem e conceitos de IA</span>
+        <span class="bc-sep">▸</span>
+        <span class="bc-line bc-line-2">Engenharia de Prompt: criando prompts eficazes para IA Generativa</span>
+      </div>
+
+      <!-- ABAS -->
+      <div class="aulas-tabs">
+        <button class="aula-tab aula-tab-1" data-idx="0">Item 01</button>
+        <button class="aula-tab aula-tab-2" data-idx="1">Item 02</button>
+        <button class="aula-tab aula-tab-3" data-idx="2">Item 03</button>
+      </div>
+
+      <!-- HÉROS DINÂMICOS -->
+      <div class="hero-dyn" id="hero-dyn-1">
+        <h1 class="hero-title">Item 01 — Visão Geral do Módulo</h1>
+        <p class="hero-subtitle">Descubra o que você vai aprender: dos fundamentos dos modelos de linguagem (LLMs) às técnicas avançadas de engenharia de prompt publicadas pela OpenAI, Google, Anthropic e muito mais.</p>
+        <div class="hero-tags">
+          <span class="hero-tag">Modelos de Linguagem</span>
+          <span class="hero-tag">LLMs</span>
+          <span class="hero-tag">Engenharia de Prompt</span>
+          <span class="hero-tag">OpenAI</span>
+          <span class="hero-tag">Google</span>
+          <span class="hero-tag">Anthropic</span>
+        </div>
+      </div>
+
+      <div class="hero-dyn" id="hero-dyn-2">
+        <h1 class="hero-title">Item 02 — Preparando o Ambiente</h1>
+        <p class="hero-subtitle">Configure as ferramentas que usaremos ao longo do módulo: crie sua conta, navegue pela interface do ChatGPT e conheça as alternativas gratuitas disponíveis para acompanhar todos os exercícios.</p>
+        <div class="hero-tags">
+          <span class="hero-tag">ChatGPT</span>
+          <span class="hero-tag">OpenAI</span>
+          <span class="hero-tag">Google Gemini</span>
+          <span class="hero-tag">AI Studio</span>
+          <span class="hero-tag">Conta Gratuita</span>
+          <span class="hero-tag">Primeiros Passos</span>
+        </div>
+      </div>
+
+      <div class="hero-dyn" id="hero-dyn-3">
+        <h1 class="hero-title">Item 03 — Modelos de Linguagem</h1>
+        <p class="hero-subtitle">Entenda o que acontece por dentro de um LLM. De padrões linguísticos a word embeddings, de probabilidades a memória contextual — a base teórica que vai transformar sua forma de escrever prompts.</p>
+        <div class="hero-tags">
+          <span class="hero-tag">LLM</span>
+          <span class="hero-tag">NLP</span>
+          <span class="hero-tag">Word Embeddings</span>
+          <span class="hero-tag">Probabilidade</span>
+          <span class="hero-tag">Memória Contextual</span>
+          <span class="hero-tag">ChatGPT</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+         PAINEL 1 — VISÃO GERAL DO MÓDULO
+    ════════════════════════════════════ -->
+    <div class="content-panel" id="ct-panel-1">
+      <div class="content">
+
+        <!-- Objetivos -->
+        <div id="objetivos" class="fade-in">
+          <div class="obj-title">◆ Objetivos da Instrução</div>
+          <div class="obj-grid">
+            <div class="obj-item"><span class="dot"></span>Compreender o que são modelos de linguagem (LLMs) e como funcionam internamente.</div>
+            <div class="obj-item"><span class="dot"></span>Dominar os princípios fundamentais da Engenharia de Prompt.</div>
+            <div class="obj-item"><span class="dot"></span>Explorar técnicas avançadas publicadas em artigos científicos de grandes empresas de IA.</div>
+            <div class="obj-item"><span class="dot"></span>Conhecer técnicas programáticas para uso de modelos via API e código.</div>
+          </div>
+        </div>
+
+        <!-- Introdução -->
+        <div id="introducao" class="intro-card fade-in">
+          <p>Bem-vindo ao módulo de <strong style="color:#fff">Engenharia de Prompt</strong>. Ao contrário do que o nome pode sugerir, você não precisa saber programar para dominar essa habilidade. A engenharia de prompt é a arte de <strong style="color:var(--sky)">escrever instruções claras e eficazes</strong> para que os modelos de IA gerem exatamente o que você precisa.</p>
+          <p>Neste módulo, você vai entender por que algumas perguntas geram respostas ruins e outras geram respostas perfeitas — e vai aprender as técnicas que os melhores pesquisadores do mundo usam para extrair o máximo dessas ferramentas.</p>
+        </div>
+
+        <!-- Seção: O que Vamos Aprender -->
+        <div id="sec-visao" class="section-sep fade-in">
+          <span class="sep-num">Item 01</span>
+          <span class="sep-title">O que Vamos Aprender</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <!-- Tópico 1: Modelos de Linguagem -->
+        <div id="topico-llm" class="card fade-in">
+          <div class="card-title">🧠 Modelos de Linguagem (LLMs)</div>
+          <p>Antes de dominar a engenharia de prompt, é essencial entender <strong>como os modelos de linguagem funcionam por dentro</strong>. O que são os LLMs (Large Language Models)? Como eles aprendem com textos? Por que às vezes acertam e às vezes erram?</p>
+          <p>Vamos explorar conceitos como <em>word embeddings</em>, <em>tokens</em>, <em>probabilidade de palavras</em> e <em>memória contextual</em> — a base que explica o comportamento de ferramentas como ChatGPT, Gemini e Claude.</p>
+          <div class="callout">
+            <strong>Por que isso importa?</strong> Quem entende como o modelo funciona escreve prompts muito melhores. É como entender o mecanismo de um instrumento musical para tocá-lo com mais controle.
+          </div>
+        </div>
+
+        <!-- Tópico 2: Princípios de Prompt -->
+        <div id="topico-prompt" class="card fade-in">
+          <div class="card-title">✍️ Princípios da Engenharia de Prompt</div>
+          <p>O coração deste módulo. Vamos aprender <strong>o que é a Engenharia de Prompt</strong> e quais são as técnicas e princípios mais importantes para criar o prompt ideal e obter as respostas desejadas dos modelos de linguagem.</p>
+          <div class="feature-grid" style="margin-top:14px;">
+            <div class="feature-box gold">
+              <h5>Clareza e Especificidade</h5>
+              <p>O princípio mais importante: quanto mais claro e específico o pedido, melhor a resposta.</p>
+            </div>
+            <div class="feature-box">
+              <h5>Divisão de Tarefas</h5>
+              <p>Separar problemas complexos em etapas sequenciais melhora a qualidade em cada parte.</p>
+            </div>
+            <div class="feature-box">
+              <h5>Raciocínio Explícito</h5>
+              <p>Pedir que o modelo explique o raciocínio antes da resposta reduz erros significativamente.</p>
+            </div>
+            <div class="feature-box">
+              <h5>Justificativas</h5>
+              <p>Solicitar explicações sobre as escolhas feitas aumenta a confiabilidade da resposta.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 3: Técnicas Científicas -->
+        <div id="topico-tecnicas" class="card fade-in">
+          <div class="card-title">🔬 Técnicas Avançadas — Base Científica</div>
+          <p>Algumas das técnicas mais poderosas de engenharia de prompt foram descobertas e documentadas em <strong>artigos científicos</strong> publicados pelas principais empresas de IA do mundo.</p>
+          <div class="compare" style="margin-top:14px;">
+            <div class="compare-col chatgpt">
+              <h4>OpenAI</h4>
+              <ul>
+                <li>GPT-4 Technical Report</li>
+                <li>Chain-of-Thought Prompting</li>
+                <li>DALL-E e GPT-4o</li>
+              </ul>
+            </div>
+            <div class="compare-col gemini">
+              <h4>Google &amp; Outros</h4>
+              <ul>
+                <li>Gemini — Técnicas de raciocínio</li>
+                <li>Anthropic (Claude) — Constitucional AI</li>
+                <li>Mistral AI — Modelos eficientes</li>
+              </ul>
+            </div>
+          </div>
+          <p style="margin-top:12px;">Vamos nos aprofundar nesses artigos para entender como as técnicas funcionam e como aplicá-las na prática — mesmo sem ser da área técnica.</p>
+        </div>
+
+        <!-- Tópico 4: Técnicas Programáticas -->
+        <div id="topico-programatico" class="card fade-in">
+          <div class="card-title">⚙️ Técnicas Programáticas — Para Ir Além</div>
+          <p>Por fim, vamos explorar técnicas utilizadas por quem aplica os modelos de forma programática, via <strong>API e código</strong>. Essas técnicas são mais avançadas, mas igualmente relevantes para qualquer pessoa que queira entender o potencial completo dos LLMs.</p>
+          <div class="callout tip">
+            <strong>Não é obrigatório saber programar!</strong> Mesmo sem escrever código, entender como essas técnicas funcionam internamente amplia sua capacidade de usar as ferramentas de IA de forma mais inteligente e estratégica.
+          </div>
+          <p>Técnicas como <em>few-shot prompting</em>, <em>RAG (Retrieval-Augmented Generation)</em> e <em>function calling</em> serão apresentadas de forma acessível, com exemplos práticos que qualquer profissional pode aproveitar.</p>
+        </div>
+
+        <!-- Dark card resumo -->
+        <div class="dark-card fade-in" style="margin-top:28px;">
+          <p>Ao final deste módulo, você será capaz de <strong style="color:var(--sky)">escrever prompts que realmente funcionam</strong> — não por tentativa e erro, mas porque você entenderá por que cada escolha faz diferença. Essa é a diferença entre usar a IA e dominá-la.</p>
+        </div>
+
+      </div>
+      <footer style="background:var(--navy);color:rgba(255,255,255,.35);text-align:center;font-size:10.5px;padding:16px;letter-spacing:.4px;">
+        Exército Brasileiro · Escola de Comunicações (Escola Coronel Hygino Corsetti) · EAD — Módulo de Engenharia de Prompt
+      </footer>
+    </div>
+
+    <!-- ═══════════════════════════════════
+         PAINEL 2 — PREPARANDO O AMBIENTE
+    ════════════════════════════════════ -->
+    <div class="content-panel" id="ct-panel-2">
+      <div class="content">
+
+        <!-- Objetivos -->
+        <div id="objetivos" class="fade-in">
+          <div class="obj-title">◆ Objetivos da Instrução</div>
+          <div class="obj-grid">
+            <div class="obj-item"><span class="dot"></span>Criar e configurar uma conta no ChatGPT (OpenAI).</div>
+            <div class="obj-item"><span class="dot"></span>Navegar pela interface do ChatGPT e enviar os primeiros prompts.</div>
+            <div class="obj-item"><span class="dot"></span>Compreender a diferença entre a versão gratuita e a versão Plus.</div>
+            <div class="obj-item"><span class="dot"></span>Conhecer o Google AI Studio como alternativa gratuita ao playground da OpenAI.</div>
+          </div>
+        </div>
+
+        <!-- Introdução -->
+        <div id="introducao" class="intro-card fade-in">
+          <p>Antes de começar a praticar engenharia de prompt, precisamos configurar as ferramentas. Ao longo deste módulo, utilizaremos principalmente o <strong style="color:#fff">ChatGPT</strong>, da OpenAI — a ferramenta mais popular e acessível para trabalhar com IA generativa de texto.</p>
+          <p>Também usaremos o <strong style="color:var(--sky)">Google AI Studio</strong> para algumas atividades específicas. A boa notícia: ambas as ferramentas têm versões gratuitas que são suficientes para acompanhar todos os exercícios deste módulo.</p>
+        </div>
+
+        <!-- Seção: Preparando o Ambiente -->
+        <div id="sec-ambiente" class="section-sep fade-in">
+          <span class="sep-num">Item 02</span>
+          <span class="sep-title">Preparando o Ambiente</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <!-- Criando conta -->
+        <div id="chatgpt-conta" class="card fade-in">
+          <div class="card-title">Criando sua Conta no ChatGPT</div>
+          <p>Para começar a usar o ChatGPT, você precisa criar uma conta gratuita na plataforma da OpenAI. O processo é simples e leva menos de dois minutos:</p>
+          <div class="steps" style="margin-top:16px;">
+            <div class="step">
+              <div class="step-num sky">1</div>
+              <div class="step-body">Acesse <strong>chatgpt.com</strong> e clique em <strong>"Sign up"</strong> (Cadastrar) na página inicial.</div>
+            </div>
+            <div class="step">
+              <div class="step-num sky">2</div>
+              <div class="step-body">Escolha como quer criar sua conta: <strong>e-mail próprio</strong>, conta <strong>Google</strong> ou conta <strong>Microsoft</strong>. Caso opte por Google ou Microsoft, será solicitado que você permita o acesso às informações básicas do perfil.</div>
+            </div>
+            <div class="step">
+              <div class="step-num sky">3</div>
+              <div class="step-body">Confirme o e-mail recebido na sua caixa de entrada e finalize o cadastro definindo sua senha. Pronto — sua conta está criada!</div>
+            </div>
+          </div>
+          <div class="callout warn">
+            <strong>Versão gratuita vs. Plus:</strong> A versão gratuita dá acesso ao modelo <strong>GPT-4o</strong> com algumas limitações de uso diário. A versão <strong>Plus</strong> (paga) oferece mais capacidade, acesso prioritário e funcionalidades extras. Para os exercícios deste módulo, a versão gratuita é suficiente.
+          </div>
+        </div>
+
+        <!-- Primeiros passos -->
+        <div id="chatgpt-passos" class="card fade-in">
+          <div class="card-title">Primeiros Passos — Navegando pela Interface</div>
+          <p>Após fazer o login, você verá a interface principal do ChatGPT. Ela é bastante simples: um campo de texto na parte inferior para digitar seus prompts e um menu lateral esquerdo com o histórico de conversas.</p>
+
+          <div class="steps" style="margin-top:16px;">
+            <div class="step">
+              <div class="step-num gold">1</div>
+              <div class="step-body"><strong>Primeira mensagem:</strong> digite qualquer coisa no campo de texto e pressione <em>Enter</em> ou clique em "Enviar". Pode começar com um simples "Olá" ou fazer uma pergunta qualquer.</div>
+            </div>
+            <div class="step">
+              <div class="step-num gold">2</div>
+              <div class="step-body"><strong>Resposta automática:</strong> o ChatGPT responderá em segundos. A partir daí, você pode continuar a conversa normalmente — fazendo mais perguntas, pedindo ajustes ou explorando novos tópicos.</div>
+            </div>
+            <div class="step">
+              <div class="step-num gold">3</div>
+              <div class="step-body"><strong>Nova conversa:</strong> quando quiser mudar de assunto ou começar do zero, clique em <strong>"New chat"</strong> no menu lateral esquerdo. Isso zera o contexto e inicia uma conversa limpa, sem interferência do histórico anterior.</div>
+            </div>
+          </div>
+
+          <div class="callout">
+            <strong>Dica importante:</strong> o ChatGPT mantém <strong>toda a memória da conversa ativa</strong>. Isso é uma vantagem — você pode se referir a coisas que foram ditas antes. Mas também é uma armadilha: se você misturar assuntos diferentes numa mesma conversa, a IA pode ficar confusa. Use o "New chat" sempre que mudar de tarefa.
+          </div>
+
+          <p>Agora, experimente este prompt simples para testar a ferramenta:</p>
+          <div class="prompt-wrap">
+            <div class="prompt-label prompt">▶ Prompt — clique para copiar</div>
+            <pre class="prompt-block prompt">Olá! Me explique em uma frase o que é o ChatGPT.</pre>
+          </div>
+          <div class="prompt-wrap">
+            <div class="prompt-label resposta">▶ Resposta esperada da IA</div>
+            <pre class="prompt-block resposta">O ChatGPT é um assistente de inteligência artificial desenvolvido pela OpenAI que usa modelos de linguagem avançados para conversar, responder perguntas, criar textos, resolver problemas e realizar diversas tarefas por meio de instruções em linguagem natural.</pre>
+          </div>
+        </div>
+
+        <!-- Outras Ferramentas -->
+        <div id="ferramentas-alt" class="card fade-in">
+          <div class="card-title">Outras Ferramentas que Usaremos</div>
+          <p>Além do ChatGPT, utilizaremos o <strong>Google AI Studio</strong> — o ambiente de teste (playground) do modelo Gemini, do Google. Ele é uma alternativa gratuita ao playground pago da OpenAI e é excelente para explorar recursos avançados de IA.</p>
+
+          <div class="compare" style="margin-top:14px;">
+            <div class="compare-col chatgpt">
+              <h4>ChatGPT (OpenAI)</h4>
+              <ul>
+                <li>Interface simples e intuitiva</li>
+                <li>Versão gratuita disponível (GPT-4o)</li>
+                <li>Versão Plus com mais recursos (paga)</li>
+                <li>Ideal para conversas e tarefas do dia a dia</li>
+                <li>Acesso pelo navegador em <em>chatgpt.com</em></li>
+              </ul>
+            </div>
+            <div class="compare-col gemini">
+              <h4>Google AI Studio</h4>
+              <ul>
+                <li>Playground do modelo Gemini (Google)</li>
+                <li>Totalmente gratuito com conta Gmail</li>
+                <li>Permite ajustar parâmetros do modelo</li>
+                <li>Ideal para testes e experimentações avançadas</li>
+                <li>Acesso em <em>aistudio.google.com</em></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="callout tip">
+            <strong>Para o Google AI Studio:</strong> basta estar logado em qualquer conta Gmail. Não é necessário criar uma conta nova — o acesso é imediato e gratuito.
+          </div>
+        </div>
+
+        <!-- Quiz Item 02 -->
+        <div id="quiz-2" class="quiz-section fade-in">
+          <div class="quiz-section-header">
+            <span class="qs-label">Exercício Prático</span>
+            <span class="qs-title">Teste seus conhecimentos sobre a preparação do ambiente e as ferramentas que usaremos neste módulo:</span>
+          </div>
+          <div class="quiz-section-body">
+
+            <div class="quiz-block" data-correct="b"
+              data-feedback-ok="Correto! O 'New chat' reinicia a conversa, zerando todo o contexto anterior. Isso evita que informações de tarefas diferentes se misturem e confundam o modelo."
+              data-feedback-err="Incorreto. O 'New chat' serve para iniciar uma nova conversa com contexto limpo — não apaga a conta, não muda o modelo e não desconecta o usuário.">
+              <div class="quiz-q-label">Questão 01</div>
+              <div class="quiz-question">Para que serve o botão "New chat" no ChatGPT?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Atualiza a versão do modelo utilizado na conversa.</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Inicia uma nova conversa com contexto limpo, sem interferência do histórico anterior.</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Apaga permanentemente todo o histórico de conversas da conta.</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Desconecta o usuário da plataforma e retorna à tela de login.</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+            <div class="quiz-block" data-correct="c"
+              data-feedback-ok="Exato! O Google AI Studio é gratuito para qualquer usuário com conta Gmail, tornando-o acessível como alternativa ao playground pago da OpenAI."
+              data-feedback-err="Incorreto. O Google AI Studio é gratuito e acessível com qualquer conta Gmail — sem necessidade de assinatura paga ou conta corporativa especial.">
+              <div class="quiz-q-label">Questão 02</div>
+              <div class="quiz-question">Qual é a principal vantagem do Google AI Studio em relação ao playground da OpenAI?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> O AI Studio usa o mesmo modelo GPT-4o da OpenAI, mas com mais velocidade.</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> O AI Studio só funciona em computadores corporativos com licença empresarial.</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> O AI Studio é gratuito e pode ser acessado com qualquer conta Gmail.</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> O AI Studio não tem restrições de uso e gera respostas sempre melhores que o ChatGPT.</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- O que aprendemos -->
+        <div class="dark-card fade-in" style="margin-top:16px;">
+          <p>Neste item, você configurou seu ambiente de trabalho:</p>
+          <p><strong style="color:var(--sky)">ChatGPT</strong> — criou sua conta, aprendeu a navegar pela interface e enviou seus primeiros prompts. Entendeu a importância do "New chat" para manter contextos separados.</p>
+          <p><strong style="color:var(--sky)">Google AI Studio</strong> — conheceu a alternativa gratuita ao playground da OpenAI, acessível com qualquer conta Gmail e ideal para experimentações avançadas.</p>
+        </div>
+
+      </div>
+      <footer style="background:var(--navy);color:rgba(255,255,255,.35);text-align:center;font-size:10.5px;padding:16px;letter-spacing:.4px;">
+        Exército Brasileiro · Escola de Comunicações (Escola Coronel Hygino Corsetti) · EAD — Módulo de Engenharia de Prompt
+      </footer>
+    </div>
+
+    <!-- ═══════════════════════════════════
+         PAINEL 3 — MODELOS DE LINGUAGEM
+    ════════════════════════════════════ -->
+    <div class="content-panel" id="ct-panel-3">
+      <div class="content">
+
+        <!-- Objetivos -->
+        <div id="objetivos" class="fade-in">
+          <div class="obj-title">◆ Objetivos da Instrução</div>
+          <div class="obj-grid">
+            <div class="obj-item"><span class="dot"></span>Compreender o conceito de modelo de linguagem e como ele aprende padrões linguísticos.</div>
+            <div class="obj-item"><span class="dot"></span>Entender o que são word embeddings e como representam relações entre palavras.</div>
+            <div class="obj-item"><span class="dot"></span>Visualizar como os modelos preveem a próxima palavra com base em probabilidades.</div>
+            <div class="obj-item"><span class="dot"></span>Compreender o papel da memória contextual no poder dos LLMs modernos.</div>
+          </div>
+        </div>
+
+        <!-- Introdução -->
+        <div id="introducao" class="intro-card fade-in">
+          <p>Para dominar a engenharia de prompt, precisamos entender pelo menos <strong style="color:#fff">o essencial de como os LLMs funcionam por dentro</strong>. Não é necessário aprender matemática avançada — mas entender a lógica que governa esses modelos muda completamente a forma como você escreve seus pedidos.</p>
+          <p>Neste item, vamos construir essa base de forma visual e prática, usando exemplos do nosso dia a dia para tornar o conteúdo técnico acessível a qualquer pessoa.</p>
+        </div>
+
+        <!-- Seção: Modelos de Linguagem -->
+        <div id="sec-modelos" class="section-sep fade-in">
+          <span class="sep-num">Item 03</span>
+          <span class="sep-title">Modelos de Linguagem</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <!-- Padrões da Linguagem -->
+        <div id="padroes-linguagem" class="card fade-in">
+          <div class="card-title">Padrões da Linguagem Humana</div>
+          <p>A ideia central por trás dos modelos de linguagem é simples: <strong>toda língua tem padrões</strong>. Palavras não aparecem aleatoriamente em uma frase — elas seguem regras gramaticais e estatísticas que o modelo aprende ao processar bilhões de textos.</p>
+          <p>Para ilustrar isso, veja como a mesma ideia ("eu gosto de pizza") se estrutura de formas completamente diferentes em três idiomas:</p>
+
+          <div class="lang-grid" style="margin-top:18px;">
+            <div class="lang-box pt">
+              <div class="lang-flag">🇧🇷</div>
+              <div class="lang-name">Português</div>
+              <div class="lang-phrase">"Eu gosto de pizza"</div>
+              <div class="lang-note">O verbo <em>gostar</em> exige obrigatoriamente a preposição <strong>"de"</strong> logo em seguida. Sem ela, a frase está errada: ✗ "Eu gosto pizza".</div>
+            </div>
+            <div class="lang-box en">
+              <div class="lang-flag">🇺🇸</div>
+              <div class="lang-name">Inglês</div>
+              <div class="lang-phrase">"I like pizza"</div>
+              <div class="lang-note">Não existe preposição obrigatória. O verbo <em>to like</em> vai direto ao objeto. Você pode dizer "I like to travel" ou "I like traveling" — ambas corretas.</div>
+            </div>
+            <div class="lang-box tr">
+              <div class="lang-flag">🇹🇷</div>
+              <div class="lang-name">Turco</div>
+              <div class="lang-phrase">"Pizza severim"</div>
+              <div class="lang-note">O <strong>verbo vai ao final</strong> da frase. O substantivo ("pizza") vem primeiro. Uma estrutura completamente diferente do português e do inglês.</div>
+            </div>
+          </div>
+
+          <p style="margin-top:16px;">Um modelo de linguagem aprende exatamente esses padrões ao ser treinado com enormes volumes de texto: que em português o verbo "gostar" é sempre seguido de "de", que em inglês não há essa exigência, que em turco o verbo vem no final. <strong>Ele aprende as regras sem que alguém precise ensiná-las explicitamente</strong> — apenas por exposição massiva aos dados.</p>
+        </div>
+
+        <!-- Word Embeddings -->
+        <div id="word-embeddings" class="card fade-in">
+          <div class="card-title">O que são Word Embeddings?</div>
+          <p>Mas como exatamente um computador "aprende" padrões de linguagem? A resposta está em um conceito chamado <strong>word embeddings</strong> — representações numéricas de palavras que capturam seu significado e suas relações com outras palavras.</p>
+          <p>Em termos simples: cada palavra é convertida em um número (ou conjunto de números), e palavras com significados parecidos ficam <em>"próximas"</em> nesse espaço numérico.</p>
+
+          <div class="highlight-box" style="margin:16px 0;">
+            <strong>Visualize assim:</strong> se você colocar todas as palavras num mapa, "carro", "ônibus" e "trem" estarão muito próximos uns dos outros — são todos meios de transporte. Já "carro" e "cachorro" estarão distantes — categorias completamente diferentes.
+          </div>
+
+          <div class="content-img-wrap">
+            <img src="../../assets/images/categorias-diferentes.png" alt="Gráfico de word embeddings mostrando categorias de palavras agrupadas por similaridade semântica" loading="lazy"/>
+            <div class="img-cap">Word embeddings: palavras de categorias semelhantes ficam agrupadas no espaço vetorial — meios de transporte perto uns dos outros, animais perto uns dos outros, e assim por diante.</div>
+          </div>
+
+          <p>Esse "mapa" permite ao modelo entender que "avião" e "voar" têm uma relação muito forte, enquanto "avião" e "xícara" quase não têm relação alguma. Veja na tabela abaixo uma representação fictícia dessas proximidades:</p>
+
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Palavra de referência</th>
+                  <th>Comparada com</th>
+                  <th>Proximidade (0 a 1)</th>
+                  <th>Interpretação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="highlight-row">
+                  <td>avião</td><td>voar</td><td>0,95</td><td>Relação muito forte</td>
+                </tr>
+                <tr>
+                  <td>avião</td><td>trem</td><td>0,78</td><td>Ambos são transportes</td>
+                </tr>
+                <tr>
+                  <td>avião</td><td>ônibus</td><td>0,76</td><td>Ambos são transportes</td>
+                </tr>
+                <tr>
+                  <td>avião</td><td>abastecer</td><td>0,61</td><td>Relação funcional</td>
+                </tr>
+                <tr class="dim-row">
+                  <td>avião</td><td>xícara</td><td>0,09</td><td>Sem relação</td>
+                </tr>
+                <tr class="dim-row">
+                  <td>avião</td><td>focinho</td><td>0,015</td><td>Categorias opostas</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout warn">
+            <strong>Atenção:</strong> os números acima são fictícios e servem apenas para ilustrar o conceito. Os valores reais nos modelos modernos são muito mais complexos e de alta dimensionalidade.
+          </div>
+        </div>
+
+        <!-- Operações Matemáticas -->
+        <div id="operacoes-matematicas" class="card fade-in">
+          <div class="card-title">Word Embeddings e Operações Matemáticas</div>
+          <p>Um dos resultados mais surpreendentes da pesquisa em NLP foi descobrir que é possível <strong>fazer operações matemáticas com word embeddings</strong> e obter resultados com sentido semântico real.</p>
+
+          <div class="content-img-wrap">
+            <img src="../../assets/images/word-embeddings.png" alt="Diagrama mostrando operações matemáticas com word embeddings: rei - homem + mulher = rainha" loading="lazy"/>
+            <div class="img-cap">Word embeddings em ação: operações matemáticas entre vetores de palavras produzem resultados semanticamente coerentes.</div>
+          </div>
+
+          <p>O exemplo clássico que ilustra isso é o seguinte:</p>
+          <div class="highlight-box">
+            <strong style="color:var(--gold);">rei</strong> − <strong style="color:var(--sky);">homem</strong> + <strong style="color:var(--sky);">mulher</strong> = <strong style="color:#4ec94e;">rainha</strong>
+          </div>
+          <p>Isso significa que a diferença numérica entre os vetores de "rei" e "homem" é equivalente à diferença entre "rainha" e "mulher" — ambos os pares compartilham a mesma "distância de gênero" no espaço vetorial.</p>
+          <p>O mesmo acontece com tempos verbais:</p>
+          <div class="highlight-box" style="margin-top:10px;">
+            <strong style="color:var(--gold);">andando</strong> + <strong style="color:var(--sky);">[vetor do passado]</strong> = <strong style="color:#4ec94e;">andei / andou</strong>
+          </div>
+          <p style="margin-top:12px;">Isso não foi programado manualmente — o modelo aprendeu essas relações <strong>automaticamente</strong> ao processar bilhões de textos. É exatamente essa capacidade de capturar relações semânticas complexas que torna os LLMs tão poderosos.</p>
+        </div>
+
+        <!-- Prevendo Palavras -->
+        <div id="prevendo-palavras" class="card fade-in">
+          <div class="card-title">Prevendo as Próximas Palavras</div>
+          <p>Com os padrões da linguagem aprendidos e os word embeddings configurados, o modelo está pronto para sua função principal: <strong>prever qual é a próxima palavra mais provável em um contexto</strong>.</p>
+          <p>Pense no preenchimento automático do celular — quando você digita "bom", o teclado sugere "dia", "tarde" ou "noite". Os LLMs fazem exatamente isso, só que em uma escala de conhecimento muito maior e com muito mais contexto disponível.</p>
+
+          <div class="callout">
+            <strong>A grande sacada:</strong> toda vez que você envia um prompt, o modelo lê cada palavra, calcula a probabilidade de cada possível próxima palavra e escolhe a mais adequada — palavra por palavra — até completar a resposta.
+          </div>
+
+          <p>Vamos ver isso na prática. Envie o seguinte prompt ao ChatGPT para simular como o modelo funciona internamente:</p>
+
+          <div class="prompt-wrap">
+            <div class="prompt-label prompt">▶ Prompt — clique para copiar</div>
+            <pre class="prompt-block prompt">Vamos simular como você funciona internamente. Para cada frase que eu escrever, liste as 5 palavras com maior probabilidade que você usaria para completá-la, junto com a probabilidade estimada de cada uma. Apenas as palavras e probabilidades, sem mais nada. Confirme se entendeu.</pre>
+          </div>
+          <div class="prompt-wrap">
+            <div class="prompt-label resposta">▶ Resposta esperada da IA</div>
+            <pre class="prompt-block resposta">Entendi.</pre>
+          </div>
+
+          <p>Agora envie a frase incompleta:</p>
+          <div class="prompt-wrap">
+            <div class="prompt-label prompt">▶ Prompt — clique para copiar</div>
+            <pre class="prompt-block prompt">Eu gosto muito de inteligência artificial e quero trabalhar</pre>
+          </div>
+          <div class="prompt-wrap">
+            <div class="prompt-label resposta">▶ Resposta esperada da IA</div>
+            <pre class="prompt-block resposta">com (45%)
+nessa (25%)
+na (20%)
+no (5%)
+em (5%)</pre>
+          </div>
+
+          <p>A palavra <strong>"com"</strong> lidera com 45% de probabilidade. Agora adicione essa palavra e pergunte novamente:</p>
+          <div class="prompt-wrap">
+            <div class="prompt-label prompt">▶ Prompt — clique para copiar</div>
+            <pre class="prompt-block prompt">Eu gosto muito de inteligência artificial e quero trabalhar com</pre>
+          </div>
+          <div class="prompt-wrap">
+            <div class="prompt-label resposta">▶ Resposta esperada da IA</div>
+            <pre class="prompt-block resposta">isso (40%)
+ela (30%)
+desenvolvimento (15%)
+você (10%)
+projetos (5%)</pre>
+          </div>
+
+          <p>Percebeu? A cada palavra adicionada, o modelo recalcula as probabilidades considerando o novo contexto. É um processo contínuo de predição — palavra por palavra — que gera respostas coerentes e contextualizadas.</p>
+
+          <div class="callout tip">
+            <strong>Insight prático:</strong> como o modelo trabalha com probabilidades, ele pode cometer erros — especialmente em cálculos numéricos ou informações muito específicas. É por isso que <em>verificar respostas críticas</em> sempre faz parte de uma boa prática com IA.
+          </div>
+        </div>
+
+        <!-- Memória Contextual -->
+        <div id="memoria-contextual" class="card fade-in">
+          <div class="card-title">Memória Contextual — O Grande Diferencial</div>
+          <p>Se os modelos de linguagem existem há décadas, o que tornou o ChatGPT e os LLMs modernos tão revolucionários? A resposta é: <strong>a capacidade de manter o contexto de uma conversa inteira</strong>.</p>
+          <p>Modelos anteriores processavam apenas uma frase de cada vez. Os LLMs modernos mantêm toda a conversa em memória — cada pergunta, cada resposta, cada detalhe mencionado anteriormente. Isso os transforma de simples completadores de texto em <em>assistentes de verdade</em>.</p>
+
+          <p>Veja este exemplo na prática. Envie ao ChatGPT:</p>
+          <div class="prompt-wrap">
+            <div class="prompt-label prompt">▶ Prompt 1 — clique para copiar</div>
+            <pre class="prompt-block prompt">Qual era o esporte do atleta Rogério Ceni?</pre>
+          </div>
+          <div class="prompt-wrap">
+            <div class="prompt-label resposta">▶ Resposta da IA</div>
+            <pre class="prompt-block resposta">Rogério Ceni foi um jogador de futebol brasileiro. Ele é amplamente conhecido por sua carreira como goleiro, especialmente no São Paulo Futebol Clube, onde se destacou não apenas por suas habilidades defensivas, mas também por ser um exímio cobrador de faltas e pênaltis, marcando mais de 130 gols ao longo de sua carreira.</pre>
+          </div>
+
+          <p>Agora, <strong>sem mencionar o nome dele</strong>, pergunte sobre sua carreira:</p>
+          <div class="prompt-wrap">
+            <div class="prompt-label prompt">▶ Prompt 2 — clique para copiar</div>
+            <pre class="prompt-block prompt">Qual foi o título mais relevante da carreira dele?</pre>
+          </div>
+          <div class="prompt-wrap">
+            <div class="prompt-label resposta">▶ Resposta da IA</div>
+            <pre class="prompt-block resposta">O título mais relevante da carreira de Rogério Ceni é, provavelmente, a conquista do Mundial de Clubes da FIFA em 2005 com o São Paulo Futebol Clube. Nesse torneio, Rogério Ceni teve uma atuação decisiva, especialmente na final contra o Liverpool, onde fez defesas cruciais e ainda foi eleito o melhor jogador da competição. Essa vitória solidificou sua reputação como um dos maiores goleiros da história do futebol.</pre>
+          </div>
+
+          <p>O modelo entendeu que "dele" se referia a Rogério Ceni — sem precisar que você repetisse o nome. Ele manteve o contexto da conversa anterior e usou essa informação para responder com precisão.</p>
+
+          <div class="callout">
+            <strong>Por que isso é revolucionário?</strong> Cada mensagem que você envia carrega todo o histórico da conversa ativa. O modelo processa tudo de uma vez a cada resposta — é isso que permite conversas naturais, referências cruzadas e refinamentos iterativos sem perder o fio da meada.
+          </div>
+
+          <div class="callout warn" style="margin-top:10px;">
+            <strong>Limite de contexto:</strong> embora os LLMs modernos tenham janelas de contexto muito grandes (em alguns casos, mais de 1 milhão de tokens), conversas extremamente longas podem começar a degradar a qualidade das respostas. Quando isso acontecer, iniciar um novo chat com um resumo do que foi discutido é a melhor estratégia.
+          </div>
+        </div>
+
+        <!-- Teaser próximo conteúdo -->
+        <div class="callout purple fade-in" style="margin-top:8px;">
+          <strong>Para reflexão:</strong> quando o modelo calcula probabilidades e escolhe a próxima palavra, ele sempre escolhe a de maior probabilidade? Ou às vezes introduz variação deliberada? A resposta para essa pergunta explica muito sobre por que o ChatGPT não dá sempre a mesma resposta para o mesmo prompt — e como você pode controlar esse comportamento. Isso será explorado nos próximos itens.
+        </div>
+
+        <!-- Quiz Item 03 -->
+        <div id="quiz-3" class="quiz-section fade-in">
+          <div class="quiz-section-header">
+            <span class="qs-label">Exercício Prático</span>
+            <span class="qs-title">Teste seus conhecimentos sobre modelos de linguagem e word embeddings:</span>
+          </div>
+          <div class="quiz-section-body">
+
+            <div class="quiz-block" data-correct="c"
+              data-feedback-ok="Correto! Os modelos de linguagem aprendem padrões estatísticos da linguagem a partir de grandes volumes de texto e usam esses padrões para prever a próxima palavra mais provável — é exatamente isso que o ChatGPT faz."
+              data-feedback-err="Incorreto. Um modelo de linguagem não consulta bancos de dados em tempo real nem simula raciocínio humano consciente. Ele aprende padrões estatísticos de texto e prevê as próximas palavras com base nesse aprendizado.">
+              <div class="quiz-q-label">Questão 01</div>
+              <div class="quiz-question">O que faz um modelo de linguagem (LLM) em sua operação básica?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Consulta a internet em tempo real para buscar a resposta mais atualizada possível.</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Simula o raciocínio humano consciente para resolver problemas complexos.</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Aprende padrões estatísticos da linguagem a partir de grandes volumes de texto e prevê a próxima palavra mais provável em um contexto.</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Armazena respostas prontas em um banco de dados e as recupera quando perguntado.</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+            <div class="quiz-block" data-correct="b"
+              data-feedback-ok="Perfeito! Word embeddings são representações numéricas de palavras que capturam sua proximidade semântica — palavras com significados relacionados ficam 'próximas' no espaço vetorial, o que permite ao modelo entender relações entre conceitos."
+              data-feedback-err="Incorreto. Word embeddings não são definições de dicionário nem regras gramaticais. São representações numéricas (vetores) que capturam o significado e as relações semânticas entre palavras — palavras próximas semanticamente ficam próximas no espaço vetorial.">
+              <div class="quiz-q-label">Questão 02</div>
+              <div class="quiz-question">O que são word embeddings?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Definições de dicionário armazenadas em formato digital para consulta rápida pelo modelo.</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Representações numéricas de palavras que capturam sua proximidade semântica, permitindo ao modelo entender relações entre conceitos.</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Regras gramaticais codificadas manualmente por linguistas para cada idioma.</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Listas de palavras proibidas que o modelo deve evitar ao gerar respostas.</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+            <div class="quiz-block" data-correct="a"
+              data-feedback-ok="Correto! A memória contextual — a capacidade de manter todo o histórico da conversa ativa — foi o grande diferencial dos LLMs modernos. Ela permite conversas naturais, referências cruzadas e refinamentos iterativos que os modelos anteriores não conseguiam fazer."
+              data-feedback-err="Incorreto. O grande diferencial dos LLMs modernos não foi a velocidade nem o volume de dados — foi a memória contextual: a capacidade de manter e usar todo o histórico de uma conversa para gerar respostas cada vez mais precisas e contextualizadas.">
+              <div class="quiz-q-label">Questão 03</div>
+              <div class="quiz-question">Qual característica dos LLMs modernos foi o principal responsável pela "disrupção" que eles causaram, tornando-os assistentes reais em vez de simples completadores de texto?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> A memória contextual — a capacidade de manter e usar todo o histórico da conversa ativa para gerar respostas contextualizadas.</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> A velocidade de resposta, que passou a ser em milissegundos graças ao processamento em GPUs.</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> O treinamento com mais de 1 trilhão de parâmetros, aumentando vastamente a precisão gramatical.</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> A conexão em tempo real com a internet, que permite respostas sempre atualizadas.</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- O que aprendemos -->
+        <div class="dark-card fade-in" style="margin-top:16px;">
+          <p>Neste item, você construiu a base teórica para entender os LLMs:</p>
+        </div>
+        <div class="learned-grid fade-in" style="margin-top:16px;">
+          <div class="learned-item"><span class="li-num">01</span><span>Modelos de linguagem <strong>aprendem padrões estatísticos</strong> de idiomas a partir de enormes volumes de texto — sem ninguém programar as regras manualmente.</span></div>
+          <div class="learned-item"><span class="li-num">02</span><span><strong>Word embeddings</strong> são representações numéricas de palavras que capturam proximidade semântica — palavras relacionadas ficam "próximas" no espaço vetorial.</span></div>
+          <div class="learned-item"><span class="li-num">03</span><span>É possível fazer <strong>operações matemáticas</strong> com word embeddings e obter resultados semanticamente coerentes: rei − homem + mulher = rainha.</span></div>
+          <div class="learned-item"><span class="li-num">04</span><span>A operação fundamental de um LLM é <strong>prever a próxima palavra</strong> com base em probabilidades — palavra por palavra, considerando todo o contexto disponível.</span></div>
+          <div class="learned-item"><span class="li-num">05</span><span>A <strong>memória contextual</strong> — manter todo o histórico da conversa — foi o diferencial que transformou LLMs em assistentes reais, não apenas completadores de texto.</span></div>
+          <div class="learned-item"><span class="li-num">06</span><span>O modelo mantém o contexto de mensagens anteriores, permitindo referências como "dele" ou "nessa área" sem repetir o sujeito — assim como em uma conversa humana natural.</span></div>
+        </div>
+
+      </div>
+      <footer style="background:var(--navy);color:rgba(255,255,255,.35);text-align:center;font-size:10.5px;padding:16px;letter-spacing:.4px;">
+        Exército Brasileiro · Escola de Comunicações (Escola Coronel Hygino Corsetti) · EAD — Módulo de Engenharia de Prompt
+      </footer>
+    </div>
+
+  </div><!-- /#main-area -->
+
+</div><!-- /#wrapper -->
+
+<script>
+(function(){
+  var tabs     = document.querySelectorAll('.aula-tab');
+  var sbPanels = document.querySelectorAll('.sb-panel');
+  var heroDyns = document.querySelectorAll('.hero-dyn');
+  var ctPanels = document.querySelectorAll('.content-panel');
+  var bar      = document.getElementById('progress-bar');
+
+  function activate(idx) {
+    tabs.forEach(function(t,i)     { t.classList.toggle('active', i===idx); });
+    sbPanels.forEach(function(p,i) { p.classList.toggle('active', i===idx); });
+    heroDyns.forEach(function(h,i) { h.classList.toggle('active', i===idx); });
+    ctPanels.forEach(function(c,i) { c.classList.toggle('active', i===idx); });
+    window.scrollTo(0, 0);
+  }
+
+  tabs.forEach(function(t, i) {
+    t.addEventListener('click', function() { activate(i); });
+  });
+
+  // Progress bar
+  function updBar() {
+    if (!bar) return;
+    var pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    bar.style.width = (isNaN(pct) ? 0 : pct) + '%';
+  }
+  window.addEventListener('scroll', updBar, {passive:true});
+
+  // Fade-in
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, {threshold: 0.07});
+  document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
+
+  // Active sidebar links
+  window.addEventListener('scroll', function() {
+    var activePanel = document.querySelector('.content-panel.active');
+    if (!activePanel) return;
+    var sections = activePanel.querySelectorAll('[id]');
+    var activeSb = document.querySelector('.sb-panel.active');
+    if (!activeSb) return;
+    var links = activeSb.querySelectorAll('a');
+    var current = '';
+    sections.forEach(function(s) { if (window.scrollY >= s.offsetTop - 130) current = s.id; });
+    links.forEach(function(a) {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  }, {passive:true});
+
+  // Copy prompts (clique no label do prompt copia o conteúdo do bloco)
+  document.querySelectorAll('.prompt-label.prompt').forEach(function(label) {
+    var pre = label.nextElementSibling;
+    if (!pre || !pre.classList.contains('prompt-block')) return;
+    label.addEventListener('click', function() {
+      navigator.clipboard.writeText(pre.textContent.trim()).then(function() {
+        var orig = label.textContent;
+        label.textContent = '✓ Copiado!';
+        label.classList.add('copy-ok');
+        setTimeout(function() { label.textContent = orig; label.classList.remove('copy-ok'); }, 1800);
+      });
+    });
+  });
+
+  // Quiz
+  document.querySelectorAll('.quiz-block').forEach(function(block) {
+    var correct = block.dataset.correct;
+    var okMsg   = block.dataset.feedbackOk;
+    var errMsg  = block.dataset.feedbackErr;
+    var opts    = block.querySelectorAll('.quiz-option');
+    var fbOk    = block.querySelector('.quiz-feedback.acerto');
+    var fbErr   = block.querySelector('.quiz-feedback.erro');
+    var retry   = block.querySelector('.quiz-retry');
+    function reset() {
+      opts.forEach(function(o){ o.classList.remove('correct','wrong','disabled'); });
+      fbOk.classList.remove('show'); fbErr.classList.remove('show'); retry.classList.remove('show');
+    }
+    opts.forEach(function(opt) {
+      opt.addEventListener('click', function() {
+        if (opt.classList.contains('disabled')) return;
+        opts.forEach(function(o){ o.classList.add('disabled'); });
+        if (opt.dataset.opt === correct) {
+          opt.classList.add('correct');
+          fbOk.querySelector('.fb-text').textContent = okMsg;
+          fbOk.classList.add('show');
+        } else {
+          opt.classList.add('wrong');
+          opts.forEach(function(o){ if (o.dataset.opt === correct) o.classList.add('correct'); });
+          fbErr.querySelector('.fb-text').textContent = errMsg;
+          fbErr.classList.add('show');
+          retry.classList.add('show');
+        }
+      });
+    });
+    retry.addEventListener('click', reset);
+  });
+
+  // Sidebar links scroll
+  document.querySelectorAll('.sb-panel a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var targetId = link.getAttribute('href').slice(1);
+      var activePanel = document.querySelector('.content-panel.active');
+      if (!activePanel) return;
+      var target = activePanel.querySelector('#' + targetId) || document.getElementById(targetId);
+      if (target) {
+        var offset = target.getBoundingClientRect().top + window.scrollY - 20;
+        window.scrollTo({ top: offset, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Botão Voltar ao topo
+  var btt = document.getElementById('back-to-top');
+  window.addEventListener('scroll', function() {
+    btt.classList.toggle('visible', window.scrollY > 300);
+  }, {passive: true});
+  btt.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  activate(0);
+})();
+</script>
+
 </body>
 </html>
