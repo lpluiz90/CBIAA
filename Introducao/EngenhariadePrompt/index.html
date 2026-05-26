@@ -157,6 +157,21 @@
   .feature-box h5{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:6px;}
   .feature-box p{font-size:17px;line-height:1.58;color:var(--muted);}
 
+  /* Data table */
+  .data-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:16px;border-radius:8px;overflow:hidden;}
+  .data-table th{background:var(--navy);color:var(--white);padding:10px 14px;text-align:left;font-family:'Rajdhani',sans-serif;font-size:13px;letter-spacing:.5px;text-transform:uppercase;}
+  .data-table td{padding:9px 14px;border-bottom:1px solid #e8edf2;color:var(--text);}
+  .data-table tr:nth-child(even) td{background:#f4f7fa;}
+  .data-table tr:hover td{background:#e8f0fe;}
+  .data-table td:last-child,.data-table th:last-child{text-align:right;font-variant-numeric:tabular-nums;}
+  .data-table .isento{color:#888;font-style:italic;}
+  .data-table .tributavel{color:#2e7d32;font-weight:600;}
+  .verify-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:16px;}
+  .verify-table th{background:#1a6fa8;color:#fff;padding:10px 14px;text-align:center;font-family:'Rajdhani',sans-serif;font-size:13px;letter-spacing:.5px;text-transform:uppercase;}
+  .verify-table td{padding:10px 14px;border:1px solid #dde3ed;text-align:center;color:var(--text);}
+  .verify-table .vt-label{text-align:left;font-weight:600;color:var(--navy);}
+  .verify-table .vt-value{font-weight:700;color:#2e7d32;font-size:18px;}
+
   /* Steps */
   .steps{margin:12px 0;}
   .step{display:flex;gap:14px;margin-bottom:14px;align-items:flex-start;}
@@ -499,15 +514,28 @@
       </ul>
     </div>
 
-    <!-- Sidebar Panel 4 — Aula 04 (em produção) -->
+    <!-- Sidebar Panel 4 — Aula 04 Chain-of-Thought -->
     <div class="sb-panel" id="sb-panel-4">
       <div class="sb-brand">
         <div style="font-size:15px;font-weight:700;color:var(--sky);font-family:'Rajdhani',sans-serif;letter-spacing:.3px;margin-bottom:4px;">Engenharia de Prompt</div>
-        <div class="course-title">Aula 04 — Em Produção</div>
+        <div class="course-title">Aula 04 — Chain-of-Thought Prompt</div>
       </div>
       <div class="sb-section-label">Navegação — Aula 04</div>
       <ul class="sb-nav">
-        <li><a href="#"><span class="num">—</span> Em Produção</a></li>
+        <li class="section-divider"><a href="#cot-ambiente"><span class="num">01</span> Preparando o Ambiente</a></li>
+        <li><a href="#cot-gemini"><span class="num">1.1</span> Gemini (Google)</a></li>
+        <li class="section-divider"><a href="#cot-tecnica"><span class="num">02</span> Entendendo a Técnica</a></li>
+        <li><a href="#cot-rogerio"><span class="num">2.1</span> O Exemplo do Rogério</a></li>
+        <li><a href="#cot-artigo"><span class="num">2.2</span> O Artigo do Google</a></li>
+        <li><a href="#quiz-cot1"><span class="num">—</span> Exercício 04</a></li>
+        <li class="section-divider"><a href="#cot-carraristao"><span class="num">03</span> Exemplo: Carraristão</a></li>
+        <li><a href="#cot-tabela"><span class="num">3.1</span> Tabela de Dados</a></li>
+        <li><a href="#cot-prompt"><span class="num">3.2</span> Construindo o Prompt</a></li>
+        <li><a href="#cot-resposta"><span class="num">3.3</span> Resposta da IA</a></li>
+        <li><a href="#quiz-cot2"><span class="num">—</span> Exercício 05</a></li>
+        <li class="section-divider"><a href="#cot-zeroshot"><span class="num">04</span> Zero-Shot com CoT</a></li>
+        <li class="section-divider"><a href="#cot-facacomofiz"><span class="num">05</span> Faça Como Eu Fiz</a></li>
+        <li class="section-divider"><a href="#cot-aprendemos"><span class="num">06</span> O que Aprendemos</a></li>
       </ul>
     </div>
 
@@ -592,10 +620,15 @@
       </div>
 
       <div class="hero-dyn" id="hero-dyn-4">
-        <h1 class="hero-title">Aula 04 — Em Produção</h1>
-        <p class="hero-subtitle">Este conteúdo está sendo preparado. Em breve você terá acesso ao material completo desta aula.</p>
+        <h1 class="hero-title">Aula 04 — Chain-of-Thought Prompt</h1>
+        <p class="hero-subtitle">Aprenda a ensinar o modelo a <em>raciocinar passo a passo</em> antes de responder — combinando Few-Shot com a Cadeia de Pensamento para obter resultados muito mais precisos em problemas complexos.</p>
         <div class="hero-tags">
-          <span class="hero-tag">Em Produção</span>
+          <span class="hero-tag">Chain-of-Thought</span>
+          <span class="hero-tag">Cadeia de Pensamento</span>
+          <span class="hero-tag">Few-Shot + CoT</span>
+          <span class="hero-tag">Zero-Shot CoT</span>
+          <span class="hero-tag">Gemini</span>
+          <span class="hero-tag">Raciocínio</span>
         </div>
       </div>
 
@@ -2547,13 +2580,493 @@ Formal:</pre>
     </div>
 
     <!-- ═══════════════════════════════════
-         PAINEL 4 — AULA 04 (EM PRODUÇÃO)
+         PAINEL 4 — AULA 04 — CHAIN-OF-THOUGHT
     ════════════════════════════════════ -->
     <div class="content-panel" id="ct-panel-4">
-      <div class="content" style="min-height:60vh;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;text-align:center;padding:60px 48px;">
-        <div style="font-size:64px;">🚧</div>
-        <div style="font-family:'Rajdhani',sans-serif;font-size:40px;font-weight:700;color:var(--navy);">Aula 04 — Em Produção</div>
-        <p style="font-size:19px;color:var(--muted);max-width:520px;line-height:1.7;">Este conteúdo está sendo preparado. Em breve você terá acesso ao material completo desta aula.</p>
+      <div class="content">
+
+        <!-- ─── ITEM 01 ─── -->
+        <div id="cot-ambiente" class="section-sep fade-in">
+          <span class="sep-num">Item 01</span>
+          <span class="sep-title">Preparando o Ambiente</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div id="cot-gemini" class="card fade-in">
+          <div class="card-title">🔷 Ferramenta da Aula: Gemini (Google)</div>
+          <p>Nesta aula utilizaremos o <strong>Gemini</strong>, modelo de linguagem do Google. Você pode acompanhar com qualquer modelo de sua preferência — mas caso queira conhecer o Gemini, basta estar logado em uma conta Google (Gmail) e acessar <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" style="color:var(--sky);font-weight:600;">gemini.google.com →</a></p>
+        </div>
+
+        <div class="feature-grid fade-in">
+          <div class="feature-box">
+            <h5>💻 Acesso via Navegador</h5>
+            <p>Funciona diretamente no navegador, sem instalação. Acesse o site, faça login com a conta Google e comece a usar.</p>
+          </div>
+          <div class="feature-box gold">
+            <h5>📱 Aplicativo Móvel</h5>
+            <p>Também disponível como app para Android e iOS, caso prefira acompanhar pelo celular ou tablet.</p>
+          </div>
+          <div class="feature-box green">
+            <h5>🆓 Versão Gratuita</h5>
+            <p>A versão gratuita é suficiente para todos os exemplos desta aula. Não é necessário nenhum plano pago.</p>
+          </div>
+          <div class="feature-box purple">
+            <h5>🔄 Outros Modelos</h5>
+            <p>ChatGPT, Le Chat, MariTalk ou qualquer outro modelo funcionarão igualmente bem para os exemplos desta aula.</p>
+          </div>
+        </div>
+
+        <!-- ─── ITEM 02 ─── -->
+        <div id="cot-tecnica" class="section-sep fade-in">
+          <span class="sep-num">Item 02</span>
+          <span class="sep-title">Entendendo a Técnica</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">🧠 O Que É Chain-of-Thought?</div>
+          <p>Na aula anterior, aprendemos que o Few-Shot ensina o modelo pelo exemplo. Mas existe uma versão ainda mais poderosa: em vez de fornecer apenas a resposta final no exemplo, você <strong>mostra o raciocínio passo a passo</strong>. O modelo observa essa "cadeia de pensamento" e passa a raciocinar da mesma forma antes de responder.</p>
+        </div>
+
+        <div class="compare fade-in">
+          <div class="compare-col" style="border-top:3px solid var(--steel);">
+            <h4 style="color:var(--steel);">Few-Shot Simples</h4>
+            <p>Pergunta: <em>quanto é 5 + 3?</em><br>Resposta: <strong>8</strong></p>
+            <p style="margin-top:10px;color:var(--muted);font-size:16px;">O exemplo mostra apenas entrada → saída. O modelo aprende o <em>formato</em>, mas não o raciocínio.</p>
+          </div>
+          <div class="compare-col" style="border-top:3px solid #b85c1a;">
+            <h4 style="color:#b85c1a;">Few-Shot + Chain-of-Thought</h4>
+            <p>Pergunta: <em>quanto é 5 + 3?</em><br>Resposta: <strong>Temos 5 e somamos mais 3. Resultado: 5 + 3 = 8.</strong></p>
+            <p style="margin-top:10px;color:var(--muted);font-size:16px;">O exemplo mostra entrada → raciocínio → saída. O modelo aprende a <em>pensar</em> antes de responder.</p>
+          </div>
+        </div>
+
+        <div id="cot-rogerio" class="card fade-in">
+          <div class="card-title">🎾 Melhorando o Exemplo — Rogério e as Bolas de Tênis</div>
+          <p>Na aula passada usamos um Few-Shot simples sobre o Rogério, fornecendo apenas a resposta direta. Agora vamos <strong>aprimorar esse prompt</strong> pensando como um professor: em vez de dar só o número final, explicamos o raciocínio completo para que o modelo aprenda <em>como chegar</em> na resposta — e replique esse processo na pergunta seguinte.</p>
+        </div>
+
+        <div class="prompt-pair fade-in">
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Few-Shot + Chain-of-Thought — Clique para copiar</span>
+            <pre class="prompt-block prompt">Pergunta: O Rogério tem 5 bolas de tênis. Ele compra mais 2 caixas de bolas, cada uma com 3 bolas. Quantas bolas de tênis ele tem agora?
+
+Resposta: O Rogério inicialmente tinha 5 bolas de tênis. Se cada caixa tem 3 bolas e ele comprou 2 caixas, isso significa que ele comprou mais 6 bolas. Ou seja, no total agora ele tem 5 + 6, que resulta em 11 bolas de tênis.
+
+Pergunta: Havia 23 maçãs no refeitório. Se foram usadas 20 para fazer o almoço e foram compradas mais 6, quantas maçãs eles têm agora?
+
+Resposta:</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ Resposta da IA — com raciocínio</span>
+            <pre class="prompt-block resposta">No início, havia 23 maçãs. Se foram usadas 20 para fazer o almoço, sobraram 23 − 20 = 3 maçãs. Como foram compradas mais 6 maçãs, agora eles têm 3 + 6 = 9 maçãs no total.</pre>
+          </div>
+        </div>
+
+        <div class="callout tip fade-in">
+          <strong>Observe:</strong> Em vez de responder apenas "9 maçãs", o modelo <em>raciocinou</em> — decompôs o problema em duas operações (23−20=3, depois 3+6=9) e mostrou o caminho. Isso é a <strong>Chain of Thought</strong> em ação: o modelo aprendeu a "pensar em voz alta" porque viu esse padrão no exemplo do Rogério.
+        </div>
+
+        <div id="cot-artigo" class="card fade-in">
+          <div class="card-title">📄 O Artigo que Formalizou a Técnica</div>
+          <p>A técnica Chain-of-Thought foi sistematizada por pesquisadores do Google Research e Google Brain (atual Google DeepMind) no artigo <strong>"Chain-of-Thought Prompting Elicits Reasoning in Large Language Models"</strong>, publicado em 2022.</p>
+          <p style="margin-top:10px;"><a href="https://arxiv.org/abs/2201.11903" target="_blank" rel="noopener noreferrer" style="color:var(--sky);font-weight:600;">📖 Acessar o artigo original →</a></p>
+        </div>
+
+        <div class="feature-grid fade-in">
+          <div class="feature-box">
+            <h5>🔍 A Descoberta</h5>
+            <p>Quando o modelo apenas fornecia a resposta, frequentemente chegava a conclusões erradas. Ao explicar o raciocínio nos exemplos, os resultados melhoraram drasticamente.</p>
+          </div>
+          <div class="feature-box gold">
+            <h5>📊 Estado da Arte</h5>
+            <p>Com modelos da época (GPT-3), o Chain-of-Thought atingiu resultados "estado da arte" — o melhor possível naquele momento — em benchmarks de raciocínio matemático e lógico.</p>
+          </div>
+          <div class="feature-box green">
+            <h5>🚀 Ainda Poderoso Hoje</h5>
+            <p>Mesmo com modelos muito mais avançados (GPT-4, Gemini, Claude), a combinação Few-Shot + Chain-of-Thought continua sendo uma das técnicas mais eficazes disponíveis.</p>
+          </div>
+          <div class="feature-box purple">
+            <h5>⚠️ Atenção</h5>
+            <p>Modelos de linguagem <strong>não são a ferramenta ideal para cálculos matemáticos</strong>. Os exemplos numéricos desta aula ilustram a técnica — para cálculos reais, prefira planilhas ou calculadoras.</p>
+          </div>
+        </div>
+
+        <!-- Quiz 04 -->
+        <div id="quiz-cot1" class="quiz-section fade-in">
+          <div class="quiz-section-header">
+            <span class="qs-label">Exercício 04</span>
+            <span class="qs-title">Chain-of-Thought — Conceitos</span>
+          </div>
+          <div class="quiz-section-body">
+
+            <div class="quiz-block" data-correct="c"
+              data-feedback-ok="Correto! O Chain-of-Thought adiciona o raciocínio passo a passo ao exemplo do Few-Shot. Em vez de mostrar apenas entrada → saída, você mostra entrada → raciocínio → saída. O modelo aprende a 'pensar' antes de responder."
+              data-feedback-err="Errado. O Chain-of-Thought não altera o número de exemplos, nem a temperatura, nem divide o prompt. A diferença está no conteúdo do exemplo: você inclui o raciocínio passo a passo antes da resposta final.">
+              <div class="quiz-q-label">Questão 01</div>
+              <div class="quiz-question">O que a técnica Chain-of-Thought adiciona ao Few-Shot simples?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Mais exemplos de entrada/saída para o modelo observar e comparar.</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Instruções de sistema que aumentam a precisão do modelo para problemas numéricos.</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> O raciocínio passo a passo no exemplo, ensinando o modelo a "pensar" antes de responder.</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Uma temperatura mais baixa para respostas mais determinísticas e precisas.</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+            <div class="quiz-block" data-correct="b"
+              data-feedback-ok="Correto! A descoberta central foi que, ao mostrar o raciocínio nos exemplos, o modelo passou a raciocinar também — em vez de pular direto para a resposta. Isso reduziu erros em tarefas que exigem múltiplos passos intermediários."
+              data-feedback-err="Errado. O artigo do Google não tratou de custo computacional nem de dados de treinamento. A conclusão principal foi sobre qualidade das respostas: mostrar o raciocínio nos exemplos fez o modelo raciocinar, reduzindo erros em benchmarks de raciocínio.">
+              <div class="quiz-q-label">Questão 02</div>
+              <div class="quiz-question">Qual foi a principal conclusão do artigo do Google DeepMind sobre Chain-of-Thought?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> O CoT reduziu pela metade o custo computacional dos modelos testados.</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Ao mostrar o raciocínio nos exemplos, o modelo passou a raciocinar, atingindo resultados estado da arte em benchmarks de raciocínio.</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> O CoT só funciona com modelos treinados especificamente para matemática.</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Modelos menores se beneficiaram mais do CoT do que modelos grandes.</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ─── ITEM 03 ─── -->
+        <div id="cot-carraristao" class="section-sep fade-in">
+          <span class="sep-num">Item 03</span>
+          <span class="sep-title">Exemplo Completo — O Carraristão</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">🏛️ Problema: Imposto de Renda do Carraristão</div>
+          <p>Para consolidar a técnica, vamos resolver um problema mais complexo: calcular o imposto de renda de um país fictício chamado <strong>Carraristão</strong>. O objetivo é mostrar como Few-Shot + CoT funciona com dados reais estruturados.</p>
+        </div>
+
+        <div class="callout fade-in">
+          <strong>Regra do Carraristão:</strong> Alíquota fixa de <strong>30%</strong> sobre o rendimento anual. Porém, quem ganha <strong>menos de R$ 40.000</strong> é isento — não paga nada. Quem ganha <strong>R$ 40.000 ou mais</strong> paga 30% sobre o total do seu rendimento.
+        </div>
+
+        <div id="cot-tabela" class="card fade-in">
+          <div class="card-title">📊 Tabela de Contribuintes</div>
+          <p>Temos 10 habitantes com seus respectivos rendimentos anuais declarados:</p>
+        </div>
+
+        <div class="fade-in" style="overflow-x:auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Contribuinte</th>
+                <th>Rendimento Anual</th>
+                <th>Situação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Juliana da Silva Santos</td><td>R$ 31.000,00</td><td class="isento">Isenta</td></tr>
+              <tr><td>2</td><td>Pedro Henrique Souza Lima</td><td>R$ 15.000,00</td><td class="isento">Isento</td></tr>
+              <tr><td>3</td><td>Marcelo Pereira Costa</td><td>R$ 52.000,00</td><td class="tributavel">Tributável</td></tr>
+              <tr><td>4</td><td>Amanda Ferreira Oliveira</td><td>R$ 103.000,00</td><td class="tributavel">Tributável</td></tr>
+              <tr><td>5</td><td>José Carlos Almeida Silva</td><td>R$ 42.000,00</td><td class="tributavel">Tributável</td></tr>
+              <tr><td>6</td><td>Isabella Santos Alves</td><td>R$ 156.000,00</td><td class="tributavel">Tributável</td></tr>
+              <tr><td>7</td><td>Cleiton Moreira Cardoso</td><td>R$ 15.000,00</td><td class="isento">Isento</td></tr>
+              <tr><td>8</td><td>Larissa Oliveira Alves</td><td>R$ 27.000,00</td><td class="isento">Isenta</td></tr>
+              <tr><td>9</td><td>Túlio de Oliveira Ribeiro</td><td>R$ 82.000,00</td><td class="tributavel">Tributável</td></tr>
+              <tr><td>10</td><td>Thaís da Conceição Cunha</td><td>R$ 33.000,00</td><td class="isento">Isenta</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="cot-prompt" class="card fade-in">
+          <div class="card-title">⚙️ Construindo o Prompt — Passo a Passo</div>
+          <p>A estratégia é usar <strong>Few-Shot + CoT</strong>: primeiro fornecemos um exemplo com valores simples (ensinando o raciocínio), depois repetimos a mesma pergunta com os valores reais da tabela — deixando a "Resposta:" em branco para o modelo preencher.</p>
+        </div>
+
+        <div class="callout fade-in">
+          <strong>Etapa 1 — O exemplo (Few-Shot + CoT):</strong> Criamos uma pergunta com valores fictícios simples (R$10k, R$20k, R$50k, R$60k) e escrevemos a resposta completa com todo o raciocínio — ensinando o modelo como queremos que ele responda.
+        </div>
+
+        <div class="prompt-pair fade-in">
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Exemplo (Few-Shot + CoT) — Clique para copiar</span>
+            <pre class="prompt-block prompt">Pergunta: Tenho uma lista de valores. O meu resultado final será 30% da soma desses valores. Porém, nem todos os valores serão somados, apenas aqueles acima de R$40.000,00. Para a lista abaixo, conte quantos valores existem acima de R$40.000,00, quais são eles, faça a soma desses valores e, no fim, calcule o valor de 30% dessa soma.
+
+R$10.000,00
+R$20.000,00
+R$50.000,00
+R$60.000,00
+
+Resposta: Nessa lista, existem 4 valores. Há 2 valores acima de R$40.000,00, que são R$50.000,00 e R$60.000,00. A soma desses valores é R$110.000,00. O resultado final é 30% desse valor, portanto, 30% de R$110.000,00, que resulta em R$33.000,00.</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ O que o modelo aprendeu</span>
+            <pre class="prompt-block resposta">✔ Contar o total de valores
+✔ Identificar quais estão acima de R$40.000,00
+✔ Somar apenas esses valores
+✔ Calcular 30% da soma
+✔ Responder nesse formato exato</pre>
+          </div>
+        </div>
+
+        <div class="callout fade-in">
+          <strong>Etapa 2 — A pergunta real:</strong> Repetimos exatamente a mesma estrutura de pergunta, mas agora com os 10 valores reais da tabela do Carraristão. Deixamos "Resposta:" em branco — o modelo entende que deve preencher seguindo o mesmo padrão do exemplo.
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Prompt Completo — Few-Shot + CoT — Clique para copiar</span>
+          <pre class="prompt-block prompt">Pergunta: Tenho uma lista de valores. O meu resultado final será 30% da soma desses valores. Porém, nem todos os valores serão somados, apenas aqueles acima de R$40.000,00. Para a lista abaixo, conte quantos valores existem acima de R$40.000,00, quais são eles, faça a soma desses valores e, no fim, calcule o valor de 30% dessa soma.
+
+R$10.000,00
+R$20.000,00
+R$50.000,00
+R$60.000,00
+
+Resposta: Nessa lista, existem 4 valores. Há 2 valores acima de R$40.000,00, que são R$50.000,00 e R$60.000,00. A soma desses valores é R$110.000,00. O resultado final é 30% desse valor, portanto, 30% de R$110.000,00, que resulta em R$33.000,00.
+
+Pergunta: Tenho uma lista de valores. O meu resultado final será 30% da soma desses valores. Porém, nem todos os valores serão somados, apenas aqueles acima de R$40.000,00. Para a lista abaixo, conte quantos valores existem acima de R$40.000,00, quais são eles, faça a soma desses valores e, no fim, calcule o valor de 30% dessa soma.
+
+R$31.000,00
+R$15.000,00
+R$52.000,00
+R$103.000,00
+R$42.000,00
+R$156.000,00
+R$15.000,00
+R$27.000,00
+R$82.000,00
+R$33.000,00
+
+Resposta:</pre>
+        </div>
+
+        <div id="cot-resposta" class="card fade-in">
+          <div class="card-title">✅ A Resposta da IA</div>
+          <p>Observe como o modelo seguiu <strong>exatamente o padrão que ensinamos</strong>: listou os valores, identificou os tributáveis, somou e calculou 30% — sem precisar de nenhuma instrução adicional.</p>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label resposta">◉ Resposta da IA — Carraristão</span>
+          <pre class="prompt-block resposta">Nessa lista, existem 10 valores. Há 5 valores acima de R$40.000,00, que são R$52.000,00, R$103.000,00, R$42.000,00, R$156.000,00 e R$82.000,00. A soma desses valores é R$435.000,00. O resultado final é 30% desse valor, portanto, 30% de R$435.000,00, que resulta em R$130.500,00.</pre>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">🔍 Conferindo o Resultado</div>
+          <p>Veja os valores para conferência — a IA acertou em todos os aspectos:</p>
+        </div>
+
+        <div class="fade-in" style="overflow-x:auto;">
+          <table class="verify-table">
+            <thead>
+              <tr>
+                <th>Total de contribuintes</th>
+                <th>Com rendimento &gt; R$40.000</th>
+                <th>Soma tributável</th>
+                <th>Imposto arrecadado (30%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="vt-value">10</td>
+                <td class="vt-value">5</td>
+                <td class="vt-value">R$ 435.000,00</td>
+                <td class="vt-value">R$ 130.500,00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="highlight-box fade-in">
+          <strong>Conclusão:</strong> A combinação Few-Shot + Chain-of-Thought ensinou o modelo não apenas o <em>formato</em> da resposta, mas também o <em>processo de raciocínio</em> — filtrar, somar e calcular percentual. O resultado foi R$ 130.500,00, exatamente o esperado.
+        </div>
+
+        <!-- Quiz 05 -->
+        <div id="quiz-cot2" class="quiz-section fade-in">
+          <div class="quiz-section-header">
+            <span class="qs-label">Exercício 05</span>
+            <span class="qs-title">Few-Shot + CoT — Aplicação</span>
+          </div>
+          <div class="quiz-section-body">
+
+            <div class="quiz-block" data-correct="b"
+              data-feedback-ok="Correto! O par com R$10k/R$20k/R$50k/R$60k é o Few-Shot com Chain-of-Thought: um exemplo com valores simples onde a resposta completa mostra ao modelo exatamente o raciocínio e o formato esperados. O modelo usa isso como referência para resolver o problema real."
+              data-feedback-err="Errado. Esse par com valores simples não é o problema real — é o exemplo Few-Shot com CoT. Sua função é ensinar ao modelo o raciocínio (filtrar, somar, calcular percentual) e o formato exato da resposta, antes de apresentar os dados reais.">
+              <div class="quiz-q-label">Questão 01</div>
+              <div class="quiz-question">No prompt do Carraristão, qual é a função do par Pergunta/Resposta com R$10.000, R$20.000, R$50.000 e R$60.000?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> É o problema real que o modelo deve resolver com os dados do Carraristão.</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> É o Few-Shot com CoT — um exemplo com valores simples que ensina o modelo o raciocínio e o formato da resposta.</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> São os valores do imposto calculado individualmente para cada contribuinte.</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> É uma instrução de sistema para que o modelo ignore valores menores que R$40.000.</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+            <div class="quiz-block" data-correct="c"
+              data-feedback-ok="Correto! O Few-Shot fornece o formato, e o CoT fornece o raciocínio. Juntos, eles ensinam ao modelo tanto 'como responder' quanto 'como pensar' — resultando em respostas mais precisas e no padrão exato esperado."
+              data-feedback-err="Errado. O benefício não é sobre dados externos, custo computacional ou erros de digitação. A força dessa combinação está em ensinar ao modelo tanto o formato da resposta (Few-Shot) quanto o processo de raciocínio (Chain-of-Thought) — tudo no mesmo prompt.">
+              <div class="quiz-q-label">Questão 02</div>
+              <div class="quiz-question">Qual é o principal benefício de combinar Few-Shot com Chain-of-Thought em problemas complexos?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Permite que o modelo acesse dados externos e atualizados para verificar os cálculos.</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Reduz o custo computacional ao processar listas longas de valores numéricos.</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Ensina ao modelo tanto o formato da resposta quanto o processo de raciocínio, resultando em respostas mais precisas.</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Impede que o modelo cometa erros de digitação ao transcrever valores monetários.</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ─── ITEM 04 ─── -->
+        <div id="cot-zeroshot" class="section-sep fade-in">
+          <span class="sep-num">Item 04</span>
+          <span class="sep-title">Para Saber Mais: Zero-Shot com Chain-of-Thought</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">💡 Chain-of-Thought Sem Exemplos</div>
+          <p>A técnica CoT nasceu combinada com Few-Shot — os exemplos mostravam o raciocínio e o modelo o replicava. Mas um estudo posterior mostrou que é possível obter o mesmo efeito em <strong>Zero-Shot</strong>, simplesmente adicionando uma frase ao prompt.</p>
+        </div>
+
+        <div class="highlight-box fade-in">
+          <strong>A frase do Zero-Shot CoT:</strong> adicionar <em>"explique passo a passo"</em> ao prompt já é suficiente para induzir o modelo a raciocinar antes de responder — sem nenhum exemplo prévio.
+        </div>
+
+        <div class="compare fade-in">
+          <div class="compare-col" style="border-top:3px solid var(--steel);">
+            <h4 style="color:var(--steel);">Sem Zero-Shot CoT</h4>
+            <p style="font-style:italic;color:var(--muted);">Quanto é 15% de R$240,00?</p>
+            <p style="margin-top:8px;">↓</p>
+            <p><strong>R$36,00</strong></p>
+            <p style="margin-top:8px;font-size:15px;color:var(--muted);">Só o resultado — sem raciocínio visível.</p>
+          </div>
+          <div class="compare-col" style="border-top:3px solid #b85c1a;">
+            <h4 style="color:#b85c1a;">Com Zero-Shot CoT</h4>
+            <p style="font-style:italic;color:var(--muted);">Quanto é 15% de R$240,00? <strong>Explique passo a passo.</strong></p>
+            <p style="margin-top:8px;">↓</p>
+            <p>Para calcular 15%: divido 240 por 100 (=2,40) e multiplico por 15 (2,40 × 15 = 36,00). <strong>Resultado: R$36,00.</strong></p>
+            <p style="margin-top:8px;font-size:15px;color:var(--muted);">Raciocínio explícito — erros intermediários ficam visíveis e corrigíveis.</p>
+          </div>
+        </div>
+
+        <div class="feature-grid fade-in">
+          <div class="feature-box">
+            <h5>🎯 Quando Usar</h5>
+            <p>Útil quando <strong>não há exemplos disponíveis</strong> ou quando a tarefa é nova demais para criar exemplos representativos. A frase "passo a passo" é um atalho eficaz.</p>
+          </div>
+          <div class="feature-box gold">
+            <h5>🔬 Onde Funciona Melhor</h5>
+            <p>Problemas que exigem <strong>pensamento simbólico e abstrato</strong>: decisões estratégicas, análise filosófica, interpretação de dados científicos, raciocínio matemático complexo.</p>
+          </div>
+          <div class="feature-box green">
+            <h5>🔄 CoT + Few-Shot vs Zero-Shot</h5>
+            <p>Few-Shot + CoT dá mais controle sobre o <em>formato</em> da resposta. Zero-Shot CoT é mais rápido quando o formato não é crítico e você só precisa do raciocínio.</p>
+          </div>
+          <div class="feature-box purple">
+            <h5>💬 Variações da Frase</h5>
+            <p>Além de "explique passo a passo", você pode usar: <em>"raciocine antes de responder"</em>, <em>"pense com cuidado"</em>, <em>"mostre seu raciocínio"</em> — todas produzem efeito similar.</p>
+          </div>
+        </div>
+
+        <!-- ─── ITEM 05 ─── -->
+        <div id="cot-facacomofiz" class="section-sep fade-in">
+          <span class="sep-num">Item 05</span>
+          <span class="sep-title">Faça Como Eu Fiz</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">🎯 Pratique a Cadeia de Pensamento</div>
+          <p>Abra o Gemini (ou qualquer modelo de sua preferência) e teste os prompts abaixo. Observe como, em cada caso, o modelo passa a raciocinar em vez de responder diretamente — e como isso melhora a precisão.</p>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Prompt 01 — Few-Shot + CoT (Rogério e as Maçãs)</span>
+          <pre class="prompt-block prompt">Pergunta: O Rogério tem 5 bolas de tênis. Ele compra mais 2 caixas de bolas, cada uma com 3 bolas. Quantas bolas de tênis ele tem agora?
+
+Resposta: O Rogério inicialmente tinha 5 bolas de tênis. Se cada caixa tem 3 bolas e ele comprou 2 caixas, isso significa que ele comprou mais 6 bolas. Ou seja, no total agora ele tem 5 + 6, que resulta em 11 bolas de tênis.
+
+Pergunta: Havia 23 maçãs no refeitório. Se foram usadas 20 para fazer o almoço e foram compradas mais 6, quantas maçãs eles têm agora?
+
+Resposta:</pre>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Prompt 02 — Few-Shot + CoT (Carraristão)</span>
+          <pre class="prompt-block prompt">Pergunta: Tenho uma lista de valores. O meu resultado final será 30% da soma desses valores. Porém, nem todos os valores serão somados, apenas aqueles acima de R$40.000,00. Para a lista abaixo, conte quantos valores existem acima de R$40.000,00, quais são eles, faça a soma desses valores e, no fim, calcule o valor de 30% dessa soma.
+
+R$10.000,00
+R$20.000,00
+R$50.000,00
+R$60.000,00
+
+Resposta: Nessa lista, existem 4 valores. Há 2 valores acima de R$40.000,00, que são R$50.000,00 e R$60.000,00. A soma desses valores é R$110.000,00. O resultado final é 30% desse valor, portanto, 30% de R$110.000,00, que resulta em R$33.000,00.
+
+Pergunta: Tenho uma lista de valores. O meu resultado final será 30% da soma desses valores. Porém, nem todos os valores serão somados, apenas aqueles acima de R$40.000,00. Para a lista abaixo, conte quantos valores existem acima de R$40.000,00, quais são eles, faça a soma desses valores e, no fim, calcule o valor de 30% dessa soma.
+
+R$31.000,00
+R$15.000,00
+R$52.000,00
+R$103.000,00
+R$42.000,00
+R$156.000,00
+R$15.000,00
+R$27.000,00
+R$82.000,00
+R$33.000,00
+
+Resposta:</pre>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Prompt 03 — Zero-Shot CoT (frase simples)</span>
+          <pre class="prompt-block prompt">Um pelotão tem 42 militares. Na segunda-feira, 1/3 saiu para missão externa. Na terça-feira, 5 retornaram e mais 8 foram mobilizados. Quantos militares estão disponíveis no quartel na quarta-feira? Explique passo a passo.</pre>
+        </div>
+
+        <div class="callout tip fade-in">
+          <strong>Observe:</strong> O Prompt 01 e o Prompt 02 usam Few-Shot + CoT — o modelo aprende o raciocínio pelo exemplo. O Prompt 03 usa Zero-Shot CoT — apenas a frase "explique passo a passo" já induz o raciocínio sem nenhum exemplo.
+        </div>
+
+        <!-- ─── ITEM 06 ─── -->
+        <div id="cot-aprendemos" class="section-sep fade-in">
+          <span class="sep-num">Item 06</span>
+          <span class="sep-title">O que Aprendemos?</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="learned-grid fade-in">
+          <div class="learned-item">
+            <div class="li-num">01</div>
+            <div><strong>Chain-of-Thought (CoT)</strong> é a técnica de incluir o raciocínio passo a passo no exemplo do Few-Shot. Em vez de mostrar entrada → saída, você mostra entrada → raciocínio → saída. O modelo aprende a "pensar" antes de responder.</div>
+          </div>
+          <div class="learned-item">
+            <div class="li-num">02</div>
+            <div><strong>Few-Shot + CoT</strong> é uma das combinações mais poderosas em engenharia de prompt: o Few-Shot define o formato; o CoT define o processo de raciocínio. Juntos, ensinam ao modelo tanto <em>como</em> responder quanto <em>como pensar</em>.</div>
+          </div>
+          <div class="learned-item">
+            <div class="li-num">03</div>
+            <div><strong>Zero-Shot CoT</strong>: adicionar "explique passo a passo" a qualquer prompt já induz o modelo a raciocinar — sem exemplos. É útil quando não há exemplos disponíveis ou quando a tarefa exige pensamento simbólico e abstrato.</div>
+          </div>
+          <div class="learned-item">
+            <div class="li-num">04</div>
+            <div>O artigo do Google DeepMind (2022) formalizou a técnica e mostrou que CoT melhora drasticamente a precisão em problemas de múltiplos passos. A técnica funciona igualmente bem nos modelos mais modernos disponíveis hoje.</div>
+          </div>
+        </div>
+
+        <div class="dark-card fade-in" style="margin-top:28px;">
+          <p>Na próxima aula, vamos explorar técnicas avançadas de estruturação de prompts para casos de uso profissional e institucional — indo além do raciocínio para construir sistemas de prompt robustos e reutilizáveis.</p>
+        </div>
+
       </div>
       <footer style="background:var(--navy);color:rgba(255,255,255,.35);text-align:center;font-size:10.5px;padding:16px;letter-spacing:.4px;">
         Exército Brasileiro · Escola de Comunicações (Escola Coronel Hygino Corsetti) · EAD — Módulo de Engenharia de Prompt
