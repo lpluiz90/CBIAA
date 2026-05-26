@@ -386,15 +386,26 @@
       </ul>
     </div>
 
-    <!-- Sidebar Panel 2 — Aula 02 (em produção) -->
+    <!-- Sidebar Panel 2 — Aula 02 -->
     <div class="sb-panel" id="sb-panel-2">
       <div class="sb-brand">
         <div style="font-size:15px;font-weight:700;color:var(--sky);font-family:'Rajdhani',sans-serif;letter-spacing:.3px;margin-bottom:4px;">Engenharia de Prompt</div>
-        <div class="course-title">Aula 02 — Em Produção</div>
+        <div class="course-title">Aula 02 — Engenharia de Prompt</div>
       </div>
       <div class="sb-section-label">Navegação — Aula 02</div>
       <ul class="sb-nav">
-        <li><a href="#topo"><span class="num">—</span> Em Produção</a></li>
+        <li class="section-divider"><a href="#sec-o-que-e"><span class="num">01</span> O que é Eng. de Prompt?</a></li>
+        <li><a href="#ep-conceito"><span class="num">1.1</span> Conceito e Exemplos</a></li>
+        <li class="section-divider"><a href="#sec-motivando"><span class="num">02</span> Motivando a Ação</a></li>
+        <li><a href="#ep-etimologia"><span class="num">2.1</span> Etimologia de "Prompt"</a></li>
+        <li class="section-divider"><a href="#sec-ambiente2"><span class="num">03</span> Preparando o Ambiente</a></li>
+        <li><a href="#ep-mistral"><span class="num">3.1</span> Mistral AI</a></li>
+        <li class="section-divider"><a href="#sec-principios"><span class="num">04</span> Princípios de Criação</a></li>
+        <li><a href="#ep-principio1"><span class="num">4.1</span> Os 4 Princípios</a></li>
+        <li><a href="#ep-detetive"><span class="num">4.2</span> Jogo do Detetive</a></li>
+        <li><a href="#quiz-ep2"><span class="num">—</span> Exercício 04</a></li>
+        <li class="section-divider"><a href="#sec-faca-como2"><span class="num">05</span> Faça Como Eu Fiz</a></li>
+        <li class="section-divider"><a href="#sec-aprendemos2"><span class="num">06</span> O que Aprendemos</a></li>
       </ul>
     </div>
 
@@ -480,10 +491,13 @@
       </div>
 
       <div class="hero-dyn" id="hero-dyn-2">
-        <h1 class="hero-title">Aula 02 — Em Produção</h1>
-        <p class="hero-subtitle">Este conteúdo está sendo preparado. Em breve você terá acesso ao material completo desta aula.</p>
+        <h1 class="hero-title">Aula 02 — Engenharia de Prompt</h1>
+        <p class="hero-subtitle">Aprenda a escrever instruções claras e eficazes para obter os melhores resultados dos modelos de IA — sem precisar saber programar.</p>
         <div class="hero-tags">
-          <span class="hero-tag">Em Produção</span>
+          <span class="hero-tag">Engenharia de Prompt</span>
+          <span class="hero-tag">Princípios de Criação</span>
+          <span class="hero-tag">Prática Guiada</span>
+          <span class="hero-tag">Mistral AI</span>
         </div>
       </div>
 
@@ -1349,13 +1363,382 @@ combinações de probabilidade muito baixa]</pre>
     </div>
 
     <!-- ═══════════════════════════════════
-         PAINEL 2 — AULA 02 (EM PRODUÇÃO)
+         PAINEL 2 — AULA 02 — ENGENHARIA DE PROMPT
     ════════════════════════════════════ -->
     <div class="content-panel" id="ct-panel-2">
-      <div class="content" style="min-height:60vh;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;text-align:center;padding:60px 48px;">
-        <div style="font-size:64px;">🚧</div>
-        <div style="font-family:'Rajdhani',sans-serif;font-size:40px;font-weight:700;color:var(--navy);">Aula 02 — Em Produção</div>
-        <p style="font-size:19px;color:var(--muted);max-width:520px;line-height:1.7;">Este conteúdo está sendo preparado. Em breve você terá acesso ao material completo desta aula.</p>
+      <div class="content">
+
+        <!-- Objetivos -->
+        <div id="objetivos-2" class="fade-in">
+          <div class="obj-title">◆ Objetivos da Instrução</div>
+          <div class="obj-grid">
+            <div class="obj-item"><span class="dot"></span>Compreender o que é Engenharia de Prompt e por que ela importa.</div>
+            <div class="obj-item"><span class="dot"></span>Conhecer a origem da palavra "prompt" e sua evolução no contexto da IA.</div>
+            <div class="obj-item"><span class="dot"></span>Aplicar os 4 princípios fundamentais para criar prompts eficazes.</div>
+            <div class="obj-item"><span class="dot"></span>Praticar a criação de prompts estruturados em um ambiente real de IA.</div>
+          </div>
+        </div>
+
+        <!-- Introdução -->
+        <div class="intro-card fade-in">
+          <p>Você já reparou que, dependendo de como você faz uma pergunta, a resposta muda completamente? Com a IA não é diferente. <strong style="color:#fff">Engenharia de Prompt</strong> é exatamente a habilidade de <strong style="color:var(--sky)">escrever instruções claras e bem estruturadas</strong> para obter resultados precisos e úteis dos modelos de linguagem.</p>
+          <p>Nesta aula, você vai entender o conceito, aprender os princípios que guiam os melhores engenheiros de prompt do mundo e colocar tudo em prática com um exercício criativo.</p>
+        </div>
+
+        <!-- ─── ITEM 01 ─── -->
+        <div id="sec-o-que-e" class="section-sep fade-in">
+          <span class="sep-num">Item 01</span>
+          <span class="sep-title">O que é Engenharia de Prompt?</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div id="ep-conceito" class="card fade-in">
+          <div class="card-title">💬 Um Experimento com o Google Gemini</div>
+          <p>Imagine que você quer uma receita para o jantar. Veja a diferença entre dois prompts enviados ao Google Gemini:</p>
+        </div>
+
+        <div class="prompt-pair fade-in">
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt" onclick="copyBlock(this)">✦ Prompt Simples</span>
+            <pre class="prompt-block prompt">me dê uma receita</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt" onclick="copyBlock(this)">✦ Prompt Detalhado</span>
+            <pre class="prompt-block prompt">Quero fazer um jantar rápido para 2 pessoas. Tenho frango, arroz, cenoura e cebola na geladeira. Não como pimenta. Sugira uma receita simples com no máximo 30 minutos de preparo e escreva o passo a passo de forma numerada.</pre>
+          </div>
+        </div>
+
+        <div class="callout fade-in">
+          <strong>O que acontece?</strong> O primeiro prompt gera uma resposta genérica — talvez uma receita de bolo. O segundo gera exatamente o que você precisa: rápido, com os ingredientes disponíveis, sem pimenta, em formato de lista numerada.
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">🎯 O que é Engenharia de Prompt?</div>
+          <p><strong>Engenharia de Prompt</strong> é a disciplina de <strong>projetar, estruturar e refinar as instruções</strong> (os "prompts") que você envia a um modelo de IA para obter os resultados mais precisos, úteis e relevantes possíveis.</p>
+          <p>Não se trata de "hackear" a IA nem de conhecer palavras mágicas. Trata-se de <strong>comunicar com clareza</strong>: quanto mais contexto, formato e objetivo você fornecer, melhor a resposta.</p>
+        </div>
+
+        <div class="highlight-box fade-in">
+          <strong>Em uma frase:</strong> Engenharia de Prompt é a arte de fazer as perguntas certas — da maneira certa — para que a IA entregue exatamente o que você precisa.
+        </div>
+
+        <!-- ─── ITEM 02 ─── -->
+        <div id="sec-motivando" class="section-sep fade-in">
+          <span class="sep-num">Item 02</span>
+          <span class="sep-title">Para Saber Mais: Motivando a Ação</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div id="ep-etimologia" class="card fade-in">
+          <div class="card-title">📚 A Origem da Palavra "Prompt"</div>
+          <p>A palavra <em>prompt</em> vem do latim <em>promptus</em>, que significa "pronto", "disponível", "rápido para agir". Em português, é a raiz de palavras como <strong>prontidão</strong> e <strong>pronto</strong>.</p>
+        </div>
+
+        <div class="feature-grid fade-in">
+          <div class="feature-box">
+            <h5>🎭 No Teatro</h5>
+            <p>O <em>prompter</em> (ponto) ficava nos bastidores sussurrando as falas para o ator que esquecia o texto. "Dar o prompt" = dar a deixa para a ação continuar.</p>
+          </div>
+          <div class="feature-box gold">
+            <h5>💻 Na Computação</h5>
+            <p>O "prompt de comando" (ex.: <code class="ic">C:\&gt;</code>) é o cursor piscando que sinaliza: "o sistema está pronto e esperando sua instrução".</p>
+          </div>
+          <div class="feature-box green">
+            <h5>🤖 Na IA Generativa</h5>
+            <p>O prompt é a instrução que você digita para motivar o modelo a agir — a sua "deixa" para que a IA produza uma resposta útil.</p>
+          </div>
+          <div class="feature-box purple">
+            <h5>📖 Em Psicologia</h5>
+            <p>Em terapia comportamental, um "prompt" é qualquer estímulo que induz um comportamento desejado. A ideia é a mesma: motivar uma resposta específica.</p>
+          </div>
+        </div>
+
+        <div class="callout tip fade-in">
+          <strong>Conclusão:</strong> Em todos os contextos, "prompt" carrega o mesmo significado essencial — <strong>um sinal que motiva uma ação precisa</strong>. Na IA, é você quem dá essa deixa.
+        </div>
+
+        <!-- ─── ITEM 03 ─── -->
+        <div id="sec-ambiente2" class="section-sep fade-in">
+          <span class="sep-num">Item 03</span>
+          <span class="sep-title">Preparando o Ambiente</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div id="ep-mistral" class="card fade-in">
+          <div class="card-title">⚙️ Mistral AI — Nossa Ferramenta desta Aula</div>
+          <p>Para praticar Engenharia de Prompt nesta aula, vamos usar o <strong>Mistral AI</strong> — um modelo de linguagem europeu de alta qualidade, com versão gratuita disponível diretamente no navegador, sem necessidade de instalação.</p>
+        </div>
+
+        <div class="dark-card fade-in">
+          <p>Acesse: <a href="https://chat.mistral.ai/" target="_blank" rel="noopener"><strong>chat.mistral.ai</strong></a></p>
+          <p>Clique em <strong>Sign In</strong> ou <strong>Sign Up</strong> para criar uma conta gratuita. Você pode usar e-mail institucional ou pessoal. Após o login, a interface de chat estará disponível imediatamente.</p>
+        </div>
+
+        <div class="steps fade-in">
+          <div class="step">
+            <div class="step-num sky">1</div>
+            <div class="step-body">Acesse <strong>chat.mistral.ai</strong> no seu navegador.</div>
+          </div>
+          <div class="step">
+            <div class="step-num sky">2</div>
+            <div class="step-body">Clique em <strong>Sign Up</strong> e crie uma conta gratuita (ou faça login se já tiver).</div>
+          </div>
+          <div class="step">
+            <div class="step-num sky">3</div>
+            <div class="step-body">Na tela de chat, selecione o modelo <strong>Le Chat Mistral</strong> — é o modelo padrão e já está disponível no plano gratuito.</div>
+          </div>
+          <div class="step">
+            <div class="step-num sky">4</div>
+            <div class="step-body">Pronto! Você já pode digitar seus prompts na caixa de texto e pressionar <strong>Enter</strong> para enviar.</div>
+          </div>
+        </div>
+
+        <div class="callout warn fade-in">
+          <strong>Dica:</strong> Mantenha o Mistral AI aberto em outra aba do navegador enquanto estuda esta aula. Você vai querer testar os exemplos em tempo real.
+        </div>
+
+        <!-- ─── ITEM 04 ─── -->
+        <div id="sec-principios" class="section-sep fade-in">
+          <span class="sep-num">Item 04</span>
+          <span class="sep-title">Princípios de Criação de Prompts</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div id="ep-principio1" class="card fade-in">
+          <div class="card-title">📐 Os 4 Princípios Fundamentais</div>
+          <p>Bons prompts não surgem por acaso. Pesquisadores das maiores empresas de IA identificaram quatro princípios que separam um prompt mediano de um prompt excelente:</p>
+        </div>
+
+        <div class="feature-grid fade-in">
+          <div class="feature-box">
+            <h5>1️⃣ Escreva instruções claras</h5>
+            <p>Quanto mais específico e detalhado for o seu pedido, melhor a resposta. Evite ambiguidades. Diga exatamente o que você quer, em qual formato e para qual público.</p>
+          </div>
+          <div class="feature-box gold">
+            <h5>2️⃣ Forneça contexto e referências</h5>
+            <p>Dê ao modelo informações de fundo: quem você é, qual o objetivo, quais restrições existem. Inclua exemplos do resultado esperado quando possível.</p>
+          </div>
+          <div class="feature-box green">
+            <h5>3️⃣ Divida em subtarefas</h5>
+            <p>Problemas complexos devem ser quebrados em etapas menores. Em vez de pedir tudo de uma vez, conduza o modelo passo a passo — os resultados serão muito melhores.</p>
+          </div>
+          <div class="feature-box purple">
+            <h5>4️⃣ Itere e refine</h5>
+            <p>Raramente o primeiro prompt é o melhor. Analise a resposta, identifique o que ficou errado e ajuste o prompt. A engenharia de prompt é um processo iterativo.</p>
+          </div>
+        </div>
+
+        <!-- Jogo do Detetive -->
+        <div id="ep-detetive" class="card fade-in">
+          <div class="card-title">🕵️ Aplicando o Princípio 3: O Jogo do Detetive</div>
+          <p>Para entender na prática como <strong>dividir em subtarefas</strong> faz diferença, vamos criar um jogo do detetive estilo <em>Detetive/Clue</em> com o Mistral AI. Observe a diferença entre um prompt genérico e um estruturado:</p>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title" style="color:#c62828;">❌ Prompt sem estrutura</div>
+        </div>
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt" onclick="copyBlock(this)">✦ Prompt</span>
+          <pre class="prompt-block prompt">Crie um jogo do detetive para mim.</pre>
+        </div>
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label resposta" onclick="copyBlock(this)">◉ Resposta da IA</span>
+          <pre class="prompt-block resposta">Claro! Aqui está um jogo simples do detetive:
+Um crime aconteceu na mansão. Há três suspeitos: Ana, Bruno e Carlos.
+Você precisa interrogá-los para descobrir quem cometeu o crime.
+O que você faz?</pre>
+        </div>
+        <div class="callout danger fade-in">
+          <strong>Problema:</strong> A resposta é vaga demais. Não há mistério real, personagens desenvolvidos, pistas concretas nem mecânica de jogo. Precisamos dividir em partes.
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title" style="color:#2e7d32;">✅ Prompt com subtarefas — Passo 1 de 3</div>
+        </div>
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt" onclick="copyBlock(this)">✦ Prompt — Passo 1: Criar o Cenário</span>
+          <pre class="prompt-block prompt">Vamos criar juntos um jogo de detetive estilo Cluedo/Detetive, passo a passo.
+
+PASSO 1 — CENÁRIO:
+Crie um cenário de crime com as seguintes especificações:
+- Local: uma mansão com pelo menos 5 cômodos distintos
+- Crime: um assassinato ocorrido durante uma festa à fantasia
+- Época: anos 1920, estilo noir
+- Tom: misterioso e imersivo, narrado em 2ª pessoa
+
+Apresente apenas o cenário inicial. Ainda não revele o culpado nem as pistas.</pre>
+        </div>
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label resposta" onclick="copyBlock(this)">◉ Resposta da IA — Passo 1</span>
+          <pre class="prompt-block resposta">É 1923. A mansão Blackwood está iluminada pelos lampiões dourados de uma festa à fantasia — o tipo de evento que só os ricos de Nova Orleans conseguem organizar. Garçons com máscaras de raposa servem champanhe enquanto um quarteto de jazz toca ao fundo.
+
+Às 23h17, um grito ecoa pela galeria de arte no segundo andar. O senhor Edmund Blackwood, anfitrião e magnata do algodão, está morto — envenenado, segundo o médico que chegou minutos depois. A festa foi interrompida. Os convidados, presos na mansão pela chuva torrencial, tornaram-se suspeitos.
+
+Você é o detetive Marlowe, chamado às pressas. Diante de você estão cinco cômodos que podem esconder a verdade: a Biblioteca, o Salão de Jantar, a Galeria de Arte, a Adega e o Quarto de Hóspedes. Por onde você começa?</pre>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt" onclick="copyBlock(this)">✦ Prompt — Passo 2: Criar os Suspeitos</span>
+          <pre class="prompt-block prompt">PASSO 2 — SUSPEITOS:
+Agora crie 4 suspeitos para este cenário. Para cada um, defina:
+- Nome e relação com a vítima
+- Fantasia que usava na festa
+- Motivo possível (sem confirmar culpa)
+- Uma fala característica em estilo noir
+
+Apresente em formato de ficha de suspeito.</pre>
+        </div>
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label resposta" onclick="copyBlock(this)">◉ Resposta da IA — Passo 2</span>
+          <pre class="prompt-block resposta">━━━━━━━━━━━━━━━━━━━━━━━━━
+FICHA DE SUSPEITO #1
+Nome: Vivienne Lacroix
+Relação: Sócia de negócios (disputa por herança)
+Fantasia: Rainha de Copas — vestido vermelho, coroa dourada
+Motivo: Blackwood prometeu vender a empresa sem consultá-la
+Frase: "Eu não mato por dinheiro, detetive. Mato por princípio."
+━━━━━━━━━━━━━━━━━━━━━━━━━
+FICHA DE SUSPEITO #2
+Nome: Dr. Henri Moreau
+Relação: Médico particular da família
+Fantasia: Arlequim — roupa xadrez preto e branco, máscara bicolor
+Motivo: Blackwood sabia de um erro médico que o arruinaria
+Frase: "Toda morte tem uma causa, detetive. A questão é qual delas importa."
+━━━━━━━━━━━━━━━━━━━━━━━━━
+FICHA DE SUSPEITO #3
+Nome: Miles Ashford
+Relação: Filho adotivo renegado
+Fantasia: Fantasma da Ópera — capa negra, máscara branca
+Motivo: Foi excluído do testamento três dias antes da festa
+Frase: "Ele me tirou tudo. Mas eu nunca disse que queria de volta."
+━━━━━━━━━━━━━━━━━━━━━━━━━
+FICHA DE SUSPEITO #4
+Nome: Celeste Drummond
+Relação: Secretária pessoal há 12 anos
+Fantasia: Deusa Egípcia — túnica branca, colar dourado
+Motivo: Descobriu que seria demitida ao fim da semana
+Frase: "Doze anos de lealdade, e ele nem olhou para mim na última semana."</pre>
+        </div>
+
+        <div class="callout tip fade-in">
+          <strong>Resultado:</strong> Dividindo o problema em três passos (cenário → suspeitos → pistas), cada etapa gera conteúdo rico e coerente. A IA tem contexto acumulado e pode construir uma narrativa muito mais elaborada do que se tivéssemos pedido tudo de uma vez.
+        </div>
+
+        <!-- Quiz Item 04 -->
+        <div id="quiz-ep2" class="quiz-section fade-in">
+          <div class="quiz-section-header">
+            <span class="qs-label">Exercício</span>
+            <div class="qs-title">Item 04 — Princípios de Criação de Prompts</div>
+          </div>
+          <div class="quiz-section-body">
+
+            <div class="quiz-block">
+              <div class="quiz-q-label">Questão 01</div>
+              <div class="quiz-question">Qual é o principal benefício de "dividir em subtarefas" ao criar um prompt para gerar um jogo de detetive?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-correct="false" data-feedback-err="Errado. Dividir em subtarefas não acelera a resposta — pode até torná-la mais longa, mas muito mais rica e coerente." onclick="answerQuiz(this)"><span class="opt-letter">A</span>A IA responde mais rápido ao receber prompts menores.</div>
+                <div class="quiz-option" data-correct="true" data-feedback-ok="Correto! Cada etapa adiciona contexto que a próxima etapa pode usar, permitindo que a IA construa uma narrativa mais elaborada e coerente do que seria possível em um único prompt genérico." onclick="answerQuiz(this)"><span class="opt-letter">B</span>Cada etapa acumula contexto, permitindo respostas progressivamente mais ricas e coerentes.</div>
+                <div class="quiz-option" data-correct="false" data-feedback-err="Errado. A divisão em subtarefas é uma técnica para melhorar a qualidade — ela não reduz custos de uso da API." onclick="answerQuiz(this)"><span class="opt-letter">C</span>Reduz o custo de uso da IA ao dividir o processamento em partes menores.</div>
+                <div class="quiz-option" data-correct="false" data-feedback-err="Errado. O princípio de dividir em subtarefas se aplica a qualquer modelo de IA, não é uma limitação específica do Mistral." onclick="answerQuiz(this)"><span class="opt-letter">D</span>É uma limitação técnica do Mistral AI, que não processa prompts longos.</div>
+              </div>
+              <div class="quiz-feedback"><span class="fb-icon"></span><span class="fb-text"></span></div>
+              <button class="quiz-retry" onclick="retryQuiz(this)">Tentar Novamente</button>
+            </div>
+
+            <div class="quiz-block">
+              <div class="quiz-q-label">Questão 02</div>
+              <div class="quiz-question">Um colega enviou o prompt "escreva um relatório" e ficou insatisfeito com o resultado genérico. Qual dos 4 princípios ele deveria aplicar primeiro?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-correct="true" data-feedback-ok="Correto! O problema é clareza. O prompt não especificou: relatório sobre o quê? Para quem? Em qual formato? Qual extensão? Com qual objetivo? Mais clareza e detalhes resolveriam o problema diretamente." onclick="answerQuiz(this)"><span class="opt-letter">A</span>Escrever instruções mais claras e específicas.</div>
+                <div class="quiz-option" data-correct="false" data-feedback-err="Errado. Fornecer referências ajuda, mas o problema mais urgente é a falta de especificidade básica. Sem saber o tema, público e formato, nenhuma referência vai resolver." onclick="answerQuiz(this)"><span class="opt-letter">B</span>Fornecer referências e exemplos de outros relatórios.</div>
+                <div class="quiz-option" data-correct="false" data-feedback-err="Errado. Dividir em subtarefas é útil para tarefas complexas, mas aqui o problema é mais fundamental: o prompt não tem detalhes básicos suficientes para qualquer tarefa funcionar bem." onclick="answerQuiz(this)"><span class="opt-letter">C</span>Dividir o relatório em subtarefas menores.</div>
+                <div class="quiz-option" data-correct="false" data-feedback-err="Errado. Iterar é importante, mas iteração sem antes aplicar os princípios básicos apenas replica o mesmo problema. O primeiro passo é clareza." onclick="answerQuiz(this)"><span class="opt-letter">D</span>Iterar e enviar o mesmo prompt várias vezes até a resposta melhorar.</div>
+              </div>
+              <div class="quiz-feedback"><span class="fb-icon"></span><span class="fb-text"></span></div>
+              <button class="quiz-retry" onclick="retryQuiz(this)">Tentar Novamente</button>
+            </div>
+
+            <div class="quiz-block">
+              <div class="quiz-q-label">Questão 03</div>
+              <div class="quiz-question">No exemplo do jogo do detetive, o Passo 2 (criar os suspeitos) gerou personagens muito mais detalhados do que seria possível em um único prompt. Por quê?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-correct="false" data-feedback-err="Errado. O modelo é o mesmo nos dois casos. O que mudou foi a forma de estruturar o pedido, não a capacidade técnica da IA." onclick="answerQuiz(this)"><span class="opt-letter">A</span>O Passo 2 foi enviado quando o modelo estava com mais "memória disponível".</div>
+                <div class="quiz-option" data-correct="false" data-feedback-err="Errado. O número de tokens no prompt não é o fator determinante aqui. O que importa é o contexto acumulado da conversa." onclick="answerQuiz(this)"><span class="opt-letter">B</span>O prompt do Passo 2 era mais longo, o que sempre gera respostas melhores.</div>
+                <div class="quiz-option" data-correct="true" data-feedback-ok="Correto! O Passo 2 foi executado dentro da mesma conversa, então o modelo já conhecia o cenário completo (1923, Nova Orleans, mansão noir, crime envenenamento). Esse contexto acumulado permitiu criar personagens coerentes com o universo estabelecido." onclick="answerQuiz(this)"><span class="opt-letter">C</span>O Passo 1 criou contexto (cenário, época, tom) que o modelo usou para construir personagens coerentes.</div>
+                <div class="quiz-option" data-correct="false" data-feedback-err="Errado. O formato de ficha foi uma instrução do Passo 2, mas o que tornou os personagens ricos foi o contexto do Passo 1 — não apenas o formato de apresentação." onclick="answerQuiz(this)"><span class="opt-letter">D</span>O formato de ficha de suspeito é mais fácil de processar para a IA do que texto corrido.</div>
+              </div>
+              <div class="quiz-feedback"><span class="fb-icon"></span><span class="fb-text"></span></div>
+              <button class="quiz-retry" onclick="retryQuiz(this)">Tentar Novamente</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ─── ITEM 05 ─── -->
+        <div id="sec-faca-como2" class="section-sep fade-in">
+          <span class="sep-num">Item 05</span>
+          <span class="sep-title">Faça Como Eu Fiz</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">🎮 Sua Vez: Continue o Jogo do Detetive</div>
+          <p>Você viu os dois primeiros passos do jogo de detetive. Agora é sua vez de criar o <strong>Passo 3 — as pistas</strong> e conduzi-lo à conclusão. Abra o Mistral AI e tente os dois prompts abaixo em sequência, dentro da mesma conversa:</p>
+        </div>
+
+        <div class="callout fade-in">
+          <strong>Importante:</strong> Use os dois prompts <strong>na mesma conversa</strong>, um após o outro. O segundo prompt depende do contexto criado pelo primeiro para funcionar bem.
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt" onclick="copyBlock(this)">✦ Prompt de Prática 01 — Criando as Pistas</span>
+          <pre class="prompt-block prompt">PASSO 3 — PISTAS:
+Crie 5 pistas espalhadas pelos cômodos da mansão. Para cada pista, defina:
+- Em qual cômodo foi encontrada
+- O que é a pista (objeto, rastro, detalhe)
+- O que ela pode sugerir (sem revelar o culpado)
+
+Organize em formato de lista numerada. Mantenha o tom noir dos passos anteriores.</pre>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt" onclick="copyBlock(this)">✦ Prompt de Prática 02 — Revelação Final</span>
+          <pre class="prompt-block prompt">PASSO 4 — REVELAÇÃO:
+Agora revele o culpado. A revelação deve:
+- Explicar como o crime foi cometido (método, momento, local exato)
+- Conectar pelo menos 3 das 5 pistas ao culpado
+- Ser apresentada como um monólogo do detetive Marlowe, em estilo noir
+- Terminar com uma frase memorável do detetive
+
+Escreva em 2ª pessoa, como se o jogador fosse o detetive.</pre>
+        </div>
+
+        <div class="callout tip fade-in">
+          <strong>Observe:</strong> Note como, ao longo dos 4 passos, a IA manteve consistência de tom, personagens e cronologia. Isso é o poder de <strong>dividir em subtarefas com contexto acumulado</strong> — cada prompt constrói sobre o anterior.
+        </div>
+
+        <!-- ─── ITEM 06 ─── -->
+        <div id="sec-aprendemos2" class="section-sep fade-in">
+          <span class="sep-num">Item 06</span>
+          <span class="sep-title">O que Aprendemos?</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="learned-grid fade-in">
+          <div class="learned-item">
+            <div class="li-num">01</div>
+            <div><strong>Engenharia de Prompt</strong> é a disciplina de escrever instruções claras, detalhadas e bem estruturadas para obter respostas precisas e úteis dos modelos de IA — sem precisar saber programar.</div>
+          </div>
+          <div class="learned-item">
+            <div class="li-num">02</div>
+            <div>Os <strong>4 princípios fundamentais</strong> — instruções claras, contexto e referências, divisão em subtarefas e iteração — são o alicerce de todo prompt eficaz, independentemente da ferramenta ou do objetivo.</div>
+          </div>
+        </div>
+
+        <div class="dark-card fade-in" style="margin-top:28px;">
+          <p>Na próxima aula, vamos aprofundar as <strong>técnicas avançadas de Engenharia de Prompt</strong>: few-shot prompting, chain-of-thought, role prompting e outras estratégias utilizadas por pesquisadores das maiores empresas de IA do mundo.</p>
+        </div>
+
       </div>
       <footer style="background:var(--navy);color:rgba(255,255,255,.35);text-align:center;font-size:10.5px;padding:16px;letter-spacing:.4px;">
         Exército Brasileiro · Escola de Comunicações (Escola Coronel Hygino Corsetti) · EAD — Módulo de Engenharia de Prompt
