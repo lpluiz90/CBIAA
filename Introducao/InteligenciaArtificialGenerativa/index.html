@@ -16,7 +16,7 @@
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
-  body{font-family:'Source Sans 3',sans-serif;background:var(--ice2);color:var(--text);display:flex;min-height:100vh;}
+  body{font-family:'Source Sans 3',sans-serif;background:var(--ice2);color:var(--text);display:block;min-height:100vh;}
 
   /* Sidebar */
   #sidebar{width:var(--sidebar-w);background:var(--navy);position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:100;display:flex;flex-direction:column;}
@@ -26,7 +26,7 @@
   .sb-brand{padding:22px 18px 16px;border-bottom:1px solid rgba(255,255,255,.12);}
   .sb-brand .escom-label{font-family:'Rajdhani',sans-serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:4px;}
   .sb-brand .course-title{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;color:var(--white);line-height:1.25;}
-  .sb-brand .course-sub{font-size:17px;font-family:'Rajdhani',sans-serif;font-weight:700;color:var(--sky);margin-top:4px;}
+  .sb-brand .course-sub{font-size:13px;font-family:'Rajdhani',sans-serif;font-weight:600;color:var(--sky);margin-top:4px;line-height:1.3;}
   .sb-section-label{font-family:'Rajdhani',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);padding:16px 18px 5px;}
   .sb-nav{list-style:none;padding:0 7px 14px;}
   .sb-nav li a{display:flex;align-items:center;gap:9px;padding:6px 11px;border-radius:6px;text-decoration:none;font-size:12px;color:rgba(255,255,255,.60);transition:all .15s;line-height:1.3;}
@@ -35,9 +35,6 @@
   .sb-nav li.section-divider a{color:var(--gold);font-weight:700;font-family:'Rajdhani',sans-serif;font-size:11.5px;letter-spacing:.4px;margin-top:6px;border-top:1px solid rgba(255,255,255,.08);padding-top:10px;}
   .sb-nav li.section-divider a:hover{background:rgba(200,155,60,.15);}
   .sb-footer{margin-top:auto;padding:14px 18px;font-size:10px;color:rgba(255,255,255,.22);border-top:1px solid rgba(255,255,255,.07);line-height:1.5;}
-
-  /* Main */
-  #main{margin-left:var(--sidebar-w);flex:1;}
 
   /* Hero */
   #hero{background:linear-gradient(135deg,var(--navy) 0%,var(--steel) 60%,#2a5a8a 100%);padding:52px 60px 52px;position:relative;overflow:hidden;}
@@ -227,7 +224,6 @@
     /* Layout base */
     :root{ --sidebar-w:0px; --section-w:100%; --radius:8px; }
     #sidebar{ display:none; }
-    #main{ margin-left:0; }
 
     /* Hero */
     #hero{ padding:28px 18px 28px; }
@@ -375,10 +371,9 @@
   .clearfix::after { content: ''; display: table; clear: both; }
 
 
-<style>.quiz-section{margin:32px 0 8px}.quiz-section-header{background:linear-gradient(135deg,#192437 0%,#1e2d42 100%);border-radius:10px 10px 0 0;padding:16px 24px;border-left:4px solid #c89b3c}.quiz-section-header .qs-label{font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#c89b3c;display:block;margin-bottom:4px}.quiz-section-header .qs-title{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;color:rgba(255,255,255,.9)}.quiz-section-body{background:#fff;border:1px solid #dfe6eb;border-top:none;border-radius:0 0 10px 10px;padding:24px 24px 20px;box-shadow:0 3px 12px rgba(0,0,0,.07)}.quiz-block{margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid #eef3f6}.quiz-block:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}.quiz-q-label{font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#4a9fc8;margin-bottom:6px}.quiz-question{font-size:18.5px;font-weight:600;color:#1a2535;line-height:1.5;margin-bottom:14px}.quiz-options{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}.quiz-option{display:flex;align-items:flex-start;gap:11px;padding:10px 14px;border:2px solid #dfe6eb;border-radius:8px;cursor:pointer;font-size:17.5px;line-height:1.5;color:#1a2535;background:#f8fafc;transition:border-color .15s,background .15s;user-select:none}.quiz-option:hover:not(.disabled){border-color:#4a9fc8;background:#eef3f6}.quiz-option .opt-letter{font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;color:#4a9fc8;min-width:20px;height:20px;border:2px solid #4a9fc8;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;transition:all .15s}.quiz-option.correct{border-color:#2e9e60;background:#eaf7f0}.quiz-option.correct .opt-letter{background:#2e9e60;border-color:#2e9e60;color:#fff}.quiz-option.wrong{border-color:#c0392b;background:#fdecea}.quiz-option.wrong .opt-letter{background:#c0392b;border-color:#c0392b;color:#fff}.quiz-option.disabled{cursor:default;opacity:.55}.quiz-option.correct.disabled,.quiz-option.wrong.disabled{opacity:1}.quiz-feedback{display:none;align-items:flex-start;gap:10px;padding:10px 14px;border-radius:8px;font-size:17px;line-height:1.55;margin-top:4px}.quiz-feedback.show{display:flex}.quiz-feedback.acerto{background:#eaf7f0;border-left:4px solid #2e9e60;color:#1a4a2e}.quiz-feedback.erro{background:#fdecea;border-left:4px solid #c0392b;color:#5a1a1a}.quiz-feedback .fb-icon{font-size:18px;flex-shrink:0;margin-top:1px}.quiz-retry{display:none;margin-top:10px;font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#4a9fc8;background:none;border:2px solid #4a9fc8;border-radius:6px;padding:5px 16px;cursor:pointer;transition:background .15s,color .15s}.quiz-retry:hover{background:#4a9fc8;color:#fff}.quiz-retry.show{display:inline-block}
+.quiz-section{margin:32px 0 8px}.quiz-section-header{background:linear-gradient(135deg,#192437 0%,#1e2d42 100%);border-radius:10px 10px 0 0;padding:16px 24px;border-left:4px solid #c89b3c}.quiz-section-header .qs-label{font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#c89b3c;display:block;margin-bottom:4px}.quiz-section-header .qs-title{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;color:rgba(255,255,255,.9)}.quiz-section-body{background:#fff;border:1px solid #dfe6eb;border-top:none;border-radius:0 0 10px 10px;padding:24px 24px 20px;box-shadow:0 3px 12px rgba(0,0,0,.07)}.quiz-block{margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid #eef3f6}.quiz-block:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}.quiz-q-label{font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#4a9fc8;margin-bottom:6px}.quiz-question{font-size:18.5px;font-weight:600;color:#1a2535;line-height:1.5;margin-bottom:14px}.quiz-options{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}.quiz-option{display:flex;align-items:flex-start;gap:11px;padding:10px 14px;border:2px solid #dfe6eb;border-radius:8px;cursor:pointer;font-size:17.5px;line-height:1.5;color:#1a2535;background:#f8fafc;transition:border-color .15s,background .15s;user-select:none}.quiz-option:hover:not(.disabled){border-color:#4a9fc8;background:#eef3f6}.quiz-option .opt-letter{font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;color:#4a9fc8;min-width:20px;height:20px;border:2px solid #4a9fc8;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;transition:all .15s}.quiz-option.correct{border-color:#2e9e60;background:#eaf7f0}.quiz-option.correct .opt-letter{background:#2e9e60;border-color:#2e9e60;color:#fff}.quiz-option.wrong{border-color:#c0392b;background:#fdecea}.quiz-option.wrong .opt-letter{background:#c0392b;border-color:#c0392b;color:#fff}.quiz-option.disabled{cursor:default;opacity:.55}.quiz-option.correct.disabled,.quiz-option.wrong.disabled{opacity:1}.quiz-feedback{display:none;align-items:flex-start;gap:10px;padding:10px 14px;border-radius:8px;font-size:17px;line-height:1.55;margin-top:4px}.quiz-feedback.show{display:flex}.quiz-feedback.acerto{background:#eaf7f0;border-left:4px solid #2e9e60;color:#1a4a2e}.quiz-feedback.erro{background:#fdecea;border-left:4px solid #c0392b;color:#5a1a1a}.quiz-feedback .fb-icon{font-size:18px;flex-shrink:0;margin-top:1px}.quiz-retry{display:none;margin-top:10px;font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#4a9fc8;background:none;border:2px solid #4a9fc8;border-radius:6px;padding:5px 16px;cursor:pointer;transition:background .15s,color .15s}.quiz-retry:hover{background:#4a9fc8;color:#fff}.quiz-retry.show{display:inline-block}
 
-/* ── LAYOUT UNIFICADO ── */
-body { display: block; }           /* override do flex original */
+/* ── LAYOUT ── */
 #wrapper { display: flex; min-height: 100vh; }
 
 /* Sidebar única lateral */
@@ -523,10 +518,6 @@ body { display: block; }           /* override do flex original */
   .aula-tab { font-size: 10.5px; padding: 6px 10px; }
 }
 
-/* Quiz (garantir presente) */
-.quiz-section{margin:32px 0 8px}.quiz-section-header{background:linear-gradient(135deg,#192437 0%,#1e2d42 100%);border-radius:10px 10px 0 0;padding:16px 24px;border-left:4px solid #c89b3c}.quiz-section-header .qs-label{font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#c89b3c;display:block;margin-bottom:4px}.quiz-section-header .qs-title{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;color:rgba(255,255,255,.9)}.quiz-section-body{background:#fff;border:1px solid #dfe6eb;border-top:none;border-radius:0 0 10px 10px;padding:24px 24px 20px;box-shadow:0 3px 12px rgba(0,0,0,.07)}.quiz-block{margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid #eef3f6}.quiz-block:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}.quiz-q-label{font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#4a9fc8;margin-bottom:6px}.quiz-question{font-size:18.5px;font-weight:600;color:#1a2535;line-height:1.5;margin-bottom:14px}.quiz-options{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}.quiz-option{display:flex;align-items:flex-start;gap:11px;padding:10px 14px;border:2px solid #dfe6eb;border-radius:8px;cursor:pointer;font-size:17.5px;line-height:1.5;color:#1a2535;background:#f8fafc;transition:border-color .15s,background .15s;user-select:none}.quiz-option:hover:not(.disabled){border-color:#4a9fc8;background:#eef3f6}.quiz-option .opt-letter{font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;color:#4a9fc8;min-width:20px;height:20px;border:2px solid #4a9fc8;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;transition:all .15s}.quiz-option.correct{border-color:#2e9e60;background:#eaf7f0}.quiz-option.correct .opt-letter{background:#2e9e60;border-color:#2e9e60;color:#fff}.quiz-option.wrong{border-color:#c0392b;background:#fdecea}.quiz-option.wrong .opt-letter{background:#c0392b;border-color:#c0392b;color:#fff}.quiz-option.disabled{cursor:default;opacity:.55}.quiz-option.correct.disabled,.quiz-option.wrong.disabled{opacity:1}.quiz-feedback{display:none;align-items:flex-start;gap:10px;padding:10px 14px;border-radius:8px;font-size:17px;line-height:1.55;margin-top:4px}.quiz-feedback.show{display:flex}.quiz-feedback.acerto{background:#eaf7f0;border-left:4px solid #2e9e60;color:#1a4a2e}.quiz-feedback.erro{background:#fdecea;border-left:4px solid #c0392b;color:#5a1a1a}.quiz-feedback .fb-icon{font-size:18px;flex-shrink:0;margin-top:1px}.quiz-retry{display:none;margin-top:10px;font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#4a9fc8;background:none;border:2px solid #4a9fc8;border-radius:6px;padding:5px 16px;cursor:pointer;transition:background .15s,color .15s}.quiz-retry:hover{background:#4a9fc8;color:#fff}.quiz-retry.show{display:inline-block}
-
-
 /* ── AULA 4 — classes extras ── */
 .compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px}
 .compare-col{background:var(--ice2);border-radius:8px;padding:16px 18px}
@@ -590,28 +581,6 @@ body { display: block; }           /* override do flex original */
   .bc-line { font-size: 12px !important; }
 }
 
-/* classes Aula 4 faltantes */
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px}
-.compare-col{background:var(--ice2);border-radius:8px;padding:16px 18px}
-.compare-col.chatgpt{border-top:3px solid #10a37f}
-.compare-col.gemini{border-top:3px solid #4285f4}
-.compare-col h4{font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;margin-bottom:10px}
-.compare-col.chatgpt h4{color:#10a37f}
-.compare-col.gemini h4{color:#4285f4}
-.compare-col ul{list-style:none;padding:0}
-.compare-col ul li{font-size:17px;line-height:1.55;padding:5px 0;border-bottom:1px solid rgba(0,0,0,.06)}
-.compare-col ul li:last-child{border-bottom:none}
-.compare-col ul li::before{content:'• ';color:var(--muted)}
-.steps{margin:12px 0}
-.step{display:flex;gap:14px;margin-bottom:14px;align-items:flex-start}
-.step-num{min-width:32px;height:32px;background:var(--navy);color:#fff;border-radius:50%;font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
-.step-body{font-size:18.5px;line-height:1.68;color:var(--text)}
-.step-body strong{color:var(--navy)}
-.rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
-.rule-box{background:var(--ice2);border-radius:8px;padding:14px 16px;border-left:3px solid var(--sky)}
-.rule-box h5{font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--navy);margin-bottom:9px}
-.rule-box ol{padding-left:18px}
-.rule-box ol li{font-size:17px;line-height:1.55;padding:3px 0;color:var(--text)}
 .learned-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px}
 .learned-item{display:flex;align-items:flex-start;gap:11px;background:var(--ice2);border-radius:8px;padding:13px 15px;font-size:17.5px;line-height:1.55;border-left:3px solid var(--navy)}
 .learned-item .li-num{font-family:'Rajdhani',sans-serif;font-size:21px;font-weight:700;color:var(--navy);line-height:1;flex-shrink:0;min-width:26px}
@@ -877,43 +846,43 @@ body { display: block; }           /* override do flex original */
   </div>
   <div class="sb-section-label">Navegação</div>
   <ul class="sb-nav">
-    <li><a href="#objetivos"><span class="num">—</span> Objetivos</a></li>
-    <li><a href="#introducao"><span class="num">—</span> Introdução</a></li>
+    <li><a href="#p2-objetivos"><span class="num">—</span> Objetivos</a></li>
+    <li><a href="#p2-introducao"><span class="num">—</span> Introdução</a></li>
 
-    <li class="section-divider"><a href="#item01"><span class="num">01</span> O que é um LLM?</a></li>
+    <li class="section-divider"><a href="#p2-item01"><span class="num">01</span> O que é um LLM?</a></li>
     <li><a href="#nlp"><span class="num">1.1</span> NLP e Linguagem Natural</a></li>
     <li><a href="#padroes"><span class="num">1.2</span> Padrões da Linguagem</a></li>
     <li><a href="#semantica"><span class="num">1.3</span> Padrões Semânticos</a></li>
     <li><a href="#treinamento"><span class="num">1.4</span> Como são Treinados</a></li>
     <li><a href="#autocomplete"><span class="num">1.5</span> A Ideia do Autocompletar</a></li>
 
-    <li class="section-divider"><a href="#item02"><span class="num">02</span> Como Funciona na Prática?</a></li>
+    <li class="section-divider"><a href="#p2-item02"><span class="num">02</span> Como Funciona na Prática?</a></li>
     <li><a href="#simulacao"><span class="num">2.1</span> Simulando o ChatGPT</a></li>
     <li><a href="#probs1"><span class="num">2.2</span> Passo 1 — "Eu gosto de"</a></li>
     <li><a href="#probs2"><span class="num">2.3</span> Passo 2 — "de chocolate"</a></li>
     <li><a href="#probs3"><span class="num">2.4</span> Passo 3 — "porque"</a></li>
     <li><a href="#contexto-hoteis"><span class="num">2.5</span> Do Prompt ao Texto</a></li>
 
-    <li class="section-divider"><a href="#item03"><span class="num">03</span> Memória Contextual</a></li>
+    <li class="section-divider"><a href="#p2-item03"><span class="num">03</span> Memória Contextual</a></li>
     <li><a href="#memoria-intro"><span class="num">3.1</span> O que é e por que importa</a></li>
     <li><a href="#memoria-demo"><span class="num">3.2</span> Demonstração Prática</a></li>
     <li><a href="#memoria-limites"><span class="num">3.3</span> Limites e Boas Práticas</a></li>
 
-    <li class="section-divider"><a href="#item04"><span class="num">04</span> Engenharia de Prompt</a></li>
+    <li class="section-divider"><a href="#p2-item04"><span class="num">04</span> Engenharia de Prompt</a></li>
     <li><a href="#eng-conceito"><span class="num">4.1</span> O que é?</a></li>
     <li><a href="#maritalk"><span class="num">4.2</span> MariTalk — IA Brasileira</a></li>
     <li><a href="#prompt-claro"><span class="num">4.3</span> Prompt Vago vs. Claro</a></li>
     <li><a href="#principios"><span class="num">4.4</span> Os 5 Princípios</a></li>
 
-    <li class="section-divider"><a href="#item05"><span class="num">05</span> Aplicando os Princípios</a></li>
+    <li class="section-divider"><a href="#p2-item05"><span class="num">05</span> Aplicando os Princípios</a></li>
     <li><a href="#etapas"><span class="num">5.1</span> Dividindo em Etapas</a></li>
     <li><a href="#passos-resultado"><span class="num">5.2</span> Resultado dos 3 Passos</a></li>
     <li><a href="#outros-principios"><span class="num">5.3</span> Princípios 3, 4 e 5</a></li>
     <li><a href="#analise-prompt"><span class="num">5.4</span> Analisando o Prompt de Hotéis</a></li>
 
-    <li class="section-divider"><a href="#item06"><span class="num">06</span> Atividade Prática</a></li>
-    <li><a href="#sec-mais"><span class="num">—</span> Para Saber Mais</a></li>
-    <li><a href="#aprendemos"><span class="num">—</span> O que Aprendemos?</a></li>
+    <li class="section-divider"><a href="#p2-item06"><span class="num">06</span> Atividade Prática</a></li>
+    <li><a href="#p2-sec-mais"><span class="num">—</span> Para Saber Mais</a></li>
+    <li><a href="#p2-aprendemos"><span class="num">—</span> O que Aprendemos?</a></li>
   </ul>
 </div>
 <div class="sb-panel" id="sb-panel-3">
@@ -923,42 +892,42 @@ body { display: block; }           /* override do flex original */
   </div>
   <div class="sb-section-label">Navegação</div>
   <ul class="sb-nav">
-    <li><a href="#objetivos"><span class="num">—</span> Objetivos</a></li>
-    <li><a href="#introducao"><span class="num">—</span> Introdução</a></li>
+    <li><a href="#p3-objetivos"><span class="num">—</span> Objetivos</a></li>
+    <li><a href="#p3-introducao"><span class="num">—</span> Introdução</a></li>
 
-    <li class="section-divider"><a href="#item01"><span class="num">01</span> Analisando Planilhas</a></li>
+    <li class="section-divider"><a href="#p3-item01"><span class="num">01</span> Analisando Planilhas</a></li>
     <li><a href="#dados-exemplo"><span class="num">1.1</span> Os Dados de Exemplo</a></li>
     <li><a href="#chatgpt-planilha"><span class="num">1.2</span> ChatGPT — Upload e Análise</a></li>
     <li><a href="#chatgpt-calculo"><span class="num">1.3</span> Cálculo da Soma Total</a></li>
     <li><a href="#aistudio-planilha"><span class="num">1.4</span> Google AI Studio</a></li>
     <li><a href="#alucinacao"><span class="num">1.5</span> Alucinação — Cuidado!</a></li>
 
-    <li class="section-divider"><a href="#item02"><span class="num">02</span> Analisando PDFs</a></li>
+    <li class="section-divider"><a href="#p3-item02"><span class="num">02</span> Analisando PDFs</a></li>
     <li><a href="#pdf-intro"><span class="num">2.1</span> Tipos de Documentos</a></li>
     <li><a href="#pdf-italia"><span class="num">2.2</span> Resumo do Guia da Itália</a></li>
     <li><a href="#pdf-llama"><span class="num">2.3</span> Artigo Técnico — Llama 3</a></li>
     <li><a href="#pdf-busca"><span class="num">2.4</span> Busca Específica no PDF</a></li>
 
-    <li class="section-divider"><a href="#item03"><span class="num">03</span> Analisando Imagens</a></li>
+    <li class="section-divider"><a href="#p3-item03"><span class="num">03</span> Analisando Imagens</a></li>
     <li><a href="#imagem-intro"><span class="num">3.1</span> IA + Imagens</a></li>
     <li><a href="#imagem-blog"><span class="num">3.2</span> Post de Blog a partir de Foto</a></li>
     <li><a href="#imagem-receita"><span class="num">3.3</span> Adicionando Receita</a></li>
     <li><a href="#imagem-usos"><span class="num">3.4</span> Outros Usos com Imagens</a></li>
 
-    <li class="section-divider"><a href="#item04"><span class="num">04</span> Analisando Vídeos</a></li>
+    <li class="section-divider"><a href="#p3-item04"><span class="num">04</span> Analisando Vídeos</a></li>
     <li><a href="#video-intro"><span class="num">4.1</span> Upload de Vídeos</a></li>
     <li><a href="#video-resumo"><span class="num">4.2</span> Resumindo o Vídeo</a></li>
     <li><a href="#video-erros"><span class="num">4.3</span> Identificando Erros de Fala</a></li>
 
-    <li class="section-divider"><a href="#item05"><span class="num">05</span> Analisando Áudios</a></li>
+    <li class="section-divider"><a href="#p3-item05"><span class="num">05</span> Analisando Áudios</a></li>
     <li><a href="#audio-intro"><span class="num">5.1</span> Upload de Áudio</a></li>
     <li><a href="#audio-transcricao"><span class="num">5.2</span> Transcrição Automática</a></li>
     <li><a href="#audio-usos"><span class="num">5.3</span> Usos Práticos</a></li>
 
-    <li class="section-divider"><a href="#item06"><span class="num">06</span> Comparativo de Ferramentas</a></li>
+    <li class="section-divider"><a href="#p3-item06"><span class="num">06</span> Comparativo de Ferramentas</a></li>
     <li><a href="#desafio"><span class="num">—</span> Desafio</a></li>
-    <li><a href="#sec-mais"><span class="num">—</span> Para Saber Mais</a></li>
-    <li><a href="#aprendemos"><span class="num">—</span> O que Aprendemos?</a></li>
+    <li><a href="#p3-sec-mais"><span class="num">—</span> Para Saber Mais</a></li>
+    <li><a href="#p3-aprendemos"><span class="num">—</span> O que Aprendemos?</a></li>
   </ul>
 </div>
 <div class="sb-panel" id="sb-panel-4">
@@ -968,8 +937,8 @@ body { display: block; }           /* override do flex original */
   </div>
   <div class="sb-section-label">Navegação</div>
   <ul class="sb-nav">
-    <li><a href="#objetivos"><span class="num">—</span> Objetivos</a></li>
-    <li><a href="#introducao"><span class="num">—</span> Introdução</a></li>
+    <li><a href="#p4-objetivos"><span class="num">—</span> Objetivos</a></li>
+    <li><a href="#p4-introducao"><span class="num">—</span> Introdução</a></li>
 
     <li class="section-divider"><a href="#sec-item01"><span class="num">01</span> Bing Images e DALL-E</a></li>
     <li><a href="#multimodal"><span class="num">1.1</span> Modelos Multimodais</a></li>
@@ -994,7 +963,7 @@ body { display: block; }           /* override do flex original */
     <li><a href="#outras-ferramentas"><span class="num">4.1</span> Além das Três Ferramentas</a></li>
 
     <li class="section-divider"><a href="#sec-item05"><span class="num">05</span> O que Aprendemos?</a></li>
-    <li><a href="#aprendemos"><span class="num">—</span> Resumo da Aula</a></li>
+    <li><a href="#p4-aprendemos"><span class="num">—</span> Resumo da Aula</a></li>
   </ul>
 </div>
 
@@ -1654,7 +1623,7 @@ grande escala. Tem alguma outra coisa que você quer saber?</pre>
   <div class="content">
 
     <!-- Objetivos -->
-    <div id="objetivos" class="fade-in">
+    <div id="p2-objetivos" class="fade-in">
       <div class="obj-title">◆ Objetivos da Instrução</div>
       <div class="obj-grid">
         <div class="obj-item"><span class="dot"></span>Compreender o que são modelos de linguagem (LLMs) e como funcionam internamente.</div>
@@ -1665,13 +1634,13 @@ grande escala. Tem alguma outra coisa que você quer saber?</pre>
     </div>
 
     <!-- Introdução -->
-    <div id="introducao" class="intro-card fade-in">
+    <div id="p2-introducao" class="intro-card fade-in">
       <p>Na aula anterior, usamos o ChatGPT e o Gemini na prática — geramos textos, e-mails e resumos. Mas uma pergunta fundamental ficou em aberto: <strong style="color:#fff">como esses modelos funcionam por dentro?</strong> O que acontece entre o momento em que você envia um prompt e o momento em que a resposta aparece na tela?</p>
       <p>Nesta aula vamos responder essa pergunta e ir além: vamos aprender a escrever prompts cada vez melhores usando os princípios da <strong style="color:var(--sky)">Engenharia de Prompt</strong> — a disciplina que estuda como obter resultados precisos e úteis das IAs generativas.</p>
     </div>
 
     <!-- ════ ITEM 01 ════ -->
-    <div id="item01" class="item-sep fade-in">
+    <div id="p2-item01" class="item-sep fade-in">
       <span class="sep-num">Item 01</span>
       <span class="sep-title">O que é um Modelo de Linguagem?</span>
       <span class="sep-line"></span>
@@ -1829,7 +1798,7 @@ I like learning.</pre>
       </div>
     </div>
     <!-- ════ ITEM 02 ════ -->
-    <div id="item02" class="item-sep fade-in">
+    <div id="p2-item02" class="item-sep fade-in">
       <span class="sep-num">Item 02</span>
       <span class="sep-title">Como Funciona na Prática?</span>
       <span class="sep-line"></span>
@@ -1988,7 +1957,7 @@ para que eu possa continuar.</pre>
       </div>
     </div>
     <!-- ════ ITEM 03 ════ -->
-    <div id="item03" class="item-sep fade-in">
+    <div id="p2-item03" class="item-sep fade-in">
       <span class="sep-num">Item 03</span>
       <span class="sep-title">Memória Contextual do Chat</span>
       <span class="sep-line"></span>
@@ -2115,7 +2084,7 @@ Usuário: Me dê um exemplo dessa fórmula.</pre>
       </div>
     </div>
     <!-- ════ ITEM 04 ════ -->
-    <div id="item04" class="item-sep fade-in">
+    <div id="p2-item04" class="item-sep fade-in">
       <span class="sep-num">Item 04</span>
       <span class="sep-title">Engenharia de Prompt</span>
       <span class="sep-line"></span>
@@ -2305,7 +2274,7 @@ Para valores avulsos:
       </div>
     </div>
     <!-- ════ ITEM 05 ════ -->
-    <div id="item05" class="item-sep fade-in">
+    <div id="p2-item05" class="item-sep fade-in">
       <span class="sep-num">Item 05</span>
       <span class="sep-title">Aplicando os Princípios na Prática</span>
       <span class="sep-line"></span>
@@ -2451,7 +2420,7 @@ Passo 3 - Crie um post para o Instagram com base no artigo de blog gerado</pre>
       </div>
     </div>
     <!-- ════ ITEM 06 ════ -->
-    <div id="item06" class="item-sep fade-in">
+    <div id="p2-item06" class="item-sep fade-in">
       <span class="sep-num">Item 06</span>
       <span class="sep-title">Atividade Prática</span>
       <span class="sep-line"></span>
@@ -2474,7 +2443,7 @@ Passo 3 - Crie um post para o Instagram com base no artigo de blog gerado</pre>
     </div>
 
     <!-- Para Saber Mais -->
-    <div id="sec-mais" class="item-sep fade-in" style="margin-top:48px;">
+    <div id="p2-sec-mais" class="item-sep fade-in" style="margin-top:48px;">
       <span class="sep-num">Extra</span>
       <span class="sep-title">Para Saber Mais</span>
       <span class="sep-line"></span>
@@ -2491,7 +2460,7 @@ Passo 3 - Crie um post para o Instagram com base no artigo de blog gerado</pre>
     </div>
 
     <!-- O que Aprendemos -->
-    <div id="aprendemos" class="item-sep fade-in" style="margin-top:48px;">
+    <div id="p2-aprendemos" class="item-sep fade-in" style="margin-top:48px;">
       <span class="sep-num">Revisão</span>
       <span class="sep-title">O que Aprendemos?</span>
       <span class="sep-line"></span>
@@ -2515,7 +2484,7 @@ Passo 3 - Crie um post para o Instagram com base no artigo de blog gerado</pre>
   <div class="content">
 
     <!-- Objetivos -->
-    <div id="objetivos" class="fade-in">
+    <div id="p3-objetivos" class="fade-in">
       <div class="obj-title">◆ Objetivos da Instrução</div>
       <div class="obj-grid">
         <div class="obj-item"><span class="dot"></span>Usar o ChatGPT para fazer upload e analisar planilhas financeiras (CSV/Excel).</div>
@@ -2526,13 +2495,13 @@ Passo 3 - Crie um post para o Instagram com base no artigo de blog gerado</pre>
     </div>
 
     <!-- Introdução -->
-    <div id="introducao" class="intro-card fade-in">
+    <div id="p3-introducao" class="intro-card fade-in">
       <p>Nas aulas anteriores aprendemos a usar IAs para <strong style="color:#fff">gerar textos</strong> e entendemos como esses modelos funcionam internamente. Agora vamos explorar uma dimensão ainda mais poderosa: o uso de IAs para <strong style="color:var(--sky)">analisar documentos, dados, imagens, vídeos e áudios</strong>.</p>
       <p>Imagine ter 100 linhas em uma planilha financeira, um guia turístico de 23 páginas, um artigo técnico de 92 páginas, uma imagem de produto ou uma reunião de 44 minutos gravada em áudio — e conseguir extrair insights, resumos e respostas específicas em segundos. É exatamente isso que veremos nesta aula.</p>
     </div>
 
     <!-- ════ ITEM 01 — PLANILHAS ════ -->
-    <div id="item01" class="item-sep fade-in">
+    <div id="p3-item01" class="item-sep fade-in">
       <span class="sep-num">Item 01</span>
       <span class="sep-title">Analisando Planilhas com IA</span>
       <span class="sep-line"></span>
@@ -2819,7 +2788,7 @@ a soma, o valor correto é 34.017,12. Peço desculpas pelo erro.</pre>
       </div>
     </div>
     <!-- ════ ITEM 02 — PDF ════ -->
-    <div id="item02" class="item-sep fade-in">
+    <div id="p3-item02" class="item-sep fade-in">
       <span class="sep-num">Item 02</span>
       <span class="sep-title">Analisando Documentos PDF</span>
       <span class="sep-line"></span>
@@ -2992,7 +2961,7 @@ com aproximadamente 16,5 trilhões de tokens.</pre>
       </div>
     </div>
     <!-- ════ ITEM 03 — IMAGENS ════ -->
-    <div id="item03" class="item-sep fade-in">
+    <div id="p3-item03" class="item-sep fade-in">
       <span class="sep-num">Item 03</span>
       <span class="sep-title">Analisando e Criando Conteúdo a partir de Imagens</span>
       <span class="sep-line"></span>
@@ -3171,7 +3140,7 @@ Instruções:
       </div>
     </div>
     <!-- ════ ITEM 04 — VÍDEOS ════ -->
-    <div id="item04" class="item-sep fade-in">
+    <div id="p3-item04" class="item-sep fade-in">
       <span class="sep-num">Item 04</span>
       <span class="sep-title">Analisando Vídeos com Google AI Studio</span>
       <span class="sep-line"></span>
@@ -3308,7 +3277,7 @@ na edição e me dê a minutagem exata deles.</pre>
       </div>
     </div>
     <!-- ════ ITEM 05 — ÁUDIO ════ -->
-    <div id="item05" class="item-sep fade-in">
+    <div id="p3-item05" class="item-sep fade-in">
       <span class="sep-num">Item 05</span>
       <span class="sep-title">Analisando e Transcrevendo Áudios</span>
       <span class="sep-line"></span>
@@ -3437,7 +3406,7 @@ na edição e me dê a minutagem exata deles.</pre>
       </div>
     </div>
     <!-- ════ ITEM 06 — COMPARATIVO ════ -->
-    <div id="item06" class="item-sep fade-in">
+    <div id="p3-item06" class="item-sep fade-in">
       <span class="sep-num">Item 06</span>
       <span class="sep-title">Comparativo das Ferramentas</span>
       <span class="sep-line"></span>
@@ -3545,7 +3514,7 @@ na edição e me dê a minutagem exata deles.</pre>
     </div>
 
     <!-- Para Saber Mais -->
-    <div id="sec-mais" class="item-sep fade-in" style="margin-top:48px;">
+    <div id="p3-sec-mais" class="item-sep fade-in" style="margin-top:48px;">
       <span class="sep-num">Extra</span>
       <span class="sep-title">Para Saber Mais</span>
       <span class="sep-line"></span>
@@ -3561,7 +3530,7 @@ na edição e me dê a minutagem exata deles.</pre>
     </div>
 
     <!-- O que Aprendemos -->
-    <div id="aprendemos" class="item-sep fade-in" style="margin-top:48px;">
+    <div id="p3-aprendemos" class="item-sep fade-in" style="margin-top:48px;">
       <span class="sep-num">Revisão</span>
       <span class="sep-title">O que Aprendemos?</span>
       <span class="sep-line"></span>
@@ -3587,7 +3556,7 @@ na edição e me dê a minutagem exata deles.</pre>
   <div class="content">
 
     <!-- Objetivos -->
-    <div id="objetivos" class="fade-in">
+    <div id="p4-objetivos" class="fade-in">
       <div class="obj-title">◆ Objetivos da Instrução</div>
       <div class="obj-grid">
         <div class="obj-item"><span class="dot"></span>Compreender o conceito de modelos multimodais de I.A.</div>
@@ -3598,7 +3567,7 @@ na edição e me dê a minutagem exata deles.</pre>
     </div>
 
     <!-- Introdução -->
-    <div id="introducao" class="intro-card fade-in">
+    <div id="p4-introducao" class="intro-card fade-in">
       <p>Até o momento, a atenção esteve voltada para as I.A.s que <strong style="color:#fff">geram ou analisam textos</strong>. Nesta instrução, o foco muda: exploraremos os principais <strong style="color:var(--sky)">geradores de imagem</strong> — ferramentas de inteligência artificial capazes de criar imagens a partir de simples descrições em linguagem natural.</p>
       <p>Veremos desde opções gratuitas como o <strong style="color:var(--sky)">Bing Images Creator</strong> até soluções mais avançadas integradas ao <strong style="color:var(--sky)">ChatGPT via DALL-E 3</strong>, entendendo as vantagens e limitações de cada uma.</p>
     </div>
@@ -4251,7 +4220,7 @@ na edição e me dê a minutagem exata deles.</pre>
       </div>
       </div>
     </div>
-<div id="aprendemos" class="dark-card fade-in">
+<div id="p4-aprendemos" class="dark-card fade-in">
       <p>Nesta aula, aprendemos sobre:</p>
       <p><strong style="color:var(--sky);">Criação de imagens usando Bing Images, DALL-E e Midjourney</strong> — cada ferramenta com suas características, custos e diferenciais. O Bing Images é gratuito e usa DALL-E 3 como motor; o DALL-E 3 pelo ChatGPT aproveita o contexto da conversa para prompts mais precisos; o Midjourney entrega a maior qualidade visual, com amplo controle de estilo e proporção.</p>
       <p><strong style="color:var(--sky);">Prompts para imagens</strong> — a qualidade do resultado depende diretamente da clareza do pedido. Descrições de estilo (fotorrealista, anime, aquarela), proporção (<code style="background:rgba(255,255,255,.12);padding:1px 5px;border-radius:3px;font-family:monospace;">--ar 16:9</code>), elementos da cena e restrições tornam os resultados muito mais precisos e úteis.</p>
