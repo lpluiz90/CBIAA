@@ -481,14 +481,17 @@
         <li class="section-divider"><a href="#sec-tecnica"><span class="num">02</span> Entendendo a Técnica</a></li>
         <li><a href="#fs-zerovsfew"><span class="num">2.1</span> Zero-Shot vs Few-Shot</a></li>
         <li><a href="#fs-nicolas"><span class="num">2.2</span> O Problema de Nicolas Cage</a></li>
+        <li><a href="#fs-qualidade"><span class="num">2.3</span> A Qualidade dos Exemplos</a></li>
         <li><a href="#quiz-fs2"><span class="num">—</span> Exercício 02</a></li>
         <li class="section-divider"><a href="#sec-areas"><span class="num">03</span> Few-Shot em Diferentes Áreas</a></li>
         <li><a href="#fs-matematica"><span class="num">3.1</span> Matemática</a></li>
         <li><a href="#fs-sentimentos"><span class="num">3.2</span> Análise de Sentimentos</a></li>
         <li><a href="#fs-traducao"><span class="num">3.3</span> Tradução</a></li>
+        <li><a href="#fs-intencao"><span class="num">3.4</span> Detecção de Intenção</a></li>
         <li><a href="#quiz-fs3"><span class="num">—</span> Exercício 03</a></li>
         <li class="section-divider"><a href="#sec-sabermais3"><span class="num">04</span> Para Saber Mais</a></li>
         <li><a href="#fs-paper"><span class="num">4.1</span> O Artigo de 2020</a></li>
+        <li><a href="#fs-armadilhas"><span class="num">4.2</span> Armadilhas Comuns</a></li>
         <li class="section-divider"><a href="#sec-faca-como3"><span class="num">05</span> Faça Como Eu Fiz</a></li>
         <li class="section-divider"><a href="#sec-aprendemos3"><span class="num">06</span> O que Aprendemos</a></li>
       </ul>
@@ -1972,6 +1975,68 @@ Resposta:</pre>
           <strong>Por que "Few-Shot"?</strong> O nome vem do inglês: <em>few</em> = poucos, <em>shot</em> = disparo/exemplo. "Few-Shot" = usar poucos exemplos para guiar o modelo. Se você usar apenas 1, é "One-Shot". Se não usar nenhum, é "Zero-Shot".
         </div>
 
+        <div id="fs-qualidade" class="card fade-in">
+          <div class="card-title">🏗️ A Qualidade dos Exemplos Importa</div>
+          <p>Fornecer exemplos é necessário — mas fornecer <strong>bons exemplos</strong> é o que separa um resultado mediano de um resultado excelente. Quatro regras determinam a qualidade de um exemplo Few-Shot:</p>
+        </div>
+
+        <div class="feature-grid fade-in">
+          <div class="feature-box">
+            <h5>🎯 Relevância</h5>
+            <p>Os exemplos devem ser <strong>similares ao problema real</strong>. Exemplos sobre receitas culinárias não ajudam o modelo a classificar e-mails corporativos — o domínio precisa ser o mesmo.</p>
+          </div>
+          <div class="feature-box gold">
+            <h5>📐 Consistência</h5>
+            <p>Todos os exemplos devem seguir <strong>exatamente o mesmo padrão</strong> de formato, pontuação e estrutura. Um exemplo com ponto final e outro sem já geram inconsistência na resposta.</p>
+          </div>
+          <div class="feature-box green">
+            <h5>🌈 Diversidade</h5>
+            <p>Varie os exemplos para cobrir <strong>casos diferentes</strong> do mesmo domínio. Exemplos muito parecidos entre si não ensinam o modelo a generalizar para situações novas.</p>
+          </div>
+          <div class="feature-box purple">
+            <h5>✂️ Concisão</h5>
+            <p>Exemplos longos consomem espaço da janela de contexto. Prefira exemplos <strong>curtos e representativos</strong> — o objetivo é demonstrar o padrão, não exaurir o contexto disponível.</p>
+          </div>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">❌ Exemplo Ruim vs ✅ Exemplo Bom</div>
+          <p>Veja como a inconsistência no formato dos exemplos prejudica o resultado — e como a versão corrigida resolve o problema:</p>
+        </div>
+
+        <div class="prompt-pair fade-in">
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Few-Shot com Exemplos Inconsistentes ❌</span>
+            <pre class="prompt-block prompt">Classifique o e-mail como URGENTE ou NORMAL.
+
+E-mail: "Servidor caiu, preciso de suporte imediato!"
+Resposta: Este e-mail é urgente pois o servidor caiu.
+
+E-mail: "Reunião cancelada para a próxima semana."
+Saída: NORMAL
+
+E-mail: "Contrato vence hoje às 18h, precisamos assinar."
+Classificação:</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Few-Shot com Exemplos Consistentes ✅</span>
+            <pre class="prompt-block prompt">Classifique o e-mail como URGENTE ou NORMAL.
+
+E-mail: "Servidor caiu, preciso de suporte imediato!"
+Classificação: URGENTE
+
+E-mail: "Reunião cancelada para a próxima semana."
+Classificação: NORMAL
+
+E-mail: "Contrato vence hoje às 18h, precisamos assinar."
+Classificação:</pre>
+          </div>
+        </div>
+
+        <div class="callout fade-in">
+          <strong>O problema da versão ruim:</strong> Os três exemplos usam rótulos diferentes — "Resposta: Este e-mail é urgente...", "Saída: NORMAL" e "Classificação:". O modelo não identifica um padrão único e gera uma resposta no formato errado ou inconsistente.
+        </div>
+
         <!-- Quiz 02 -->
         <div id="quiz-fs2" class="quiz-section fade-in">
           <div class="quiz-section-header">
@@ -2115,6 +2180,35 @@ Português:</pre>
           <strong>Resultado esperado:</strong> "Faz-se necessário adaptar as ações à nova situação." — O modelo aprendeu que você quer linguagem formal militar, não uma tradução literal do inglês coloquial.
         </div>
 
+        <div id="fs-intencao" class="card fade-in">
+          <div class="card-title">🔍 Área 4 — Detecção de Intenção</div>
+          <p>Identificar a intenção por trás de uma mensagem é fundamental em sistemas de atendimento, triagem de solicitações e chatbots institucionais. Com Few-Shot, você define as categorias exatas que fazem sentido para o <em>seu</em> contexto — algo que seria impossível de descrever apenas com palavras:</p>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Few-Shot — Classificação de Intenção</span>
+          <pre class="prompt-block prompt">Classifique a intenção de cada mensagem como PERGUNTA, SOLICITAÇÃO, RECLAMAÇÃO ou ELOGIO.
+
+Mensagem: "Qual é o horário de atendimento da seção de TI?"
+Intenção: PERGUNTA
+
+Mensagem: "Preciso de acesso ao sistema de RH com urgência."
+Intenção: SOLICITAÇÃO
+
+Mensagem: "O equipamento que recebi está com defeito há três dias e ninguém resolveu."
+Intenção: RECLAMAÇÃO
+
+Mensagem: "A equipe de suporte foi muito eficiente e resolveu o problema em minutos."
+Intenção: ELOGIO
+
+Mensagem: "Meu acesso ao portal foi bloqueado e não consigo entrar para o trabalho de amanhã."
+Intenção:</pre>
+        </div>
+
+        <div class="callout tip fade-in">
+          <strong>Aplicação prática:</strong> Esse padrão permite automatizar o roteamento de mensagens — encaminhar reclamações para o SAC, solicitações para o setor responsável e perguntas para a base de conhecimento, tudo a partir de um único prompt Few-Shot integrado ao fluxo de trabalho.
+        </div>
+
         <!-- Quiz 03 -->
         <div id="quiz-fs3" class="quiz-section fade-in">
           <div class="quiz-section-header">
@@ -2217,6 +2311,30 @@ Português:</pre>
 
         <div class="callout tip fade-in">
           <strong>Regra prática:</strong> Comece com Zero-Shot. Se o resultado estiver bom, mas no formato errado, adicione 2–3 exemplos e transforme em Few-Shot. É mais rápido do que tentar descrever o formato em palavras.
+        </div>
+
+        <div id="fs-armadilhas" class="card fade-in">
+          <div class="card-title">⚠️ Armadilhas Comuns no Few-Shot</div>
+          <p>Conhecer o que <em>não fazer</em> é tão importante quanto dominar a técnica. Estas são as três armadilhas mais frequentes — e como evitá-las:</p>
+        </div>
+
+        <div class="feature-grid fade-in">
+          <div class="feature-box red">
+            <h5>🪤 Exemplos Tendenciosos</h5>
+            <p>Se todos os exemplos mostram o mesmo tipo de resposta, o modelo replica esse viés. Para classificação, <strong>equilibre os exemplos</strong> entre todas as categorias possíveis — nunca use só exemplos positivos ou só exemplos negativos.</p>
+          </div>
+          <div class="feature-box gold">
+            <h5>📋 Formato Inconsistente</h5>
+            <p>Misturar formatos nos exemplos (maiúsculas em um, minúsculas em outro; ponto final em um, sem ponto em outro) faz o modelo gerar respostas aleatórias. <strong>Padronize cada detalhe</strong> — pontuação, capitalização, espaçamento.</p>
+          </div>
+          <div class="feature-box purple">
+            <h5>📚 Excesso de Exemplos</h5>
+            <p>Mais de 5–6 exemplos raramente melhora o resultado e desperdiça tokens da janela de contexto. O ganho é decrescente: de 0→2 exemplos é enorme; de 5→10 é marginal. <strong>Qualidade supera quantidade.</strong></p>
+          </div>
+        </div>
+
+        <div class="highlight-box fade-in">
+          <strong>Regra de ouro:</strong> Se o resultado do seu Few-Shot está errado, o problema quase sempre está nos exemplos — não no modelo. Revise consistência, relevância e equilíbrio antes de tentar qualquer outra coisa.
         </div>
 
         <!-- ─── ITEM 05 ─── -->
