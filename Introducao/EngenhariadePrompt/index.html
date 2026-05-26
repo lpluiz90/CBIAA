@@ -401,7 +401,7 @@
         <li class="section-divider"><a href="#sec-ambiente2"><span class="num">03</span> Preparando o Ambiente</a></li>
         <li><a href="#ep-mistral"><span class="num">3.1</span> Mistral AI</a></li>
         <li class="section-divider"><a href="#sec-principios"><span class="num">04</span> Princípios de Criação</a></li>
-        <li><a href="#ep-principio1"><span class="num">4.1</span> Os 4 Princípios</a></li>
+        <li><a href="#ep-principio1"><span class="num">4.1</span> Os 5 Princípios</a></li>
         <li><a href="#ep-detetive"><span class="num">4.2</span> Jogo do Detetive</a></li>
         <li><a href="#quiz-ep2"><span class="num">—</span> Exercício 04</a></li>
         <li class="section-divider"><a href="#sec-faca-como2"><span class="num">05</span> Faça Como Eu Fiz</a></li>
@@ -1374,7 +1374,7 @@ combinações de probabilidade muito baixa]</pre>
           <div class="obj-grid">
             <div class="obj-item"><span class="dot"></span>Compreender o que é Engenharia de Prompt e por que ela importa.</div>
             <div class="obj-item"><span class="dot"></span>Conhecer a origem da palavra "prompt" e sua evolução no contexto da IA.</div>
-            <div class="obj-item"><span class="dot"></span>Aplicar os 4 princípios fundamentais para criar prompts eficazes.</div>
+            <div class="obj-item"><span class="dot"></span>Aplicar os 5 princípios fundamentais para criar prompts eficazes.</div>
             <div class="obj-item"><span class="dot"></span>Praticar a criação de prompts estruturados em um ambiente real de IA.</div>
           </div>
         </div>
@@ -1505,32 +1505,36 @@ combinações de probabilidade muito baixa]</pre>
         </div>
 
         <div id="ep-principio1" class="card fade-in">
-          <div class="card-title">📐 Os 4 Princípios Fundamentais</div>
-          <p>Bons prompts não surgem por acaso. Pesquisadores das maiores empresas de IA identificaram quatro princípios que separam um prompt mediano de um prompt excelente:</p>
+          <div class="card-title">📐 Os 5 Princípios Fundamentais</div>
+          <p>Bons prompts não surgem por acaso. Pesquisadores das maiores empresas de IA identificaram cinco princípios que separam um prompt mediano de um prompt excelente:</p>
         </div>
 
         <div class="feature-grid fade-in">
-          <div class="feature-box">
-            <h5>1️⃣ Escreva instruções claras</h5>
-            <p>Quanto mais específico e detalhado for o seu pedido, melhor a resposta. Evite ambiguidades. Diga exatamente o que você quer, em qual formato e para qual público.</p>
-          </div>
           <div class="feature-box gold">
-            <h5>2️⃣ Forneça contexto e referências</h5>
-            <p>Dê ao modelo informações de fundo: quem você é, qual o objetivo, quais restrições existem. Inclua exemplos do resultado esperado quando possível.</p>
+            <h5>1️⃣ Clareza nas instruções</h5>
+            <p>Especifique formato, tom, público-alvo, extensão e o que <em>não</em> deve ser feito. Quanto mais claro e específico o pedido, mais precisa a resposta. É o princípio mais importante.</p>
+          </div>
+          <div class="feature-box">
+            <h5>2️⃣ Dividir tarefas complexas</h5>
+            <p>Separe problemas grandes em subtarefas numeradas e sequenciais. A IA processa cada etapa com mais foco e entrega resultados melhores em cada parte.</p>
           </div>
           <div class="feature-box green">
-            <h5>3️⃣ Divida em subtarefas</h5>
-            <p>Problemas complexos devem ser quebrados em etapas menores. Em vez de pedir tudo de uma vez, conduza o modelo passo a passo — os resultados serão muito melhores.</p>
+            <h5>3️⃣ Pedir explicação passo a passo</h5>
+            <p>Para problemas de lógica, matemática ou raciocínio, peça que o modelo explique como vai resolver <em>antes</em> de dar a resposta. Reduz erros significativamente.</p>
           </div>
           <div class="feature-box purple">
-            <h5>4️⃣ Itere e refine</h5>
-            <p>Raramente o primeiro prompt é o melhor. Analise a resposta, identifique o que ficou errado e ajuste o prompt. A engenharia de prompt é um processo iterativo.</p>
+            <h5>4️⃣ Pedir justificativas</h5>
+            <p>Solicite que o modelo explique <em>por que</em> fez cada escolha. Isso aumenta a transparência, ajuda a identificar erros e torna a resposta mais confiável.</p>
+          </div>
+          <div class="feature-box red" style="grid-column:1/-1;">
+            <h5>5️⃣ Autoconsistência</h5>
+            <p>Envie o mesmo prompt várias vezes e colete a resposta mais frequente. Especialmente útil para cálculos numéricos e análises onde a IA pode errar de primeira. <strong>Dica:</strong> os princípios 1 a 4 são os mais úteis no cotidiano — o 5 é mais indicado para análises matemáticas.</p>
           </div>
         </div>
 
         <!-- Jogo do Detetive -->
         <div id="ep-detetive" class="card fade-in">
-          <div class="card-title">🕵️ Aplicando o Princípio 3: O Jogo do Detetive</div>
+          <div class="card-title">🕵️ Aplicando o Princípio 2: O Jogo do Detetive</div>
           <p>Para entender na prática como <strong>dividir em subtarefas</strong> faz diferença, vamos criar um jogo do detetive estilo <em>Detetive/Clue</em> com o Mistral AI. Observe a diferença entre um prompt genérico e um estruturado:</p>
         </div>
 
@@ -1647,7 +1651,7 @@ Frase: "Doze anos de lealdade, e ele nem olhou para mim na última semana."</pre
 
             <div class="quiz-block">
               <div class="quiz-q-label">Questão 02</div>
-              <div class="quiz-question">Um colega enviou o prompt "escreva um relatório" e ficou insatisfeito com o resultado genérico. Qual dos 4 princípios ele deveria aplicar primeiro?</div>
+              <div class="quiz-question">Um colega enviou o prompt "escreva um relatório" e ficou insatisfeito com o resultado genérico. Qual dos 5 princípios ele deveria aplicar primeiro?</div>
               <div class="quiz-options">
                 <div class="quiz-option" data-correct="true" data-feedback-ok="Correto! O problema é clareza. O prompt não especificou: relatório sobre o quê? Para quem? Em qual formato? Qual extensão? Com qual objetivo? Mais clareza e detalhes resolveriam o problema diretamente." onclick="answerQuiz(this)"><span class="opt-letter">A</span>Escrever instruções mais claras e específicas.</div>
                 <div class="quiz-option" data-correct="false" data-feedback-err="Errado. Fornecer referências ajuda, mas o problema mais urgente é a falta de especificidade básica. Sem saber o tema, público e formato, nenhuma referência vai resolver." onclick="answerQuiz(this)"><span class="opt-letter">B</span>Fornecer referências e exemplos de outros relatórios.</div>
@@ -1731,7 +1735,7 @@ Escreva em 2ª pessoa, como se o jogador fosse o detetive.</pre>
           </div>
           <div class="learned-item">
             <div class="li-num">02</div>
-            <div>Os <strong>4 princípios fundamentais</strong> — instruções claras, contexto e referências, divisão em subtarefas e iteração — são o alicerce de todo prompt eficaz, independentemente da ferramenta ou do objetivo.</div>
+            <div>Os <strong>5 princípios fundamentais</strong> — clareza nas instruções, divisão em subtarefas, explicação passo a passo, pedido de justificativas e autoconsistência — são o alicerce de todo prompt eficaz, independentemente da ferramenta ou do objetivo.</div>
           </div>
         </div>
 
