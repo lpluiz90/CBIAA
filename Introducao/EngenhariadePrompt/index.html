@@ -357,6 +357,7 @@
         <li><a href="#temperatura-testes"><span class="num">4.2</span> Testes Práticos</a></li>
         <li><a href="#tokens-conceito"><span class="num">4.3</span> O que são Tokens</a></li>
         <li><a href="#tokens-idiomas"><span class="num">4.4</span> Tokens por Idioma</a></li>
+        <li><a href="#quiz-4"><span class="num">—</span> Exercício 04</a></li>
         <li class="section-divider"><a href="#sec-pratica"><span class="num">05</span> Explorando Probabilidades</a></li>
         <li class="section-divider"><a href="#sec-aprendemos"><span class="num">06</span> O que Aprendemos</a></li>
       </ul>
@@ -1170,6 +1171,65 @@ combinações de probabilidade muito baixa]</pre>
 
           <div class="callout warn">
             <strong>Conclusão prática:</strong> escrever prompts em inglês pode ser mais econômico (menos tokens) e, em alguns modelos, produzir respostas de maior qualidade — o inglês é mais representado no treinamento. Para uso cotidiano em português, os modelos atuais já são excelentes, mas é útil conhecer essa diferença ao pensar em custo e limites de contexto.
+          </div>
+        </div>
+
+        <!-- Quiz Item 04 -->
+        <div id="quiz-4" class="quiz-section fade-in">
+          <div class="quiz-section-header">
+            <span class="qs-label">Exercício Prático</span>
+            <span class="qs-title">Teste seus conhecimentos sobre temperatura e tokens:</span>
+          </div>
+          <div class="quiz-section-body">
+
+            <div class="quiz-block" data-correct="b"
+              data-feedback-ok="Correto! Temperatura baixa (próxima de 0) faz o modelo escolher sempre as palavras de maior probabilidade, gerando respostas mais consistentes e previsíveis — ideal para tarefas técnicas onde a exatidão importa mais que a criatividade."
+              data-feedback-err="Incorreto. Para tarefas que exigem precisão e consistência, a temperatura deve ser baixa (próxima de 0). Temperaturas altas introduzem variação e imprevisibilidade — úteis para criatividade, mas inadequadas para relatórios técnicos.">
+              <div class="quiz-q-label">Questão 01</div>
+              <div class="quiz-question">Um analista precisa usar IA para gerar relatórios técnicos que devem ser precisos e produzir a mesma resposta toda vez que o mesmo dado for consultado. Qual configuração de temperatura ele deve usar?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Temperatura 2, para maximizar a diversidade e criatividade das respostas geradas.</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Temperatura 0 ou próxima de 0, para obter respostas previsíveis e consistentes.</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Temperatura 1.5, pois equilibra criatividade com precisão técnica.</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> A temperatura não interfere na precisão — apenas na velocidade das respostas.</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+            <div class="quiz-block" data-correct="b"
+              data-feedback-ok="Exato! Um token é a unidade básica de processamento — não necessariamente uma palavra completa. A palavra 'estou', por exemplo, pode ser dividida em 'est' + 'ou'. O que vira token depende do algoritmo de tokenização de cada empresa."
+              data-feedback-err="Incorreto. Um token não é sempre uma palavra completa nem um único caractere. É a unidade básica de processamento do modelo — pode ser uma palavra inteira, um prefixo, uma sílaba ou fragmento de uma palavra longa ou incomum.">
+              <div class="quiz-q-label">Questão 02</div>
+              <div class="quiz-question">O que melhor define um "token" no contexto dos modelos de linguagem?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Uma palavra completa — cada palavra no texto corresponde a exatamente um token.</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> A unidade básica de processamento do modelo — pode ser uma palavra inteira ou apenas um fragmento dela.</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Um caractere individual, como uma letra ou sinal de pontuação, sempre processado isoladamente.</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Uma frase curta de até cinco palavras que o modelo lê e processa de uma única vez.</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+            <div class="quiz-block" data-correct="c"
+              data-feedback-ok="Correto! Cada modelo tem um limite de contexto em tokens. Quando a conversa ultrapassa esse limite, as mensagens mais antigas são descartadas para abrir espaço — o modelo literalmente 'esquece' o que foi dito no início da conversa."
+              data-feedback-err="Incorreto. O problema não é velocidade nem tempo de uso — é o limite de contexto em tokens. Quando a soma de tokens da conversa supera o limite do modelo, as mensagens mais antigas são descartadas para que as mais recentes possam ser processadas.">
+              <div class="quiz-q-label">Questão 03</div>
+              <div class="quiz-question">Por que conversas muito longas com modelos de IA tendem a apresentar respostas piores ou incoerentes nas mensagens mais recentes?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> O modelo fica mais lento com o tempo, pois os servidores da empresa ficam sobrecarregados.</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> O modelo é programado para reduzir a qualidade após 30 minutos de uso contínuo.</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Cada modelo tem um limite de contexto em tokens; ao atingi-lo, as primeiras mensagens são descartadas para abrir espaço às mais recentes.</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> O limite de caracteres por mensagem impede que o modelo leia todas as respostas anteriores da conversa.</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
           </div>
         </div>
 
