@@ -1109,23 +1109,23 @@ combinações de probabilidade muito baixa]</pre>
         <!-- Tokens: conceito -->
         <div id="tokens-conceito" class="card fade-in">
           <div class="card-title">🔤 Tokens — A Unidade Básica dos Modelos de Linguagem</div>
-          <p>Falamos bastante sobre "palavras" até aqui, mas os modelos de linguagem não trabalham exatamente com palavras — eles trabalham com <strong>tokens</strong>.</p>
-          <p>Um token é a <strong>unidade básica de processamento</strong> em modelos de linguagem. Pode corresponder a uma palavra inteira, ou apenas a uma parte dela — isso depende do algoritmo de tokenização usado por cada empresa.</p>
+          <p>Falamos bastante sobre "palavras" até aqui, mas os modelos de linguagem não trabalham com palavras completas — eles trabalham com <strong>tokens</strong>, que são pedaços de texto menores que o modelo usa para processar tudo.</p>
+          <p>Pense assim: antes de "ler" qualquer texto, o modelo o <strong>fatia em pedaços</strong>. Cada pedaço é um token. Às vezes um token é uma palavra inteira. Outras vezes é só uma sílaba, um prefixo, ou até um sinal de pontuação.</p>
+
           <div class="highlight-box" style="margin:16px 0;">
-            <strong>Exemplo em português:</strong> a palavra "infeliz" pode ser dividida em dois tokens — <strong style="color:var(--sky)">"in"</strong> + <strong style="color:var(--gold)">"feliz"</strong>. O prefixo "in-" também aparece em "indivisível", "incrível", "indispensável" — o modelo aprende esse padrão como uma unidade reutilizável que pode se combinar com diferentes raízes.
+            <strong>Visualize a tokenização da frase</strong> <em>"Eu estou aprendendo"</em>:<br><br>
+            <span style="display:inline-block;background:#2d4a6b;color:#fff;border-radius:5px;padding:3px 10px;margin:3px 2px;font-family:'Source Code Pro',monospace;font-size:15px;">Eu</span>
+            <span style="display:inline-block;background:#7b3fa0;color:#fff;border-radius:5px;padding:3px 10px;margin:3px 2px;font-family:'Source Code Pro',monospace;font-size:15px;">est</span>
+            <span style="display:inline-block;background:#1a6fa8;color:#fff;border-radius:5px;padding:3px 10px;margin:3px 2px;font-family:'Source Code Pro',monospace;font-size:15px;">ou</span>
+            <span style="display:inline-block;background:#2e7d52;color:#fff;border-radius:5px;padding:3px 10px;margin:3px 2px;font-family:'Source Code Pro',monospace;font-size:15px;">aprendendo</span>
+            <br><br>
+            4 tokens para 3 palavras — "estou" foi dividido em <strong>"est"</strong> + <strong>"ou"</strong> porque esses fragmentos aparecem em muitas outras palavras do português.
           </div>
-          <div class="feature-grid" style="margin-top:14px;">
-            <div class="feature-box gold">
-              <h5>Token = palavra inteira</h5>
-              <p>Palavras comuns e curtas geralmente formam um token só: "curso", "ia", "chat", "usar".</p>
-            </div>
-            <div class="feature-box purple">
-              <h5>Token = parte de uma palavra</h5>
-              <p>Palavras longas ou incomuns são divididas: "engenharia" pode virar "engenh" + "aria" + "."</p>
-            </div>
-          </div>
-          <div class="callout" style="margin-top:14px;">
-            <strong>Por que isso importa para você?</strong> Serviços de IA cobram por tokens — não por palavras nem por caracteres. Quanto mais tokens você usar (no prompt e na resposta), maior o custo. Além disso, cada modelo tem um <em>limite de contexto</em> em tokens: quando atingido, a conversa começa a "esquecer" as primeiras mensagens.
+
+          <p>O modelo aprende esses fragmentos porque eles são reutilizáveis: o fragmento <strong>"est"</strong> aparece em "está", "estamos", "estudo", "estrada". O fragmento <strong>"in"</strong> aparece em "infeliz", "incrível", "indivisível". Em vez de memorizar cada palavra do zero, o modelo reutiliza esses blocos — é mais eficiente.</p>
+
+          <div class="callout warn" style="margin-top:14px;">
+            <strong>Por que isso importa para você?</strong> Serviços de IA cobram por tokens, não por palavras. Prompts longos custam mais — e cada modelo tem um <em>limite de contexto</em> em tokens. Quando esse limite é atingido em uma conversa longa, o modelo começa a "esquecer" as primeiras mensagens para dar espaço às novas.
           </div>
         </div>
 
