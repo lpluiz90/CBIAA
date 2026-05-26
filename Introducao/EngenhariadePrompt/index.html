@@ -2003,71 +2003,53 @@ Resposta:</pre>
 
         <div class="card fade-in">
           <div class="card-title">❌ Exemplo Ruim vs ✅ Exemplo Bom</div>
-          <p>Veja como a inconsistência no formato dos exemplos prejudica o resultado — e como a versão corrigida resolve o problema:</p>
+          <p>No Few-Shot, você escreve os exemplos <strong>dentro do próprio prompt</strong> — cada par (e-mail + classificação esperada) é um exemplo que <em>você</em> fornece ao modelo antes da pergunta real. O modelo lê tudo de uma vez e replica o padrão que observou. Veja o que acontece quando esse padrão é inconsistente:</p>
         </div>
 
         <div class="callout danger fade-in">
-          <strong>❌ Versão Ruim — Exemplos Inconsistentes</strong><br>Observe os três rótulos diferentes usados: <em>"Resposta: Este e-mail é urgente pois…"</em>, <em>"Saída: NORMAL"</em> e <em>"Classificação:"</em>. O modelo não identifica um padrão único.
+          <strong>❌ Prompt com exemplos inconsistentes</strong> — Os três exemplos usam rótulos diferentes: <em>"Resposta:"</em>, <em>"Saída:"</em> e <em>"Classificação:"</em>. Tudo isso está no mesmo bloco que <strong>você escreve</strong>. O modelo lê os três, não identifica um padrão único e gera uma resposta no formato errado.
         </div>
         <div class="prompt-pair fade-in">
           <div class="prompt-wrap">
-            <span class="prompt-label danger">✦ E-mail 01</span>
-            <pre class="prompt-block danger">E-mail: "Servidor caiu, preciso de suporte imediato!"</pre>
+            <span class="prompt-label prompt">✦ Prompt que VOCÊ escreve — Clique para copiar</span>
+            <pre class="prompt-block prompt">Classifique o e-mail como URGENTE ou NORMAL.
+
+E-mail: "Servidor caiu, preciso de suporte imediato!"
+Resposta: Este e-mail é urgente pois o servidor caiu.
+
+E-mail: "Reunião cancelada para a próxima semana."
+Saída: NORMAL
+
+E-mail: "Contrato vence hoje às 18h, precisamos assinar."
+Classificação:</pre>
           </div>
           <div class="prompt-wrap">
-            <span class="prompt-label danger">◉ Rótulo inconsistente ❌</span>
-            <pre class="prompt-block danger">Resposta: Este e-mail é urgente pois o servidor caiu.</pre>
-          </div>
-          <div class="prompt-wrap">
-            <span class="prompt-label danger">✦ E-mail 02</span>
-            <pre class="prompt-block danger">E-mail: "Reunião cancelada para a próxima semana."</pre>
-          </div>
-          <div class="prompt-wrap">
-            <span class="prompt-label danger">◉ Rótulo inconsistente ❌</span>
-            <pre class="prompt-block danger">Saída: NORMAL</pre>
-          </div>
-          <div class="prompt-wrap">
-            <span class="prompt-label danger">✦ E-mail 03 — o modelo preenche</span>
-            <pre class="prompt-block danger">E-mail: "Contrato vence hoje às 18h, precisamos assinar."</pre>
-          </div>
-          <div class="prompt-wrap">
-            <span class="prompt-label danger">◉ Qual rótulo o modelo usa?</span>
-            <pre class="prompt-block danger">Classificação: ???  ← o modelo fica confuso</pre>
+            <span class="prompt-label danger">◉ O que a IA pode responder ❌</span>
+            <pre class="prompt-block danger">Resultado: Este contrato vence hoje e precisa ser assinado com urgência.</pre>
           </div>
         </div>
 
         <div class="callout tip fade-in">
-          <strong>✅ Versão Corrigida — Exemplos Consistentes</strong><br>Todos os rótulos usam exatamente <em>"Classificação:"</em>. O modelo aprende o padrão e o replica sem ambiguidade.
+          <strong>✅ Prompt com exemplos consistentes</strong> — Todos os exemplos usam o mesmo rótulo <em>"Classificação:"</em>. O modelo reconhece o padrão imediatamente e responde de forma previsível e correta.
         </div>
         <div class="prompt-pair fade-in">
           <div class="prompt-wrap">
-            <span class="prompt-label prompt">✦ E-mail 01 — Clique para copiar</span>
-            <pre class="prompt-block prompt">E-mail: "Servidor caiu, preciso de suporte imediato!"</pre>
-          </div>
-          <div class="prompt-wrap">
-            <span class="prompt-label resposta">◉ Rótulo consistente ✅</span>
-            <pre class="prompt-block resposta">Classificação: URGENTE</pre>
-          </div>
-          <div class="prompt-wrap">
-            <span class="prompt-label prompt">✦ E-mail 02 — Clique para copiar</span>
-            <pre class="prompt-block prompt">E-mail: "Reunião cancelada para a próxima semana."</pre>
-          </div>
-          <div class="prompt-wrap">
-            <span class="prompt-label resposta">◉ Rótulo consistente ✅</span>
-            <pre class="prompt-block resposta">Classificação: NORMAL</pre>
-          </div>
-          <div class="prompt-wrap">
-            <span class="prompt-label prompt">✦ E-mail 03 — o modelo preenche</span>
-            <pre class="prompt-block prompt">E-mail: "Contrato vence hoje às 18h, precisamos assinar."</pre>
-          </div>
-          <div class="prompt-wrap">
-            <span class="prompt-label resposta">◉ O modelo responde corretamente</span>
-            <pre class="prompt-block resposta">Classificação: URGENTE</pre>
-          </div>
-        </div>
+            <span class="prompt-label prompt">✦ Prompt que VOCÊ escreve — Clique para copiar</span>
+            <pre class="prompt-block prompt">Classifique o e-mail como URGENTE ou NORMAL.
 
-        <div class="callout fade-in">
-          <strong>O problema da versão ruim:</strong> Os três exemplos usam rótulos diferentes — "Resposta: Este e-mail é urgente...", "Saída: NORMAL" e "Classificação:". O modelo não identifica um padrão único e gera uma resposta no formato errado ou inconsistente.
+E-mail: "Servidor caiu, preciso de suporte imediato!"
+Classificação: URGENTE
+
+E-mail: "Reunião cancelada para a próxima semana."
+Classificação: NORMAL
+
+E-mail: "Contrato vence hoje às 18h, precisamos assinar."
+Classificação:</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ O que a IA responde ✅</span>
+            <pre class="prompt-block resposta">Classificação: URGENTE</pre>
+          </div>
         </div>
 
         <!-- Quiz 02 -->
