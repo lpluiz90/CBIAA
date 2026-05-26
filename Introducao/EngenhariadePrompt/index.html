@@ -122,10 +122,12 @@
   .prompt-label.prompt{background:#1e1e1e;color:#569cd6;}
   .prompt-label.resposta{background:#0d2818;color:#4ec94e;}
   .prompt-label.neutro{background:#2a2a2a;color:#ce9178;}
+  .prompt-label.danger{background:#2b0a0a;color:#ef9a9a;}
   pre.prompt-block{font-family:'Source Code Pro',monospace;font-size:17px;line-height:1.72;padding:16px 20px;border-radius:0 8px 8px 8px;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-word;}
   pre.prompt-block.prompt{background:#1e1e1e;color:#d4d4d4;}
   pre.prompt-block.resposta{background:#0d2818;color:#9cdcfe;font-style:italic;}
   pre.prompt-block.neutro{background:#2a2a2a;color:#ce9178;}
+  pre.prompt-block.danger{background:#2b0a0a;color:#ef9a9a;}
   .copy-ok{color:#4ec94e !important;}
 
   /* Two-col prompt pair */
@@ -2004,32 +2006,63 @@ Resposta:</pre>
           <p>Veja como a inconsistência no formato dos exemplos prejudica o resultado — e como a versão corrigida resolve o problema:</p>
         </div>
 
+        <div class="callout danger fade-in">
+          <strong>❌ Versão Ruim — Exemplos Inconsistentes</strong><br>Observe os três rótulos diferentes usados: <em>"Resposta: Este e-mail é urgente pois…"</em>, <em>"Saída: NORMAL"</em> e <em>"Classificação:"</em>. O modelo não identifica um padrão único.
+        </div>
         <div class="prompt-pair fade-in">
           <div class="prompt-wrap">
-            <span class="prompt-label prompt">✦ Few-Shot com Exemplos Inconsistentes ❌</span>
-            <pre class="prompt-block prompt">Classifique o e-mail como URGENTE ou NORMAL.
-
-E-mail: "Servidor caiu, preciso de suporte imediato!"
-Resposta: Este e-mail é urgente pois o servidor caiu.
-
-E-mail: "Reunião cancelada para a próxima semana."
-Saída: NORMAL
-
-E-mail: "Contrato vence hoje às 18h, precisamos assinar."
-Classificação:</pre>
+            <span class="prompt-label danger">✦ E-mail 01</span>
+            <pre class="prompt-block danger">E-mail: "Servidor caiu, preciso de suporte imediato!"</pre>
           </div>
           <div class="prompt-wrap">
-            <span class="prompt-label prompt">✦ Few-Shot com Exemplos Consistentes ✅</span>
-            <pre class="prompt-block prompt">Classifique o e-mail como URGENTE ou NORMAL.
+            <span class="prompt-label danger">◉ Rótulo inconsistente ❌</span>
+            <pre class="prompt-block danger">Resposta: Este e-mail é urgente pois o servidor caiu.</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label danger">✦ E-mail 02</span>
+            <pre class="prompt-block danger">E-mail: "Reunião cancelada para a próxima semana."</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label danger">◉ Rótulo inconsistente ❌</span>
+            <pre class="prompt-block danger">Saída: NORMAL</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label danger">✦ E-mail 03 — o modelo preenche</span>
+            <pre class="prompt-block danger">E-mail: "Contrato vence hoje às 18h, precisamos assinar."</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label danger">◉ Qual rótulo o modelo usa?</span>
+            <pre class="prompt-block danger">Classificação: ???  ← o modelo fica confuso</pre>
+          </div>
+        </div>
 
-E-mail: "Servidor caiu, preciso de suporte imediato!"
-Classificação: URGENTE
-
-E-mail: "Reunião cancelada para a próxima semana."
-Classificação: NORMAL
-
-E-mail: "Contrato vence hoje às 18h, precisamos assinar."
-Classificação:</pre>
+        <div class="callout tip fade-in">
+          <strong>✅ Versão Corrigida — Exemplos Consistentes</strong><br>Todos os rótulos usam exatamente <em>"Classificação:"</em>. O modelo aprende o padrão e o replica sem ambiguidade.
+        </div>
+        <div class="prompt-pair fade-in">
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ E-mail 01 — Clique para copiar</span>
+            <pre class="prompt-block prompt">E-mail: "Servidor caiu, preciso de suporte imediato!"</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ Rótulo consistente ✅</span>
+            <pre class="prompt-block resposta">Classificação: URGENTE</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ E-mail 02 — Clique para copiar</span>
+            <pre class="prompt-block prompt">E-mail: "Reunião cancelada para a próxima semana."</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ Rótulo consistente ✅</span>
+            <pre class="prompt-block resposta">Classificação: NORMAL</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ E-mail 03 — o modelo preenche</span>
+            <pre class="prompt-block prompt">E-mail: "Contrato vence hoje às 18h, precisamos assinar."</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ O modelo responde corretamente</span>
+            <pre class="prompt-block resposta">Classificação: URGENTE</pre>
           </div>
         </div>
 
@@ -2105,7 +2138,7 @@ Classificação:</pre>
 
         <div class="card fade-in">
           <div class="card-title">🌐 Uma Técnica, Múltiplas Aplicações</div>
-          <p>O Few-Shot não se limita a problemas matemáticos. Você pode aplicá-lo em <strong>qualquer domínio onde o padrão de resposta importa</strong>: classificação, tradução, formatação, geração de texto estruturado e muito mais. Vamos explorar três áreas:</p>
+          <p>O Few-Shot não se limita a problemas matemáticos. Você pode aplicá-lo em <strong>qualquer domínio onde o padrão de resposta importa</strong>: classificação, tradução, formatação, geração de texto estruturado e muito mais. Vamos explorar quatro áreas:</p>
         </div>
 
         <div id="fs-matematica" class="card fade-in">
@@ -2113,18 +2146,36 @@ Classificação:</pre>
           <p>Problemas de texto com múltiplas operações podem gerar respostas desformatadas no Zero-Shot. O Few-Shot ensina o caminho de raciocínio esperado:</p>
         </div>
 
-        <div class="prompt-wrap fade-in">
-          <span class="prompt-label prompt">✦ Few-Shot — Problemas de Matemática</span>
-          <pre class="prompt-block prompt">Problema: Ana tinha 10 maçãs. Ela deu 3 para seu irmão e comprou mais 7. Quantas maçãs ela tem agora?
-Raciocínio: Começou com 10, deu 3 (10−3=7), comprou mais 7 (7+7=14).
-Resposta: Ana tem 14 maçãs.
-
-Problema: Carlos tinha 8 bolas. Perdeu metade delas e ganhou 5 de presente. Quantas bolas ele tem agora?
-Raciocínio: Começou com 8, perdeu metade (8÷2=4), ganhou 5 (4+5=9).
-Resposta: Carlos tem 9 bolas.
-
-Problema: Uma turma tem 30 alunos. Um terço faltou na segunda-feira e 4 saíram mais cedo na terça. Quantos estiveram presentes nos dois dias?
-Raciocínio:</pre>
+        <div class="callout fade-in">
+          <strong>Instrução ao modelo:</strong> Para cada problema, mostre o raciocínio passo a passo (operações intermediárias) antes de dar a resposta final.
+        </div>
+        <div class="prompt-pair fade-in">
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Problema 01 — Clique para copiar</span>
+            <pre class="prompt-block prompt">Problema: Ana tinha 10 maçãs. Ela deu 3 para seu irmão e comprou mais 7. Quantas maçãs ela tem agora?</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ Raciocínio e Resposta</span>
+            <pre class="prompt-block resposta">Raciocínio: Começou com 10, deu 3 (10−3=7), comprou mais 7 (7+7=14).
+Resposta: Ana tem 14 maçãs.</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Problema 02 — Clique para copiar</span>
+            <pre class="prompt-block prompt">Problema: Carlos tinha 8 bolas. Perdeu metade delas e ganhou 5 de presente. Quantas bolas ele tem agora?</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ Raciocínio e Resposta</span>
+            <pre class="prompt-block resposta">Raciocínio: Começou com 8, perdeu metade (8÷2=4), ganhou 5 (4+5=9).
+Resposta: Carlos tem 9 bolas.</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Problema 03 — Complete o raciocínio!</span>
+            <pre class="prompt-block prompt">Problema: Uma turma tem 30 alunos. Um terço faltou na segunda-feira e 4 saíram mais cedo na terça. Quantos estiveram presentes nos dois dias?</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ O modelo completa</span>
+            <pre class="prompt-block resposta">Raciocínio:</pre>
+          </div>
         </div>
 
         <div class="callout fade-in">
@@ -2136,21 +2187,42 @@ Raciocínio:</pre>
           <p>Classificar textos por sentimento (positivo, negativo, neutro) é uma tarefa clássica de processamento de linguagem natural. Com Few-Shot, você ensina ao modelo os <strong>critérios exatos</strong> que você quer usar:</p>
         </div>
 
-        <div class="prompt-wrap fade-in">
-          <span class="prompt-label prompt">✦ Few-Shot — Análise de Sentimentos</span>
-          <pre class="prompt-block prompt">Classifique o sentimento de cada frase como POSITIVO, NEGATIVO ou NEUTRO.
-
-Frase: "O atendimento foi excelente, voltarei com certeza!"
-Sentimento: POSITIVO
-
-Frase: "O produto chegou com defeito e o suporte não resolveu."
-Sentimento: NEGATIVO
-
-Frase: "O pedido foi entregue na data prevista."
-Sentimento: NEUTRO
-
-Frase: "Fiquei decepcionado com a qualidade, não recomendo."
-Sentimento:</pre>
+        <div class="callout fade-in">
+          <strong>Instrução ao modelo:</strong> Classifique o sentimento de cada frase como POSITIVO, NEGATIVO ou NEUTRO.
+        </div>
+        <div class="prompt-pair fade-in">
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Frase 01 — Clique para copiar</span>
+            <pre class="prompt-block prompt">Frase: "O atendimento foi excelente, voltarei com certeza!"</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ Classificação</span>
+            <pre class="prompt-block resposta">Sentimento: POSITIVO</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Frase 02 — Clique para copiar</span>
+            <pre class="prompt-block prompt">Frase: "O produto chegou com defeito e o suporte não resolveu."</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ Classificação</span>
+            <pre class="prompt-block resposta">Sentimento: NEGATIVO</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Frase 03 — Clique para copiar</span>
+            <pre class="prompt-block prompt">Frase: "O pedido foi entregue na data prevista."</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ Classificação</span>
+            <pre class="prompt-block resposta">Sentimento: NEUTRO</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Frase 04 — O modelo classifica!</span>
+            <pre class="prompt-block prompt">Frase: "Fiquei decepcionado com a qualidade, não recomendo."</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ Qual o sentimento?</span>
+            <pre class="prompt-block resposta">Sentimento:</pre>
+          </div>
         </div>
 
         <div class="callout tip fade-in">
@@ -2162,18 +2234,34 @@ Sentimento:</pre>
           <p>Além de traduzir palavras, você pode usar Few-Shot para ensinar ao modelo o <strong>tom e estilo</strong> exatos que você quer — formal, informal, técnico, militar:</p>
         </div>
 
-        <div class="prompt-wrap fade-in">
-          <span class="prompt-label prompt">✦ Few-Shot — Tradução com Tom Formal Militar</span>
-          <pre class="prompt-block prompt">Traduza as frases abaixo do inglês para o português, usando linguagem formal e tom militar.
-
-Inglês: "The operation was successful."
-Português: "A operação foi concluída com êxito."
-
-Inglês: "All units are in position."
-Português: "Todas as frações estão posicionadas."
-
-Inglês: "We need to adapt to the new situation."
-Português:</pre>
+        <div class="callout fade-in">
+          <strong>Instrução ao modelo:</strong> Traduza as frases do inglês para o português usando linguagem formal e tom militar.
+        </div>
+        <div class="prompt-pair fade-in">
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Inglês 01 — Clique para copiar</span>
+            <pre class="prompt-block prompt">Inglês: "The operation was successful."</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ Tradução Formal Militar</span>
+            <pre class="prompt-block resposta">Português: "A operação foi concluída com êxito."</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Inglês 02 — Clique para copiar</span>
+            <pre class="prompt-block prompt">Inglês: "All units are in position."</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ Tradução Formal Militar</span>
+            <pre class="prompt-block resposta">Português: "Todas as frações estão posicionadas."</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Inglês 03 — O modelo traduz!</span>
+            <pre class="prompt-block prompt">Inglês: "We need to adapt to the new situation."</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ Como o modelo traduziria?</span>
+            <pre class="prompt-block resposta">Português:</pre>
+          </div>
         </div>
 
         <div class="callout fade-in">
@@ -2185,24 +2273,50 @@ Português:</pre>
           <p>Identificar a intenção por trás de uma mensagem é fundamental em sistemas de atendimento, triagem de solicitações e chatbots institucionais. Com Few-Shot, você define as categorias exatas que fazem sentido para o <em>seu</em> contexto — algo que seria impossível de descrever apenas com palavras:</p>
         </div>
 
-        <div class="prompt-wrap fade-in">
-          <span class="prompt-label prompt">✦ Few-Shot — Classificação de Intenção</span>
-          <pre class="prompt-block prompt">Classifique a intenção de cada mensagem como PERGUNTA, SOLICITAÇÃO, RECLAMAÇÃO ou ELOGIO.
-
-Mensagem: "Qual é o horário de atendimento da seção de TI?"
-Intenção: PERGUNTA
-
-Mensagem: "Preciso de acesso ao sistema de RH com urgência."
-Intenção: SOLICITAÇÃO
-
-Mensagem: "O equipamento que recebi está com defeito há três dias e ninguém resolveu."
-Intenção: RECLAMAÇÃO
-
-Mensagem: "A equipe de suporte foi muito eficiente e resolveu o problema em minutos."
-Intenção: ELOGIO
-
-Mensagem: "Meu acesso ao portal foi bloqueado e não consigo entrar para o trabalho de amanhã."
-Intenção:</pre>
+        <div class="callout fade-in">
+          <strong>Instrução ao modelo:</strong> Classifique a intenção de cada mensagem como PERGUNTA, SOLICITAÇÃO, RECLAMAÇÃO ou ELOGIO.
+        </div>
+        <div class="prompt-pair fade-in">
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Mensagem 01 — Clique para copiar</span>
+            <pre class="prompt-block prompt">Mensagem: "Qual é o horário de atendimento da seção de TI?"</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ Intenção</span>
+            <pre class="prompt-block resposta">Intenção: PERGUNTA</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Mensagem 02 — Clique para copiar</span>
+            <pre class="prompt-block prompt">Mensagem: "Preciso de acesso ao sistema de RH com urgência."</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ Intenção</span>
+            <pre class="prompt-block resposta">Intenção: SOLICITAÇÃO</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Mensagem 03 — Clique para copiar</span>
+            <pre class="prompt-block prompt">Mensagem: "O equipamento que recebi está com defeito há três dias e ninguém resolveu."</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ Intenção</span>
+            <pre class="prompt-block resposta">Intenção: RECLAMAÇÃO</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Mensagem 04 — Clique para copiar</span>
+            <pre class="prompt-block prompt">Mensagem: "A equipe de suporte foi muito eficiente e resolveu o problema em minutos."</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ Intenção</span>
+            <pre class="prompt-block resposta">Intenção: ELOGIO</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Mensagem 05 — O modelo classifica!</span>
+            <pre class="prompt-block prompt">Mensagem: "Meu acesso ao portal foi bloqueado e não consigo entrar para o trabalho de amanhã."</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ Qual a intenção?</span>
+            <pre class="prompt-block resposta">Intenção:</pre>
+          </div>
         </div>
 
         <div class="callout tip fade-in">
@@ -2218,10 +2332,10 @@ Intenção:</pre>
           <div class="quiz-section-body">
 
             <div class="quiz-block" data-correct="d"
-              data-feedback-ok="Correto! Nas três áreas — matemática, sentimentos e tradução — o papel dos exemplos é o mesmo: definir o padrão exato esperado. Seja o caminho de raciocínio, os critérios de classificação ou o estilo de linguagem."
+              data-feedback-ok="Correto! Nas quatro áreas — matemática, sentimentos, tradução e detecção de intenção — o papel dos exemplos é o mesmo: definir o padrão exato esperado. Seja o caminho de raciocínio, os critérios de classificação ou o estilo de linguagem."
               data-feedback-err="Errado. O Few-Shot não muda a capacidade do modelo nem dados de treinamento. O que os exemplos fazem, em todos os casos, é definir o padrão esperado — formato, raciocínio, critério ou estilo.">
               <div class="quiz-q-label">Questão 01</div>
-              <div class="quiz-question">Nas três áreas exploradas (matemática, sentimentos, tradução), qual é o papel comum dos exemplos no Few-Shot?</div>
+              <div class="quiz-question">Nas quatro áreas exploradas (matemática, sentimentos, tradução e detecção de intenção), qual é o papel comum dos exemplos no Few-Shot?</div>
               <div class="quiz-options">
                 <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Aumentar a precisão matemática ao fornecer dados de treinamento extra em tempo real.</div>
                 <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Permitir que o modelo use mais memória para processar frases longas e complexas.</div>
@@ -2431,7 +2545,7 @@ Formal:</pre>
           </div>
           <div class="learned-item">
             <div class="li-num">03</div>
-            <div>A técnica funciona em <strong>qualquer domínio</strong>: matemática (ensinando o caminho de raciocínio), análise de sentimentos (ensinando os critérios de classificação) e tradução (ensinando o tom e estilo desejado).</div>
+            <div>A técnica funciona em <strong>qualquer domínio</strong>: matemática (ensinando o caminho de raciocínio), análise de sentimentos (ensinando os critérios de classificação), tradução (ensinando o tom e estilo desejado) e detecção de intenção (definindo categorias institucionais).</div>
           </div>
           <div class="learned-item">
             <div class="li-num">04</div>
