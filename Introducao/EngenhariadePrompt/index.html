@@ -468,15 +468,29 @@
       </ul>
     </div>
 
-    <!-- Sidebar Panel 3 — Aula 03 (em produção) -->
+    <!-- Sidebar Panel 3 — Aula 03 -->
     <div class="sb-panel" id="sb-panel-3">
       <div class="sb-brand">
         <div style="font-size:15px;font-weight:700;color:var(--sky);font-family:'Rajdhani',sans-serif;letter-spacing:.3px;margin-bottom:4px;">Engenharia de Prompt</div>
-        <div class="course-title">Aula 03 — Em Produção</div>
+        <div class="course-title">Aula 03 — Few-Shot Prompt</div>
       </div>
       <div class="sb-section-label">Navegação — Aula 03</div>
       <ul class="sb-nav">
-        <li><a href="#"><span class="num">—</span> Em Produção</a></li>
+        <li class="section-divider"><a href="#sec-ambiente3"><span class="num">01</span> Preparando o Ambiente</a></li>
+        <li><a href="#fs-maritalk"><span class="num">1.1</span> MariTalk — Sabiá 3</a></li>
+        <li class="section-divider"><a href="#sec-tecnica"><span class="num">02</span> Entendendo a Técnica</a></li>
+        <li><a href="#fs-zerovsfew"><span class="num">2.1</span> Zero-Shot vs Few-Shot</a></li>
+        <li><a href="#fs-nicolas"><span class="num">2.2</span> O Problema de Nicolas Cage</a></li>
+        <li><a href="#quiz-fs2"><span class="num">—</span> Exercício 02</a></li>
+        <li class="section-divider"><a href="#sec-areas"><span class="num">03</span> Few-Shot em Diferentes Áreas</a></li>
+        <li><a href="#fs-matematica"><span class="num">3.1</span> Matemática</a></li>
+        <li><a href="#fs-sentimentos"><span class="num">3.2</span> Análise de Sentimentos</a></li>
+        <li><a href="#fs-traducao"><span class="num">3.3</span> Tradução</a></li>
+        <li><a href="#quiz-fs3"><span class="num">—</span> Exercício 03</a></li>
+        <li class="section-divider"><a href="#sec-sabermais3"><span class="num">04</span> Para Saber Mais</a></li>
+        <li><a href="#fs-paper"><span class="num">4.1</span> O Artigo de 2020</a></li>
+        <li class="section-divider"><a href="#sec-faca-como3"><span class="num">05</span> Faça Como Eu Fiz</a></li>
+        <li class="section-divider"><a href="#sec-aprendemos3"><span class="num">06</span> O que Aprendemos</a></li>
       </ul>
     </div>
 
@@ -561,10 +575,14 @@
       </div>
 
       <div class="hero-dyn" id="hero-dyn-3">
-        <h1 class="hero-title">Aula 03 — Em Produção</h1>
-        <p class="hero-subtitle">Este conteúdo está sendo preparado. Em breve você terá acesso ao material completo desta aula.</p>
+        <h1 class="hero-title">Aula 03 — Few-Shot Prompt</h1>
+        <p class="hero-subtitle">Aprenda a ensinar a IA pelo exemplo: como fornecer amostras do resultado esperado transforma completamente o formato e a qualidade das respostas — em qualquer área de conhecimento.</p>
         <div class="hero-tags">
-          <span class="hero-tag">Em Produção</span>
+          <span class="hero-tag">Few-Shot Prompt</span>
+          <span class="hero-tag">Zero-Shot</span>
+          <span class="hero-tag">Aprendizado por Exemplos</span>
+          <span class="hero-tag">MariTalk</span>
+          <span class="hero-tag">Análise de Sentimentos</span>
         </div>
       </div>
 
@@ -1825,13 +1843,479 @@ Escreva em 2ª pessoa, como se o jogador fosse o detetive.</pre>
     </div>
 
     <!-- ═══════════════════════════════════
-         PAINEL 3 — AULA 03 (EM PRODUÇÃO)
+         PAINEL 3 — AULA 03 — FEW-SHOT PROMPT
     ════════════════════════════════════ -->
     <div class="content-panel" id="ct-panel-3">
-      <div class="content" style="min-height:60vh;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;text-align:center;padding:60px 48px;">
-        <div style="font-size:64px;">🚧</div>
-        <div style="font-family:'Rajdhani',sans-serif;font-size:40px;font-weight:700;color:var(--navy);">Aula 03 — Em Produção</div>
-        <p style="font-size:19px;color:var(--muted);max-width:520px;line-height:1.7;">Este conteúdo está sendo preparado. Em breve você terá acesso ao material completo desta aula.</p>
+      <div class="content">
+
+        <!-- Objetivos -->
+        <div id="objetivos-3" class="fade-in">
+          <div class="obj-title">◆ Objetivos da Instrução</div>
+          <div class="obj-grid">
+            <div class="obj-item"><span class="dot"></span>Compreender o que é Few-Shot Prompt e como ele se diferencia do Zero-Shot.</div>
+            <div class="obj-item"><span class="dot"></span>Aplicar a técnica Few-Shot em diferentes áreas: matemática, análise de sentimentos e tradução.</div>
+            <div class="obj-item"><span class="dot"></span>Conhecer a base científica do Few-Shot Prompting e seu impacto no estado da arte dos LLMs.</div>
+            <div class="obj-item"><span class="dot"></span>Criar prompts Few-Shot eficazes utilizando a ferramenta MariTalk.</div>
+          </div>
+        </div>
+
+        <!-- Introdução -->
+        <div class="intro-card fade-in">
+          <p>Você já aprendeu a criar prompts claros e estruturados. Agora vamos dar um passo além: e se, em vez de apenas descrever o que você quer, você <strong style="color:#fff">mostrasse exemplos</strong> do resultado esperado? Essa é a essência do <strong style="color:var(--sky)">Few-Shot Prompt</strong> — uma das técnicas mais poderosas e utilizadas na Engenharia de Prompt moderna.</p>
+          <p>Nesta aula, você vai entender como funcionam os "disparos" de exemplos, por que eles funcionam e como aplicá-los em situações reais do seu trabalho.</p>
+        </div>
+
+        <!-- ─── ITEM 01 ─── -->
+        <div id="sec-ambiente3" class="section-sep fade-in">
+          <span class="sep-num">Item 01</span>
+          <span class="sep-title">Preparando o Ambiente</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div id="fs-maritalk" class="card fade-in">
+          <div class="card-title">🇧🇷 MariTalk — Nossa Ferramenta desta Aula</div>
+          <p>Para praticar Few-Shot Prompting nesta aula, vamos usar o <strong>MariTalk</strong>, a interface de chat do modelo <strong>Sabiá</strong> — desenvolvido pela <strong>Maritaca AI</strong>, uma empresa brasileira de inteligência artificial fundada em 2023 por pesquisadores da Unicamp. O Sabiá é otimizado para o português e representa o estado da arte em modelos de linguagem nacionais.</p>
+        </div>
+
+        <div class="steps fade-in">
+          <div class="step">
+            <div class="step-num sky">1</div>
+            <div class="step-body">Acesse <strong>chat.maritaca.ai</strong> no seu navegador.</div>
+          </div>
+          <div class="step">
+            <div class="step-num sky">2</div>
+            <div class="step-body">Clique em <strong>Entrar</strong> e crie uma conta gratuita com e-mail — ou faça login se já tiver uma conta.</div>
+          </div>
+          <div class="step">
+            <div class="step-num sky">3</div>
+            <div class="step-body">Na tela de chat, o modelo <strong>Sabiá 3</strong> já estará selecionado — é o modelo mais recente e está disponível gratuitamente.</div>
+          </div>
+          <div class="step">
+            <div class="step-num sky">4</div>
+            <div class="step-body">Pronto! Digite seus prompts na caixa de texto e pressione <strong>Enter</strong> para enviar.</div>
+          </div>
+        </div>
+
+        <div class="callout warn fade-in">
+          <strong>Dica:</strong> Mantenha o MariTalk aberto em outra aba enquanto estuda esta aula. Você vai querer testar os exemplos em tempo real e comparar os resultados do Zero-Shot com o Few-Shot.
+        </div>
+
+        <!-- ─── ITEM 02 ─── -->
+        <div id="sec-tecnica" class="section-sep fade-in">
+          <span class="sep-num">Item 02</span>
+          <span class="sep-title">Entendendo a Técnica</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div id="fs-zerovsfew" class="card fade-in">
+          <div class="card-title">🎯 Zero-Shot vs Few-Shot: Qual a Diferença?</div>
+          <p>Antes de aprender o Few-Shot, precisamos entender o <strong>Zero-Shot</strong> — que você já usa sem saber. A diferença entre as duas técnicas é simples, mas o impacto nos resultados é enorme:</p>
+        </div>
+
+        <div class="compare fade-in">
+          <div class="compare-col" style="border-top:3px solid var(--steel);">
+            <h4 style="color:var(--steel);">Zero-Shot Prompt</h4>
+            <ul>
+              <li>Você <strong>apenas descreve</strong> a tarefa, sem fornecer nenhum exemplo</li>
+              <li>O modelo usa somente seu treinamento geral para responder</li>
+              <li>Rápido de escrever, mas o resultado pode ter formato ou nível de detalhe inesperado</li>
+              <li><strong>Ideal para:</strong> tarefas simples, perguntas diretas, quando qualquer formato razoável serve</li>
+            </ul>
+          </div>
+          <div class="compare-col" style="border-top:3px solid #7b3fa0;">
+            <h4 style="color:#7b3fa0;">Few-Shot Prompt</h4>
+            <ul>
+              <li>Você <strong>fornece exemplos</strong> do resultado esperado antes de fazer a pergunta real</li>
+              <li>O modelo observa o padrão dos exemplos e o aplica à nova entrada</li>
+              <li>Requer mais texto, mas controla com precisão formato, tom e nível de detalhe</li>
+              <li><strong>Ideal para:</strong> tarefas com formato específico, classificações, padrões repetitivos</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="highlight-box fade-in">
+          <strong>Em uma frase:</strong> Zero-Shot é "faça isso". Few-Shot é "faça isso — exatamente como nesses exemplos aqui".
+        </div>
+
+        <div id="fs-nicolas" class="card fade-in">
+          <div class="card-title">🎬 O Problema de Nicolas Cage</div>
+          <p>Para entender por que o Few-Shot é tão poderoso, vamos usar um exemplo clássico. Tente os dois prompts abaixo no MariTalk e observe a diferença no <strong>formato</strong> da resposta:</p>
+        </div>
+
+        <div class="prompt-pair fade-in">
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Zero-Shot — Sem Exemplos</span>
+            <pre class="prompt-block prompt">Nicolas Cage lança, em média, 2 filmes por ano. Quantos filmes ele vai ter lançado em 3 anos?</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Few-Shot — Com 2 Exemplos</span>
+            <pre class="prompt-block prompt">Pergunta: João assiste 3 séries por semana. Em 4 semanas, quantas séries ele terá assistido?
+Resposta: João terá assistido 12 séries.
+
+Pergunta: Maria filma 5 vídeos por mês. Em 6 meses, quantos vídeos ela terá filmado?
+Resposta: Maria terá filmado 30 vídeos.
+
+Pergunta: Nicolas Cage lança, em média, 2 filmes por ano. Em 3 anos, quantos filmes ele terá lançado?
+Resposta:</pre>
+          </div>
+        </div>
+
+        <div class="callout fade-in">
+          <strong>O que acontece?</strong> O Zero-Shot pode gerar uma resposta longa e explicativa ("Bem, para calcular isso precisamos multiplicar..."). O Few-Shot observa o padrão dos dois exemplos — resposta curta, direta, no formato "X terá feito Y" — e replica exatamente esse estilo: <strong>"Nicolas Cage terá lançado 6 filmes."</strong>
+        </div>
+
+        <div class="callout tip fade-in">
+          <strong>Por que "Few-Shot"?</strong> O nome vem do inglês: <em>few</em> = poucos, <em>shot</em> = disparo/exemplo. "Few-Shot" = usar poucos exemplos para guiar o modelo. Se você usar apenas 1, é "One-Shot". Se não usar nenhum, é "Zero-Shot".
+        </div>
+
+        <!-- Quiz 02 -->
+        <div id="quiz-fs2" class="quiz-section fade-in">
+          <div class="quiz-section-header">
+            <span class="qs-label">Exercício 02</span>
+            <span class="qs-title">Zero-Shot vs Few-Shot</span>
+          </div>
+          <div class="quiz-section-body">
+
+            <div class="quiz-block" data-correct="b"
+              data-feedback-ok="Correto! O Few-Shot fornece exemplos do resultado esperado antes da pergunta real. O modelo aprende o padrão — formato, tom, nível de detalhe — e o aplica à nova entrada. É ensinar pelo exemplo, não pela descrição."
+              data-feedback-err="Errado. Few-Shot não significa usar mais de uma ferramenta de IA, nem aumentar a temperatura. Significa fornecer exemplos de entrada/saída antes da pergunta real para guiar o formato e o padrão da resposta.">
+              <div class="quiz-q-label">Questão 01</div>
+              <div class="quiz-question">O que diferencia o Few-Shot Prompt do Zero-Shot Prompt?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> O Few-Shot usa mais de uma ferramenta de IA ao mesmo tempo para comparar resultados.</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> O Few-Shot fornece exemplos do resultado esperado antes da pergunta real, guiando o padrão da resposta.</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> O Few-Shot aumenta a temperatura do modelo para gerar respostas mais detalhadas e criativas.</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> O Few-Shot divide o prompt em partes menores para facilitar o processamento pelo modelo.</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+            <div class="quiz-block" data-correct="c"
+              data-feedback-ok="Correto! 'Few' significa 'poucos' e 'shot' significa 'exemplo' ou 'disparo'. Few-Shot = usar poucos exemplos para guiar o modelo. Por extensão: One-Shot = um exemplo, Zero-Shot = nenhum exemplo."
+              data-feedback-err="Errado. 'Few' em inglês significa 'poucos' e 'shot' neste contexto significa 'exemplo' ou 'disparo'. Few-Shot = poucos exemplos — não poucos tokens, nem passos menores.">
+              <div class="quiz-q-label">Questão 02</div>
+              <div class="quiz-question">O que significa a expressão "Few-Shot" em português?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Poucos tokens — técnica que limita o tamanho máximo do prompt enviado ao modelo.</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Poucos passos — divisão do raciocínio em etapas menores para facilitar a resposta.</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Poucos exemplos — fornecer algumas amostras de entrada/saída para guiar o modelo.</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Poucos parâmetros — uso de modelos menores e mais rápidos para tarefas simples.</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+            <div class="quiz-block" data-correct="a"
+              data-feedback-ok="Correto! O Few-Shot controlou o formato da resposta. Os dois exemplos mostravam respostas curtas e diretas no padrão 'X terá feito Y', e o modelo replicou esse padrão. O cálculo em si (2×3=6) é trivial para qualquer LLM — o benefício foi o controle do formato."
+              data-feedback-err="Errado. O cálculo (2×3=6) é trivial para qualquer modelo de linguagem. O que o Few-Shot fez foi controlar o formato da resposta: os exemplos mostravam respostas curtas e diretas, e o modelo replicou esse padrão — sem explicações desnecessárias.">
+              <div class="quiz-q-label">Questão 03</div>
+              <div class="quiz-question">No exemplo de Nicolas Cage, qual foi o principal benefício do Few-Shot em relação ao Zero-Shot?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> O modelo replicou o formato conciso dos exemplos, entregando uma resposta direta no padrão esperado.</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> O modelo conseguiu resolver o cálculo corretamente, algo que o Zero-Shot não conseguia fazer.</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> O modelo usou mais memória contextual para lembrar dos filmes do ator e dar uma resposta mais precisa.</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> O modelo ficou mais rápido ao processar o prompt por ter exemplos como referência prévia.</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ─── ITEM 03 ─── -->
+        <div id="sec-areas" class="section-sep fade-in">
+          <span class="sep-num">Item 03</span>
+          <span class="sep-title">Few-Shot em Diferentes Áreas</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">🌐 Uma Técnica, Múltiplas Aplicações</div>
+          <p>O Few-Shot não se limita a problemas matemáticos. Você pode aplicá-lo em <strong>qualquer domínio onde o padrão de resposta importa</strong>: classificação, tradução, formatação, geração de texto estruturado e muito mais. Vamos explorar três áreas:</p>
+        </div>
+
+        <div id="fs-matematica" class="card fade-in">
+          <div class="card-title">🍎 Área 1 — Matemática com Problemas de Texto</div>
+          <p>Problemas de texto com múltiplas operações podem gerar respostas desformatadas no Zero-Shot. O Few-Shot ensina o caminho de raciocínio esperado:</p>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Few-Shot — Problemas de Matemática</span>
+          <pre class="prompt-block prompt">Problema: Ana tinha 10 maçãs. Ela deu 3 para seu irmão e comprou mais 7. Quantas maçãs ela tem agora?
+Raciocínio: Começou com 10, deu 3 (10−3=7), comprou mais 7 (7+7=14).
+Resposta: Ana tem 14 maçãs.
+
+Problema: Carlos tinha 8 bolas. Perdeu metade delas e ganhou 5 de presente. Quantas bolas ele tem agora?
+Raciocínio: Começou com 8, perdeu metade (8÷2=4), ganhou 5 (4+5=9).
+Resposta: Carlos tem 9 bolas.
+
+Problema: Uma turma tem 30 alunos. Um terço faltou na segunda-feira e 4 saíram mais cedo na terça. Quantos estiveram presentes nos dois dias?
+Raciocínio:</pre>
+        </div>
+
+        <div class="callout fade-in">
+          <strong>Observe o padrão:</strong> O Few-Shot ensinou ao modelo não apenas o <em>formato</em> da resposta, mas também o <em>caminho de raciocínio</em> — mostrar as operações passo a passo antes do resultado final. Isso antecipa a técnica de Chain-of-Thought, que veremos em aulas futuras.
+        </div>
+
+        <div id="fs-sentimentos" class="card fade-in">
+          <div class="card-title">😊 Área 2 — Análise de Sentimentos</div>
+          <p>Classificar textos por sentimento (positivo, negativo, neutro) é uma tarefa clássica de processamento de linguagem natural. Com Few-Shot, você ensina ao modelo os <strong>critérios exatos</strong> que você quer usar:</p>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Few-Shot — Análise de Sentimentos</span>
+          <pre class="prompt-block prompt">Classifique o sentimento de cada frase como POSITIVO, NEGATIVO ou NEUTRO.
+
+Frase: "O atendimento foi excelente, voltarei com certeza!"
+Sentimento: POSITIVO
+
+Frase: "O produto chegou com defeito e o suporte não resolveu."
+Sentimento: NEGATIVO
+
+Frase: "O pedido foi entregue na data prevista."
+Sentimento: NEUTRO
+
+Frase: "Fiquei decepcionado com a qualidade, não recomendo."
+Sentimento:</pre>
+        </div>
+
+        <div class="callout tip fade-in">
+          <strong>Por que isso funciona?</strong> Os exemplos definiram exatamente o que cada categoria significa para você. "Entregue na data prevista" é neutro, não positivo — o modelo aprendeu esse critério pelo exemplo, sem que você precisasse explicar a regra em palavras.
+        </div>
+
+        <div id="fs-traducao" class="card fade-in">
+          <div class="card-title">🌍 Área 3 — Tradução com Estilo Específico</div>
+          <p>Além de traduzir palavras, você pode usar Few-Shot para ensinar ao modelo o <strong>tom e estilo</strong> exatos que você quer — formal, informal, técnico, militar:</p>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Few-Shot — Tradução com Tom Formal Militar</span>
+          <pre class="prompt-block prompt">Traduza as frases abaixo do inglês para o português, usando linguagem formal e tom militar.
+
+Inglês: "The operation was successful."
+Português: "A operação foi concluída com êxito."
+
+Inglês: "All units are in position."
+Português: "Todas as frações estão posicionadas."
+
+Inglês: "We need to adapt to the new situation."
+Português:</pre>
+        </div>
+
+        <div class="callout fade-in">
+          <strong>Resultado esperado:</strong> "Faz-se necessário adaptar as ações à nova situação." — O modelo aprendeu que você quer linguagem formal militar, não uma tradução literal do inglês coloquial.
+        </div>
+
+        <!-- Quiz 03 -->
+        <div id="quiz-fs3" class="quiz-section fade-in">
+          <div class="quiz-section-header">
+            <span class="qs-label">Exercício 03</span>
+            <span class="qs-title">Few-Shot em Diferentes Áreas</span>
+          </div>
+          <div class="quiz-section-body">
+
+            <div class="quiz-block" data-correct="d"
+              data-feedback-ok="Correto! Nas três áreas — matemática, sentimentos e tradução — o papel dos exemplos é o mesmo: definir o padrão exato esperado. Seja o caminho de raciocínio, os critérios de classificação ou o estilo de linguagem."
+              data-feedback-err="Errado. O Few-Shot não muda a capacidade do modelo nem dados de treinamento. O que os exemplos fazem, em todos os casos, é definir o padrão esperado — formato, raciocínio, critério ou estilo.">
+              <div class="quiz-q-label">Questão 01</div>
+              <div class="quiz-question">Nas três áreas exploradas (matemática, sentimentos, tradução), qual é o papel comum dos exemplos no Few-Shot?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Aumentar a precisão matemática ao fornecer dados de treinamento extra em tempo real.</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Permitir que o modelo use mais memória para processar frases longas e complexas.</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Reduzir o número de tokens necessários para obter a resposta correta do modelo.</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Definir o padrão exato esperado — seja formato, raciocínio, critério de classificação ou estilo.</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+            <div class="quiz-block" data-correct="b"
+              data-feedback-ok="Correto! No exemplo de análise de sentimentos, a frase 'O pedido foi entregue na data prevista' foi classificada como NEUTRO, não POSITIVO. Esse critério foi comunicado pelo exemplo — sem escrever nenhuma regra explícita."
+              data-feedback-err="Errado. O ponto mais importante do exemplo de sentimentos foi exatamente este: 'entregue na data prevista' é NEUTRO (não positivo). Isso não foi explicado em palavras — foi mostrado pelo exemplo, e o modelo aprendeu o critério.">
+              <div class="quiz-q-label">Questão 02</div>
+              <div class="quiz-question">No exemplo de análise de sentimentos, como o Few-Shot comunicou ao modelo que uma entrega pontual é "neutra" e não "positiva"?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Adicionando uma instrução explícita: "Entregas pontuais são sempre classificadas como neutras".</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Fornecendo um exemplo com essa frase classificada como NEUTRO, sem precisar explicar o critério.</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Pedindo ao modelo para ignorar frases sobre logística e focar apenas em opiniões de produto.</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Usando a palavra "neutro" no próprio texto da frase para guiar a classificação do modelo.</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ─── ITEM 04 ─── -->
+        <div id="sec-sabermais3" class="section-sep fade-in">
+          <span class="sep-num">Item 04</span>
+          <span class="sep-title">Para Saber Mais: Few-Shot vs Zero-Shot</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div id="fs-paper" class="card fade-in">
+          <div class="card-title">📄 O Artigo que Mudou Tudo — Brown et al., 2020</div>
+          <p>A técnica Few-Shot foi formalmente descrita e popularizada no artigo <strong>"Language Models are Few-Shot Learners"</strong>, publicado pela OpenAI em 2020, com o lançamento do GPT-3. É um dos artigos mais citados da história da inteligência artificial.</p>
+        </div>
+
+        <div class="feature-grid fade-in">
+          <div class="feature-box">
+            <h5>🔍 A Descoberta Principal</h5>
+            <p>Modelos grandes o suficiente conseguem aprender novos padrões <strong>sem atualizar seus pesos</strong> — apenas observando exemplos no contexto da conversa. Os pesquisadores chamaram isso de <em>in-context learning</em>.</p>
+          </div>
+          <div class="feature-box gold">
+            <h5>📊 Os Números</h5>
+            <p>Com apenas 32 exemplos (32-Shot), o GPT-3 atingiu resultados comparáveis a modelos treinados especificamente para a tarefa em vários benchmarks de referência.</p>
+          </div>
+          <div class="feature-box green">
+            <h5>🌍 Impacto no Mundo Real</h5>
+            <p>Empresas passaram a criar sistemas de IA sem precisar retreinar modelos — apenas ajustando os exemplos no prompt. Isso democratizou o uso da IA generativa em escala.</p>
+          </div>
+          <div class="feature-box purple">
+            <h5>⚠️ Limitação Conhecida</h5>
+            <p>O Few-Shot ocupa espaço na janela de contexto. Com muitos exemplos, o prompt fica longo e pesado. O equilíbrio ideal fica entre <strong>2 e 5 exemplos</strong> bem escolhidos.</p>
+          </div>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">🤔 Quando Usar Zero-Shot vs Few-Shot?</div>
+        </div>
+
+        <div class="compare fade-in">
+          <div class="compare-col" style="border-top:3px solid var(--steel);">
+            <h4 style="color:var(--steel);">Use Zero-Shot quando:</h4>
+            <ul>
+              <li>A tarefa é simples e direta (perguntas factuais, resumos curtos)</li>
+              <li>Você aceita qualquer formato razoável de resposta</li>
+              <li>Está explorando o assunto e ainda não conhece o padrão ideal</li>
+              <li>O espaço no contexto é limitado e exemplos seriam custo demais</li>
+            </ul>
+          </div>
+          <div class="compare-col" style="border-top:3px solid #7b3fa0;">
+            <h4 style="color:#7b3fa0;">Use Few-Shot quando:</h4>
+            <ul>
+              <li>O formato da resposta importa (classificações, tabelas, listas estruturadas)</li>
+              <li>Você quer um estilo ou tom específico (formal, técnico, militar)</li>
+              <li>A tarefa é repetitiva e você quer consistência entre respostas</li>
+              <li>O Zero-Shot está dando respostas boas mas no formato errado</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout tip fade-in">
+          <strong>Regra prática:</strong> Comece com Zero-Shot. Se o resultado estiver bom, mas no formato errado, adicione 2–3 exemplos e transforme em Few-Shot. É mais rápido do que tentar descrever o formato em palavras.
+        </div>
+
+        <!-- ─── ITEM 05 ─── -->
+        <div id="sec-faca-como3" class="section-sep fade-in">
+          <span class="sep-num">Item 05</span>
+          <span class="sep-title">Faça Como Eu Fiz</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">🎯 4 Prompts Few-Shot para Você Testar</div>
+          <p>Abra o MariTalk e teste os prompts abaixo. Observe como, em cada caso, os exemplos definem com precisão o padrão que o modelo deve seguir — e como o resultado seria diferente sem eles.</p>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Prompt 01 — Classificação de Prioridade</span>
+          <pre class="prompt-block prompt">Classifique cada tarefa como URGENTE, IMPORTANTE ou ROTINA.
+
+Tarefa: "Servidor de produção caiu, sistema inacessível."
+Classificação: URGENTE
+
+Tarefa: "Planejar treinamento da equipe para o próximo mês."
+Classificação: IMPORTANTE
+
+Tarefa: "Atualizar a ata da reunião de terça-feira."
+Classificação: ROTINA
+
+Tarefa: "Cliente VIP relata erro crítico no fechamento do mês."
+Classificação:</pre>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Prompt 02 — Geração de Títulos no Estilo Definido</span>
+          <pre class="prompt-block prompt">Crie um título de e-mail formal e conciso para cada situação.
+
+Situação: Informar atraso na entrega de relatório.
+Título: Comunicado — Atraso na Entrega do Relatório Mensal
+
+Situação: Convocar reunião de emergência.
+Título: Convocação Urgente — Reunião Extraordinária em 24h
+
+Situação: Solicitar aprovação de orçamento para curso de capacitação.
+Título:</pre>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Prompt 03 — Extração de Informações Estruturadas</span>
+          <pre class="prompt-block prompt">Extraia as informações de cada texto e responda no formato JSON indicado.
+
+Texto: "Reunião com o Cel Santos marcada para 14h do dia 10 de junho na Sala de Operações."
+JSON: {"pessoa": "Cel Santos", "horario": "14h", "data": "10 de junho", "local": "Sala de Operações"}
+
+Texto: "Briefing com o Cap Ferreira e a Maj Lima às 9h30 do dia 15 de julho na Sala de Briefing B."
+JSON:</pre>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Prompt 04 — Reescrita com Tom Militar Formal</span>
+          <pre class="prompt-block prompt">Reescreva cada mensagem informal em linguagem formal de documento oficial militar.
+
+Informal: "O equipamento quebrou e a gente não consegue usar."
+Formal: "O equipamento apresentou falha operacional, impossibilitando sua utilização."
+
+Informal: "A missão deu certo e todo mundo voltou bem."
+Formal: "A missão foi concluída com êxito, com retorno integral de todo o efetivo."
+
+Informal: "Precisamos de mais gente pra fazer o serviço no prazo."
+Formal:</pre>
+        </div>
+
+        <div class="callout tip fade-in">
+          <strong>Observe:</strong> Em cada prompt, você não precisou explicar o estilo em palavras — os exemplos mostraram exatamente o padrão desejado. Isso é Few-Shot em ação: ensinar pelo exemplo, não pela descrição.
+        </div>
+
+        <!-- ─── ITEM 06 ─── -->
+        <div id="sec-aprendemos3" class="section-sep fade-in">
+          <span class="sep-num">Item 06</span>
+          <span class="sep-title">O que Aprendemos?</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="learned-grid fade-in">
+          <div class="learned-item">
+            <div class="li-num">01</div>
+            <div><strong>Few-Shot Prompt</strong> é a técnica de fornecer exemplos do resultado esperado antes da pergunta real. O modelo observa o padrão e o replica — sem precisar de descrições longas sobre formato ou estilo.</div>
+          </div>
+          <div class="learned-item">
+            <div class="li-num">02</div>
+            <div><strong>Zero-Shot</strong> vs <strong>Few-Shot</strong>: use Zero-Shot para tarefas simples onde o formato não é crítico; use Few-Shot quando o formato, o tom ou o critério de classificação precisam ser controlados com precisão.</div>
+          </div>
+          <div class="learned-item">
+            <div class="li-num">03</div>
+            <div>A técnica funciona em <strong>qualquer domínio</strong>: matemática (ensinando o caminho de raciocínio), análise de sentimentos (ensinando os critérios de classificação) e tradução (ensinando o tom e estilo desejado).</div>
+          </div>
+          <div class="learned-item">
+            <div class="li-num">04</div>
+            <div>O artigo <strong>"Language Models are Few-Shot Learners"</strong> (OpenAI, 2020) mostrou que modelos grandes aprendem no contexto (<em>in-context learning</em>) sem retreinamento — apenas observando exemplos. Isso mudou o campo da IA.</div>
+          </div>
+        </div>
+
+        <div class="dark-card fade-in" style="margin-top:28px;">
+          <p>Na próxima aula, vamos explorar o <strong>Chain-of-Thought Prompting</strong> — a técnica de fazer a IA "pensar em voz alta" para resolver problemas complexos passo a passo, com raciocínio explícito e verificável.</p>
+        </div>
+
       </div>
       <footer style="background:var(--navy);color:rgba(255,255,255,.35);text-align:center;font-size:10.5px;padding:16px;letter-spacing:.4px;">
         Exército Brasileiro · Escola de Comunicações (Escola Coronel Hygino Corsetti) · EAD — Módulo de Engenharia de Prompt
