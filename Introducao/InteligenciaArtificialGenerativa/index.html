@@ -4266,6 +4266,7 @@ na edição e me dê a minutagem exata deles.</pre>
     heroDyns.forEach(function(h,i) { h.classList.toggle('active', i===idx); });
     ctPanels.forEach(function(c,i) { c.classList.toggle('active', i===idx); });
     window.scrollTo(0, 0);
+    localStorage.setItem('ia-tab', idx);
   }
 
   tabs.forEach(function(t, i) {
@@ -4383,7 +4384,7 @@ na edição e me dê a minutagem exata deles.</pre>
 
 
 
-  activate(0);
+  activate(parseInt(localStorage.getItem('ia-tab')) || 0);
 })();
 </script>
 
