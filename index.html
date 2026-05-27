@@ -19,8 +19,11 @@
   /* Hero */
   #hero{
     background:linear-gradient(135deg,var(--navy) 0%,var(--steel) 60%,#2a5a8a 100%);
-    padding:60px 200px 52px 40px;position:relative;overflow:hidden;
+    padding:60px 40px 52px 40px;position:relative;overflow:hidden;
+    display:flex;align-items:center;gap:40px;
   }
+  .hero-img-wrap{flex-shrink:0;width:340px;max-width:340px;position:relative;z-index:1;}
+  .hero-img-wrap img{width:100%;height:260px;object-fit:cover;object-position:top;border-radius:10px;box-shadow:0 4px 24px rgba(0,0,0,.35);display:block;}
   #hero::before{
     content:'';position:absolute;inset:0;
     background:
@@ -28,11 +31,11 @@
       repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,.03) 39px,rgba(255,255,255,.03) 40px);
     pointer-events:none;
   }
-  .hero-inner{position:relative;max-width:900px;margin:0;}
+  .hero-inner{position:relative;flex:1;min-width:0;}
   .escom-label{font-family:'Rajdhani',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px;}
-  .hero-title{font-family:'Rajdhani',sans-serif;font-size:42px;font-weight:700;color:var(--white);line-height:1.0;margin-bottom:10px;white-space:nowrap;}
+  .hero-title{font-family:'Rajdhani',sans-serif;font-size:42px;font-weight:700;color:var(--white);line-height:1.0;margin-bottom:10px;}
   .hero-title span{color:var(--sky);}
-  .hero-sub{font-size:18px;color:rgba(255,255,255,.65);line-height:1.65;max-width:580px;margin-bottom:28px;white-space:nowrap;}
+  .hero-sub{font-size:18px;color:rgba(255,255,255,.65);line-height:1.65;max-width:580px;margin-bottom:28px;}
   .hero-stats{display:flex;gap:32px;flex-wrap:wrap;}
   .stat{display:flex;flex-direction:column;}
   .stat-num{font-family:'Rajdhani',sans-serif;font-size:32px;font-weight:700;color:var(--gold);line-height:1;}
@@ -49,7 +52,8 @@
   .module-hours{font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:.5px;color:var(--muted);white-space:nowrap;}
 
   /* Lesson grid */
-  .lesson-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(425px,100%),1fr));grid-auto-rows:minmax(225px,auto);gap:18px;margin-bottom:48px;}
+  .lesson-grid{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:minmax(225px,auto);gap:18px;margin-bottom:48px;}
+  .lesson-grid .lesson-card:last-child{grid-column:1/-1;max-width:calc(50% - 9px);}
 
   /* Lesson card */
   .lesson-card{background:var(--white);border-radius:var(--radius);padding:26px 24px 22px;box-shadow:0 1px 8px rgba(0,0,0,.06);text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:10px;transition:transform .18s,box-shadow .18s;border:1px solid transparent;position:relative;overflow:hidden;}
@@ -75,12 +79,13 @@
   footer{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-top:1px solid var(--ice);}
 
   @media(max-width:700px){
-    #hero{padding:36px 90px 32px 18px;}
-    .hero-title{font-size:22px;white-space:normal;}
-    .hero-sub{white-space:normal;max-width:100%;}
-    .hero-sub{font-size:16px;}
+    #hero{padding:32px 18px 28px;flex-direction:column;gap:24px;}
+    .hero-title{font-size:22px;}
+    .hero-sub{font-size:16px;max-width:100%;}
+    .hero-img-wrap{width:100%;max-width:100%;}
     .content{padding:28px 14px 60px;}
     .lesson-grid{grid-template-columns:1fr;}
+    .lesson-grid .lesson-card:last-child{grid-column:auto;max-width:100%;}
     .module-title{font-size:20px;}
     .hero-stats{gap:20px;}
     .stat-num{font-size:24px;}
@@ -93,8 +98,9 @@
 
     /* Hero */
     #hero{padding:20px 24px 18px !important;background:#192437 !important;}
-    .hero-title{font-size:26px !important;white-space:normal !important;}
-    .hero-sub{font-size:12pt !important;white-space:normal !important;}
+    .hero-img-wrap{display:none !important;}
+    .hero-title{font-size:26px !important;}
+    .hero-sub{font-size:12pt !important;}
     .hero-stats{gap:20px !important;}
     .stat-num{font-size:20px !important;}
 
@@ -144,6 +150,9 @@
       <div class="stat"><span class="stat-num">2</span><span class="stat-label">Disponível agora</span></div>
       <div class="stat"><span class="stat-num">3</span><span class="stat-label">Em produção</span></div>
     </div>
+  </div>
+  <div class="hero-img-wrap">
+    <img src="assets/images/bem-vindos-ao-curso-de-ia-da-escom.png" alt="Bem-vindos ao Curso de IA da EsCom">
   </div>
 </div>
 
