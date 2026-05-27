@@ -3146,6 +3146,10 @@ Resposta:</pre>
           <p style="margin-top:10px;"><a href="https://arxiv.org/abs/2205.10625" target="_blank" rel="noopener noreferrer" style="color:var(--sky);font-weight:600;">📖 Acessar o artigo original →</a></p>
         </div>
 
+        <div class="content-img-wrap fade-in">
+          <img src="../../assets/images/least-to-most-prompting.png" alt="Least-to-Most Prompting" loading="lazy" style="object-position:top;"/>
+        </div>
+
         <div id="ltm-problema" class="card fade-in">
           <div class="card-title">🌊 O Problema da Amy — Zero-Shot Falha</div>
           <p>Temos a Amy, que leva <strong>4 minutos para subir</strong> ao topo de um toboágua e <strong>1 minuto para descer</strong>. O toboágua vai fechar daqui a <strong>15 minutos</strong>. Quantas vezes ela ainda consegue escorregar?</p>
@@ -3408,13 +3412,13 @@ Quantas vezes ela ainda consegue escorregar antes que o toboágua feche?</pre>
 
         <div class="card fade-in">
           <div class="card-title">🗳️ Consistência por Votação</div>
-          <p>O <strong>Self-Consistency</strong> foi proposto por <strong>Xuezhi Wang</strong> e pesquisadores do Google (2022). A ideia é simples mas poderosa: em vez de usar o caminho de raciocínio mais provável (geração gulosa), o modelo <strong>gera múltiplos caminhos de raciocínio</strong> diferentes para o mesmo problema — e a resposta final é a que aparece com mais frequência entre todos os caminhos.</p>
+          <p>O <strong>Self-Consistency</strong> foi proposto por <strong>Xuezhi Wang</strong> e pesquisadores do Google (2022). A ideia é simples mas poderosa: em vez de usar o caminho de raciocínio mais provável (greedy decoding), o modelo <strong>gera múltiplos caminhos de raciocínio</strong> diferentes para o mesmo problema — e a resposta final é a que aparece com mais frequência entre todos os caminhos.</p>
           <p style="margin-top:10px;"><a href="https://arxiv.org/abs/2203.11171" target="_blank" rel="noopener noreferrer" style="color:var(--sky);font-weight:600;">📖 Acessar o artigo original →</a></p>
         </div>
 
         <div class="compare fade-in">
           <div class="compare-col" style="border-top:3px solid var(--steel);">
-            <h4 style="color:var(--steel);">CoT Simples (geração gulosa)</h4>
+            <h4 style="color:var(--steel);">CoT Simples (greedy decoding)</h4>
             <p>O modelo gera <strong>um único caminho</strong> de raciocínio e entrega aquela resposta — seja ela certa ou errada.</p>
             <p style="margin-top:10px;color:var(--muted);font-size:16px;">Se esse caminho comete um erro intermediário, a resposta final é errada.</p>
           </div>
@@ -3487,6 +3491,10 @@ Quantas vezes ela ainda consegue escorregar antes que o toboágua feche?</pre>
         <div class="card fade-in">
           <div class="card-title">📊 Quando Usar Cada Técnica</div>
           <p>Cada técnica resolve um problema específico. Conhecer as diferenças é essencial para escolher a abordagem certa:</p>
+        </div>
+
+        <div class="content-img-wrap fade-in">
+          <img src="../../assets/images/comparando-as-tecnicas.png" alt="Comparando as Técnicas" loading="lazy" style="object-position:top;"/>
         </div>
 
         <div class="feature-grid fade-in">
@@ -3574,7 +3582,7 @@ Com base na lista acima, gere uma pergunta de verificação para cada invenção
         </div>
 
         <div class="dark-card fade-in" style="margin-top:28px;">
-          <p>Com estas cinco aulas, você dominou as principais técnicas de Engenharia de Prompt — de Zero-Shot e Few-Shot até Chain-of-Thought, Least-to-Most, Chain-of-Verification e Self-Consistency. Estas são as ferramentas que pesquisadores e profissionais usam para extrair o máximo dos modelos de linguagem modernos.</p>
+          <p>Com estas cinco aulas, você dominou as principais técnicas de Engenharia de Prompt — de <span style="color:#4a9fc8;font-weight:700;">Zero-Shot</span> e <span style="color:#4caf80;font-weight:700;">Few-Shot</span> até <span style="color:#e08040;font-weight:700;">Chain-of-Thought</span>, <span style="color:var(--gold);font-weight:700;">Least-to-Most</span>, <span style="color:#66bb6a;font-weight:700;">Chain-of-Verification</span> e <span style="color:#ef5350;font-weight:700;">Self-Consistency</span>. Estas são as ferramentas que pesquisadores e profissionais usam para extrair o máximo dos modelos de linguagem modernos.</p>
         </div>
 
       </div>
