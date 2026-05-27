@@ -1437,50 +1437,57 @@ FIM PARA</pre>
         <p>Utilizamos um <strong>grafo</strong> como modelo: cada nó representa um produto, e as setas indicam transições possíveis. O A* usa custo acumulado (g) + heurística (h) para determinar o caminho ideal.</p>
       </div>
 
+      <div class="callout purple fade-in" style="margin-top:14px;">
+        <strong>O que este código faz:</strong> O foco deste código é implementar um <strong>sistema de recomendação de produtos</strong> usando o algoritmo A*. Importamos a biblioteca <code>heapq</code>, que fornece a fila de prioridade usada pelo algoritmo para sempre expandir o nó mais promissor. Definimos duas classes: <code>Produto</code> (com nome, categoria e probabilidade de conversão) e <code>AStarRecommendation</code> (que constrói o grafo e executa a busca). Ao final, o código gera o <strong>caminho recomendado entre dois produtos</strong>, passando pelos itens com maior chance de despertar o interesse do usuário.
+      </div>
       <div class="prompt-wrap fade-in">
         <span class="prompt-label neutro">Python 🐍 — recomendador.py</span>
-        <pre class="prompt-block neutro">import heapq
+        <pre class="prompt-block neutro">import heapq  # biblioteca para fila de prioridade (heap), essencial para o A*
 
 class Produto:
     def __init__(self, nome, categoria, conversao_probabilidade):
         self.nome = nome
         self.categoria = categoria
-        self.conversao_probabilidade = conversao_probabilidade
+        self.conversao_probabilidade = conversao_probabilidade  # chance do produto interessar ao usuário
 
     def __repr__(self):
-        return f"{self.nome} ({self.categoria})"
+        return f"{self.nome} ({self.categoria})"  # exibe o produto de forma legível
 
 class AStarRecommendation:
     def __init__(self, produtos, heuristica):
         self.produtos = produtos
         self.heuristica = heuristica
-        self.grafo = self.criar_grafo()
+        self.grafo = self.criar_grafo()  # cria o grafo ao inicializar o sistema
 
     def criar_grafo(self):
         grafo = {}
         for produto in self.produtos:
+            # cada produto se conecta a todos os outros (grafo completo simplificado)
             grafo[produto] = [p for p in self.produtos if p != produto]
         return grafo
 
     def a_star(self, inicio, objetivo):
         fila_prioridade = []
+        # insere o produto inicial na fila com custo f = 0 + h(inicio)
         heapq.heappush(fila_prioridade, (0 + self.heuristica(inicio), 0, inicio))
-        visitados = set()
-        caminhos = {}
+        visitados = set()  # produtos já explorados
+        caminhos = {}      # registra qual produto levou a cada vizinho
 
         while fila_prioridade:
-            _, g, atual = heapq.heappop(fila_prioridade)
+            _, g, atual = heapq.heappop(fila_prioridade)  # extrai o de menor custo f
             if atual in visitados:
-                continue
+                continue           # ignora se já foi explorado anteriormente
             visitados.add(atual)
             if atual == objetivo:
-                break
+                break              # chegou ao destino — encerra a busca
             for vizinho in self.grafo[atual]:
                 if vizinho not in visitados:
                     h = self.heuristica(vizinho)
+                    # f = g (custo acumulado) + 1 (custo do passo) + h (estimativa heurística)
                     heapq.heappush(fila_prioridade, (g + 1 + h, g + 1, vizinho))
-                    caminhos[vizinho] = atual
+                    caminhos[vizinho] = atual  # registra o caminho percorrido
 
+        # reconstrói o caminho do objetivo de volta ao ponto de partida
         caminho = []
         produto = objetivo
         while produto in caminhos:
@@ -1489,9 +1496,10 @@ class AStarRecommendation:
         return caminho
 
 def heuristica(produto):
-    return -produto.conversao_probabilidade  # minimizar = priorizar maior probabilidade
+    # negativo: como o heap minimiza, usar negativo prioriza a maior probabilidade
+    return -produto.conversao_probabilidade
 
-# Exemplo de produtos
+# --- Configuração e execução ---
 produtos = [
     Produto("Produto A", "Categoria 1", 0.9),
     Produto("Produto B", "Categoria 1", 0.8),
@@ -1500,13 +1508,13 @@ produtos = [
 ]
 
 recomendador = AStarRecommendation(produtos, heuristica)
-inicio = produtos[0]   # Produto A
-objetivo = produtos[2] # Produto C
+inicio = produtos[0]   # Produto A — ponto de partida
+objetivo = produtos[2] # Produto C — produto-alvo da recomendação
 
 caminho_recomendado = recomendador.a_star(inicio, objetivo)
 print("Caminho recomendado:")
 for p in caminho_recomendado:
-    print(p)</pre>
+    print(p)  # exibe os produtos do caminho sugerido pelo A*</pre>
       </div>
 
       <div class="prompt-wrap fade-in">
@@ -1699,38 +1707,46 @@ Produto C (Categoria 2)</pre>
         <p>Biblioteca <strong>pgmpy</strong> para redes bayesianas. O modelo verifica se um cliente vai comprar com base em: histórico de compras, tempo no site e clique em promoção.</p>
       </div>
 
+      <div class="callout purple fade-in" style="margin-top:14px;">
+        <strong>O que este código faz:</strong> O foco deste código é construir uma <strong>rede bayesiana</strong> para prever se um cliente vai realizar uma compra. Importamos <code>numpy</code> e <code>scipy.stats</code> para cálculos numéricos e probabilísticos, e a biblioteca <code>pgmpy</code> para modelar e consultar a rede. Definimos as variáveis (histórico de compras, tempo no site, clique em promoção) com suas tabelas de probabilidade condicional, e configuramos o modelo completo. Ao final, o código gera a <strong>probabilidade de compra</strong> dado um conjunto de evidências observadas sobre o comportamento do cliente.
+      </div>
       <div class="prompt-wrap fade-in">
         <span class="prompt-label neutro">Python 🐍 — incerteza.py</span>
-        <pre class="prompt-block neutro">import numpy as np
-from scipy.stats import norm
-from pgmpy.models import BayesianNetwork
-from pgmpy.factors.discrete import TabularCPD
+        <pre class="prompt-block neutro">import numpy as np                              # cálculos numéricos gerais
+from scipy.stats import norm                    # distribuição normal, usada no cálculo de tempo no site
+from pgmpy.models import BayesianNetwork        # estrutura da rede bayesiana
+from pgmpy.factors.discrete import TabularCPD  # tabelas de probabilidade condicional
 
+# define a estrutura da rede: cada tupla indica "variável pai → variável filha"
 model = BayesianNetwork([
     ("HistoricoCompras", "Compra"),
     ("TempoNoSite", "Compra"),
     ("ClicouEmPromocao", "Compra")
 ])
 
+# CPD das variáveis independentes (sem pais): [P(não), P(sim)]
 cpd_historico = TabularCPD(variable="HistoricoCompras", variable_card=2, values=[[0.7], [0.3]])
 cpd_tempo     = TabularCPD(variable="TempoNoSite",      variable_card=2, values=[[0.6], [0.4]])
 cpd_promocao  = TabularCPD(variable="ClicouEmPromocao", variable_card=2, values=[[0.8], [0.2]])
 
+# CPD de "Compra" depende das 3 variáveis acima (2³ = 8 combinações possíveis)
 cpd_compra = TabularCPD(
     variable="Compra", variable_card=2,
     values=[
-        [0.9, 0.7, 0.8, 0.4, 0.6, 0.2, 0.3, 0.1],
-        [0.1, 0.3, 0.2, 0.6, 0.4, 0.8, 0.7, 0.9]
+        [0.9, 0.7, 0.8, 0.4, 0.6, 0.2, 0.3, 0.1],  # P(Não Comprar | combinação)
+        [0.1, 0.3, 0.2, 0.6, 0.4, 0.8, 0.7, 0.9]   # P(Comprar | combinação)
     ],
     evidence=["HistoricoCompras", "TempoNoSite", "ClicouEmPromocao"],
     evidence_card=[2, 2, 2]
 )
 
 model.add_cpds(cpd_historico, cpd_tempo, cpd_promocao, cpd_compra)
-assert model.check_model()
+assert model.check_model()  # valida que o modelo está matematicamente correto
 
 from pgmpy.inference import VariableElimination
-inference = VariableElimination(model)
+inference = VariableElimination(model)  # motor de inferência por eliminação de variáveis
+
+# consulta: cliente com histórico (1), pouco tempo no site (0) e clicou em promoção (1)
 result = inference.query(variables=["Compra"], evidence={
     "HistoricoCompras": 1,
     "TempoNoSite": 0,
@@ -1739,9 +1755,11 @@ result = inference.query(variables=["Compra"], evidence={
 print("Probabilidades de Compra:")
 print(result)
 
-media_tempo = 5
-desvio_padrao_tempo = 2
+# complemento: usando distribuição normal para estimar probabilidade de tempo no site
+media_tempo = 5              # tempo médio esperado (em minutos)
+desvio_padrao_tempo = 2      # variação esperada em torno da média
 tempo_observado = 6
+# cdf: probabilidade acumulada de o cliente ficar MENOS do que o tempo observado
 prob_tempo = norm.cdf(tempo_observado, loc=media_tempo, scale=desvio_padrao_tempo)
 print(f"Probabilidade de o cliente passar menos de {tempo_observado} minutos no site: {prob_tempo:.2f}")</pre>
       </div>
@@ -1871,34 +1889,43 @@ Probabilidade de o cliente passar menos de 6 minutos no site: 0.69</pre>
         <p>Implemente sem a biblioteca pgmpy, usando apenas um dicionário de probabilidades:</p>
       </div>
 
+      <div class="callout purple fade-in" style="margin-top:14px;">
+        <strong>O que este código faz:</strong> O foco deste código é implementar uma <strong>rede bayesiana simplificada sem bibliotecas externas</strong> — usando apenas dicionários Python. Não há importações: o modelo é representado como um dicionário onde cada combinação de evidências (histórico, tempo no site e clique em promoção) mapeia para uma probabilidade de compra. Definimos a função <code>calcular_probabilidade_compra</code>, que recebe as evidências e retorna a probabilidade de comprar e de não comprar. Ao final, o código gera as <strong>probabilidades de decisão do cliente</strong> de forma direta e legível.
+      </div>
       <div class="prompt-wrap fade-in">
         <span class="prompt-label neutro">Python 🐍 — bayesiana_simples.py</span>
-        <pre class="prompt-block neutro">probabilidades = {
-    "HistoricoCompras":  {0: 0.7, 1: 0.3},
-    "TempoNoSite":       {0: 0.6, 1: 0.4},
-    "ClicouEmPromocao":  {0: 0.8, 1: 0.2},
+        <pre class="prompt-block neutro"># dicionário com todas as probabilidades do modelo
+# as variáveis independentes usam 0 = não e 1 = sim
+probabilidades = {
+    "HistoricoCompras":  {0: 0.7, 1: 0.3},  # 70% dos clientes não têm histórico
+    "TempoNoSite":       {0: 0.6, 1: 0.4},  # 60% ficam pouco tempo no site
+    "ClicouEmPromocao":  {0: 0.8, 1: 0.2},  # 80% não clicam em promoções
     "Compra": {
-        (0, 0, 0): 0.1,  # sem histórico, pouco tempo, não clicou
+        # chave: (HistoricoCompras, TempoNoSite, ClicouEmPromocao)
+        # valor: probabilidade de comprar nessa combinação de evidências
+        (0, 0, 0): 0.1,  # sem histórico, pouco tempo, não clicou — menor chance
         (0, 0, 1): 0.3,
         (0, 1, 0): 0.2,
         (0, 1, 1): 0.6,
         (1, 0, 0): 0.4,
         (1, 0, 1): 0.7,
         (1, 1, 0): 0.8,
-        (1, 1, 1): 0.9   # com histórico, muito tempo, clicou
+        (1, 1, 1): 0.9   # com histórico, muito tempo, clicou — maior chance
     }
 }
 
 def calcular_probabilidade_compra(evidencias):
+    # extrai os valores de cada evidência fornecida
     h = evidencias["HistoricoCompras"]
     t = evidencias["TempoNoSite"]
     p = evidencias["ClicouEmPromocao"]
-    prob = probabilidades["Compra"][(h, t, p)]
-    return {"Comprar": prob, "Não Comprar": 1 - prob}
+    prob = probabilidades["Compra"][(h, t, p)]  # consulta a tabela com a combinação exata
+    return {"Comprar": prob, "Não Comprar": 1 - prob}  # retorna as duas probabilidades complementares
 
+# define o cenário: cliente com histórico, pouco tempo no site, que clicou em promoção
 evidencias = {"HistoricoCompras": 1, "TempoNoSite": 0, "ClicouEmPromocao": 1}
 for resultado, probabilidade in calcular_probabilidade_compra(evidencias).items():
-    print(f"{resultado}: {probabilidade:.2f}")</pre>
+    print(f"{resultado}: {probabilidade:.2f}")  # exibe resultado formatado com 2 decimais</pre>
       </div>
 
       <div class="prompt-wrap fade-in">
@@ -2027,39 +2054,47 @@ Não Comprar: 0.30</pre>
         </tbody>
       </table>
 
+      <div class="callout purple fade-in" style="margin-top:14px;">
+        <strong>O que este código faz:</strong> O foco deste código é simular uma <strong>previsão do tempo usando Cadeias de Markov</strong>. Importamos a biblioteca <code>numpy</code> para sortear estados com base em probabilidades. Definimos os estados climáticos possíveis (Ensolarado, Nublado, Chuvoso) e a matriz de transição, que indica a probabilidade de passar de um clima para outro a cada dia. A função <code>predict_weather</code> executa a cadeia iterativamente. Ao final, o código gera uma <strong>previsão sequencial do tempo para os próximos 10 dias</strong>, partindo de um estado inicial informado.
+      </div>
       <div class="prompt-wrap fade-in">
         <span class="prompt-label neutro">Python 🐍 — markov.py</span>
-        <pre class="prompt-block neutro">import numpy as np
+        <pre class="prompt-block neutro">import numpy as np  # usada para sortear o próximo estado com base nas probabilidades
 
+# lista dos estados climáticos possíveis
 states = ["Ensolarado", "Nublado", "Chuvoso"]
 
+# matriz de transição: cada linha representa um estado atual
+# os três valores de cada linha são as probabilidades de ir para Ensolarado, Nublado e Chuvoso
+# cada linha deve somar 1 (o sistema sempre transita para algum estado)
 transition_matrix = [
-    [0.8, 0.15, 0.05],
-    [0.2, 0.6,  0.2 ],
-    [0.25, 0.25, 0.5]
+    [0.8, 0.15, 0.05],  # de Ensolarado: 80% continua, 15% nublado, 5% chuvoso
+    [0.2, 0.6,  0.2 ],  # de Nublado:   20% sol, 60% continua, 20% chuva
+    [0.25, 0.25, 0.5]   # de Chuvoso:   25% sol, 25% nublado, 50% continua
 ]
 
-initial_state = "Ensolarado"
-num_days = 10
+initial_state = "Ensolarado"  # estado climático inicial da simulação
+num_days = 10                  # quantidade de dias a prever
 
 def get_state_index(state):
-    return states.index(state)
+    return states.index(state)  # retorna o índice do estado na lista (0, 1 ou 2)
 
 def predict_weather(initial_state, num_days):
     current_state = initial_state
-    forecast = [current_state]
+    forecast = [current_state]   # inicia a lista de previsões com o estado atual
     for _ in range(num_days - 1):
         idx = get_state_index(current_state)
+        # sorteia o próximo estado usando as probabilidades da linha correspondente da matriz
         next_state = np.random.choice(states, p=transition_matrix[idx])
         forecast.append(next_state)
-        current_state = next_state
+        current_state = next_state  # atualiza o estado atual para a próxima iteração
     return forecast
 
 forecast = predict_weather(initial_state, num_days)
 print(f"Estado inicial: {initial_state}")
 print("Previsão para os próximos dias:")
 for day, state in enumerate(forecast, start=1):
-    print(f"Dia {day}: {state}")</pre>
+    print(f"Dia {day}: {state}")  # exibe cada dia com seu estado climático previsto</pre>
       </div>
 
       <div class="prompt-wrap fade-in">
