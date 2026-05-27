@@ -87,7 +87,7 @@
   .content{max-width:var(--section-w);margin:0 auto;padding:0 48px 80px;}
 
   /* Objectives */
-  #objetivos,#objetivos-2,#objetivos-3{background:var(--white);border-left:4px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:24px 28px;margin:36px 0 0;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+  #objetivos,#objetivos-2,#objetivos-3,#objetivos-4{background:var(--white);border-left:4px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:24px 28px;margin:36px 0 0;box-shadow:0 2px 10px rgba(0,0,0,.06);}
   .obj-title{font-family:'Rajdhani',sans-serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
   .obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px 22px;}
   .obj-item{display:flex;align-items:flex-start;gap:10px;font-size:18px;line-height:1.55;}
@@ -298,7 +298,7 @@
     .hero-logo{width:83px;height:83px;top:12px;right:12px;}
     .aula-tab{font-size:18px;padding:9px 18px;}
     .content{padding:0 14px 60px;}
-    #objetivos,#objetivos-2,#objetivos-3{padding:18px 16px;margin:20px 0 0;}
+    #objetivos,#objetivos-2,#objetivos-3,#objetivos-4{padding:18px 16px;margin:20px 0 0;}
     .obj-grid{grid-template-columns:1fr;gap:8px;}
     .obj-item{font-size:17.5px;}
     .intro-card{padding:20px 18px;font-size:17.5px;}
@@ -522,6 +522,7 @@
       </div>
       <div class="sb-section-label">Navegação — Aula 04</div>
       <ul class="sb-nav">
+        <li><a href="#objetivos-4"><span class="num">—</span> Objetivos</a></li>
         <li class="section-divider"><a href="#cot-ambiente"><span class="num">01</span> Preparando o Ambiente</a></li>
         <li><a href="#cot-gemini"><span class="num">1.1</span> Gemini (Google)</a></li>
         <li class="section-divider"><a href="#cot-tecnica"><span class="num">02</span> Entendendo a Técnica</a></li>
@@ -2584,6 +2585,16 @@ Formal:</pre>
     ════════════════════════════════════ -->
     <div class="content-panel" id="ct-panel-4">
       <div class="content">
+
+        <div id="objetivos-4" class="fade-in">
+          <div class="obj-title">◆ Objetivos da Instrução</div>
+          <div class="obj-grid">
+            <div class="obj-item"><span class="dot"></span>Compreender o que é Chain-of-Thought Prompt e como ele potencializa o Few-Shot.</div>
+            <div class="obj-item"><span class="dot"></span>Aplicar a técnica Few-Shot + CoT em problemas práticos com raciocínio passo a passo.</div>
+            <div class="obj-item"><span class="dot"></span>Conhecer a base científica da técnica e seu impacto na precisão dos modelos de linguagem.</div>
+            <div class="obj-item"><span class="dot"></span>Utilizar o Zero-Shot Chain-of-Thought com a frase "explique passo a passo" para induzir raciocínio sem exemplos.</div>
+          </div>
+        </div>
 
         <!-- ─── ITEM 01 ─── -->
         <div id="cot-ambiente" class="section-sep fade-in">
