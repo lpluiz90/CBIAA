@@ -3117,6 +3117,7 @@ Resposta:</pre>
     heroDyns.forEach(function(h,i) { h.classList.toggle('active', i===idx); });
     ctPanels.forEach(function(c,i) { c.classList.toggle('active', i===idx); });
     window.scrollTo(0, 0);
+    localStorage.setItem('ep-tab', idx);
   }
 
   tabs.forEach(function(t, i) {
@@ -3224,7 +3225,7 @@ Resposta:</pre>
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  activate(0);
+  activate(parseInt(localStorage.getItem('ep-tab')) || 0);
 })();
 </script>
 
