@@ -1385,6 +1385,51 @@
         <p><strong>Agendamento de consultas médicas:</strong> estado inicial = agenda inicial; ações = alocação de pacientes nos horários; objetivo = minimizar conflitos e otimizar tempo; função de custo = tempo de espera e horários ociosos dos profissionais.</p>
       </div>
 
+      <div class="quiz-section fade-in" style="margin-top:28px;">
+        <div class="quiz-section-header"><span class="qs-label">Verifique seu aprendizado</span><span class="qs-title">Item 01 — Modelagem de Problemas</span></div>
+        <div class="quiz-section-body">
+          <div class="quiz-block" data-correct="C">
+            <div class="quiz-q-label">Questão 01</div>
+            <div class="quiz-question">Em problemas de busca em IA, o que é o <strong>espaço de estados</strong>?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>A quantidade de memória RAM disponível no computador.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>A área física onde o robô se desloca.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>O conjunto de todas as configurações possíveis do problema, conectadas por ações que levam de uma à outra.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>O tempo total que o algoritmo leva para terminar.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Espaço de estados é o "mapa lógico" do problema: cada nó é uma situação possível e cada aresta é uma ação que transforma um estado em outro.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Espaço de estados é abstrato: descreve todas as configurações alcançáveis do problema, não memória física ou tempo de execução.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="B">
+            <div class="quiz-q-label">Questão 02</div>
+            <div class="quiz-question">Os componentes essenciais para modelar um problema como busca são:</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Apenas o estado inicial.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Estado inicial, conjunto de ações, função de transição, teste de objetivo e função de custo.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Linguagem de programação, banco de dados e interface gráfica.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>O tipo de hardware e o sistema operacional usado.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Esses cinco elementos formam a "anatomia" formal de um problema de busca — independentemente da tecnologia usada para implementá-lo.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. A definição é teórica e independe de tecnologia: precisa do estado inicial, ações possíveis, transições, critério de sucesso e custos das ações.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="A">
+            <div class="quiz-q-label">Questão 03</div>
+            <div class="quiz-question">Por que é importante modelar bem um problema antes de aplicar algoritmos de busca?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>A qualidade do modelo determina diretamente o que o algoritmo consegue encontrar — modelos ruins levam a soluções inviáveis ou inexistentes.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Modelar é opcional; o algoritmo descobre tudo sozinho.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Modelar serve apenas para documentação posterior.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>É importante apenas em problemas com mais de 1 milhão de estados.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! O modelo define a fronteira do que o algoritmo "enxerga". Estado, ações e custos mal escolhidos podem omitir soluções, criar caminhos artificiais ou tornar a busca intratável.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Modelagem é decisiva e não opcional. "Lixo entra, lixo sai" também vale aqui: algoritmos não consertam modelagem ruim.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+        </div>
+      </div>
+
       <div id="a3-s2" class="section-sep fade-in"><span class="sep-num">Item 02</span><span class="sep-title">Estratégias de Busca</span><span class="sep-line"></span></div>
 
       <div class="card fade-in">
@@ -1405,12 +1450,102 @@
         </div>
       </div>
 
+      <div class="quiz-section fade-in" style="margin-top:28px;">
+        <div class="quiz-section-header"><span class="qs-label">Verifique seu aprendizado</span><span class="qs-title">Item 02 — Estratégias de Busca</span></div>
+        <div class="quiz-section-body">
+          <div class="quiz-block" data-correct="B">
+            <div class="quiz-q-label">Questão 01</div>
+            <div class="quiz-question">Qual a diferença entre <strong>busca cega</strong> e <strong>busca informada</strong>?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Busca cega usa GPU; busca informada usa CPU.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Busca cega explora sem nenhuma estimativa sobre a proximidade do objetivo; busca informada usa heurística para guiar a exploração.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Busca cega só funciona com texto; busca informada só com números.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>São termos sinônimos.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! "Informada" significa: tenho uma estimativa (heurística) do quão promissor é cada caminho. Isso direciona a busca, encontrando soluções com muito menos esforço.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. A diferença é conceitual: a busca informada usa CONHECIMENTO sobre o problema (heurística) para priorizar caminhos promissores — a cega não tem essa orientação.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="A">
+            <div class="quiz-q-label">Questão 02</div>
+            <div class="quiz-question">A <strong>Busca em Largura</strong> (BFS) tem como característica principal:</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Encontra a solução ÓTIMA quando todos os custos das ações são iguais, explorando nível por nível.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Sempre encontra a melhor solução em problemas com custos diferentes.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>É a forma mais rápida em qualquer cenário.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Consome o mínimo de memória possível.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! BFS garante a solução com MENOR número de passos quando todos os passos custam o mesmo. O custo: pode usar muita memória, pois mantém todos os nós da frente.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. BFS é ótima apenas com custos uniformes, não em qualquer cenário. Consome bastante memória (mantém toda a fronteira em fila).</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="D">
+            <div class="quiz-q-label">Questão 03</div>
+            <div class="quiz-question">Quando faz sentido escolher uma <strong>busca em profundidade</strong> (DFS) em vez de BFS?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Quando se precisa GARANTIR a solução com menos passos.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Quando a memória disponível é ilimitada.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Quando o problema tem ramificação muito pequena.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Quando a memória é restrita e o caminho ótimo não é prioridade, ou em árvores muito profundas onde BFS explodiria.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! DFS é leve em memória (mantém só o caminho atual) — útil quando há limite de RAM ou a árvore é profunda. Trade-off: não garante o caminho mais curto.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. DFS é a opção quando memória é escassa ou a árvore é profunda, NÃO quando se busca o ótimo. Ela pode ficar presa em ramos longos sem solução.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+        </div>
+      </div>
+
       <div id="a3-s3" class="section-sep fade-in"><span class="sep-num">Item 03</span><span class="sep-title">Aplicações Práticas das Estratégias</span><span class="sep-line"></span></div>
 
       <div class="feature-grid-3 fade-in">
         <div class="feature-box"><h5>Chatbots</h5><p>Busca não informada para identificação de padrões + busca informada para interpretar intenções específicas do usuário.</p></div>
         <div class="feature-box gold"><h5>Sistemas de Navegação</h5><p>BFS para mapear possibilidades + A* para ajustar opções com base em dados de tráfego em tempo real (como o Google Maps).</p></div>
         <div class="feature-box purple"><h5>Jogos Digitais</h5><p>Algoritmo Minimax em jogos de soma zero (xadrez) combinado com heurísticas que mapeiam a árvore de possibilidades de jogadas.</p></div>
+      </div>
+
+      <div class="quiz-section fade-in" style="margin-top:28px;">
+        <div class="quiz-section-header"><span class="qs-label">Verifique seu aprendizado</span><span class="qs-title">Item 03 — Aplicações Práticas</span></div>
+        <div class="quiz-section-body">
+          <div class="quiz-block" data-correct="C">
+            <div class="quiz-q-label">Questão 01</div>
+            <div class="quiz-question">Em um aplicativo de rotas (estilo Waze/Google Maps), qual algoritmo de busca é tipicamente usado?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Busca em profundidade (DFS).</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Busca aleatória.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Variantes de busca informada como A* ou Dijkstra, usando distância e tempo como heurística/custo.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Apenas força bruta exaustiva.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Roteamento real combina Dijkstra (caminho mínimo) com heurísticas geográficas (estilo A*) — viabilizando cálculos rápidos em grafos com milhões de ruas.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. DFS e força bruta não escalam; aleatório não é confiável. GPS usa busca informada (A*, Dijkstra), aproveitando a geografia como heurística.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="A">
+            <div class="quiz-q-label">Questão 02</div>
+            <div class="quiz-question">Em um sistema de recomendação que sugere "filmes parecidos", como a busca se manifesta?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Buscando, no espaço de filmes, aqueles cuja "distância" (similaridade) ao filme atual é menor segundo alguma métrica.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Selecionando filmes aleatoriamente.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Mostrando sempre os filmes mais vendidos.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Listando filmes em ordem alfabética.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Recomendação é busca por vizinhos próximos: o "espaço" é o catálogo, a "distância" é a similaridade (gênero, atores, padrão de quem assistiu). O algoritmo busca os mais próximos.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Aleatório, popularidade ou ordem alfabética não são personalizados. Recomendação real usa similaridade — uma forma de busca em espaço vetorial.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="B">
+            <div class="quiz-q-label">Questão 03</div>
+            <div class="quiz-question">Qual é o papel da <strong>heurística</strong> em uma busca informada?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Garantir que sempre o melhor caminho será encontrado em qualquer cenário.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Estimar o custo restante até o objetivo, orientando o algoritmo a explorar primeiro os caminhos aparentemente mais promissores.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Substituir totalmente a definição do problema.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Acelerar o computador fisicamente.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Heurística é uma estimativa razoável (não garantida) que orienta a busca. Boa heurística reduz drasticamente o número de nós explorados — ótima heurística + A* = caminho ótimo.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Heurística é uma ESTIMATIVA que orienta a busca. Ela não substitui a modelagem, não acelera hardware e não garante ótimo (a menos que satisfaça propriedades como admissibilidade em A*).</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+        </div>
       </div>
 
       <div id="a3-s4" class="section-sep fade-in"><span class="sep-num">Item 04</span><span class="sep-title">Implementando o Algoritmo A*</span><span class="sep-line"></span></div>
@@ -1500,6 +1635,51 @@ Produto B (Categoria 1)
 Produto C (Categoria 2)</pre>
       </div>
 
+      <div class="quiz-section fade-in" style="margin-top:28px;">
+        <div class="quiz-section-header"><span class="qs-label">Verifique seu aprendizado</span><span class="qs-title">Item 04 — Algoritmo A*</span></div>
+        <div class="quiz-section-body">
+          <div class="quiz-block" data-correct="B">
+            <div class="quiz-q-label">Questão 01</div>
+            <div class="quiz-question">O algoritmo A* combina duas componentes em sua função de avaliação f(n). Quais são?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Tempo de execução e memória usada.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>g(n): custo do caminho até o nó atual; h(n): estimativa do custo restante até o objetivo.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Largura e profundidade da árvore.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Velocidade do processador e do disco.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! f(n) = g(n) + h(n). O A* é tão poderoso porque considera tanto o que já gastou (g) quanto o que provavelmente ainda vai gastar (h) — sempre escolhendo o nó com menor f.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. As componentes do A* são g (custo passado) e h (estimativa futura), não métricas de hardware ou estrutura da árvore.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="C">
+            <div class="quiz-q-label">Questão 02</div>
+            <div class="quiz-question">Para que o A* GARANTA encontrar o caminho ótimo, a heurística h(n) precisa ser:</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Sempre igual a zero.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Sempre maior que o custo real restante.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Admissível: nunca superestimar o custo real para chegar ao objetivo.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Aleatória, para evitar viés.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Heurística admissível (h(n) ≤ custo real) garante o ótimo. Se superestima, pode descartar prematuramente o caminho ótimo achando-o "muito caro".</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Heurística zero (Dijkstra puro) também garante ótimo mas é lento; superestimar quebra a garantia; aleatório destrói a inteligência. A propriedade-chave é admissibilidade.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="A">
+            <div class="quiz-q-label">Questão 03</div>
+            <div class="quiz-question">Em um sistema de recomendação implementado com A*, o que faz papel de "g(n)" e "h(n)"?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>g(n): distância acumulada até o item atual no espaço de similaridade; h(n): estimativa de quão próximo esse item está dos interesses do usuário.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Eles não existem em recomendação.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>g(n) é o número de likes; h(n) é o número de comentários.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>g(n) é a hora atual; h(n) é a data de criação.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! O A* aplicado a recomendação usa custo acumulado no espaço de similaridade como g e proximidade estimada aos interesses do usuário como h — guiando a exploração para itens promissores.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. g e h existem em qualquer aplicação do A* — o que muda é a semântica: distância no espaço de similaridade (g) e proximidade aos interesses (h) em recomendação.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+        </div>
+      </div>
+
       <div id="a3-s5" class="section-sep fade-in"><span class="sep-num">Item 05</span><span class="sep-title">Faça como eu fiz</span><span class="sep-line"></span></div>
 
       <div class="card fade-in">
@@ -1519,6 +1699,51 @@ Produto C (Categoria 2)</pre>
       </div>
 
       <!-- QUIZ 3 -->
+      <div class="quiz-section fade-in" style="margin-top:28px;">
+        <div class="quiz-section-header"><span class="qs-label">Verifique seu aprendizado</span><span class="qs-title">Item 05 — Faça como eu fiz</span></div>
+        <div class="quiz-section-body">
+          <div class="quiz-block" data-correct="B">
+            <div class="quiz-q-label">Questão 01</div>
+            <div class="quiz-question">Ao reproduzir o exercício de A* em Python, qual o passo MAIS importante para entender o algoritmo?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Copiar e colar o código sem modificações e observar a saída.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Imprimir os valores de g(n), h(n) e f(n) a cada passo para visualizar como o algoritmo escolhe os nós.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Memorizar o código de cor.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Trocar a linguagem para C++ antes de qualquer teste.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Imprimir g, h, f a cada iteração revela COMO o A* prioriza nós — transformando um algoritmo abstrato em algo que se pode "ver" funcionando.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Aprender um algoritmo é entender seu comportamento. A melhor forma é instrumentar o código (prints estratégicos) e analisar passo a passo.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="A">
+            <div class="quiz-q-label">Questão 02</div>
+            <div class="quiz-question">Qual estrutura de dados é tipicamente usada para representar a "fronteira" no A*?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Fila de prioridade (priority queue / heap), priorizando o menor f(n).</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Lista comum, sempre adicionando no final.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Pilha (LIFO).</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Dicionário sem ordem definida.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! A fila de prioridade permite extrair, em tempo logarítmico, o nó com menor f(n) — o "candidato mais promissor" segundo a heurística.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Lista comum, pilha ou dicionário sem ordem não dão acesso eficiente ao "melhor" nó. A fila de prioridade (heap) é o padrão para o A*.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="D">
+            <div class="quiz-q-label">Questão 03</div>
+            <div class="quiz-question">Se o A* está demorando demais, qual ajuste pode ajudar — sem perder optimality (quando ela é exigida)?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Eliminar completamente a heurística (h = 0).</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Multiplicar a heurística por 100 para "acelerar".</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Trocar A* por DFS aleatório.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Usar uma heurística mais informativa (e ainda admissível) ou aplicar técnicas como caching e podas.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Heurística melhor (mas ainda admissível) reduz drasticamente o espaço explorado. Caching de estados já visitados e podas geometricamente válidas também ajudam.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Zerar a heurística = Dijkstra (geralmente mais lento). Inflacionar quebra optimality. Trocar para DFS aleatório piora qualidade. A solução é ser mais "esperto" na heurística e nas estruturas auxiliares.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+        </div>
+      </div>
+
       <div id="a3-quiz" class="quiz-section fade-in">
         <div class="quiz-section-header"><span class="qs-label">Quiz</span><span class="qs-title">Avalie seu aprendizado — Aula 03</span></div>
         <div class="quiz-section-body">
