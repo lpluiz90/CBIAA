@@ -20,10 +20,7 @@
   #hero{
     background:linear-gradient(135deg,var(--navy) 0%,var(--steel) 60%,#2a5a8a 100%);
     padding:60px 40px 52px 40px;position:relative;overflow:hidden;
-    display:flex;align-items:center;gap:40px;
   }
-  .hero-img-wrap{flex-shrink:0;width:340px;max-width:340px;position:relative;z-index:1;}
-  .hero-img-wrap img{width:100%;height:260px;object-fit:cover;object-position:top;border-radius:10px;box-shadow:0 4px 24px rgba(0,0,0,.35);display:block;}
   #hero::before{
     content:'';position:absolute;inset:0;
     background:
@@ -31,7 +28,7 @@
       repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,.03) 39px,rgba(255,255,255,.03) 40px);
     pointer-events:none;
   }
-  .hero-inner{position:relative;flex:1;min-width:0;}
+  .hero-inner{position:relative;max-width:900px;margin:0;}
   .escom-label{font-family:'Rajdhani',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px;}
   .hero-title{font-family:'Rajdhani',sans-serif;font-size:42px;font-weight:700;color:var(--white);line-height:1.0;margin-bottom:10px;}
   .hero-title span{color:var(--sky);}
@@ -51,8 +48,13 @@
   .module-line{flex:1;height:2px;background:linear-gradient(to right,var(--navy),transparent);border-radius:1px;}
   .module-hours{font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:.5px;color:var(--muted);white-space:nowrap;}
 
+  /* Content layout: cards left, image right */
+  .content-layout{display:flex;gap:24px;align-items:stretch;margin-bottom:48px;}
+  .course-img-wrap{flex-shrink:0;width:380px;border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.1);}
+  .course-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
+
   /* Lesson grid */
-  .lesson-grid{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:minmax(225px,auto);gap:18px;margin-bottom:48px;}
+  .lesson-grid{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:minmax(225px,auto);gap:18px;flex:1;min-width:0;}
   .lesson-grid .lesson-card:last-child{grid-column:1/-1;max-width:calc(50% - 9px);}
 
   /* Lesson card */
@@ -79,11 +81,13 @@
   footer{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-top:1px solid var(--ice);}
 
   @media(max-width:700px){
-    #hero{padding:32px 18px 28px;flex-direction:column;gap:24px;}
+    #hero{padding:32px 18px 28px;}
     .hero-title{font-size:22px;}
     .hero-sub{font-size:16px;max-width:100%;}
-    .hero-img-wrap{width:100%;max-width:100%;}
     .content{padding:28px 14px 60px;}
+    .content-layout{flex-direction:column;}
+    .course-img-wrap{width:100%;}
+    .course-img-wrap img{height:220px;}
     .lesson-grid{grid-template-columns:1fr;}
     .lesson-grid .lesson-card:last-child{grid-column:auto;max-width:100%;}
     .module-title{font-size:20px;}
@@ -98,9 +102,9 @@
 
     /* Hero */
     #hero{padding:20px 24px 18px !important;background:#192437 !important;}
-    .hero-img-wrap{display:none !important;}
     .hero-title{font-size:26px !important;}
     .hero-sub{font-size:12pt !important;}
+    .course-img-wrap{display:none !important;}
     .hero-stats{gap:20px !important;}
     .stat-num{font-size:20px !important;}
 
@@ -151,9 +155,6 @@
       <div class="stat"><span class="stat-num">3</span><span class="stat-label">Em produção</span></div>
     </div>
   </div>
-  <div class="hero-img-wrap">
-    <img src="assets/images/bem-vindos-ao-curso-de-ia-da-escom.png" alt="Bem-vindos ao Curso de IA da EsCom">
-  </div>
 </div>
 
 <div class="content">
@@ -165,6 +166,7 @@
     <div class="module-line"></div>
   </div>
 
+  <div class="content-layout">
   <div class="lesson-grid">
 
     <a class="lesson-card available" href="Introducao/InteligenciaArtificialGenerativa/index.html" target="_blank" rel="noopener">
@@ -219,7 +221,13 @@
       </div>
     </div>
 
+  </div><!-- /lesson-grid -->
+
+  <div class="course-img-wrap">
+    <img src="assets/images/bem-vindos-ao-curso-de-ia-da-escom.png" alt="Bem-vindos ao Curso de IA da EsCom">
   </div>
+
+  </div><!-- /content-layout -->
 
 </div>
 
