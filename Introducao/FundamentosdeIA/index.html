@@ -970,6 +970,51 @@
         </div>
       </div>
 
+      <div class="quiz-section fade-in" style="margin-top:28px;">
+        <div class="quiz-section-header"><span class="qs-label">Verifique seu aprendizado</span><span class="qs-title">Item 01 — Agentes Inteligentes</span></div>
+        <div class="quiz-section-body">
+          <div class="quiz-block" data-correct="B">
+            <div class="quiz-q-label">Questão 01</div>
+            <div class="quiz-question">Em IA, o que caracteriza um <strong>agente inteligente</strong>?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Um programa que apenas armazena dados em um banco.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Uma entidade capaz de perceber o ambiente, decidir e agir para alcançar objetivos.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Um tipo específico de rede neural com mais de 10 camadas.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Um hardware especializado para processamento gráfico.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! O ciclo "perceber → decidir → agir" é a essência de um agente. Sem qualquer um desses elementos, deixa de ser agente.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Agente é definido pelo COMPORTAMENTO (perceber/decidir/agir) — não pela tecnologia interna. Pode ser uma regra simples ou um LLM sofisticado.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="C">
+            <div class="quiz-q-label">Questão 02</div>
+            <div class="quiz-question">Qual destes NÃO é exemplo de agente inteligente?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Um robô aspirador que mapeia o cômodo e desvia de obstáculos.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Um assistente virtual que responde perguntas e executa ações.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Uma calculadora científica que executa fórmulas fixas digitadas pelo usuário.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Um carro autônomo que navega no trânsito.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! A calculadora apenas executa fórmulas — não percebe ambiente, não decide entre opções, não age autonomamente. Falta o "agir baseado em decisão".</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Robôs aspiradores, assistentes virtuais e carros autônomos têm o ciclo perceber-decidir-agir. A calculadora apenas processa fórmulas fixas.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="A">
+            <div class="quiz-q-label">Questão 03</div>
+            <div class="quiz-question">Para um agente operar bem em um ambiente, é essencial que ele possua:</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Sensores (para perceber) e atuadores (para agir).</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Apenas um banco de dados muito grande.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Um sistema operacional específico.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Conexão permanente à internet em qualquer cenário.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Sensores e atuadores são a interface do agente com o ambiente. Sem perceber, ele não sabe o estado; sem agir, ele não muda nada.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. O essencial é a interface com o ambiente: sensores e atuadores. Dados, SO ou internet são detalhes de implementação — não definem o conceito.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+        </div>
+      </div>
+
       <div id="a2-s2" class="section-sep fade-in"><span class="sep-num">Item 02</span><span class="sep-title">Explorando a Estrutura dos Agentes</span><span class="sep-line"></span></div>
 
       <div class="card fade-in">
@@ -987,6 +1032,51 @@
         <strong>Agentes em aplicações web:</strong> e-commerces usam agentes inteligentes para selecionar e organizar conteúdos personalizados no catálogo de produtos, melhorando a experiência do usuário e aumentando a conversão de visitas em vendas.
       </div>
 
+      <div class="quiz-section fade-in" style="margin-top:28px;">
+        <div class="quiz-section-header"><span class="qs-label">Verifique seu aprendizado</span><span class="qs-title">Item 02 — Estrutura dos Agentes</span></div>
+        <div class="quiz-section-body">
+          <div class="quiz-block" data-correct="A">
+            <div class="quiz-q-label">Questão 01</div>
+            <div class="quiz-question">Um agente <strong>reativo simples</strong> caracteriza-se por:</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Reagir diretamente à percepção atual usando regras "condição → ação", sem memória do passado.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Manter histórico detalhado de todas as percepções já recebidas.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Otimizar utilidade ponderada considerando incertezas e preferências.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Aprender a política de ação por reforço com milhões de tentativas.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Reativo simples = estímulo-resposta direto. Útil em ambientes totalmente observáveis e determinísticos, mas limitado em cenários complexos.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Manter histórico já caracteriza um agente baseado em modelo; utilidade e aprendizado caracterizam tipos mais avançados. Reativo simples é o mais básico: percepção → ação direta.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="C">
+            <div class="quiz-q-label">Questão 02</div>
+            <div class="quiz-question">Qual o principal benefício de um agente <strong>baseado em modelo</strong> em relação ao reativo simples?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Consome menos memória que um agente reativo.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Não precisa de regras condicionais.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Mantém estado interno do mundo, permitindo agir em ambientes parcialmente observáveis.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Funciona apenas com inteligência humana operando junto.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! O modelo interno permite lembrar o que não está visível agora (ex.: "vi a porta aberta há 5 segundos"). Isso é decisivo em ambientes parcialmente observáveis.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Agentes baseados em modelo gastam MAIS memória (mantêm estado interno) e usam regras. O ganho é representar o mundo internamente, lidando com observação parcial.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="D">
+            <div class="quiz-q-label">Questão 03</div>
+            <div class="quiz-question">Em um agente baseado em <strong>utilidade</strong>, qual é o critério de decisão?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>A primeira ação possível que conduza ao objetivo.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>A ação que execute mais rapidamente.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>A ação preferida pelo programador, fixada em código.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>A ação que maximiza uma função numérica de utilidade, ponderando custos, riscos e preferências.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Utilidade traduz preferências em números: o agente escolhe a ação cujo resultado esperado tem maior utilidade — equilibrando ganhos, custos e riscos.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Agentes baseados em utilidade decidem por uma função numérica que pondera qualidade dos resultados — não pela primeira opção, velocidade ou preferência fixa.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+        </div>
+      </div>
+
       <div id="a2-s3" class="section-sep fade-in"><span class="sep-num">Item 03</span><span class="sep-title">Para Saber Mais: LLMs</span><span class="sep-line"></span></div>
 
       <div class="card fade-in">
@@ -994,6 +1084,51 @@
         <p><strong>LLMs (Large Language Models)</strong> são modelos de IA treinados em vastas quantidades de dados textuais, capazes de processar, compreender e gerar textos em linguagem natural com alto nível de sofisticação. ChatGPT, Copilot e Gemini são exemplos de produtos baseados em LLMs.</p>
         <p>O que destaca os LLMs é sua capacidade de identificar padrões, compreender contextos e capturar relações nos dados. Eles utilizam arquiteturas como <strong>Transformers</strong> (ex.: GPT, BERT) para lidar com conexões contextuais em textos longos.</p>
         <p>No cotidiano, muitos usuários interagem com esses modelos sem perceber — por meio de assistentes que automatizam tarefas, sugerem palavras e otimizam processos de busca.</p>
+      </div>
+
+      <div class="quiz-section fade-in" style="margin-top:28px;">
+        <div class="quiz-section-header"><span class="qs-label">Verifique seu aprendizado</span><span class="qs-title">Item 03 — LLMs</span></div>
+        <div class="quiz-section-body">
+          <div class="quiz-block" data-correct="C">
+            <div class="quiz-q-label">Questão 01</div>
+            <div class="quiz-question">O que é, em essência, um <strong>LLM</strong> (Large Language Model)?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Um dicionário digital com todas as palavras possíveis.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Um robô físico que conversa.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Um modelo estatístico, treinado em grandes volumes de texto, que aprende a prever a próxima palavra em um contexto.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Um banco de dados relacional otimizado para texto.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! LLMs aprendem regularidades estatísticas da linguagem — prevendo a próxima palavra dado o contexto. Essa habilidade básica permite gerar texto fluente sobre qualquer tema.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. LLM não é dicionário, robô ou banco de dados — é um modelo estatístico que aprende a prever palavras a partir de grandes corpora de texto.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="B">
+            <div class="quiz-q-label">Questão 02</div>
+            <div class="quiz-question">Por que LLMs podem "alucinar" (gerar respostas plausíveis mas incorretas)?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Porque seus criadores instruem o modelo a mentir intencionalmente.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Porque otimizam plausibilidade textual, não verdade factual — geram o que parece coerente, mesmo sem ter a informação correta.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Porque sofrem panes elétricas durante a execução.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Porque usam apenas dados muito antigos, anteriores a 1970.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! O objetivo do treinamento é prever a próxima palavra com base em padrões — não verificar fatos. Quando o modelo não "sabe", ele preenche com o que parece coerente, mas pode ser falso.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Alucinação não é intencional nem técnica: é consequência natural de otimizar coerência textual em vez de verdade verificada.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="A">
+            <div class="quiz-q-label">Questão 03</div>
+            <div class="quiz-question">Para usar LLMs em aplicações sérias, é recomendado:</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Conectar o LLM a fontes confiáveis (RAG, busca, bases internas) e validar saídas críticas.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Aceitar todas as respostas como verdade, pois LLMs são exatos.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Treinar o próprio LLM do zero em cada aplicação.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Evitar totalmente qualquer uso institucional.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Conectar LLMs a fontes confiáveis (técnica RAG) e validar saídas críticas reduz alucinações e aumenta a precisão — combinando o melhor de IA generativa com confiabilidade.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Confiança cega é arriscada; treinar do zero é inviável para a maioria; e evitar totalmente desperdiça o potencial. A solução intermediária: usar com fontes + validação.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+        </div>
       </div>
 
       <div id="a2-s4" class="section-sep fade-in"><span class="sep-num">Item 04</span><span class="sep-title">Orquestração de Agentes</span><span class="sep-line"></span></div>
@@ -1017,6 +1152,51 @@
         · Visão computacional → carros autônomos
       </div>
 
+      <div class="quiz-section fade-in" style="margin-top:28px;">
+        <div class="quiz-section-header"><span class="qs-label">Verifique seu aprendizado</span><span class="qs-title">Item 04 — Orquestração</span></div>
+        <div class="quiz-section-body">
+          <div class="quiz-block" data-correct="B">
+            <div class="quiz-q-label">Questão 01</div>
+            <div class="quiz-question">O que significa "orquestrar" múltiplos agentes em uma aplicação?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Treiná-los simultaneamente em um único modelo.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Coordenar como agentes especializados se comunicam, trocam informação e decidem em sequência ou em paralelo.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Fazer todos executarem a mesma tarefa redundantemente.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Eliminar a necessidade de qualquer agente.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Orquestração é arquitetura: define quem fala com quem, em que ordem, como se passa contexto. Cada agente vira "especialista" em uma parte do problema.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Orquestração coordena agentes ESPECIALIZADOS — não os funde em um, nem os faz redundantes. É como um maestro distribuindo papéis na orquestra.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="A">
+            <div class="quiz-q-label">Questão 02</div>
+            <div class="quiz-question">Qual a principal vantagem de usar VÁRIOS agentes especializados em vez de UM agente "faz-tudo"?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Cada agente pode ser otimizado para sua tarefa, com regras, prompts e dados específicos — gerando resultados mais consistentes.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Aumenta o custo computacional sem benefícios.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Impede que o sistema funcione em produção.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Garante que a IA não cometa nenhum erro.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Divisão e especialização melhoram qualidade e manutenção: cada agente vira "experto" em algo. Também facilita debug, evolução e substituição de partes.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Multi-agente bem feito DIMINUI complexidade percebida, aumenta qualidade e manutenibilidade. Não há sistema 100% livre de erro.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="C">
+            <div class="quiz-q-label">Questão 03</div>
+            <div class="quiz-question">Em um e-commerce, qual configuração de agentes faz mais sentido?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Um único agente que faz desde estoque até atendimento, marketing e logística.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Nenhum agente — só processos manuais.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Agentes especializados (atendimento, recomendação, anti-fraude, logística) coordenados por um orquestrador.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Vários agentes idênticos executando a mesma tarefa em paralelo.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Separar por domínio (atendimento, recomendação, anti-fraude, logística) e coordená-los é o padrão atual — cada agente otimizado para sua função.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Agente único "faz-tudo" não escala; redundância idêntica desperdiça recursos; ausência de automação reduz competitividade. Especialização + orquestração é o caminho.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+        </div>
+      </div>
+
       <div id="a2-s5" class="section-sep fade-in"><span class="sep-num">Item 05</span><span class="sep-title">Para Saber Mais: LangChain</span><span class="sep-line"></span></div>
 
       <div class="card fade-in">
@@ -1024,6 +1204,51 @@
         <p><a href="https://www.langchain.com/" target="_blank" rel="noopener" style="color:var(--sky);font-weight:600;">LangChain</a> é uma biblioteca que facilita a criação de sistemas baseados em agentes inteligentes, permitindo que diferentes LLMs sejam utilizados de forma integrada com ferramentas e dados externos.</p>
         <p>O principal diferencial do LangChain está na <strong>orquestração de agentes</strong> — permite que diferentes tipos de agentes trabalhem de forma coordenada, criando soluções modulares, escaláveis e adaptáveis.</p>
         <p><strong>Exemplo de aplicação:</strong> um assistente virtual de suporte ao cliente que interpreta solicitações (status de pedidos), consulta APIs do sistema de gestão, realiza cálculos, gera relatórios personalizados e combina diferentes fontes de dados para oferecer respostas completas.</p>
+      </div>
+
+      <div class="quiz-section fade-in" style="margin-top:28px;">
+        <div class="quiz-section-header"><span class="qs-label">Verifique seu aprendizado</span><span class="qs-title">Item 05 — LangChain</span></div>
+        <div class="quiz-section-body">
+          <div class="quiz-block" data-correct="B">
+            <div class="quiz-q-label">Questão 01</div>
+            <div class="quiz-question">O que é o <strong>LangChain</strong>?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Um novo idioma criado por IA.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Um framework que facilita construir aplicações em torno de LLMs, conectando-os a ferramentas, dados e fluxos.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Um modelo de linguagem específico da empresa OpenAI.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Uma linguagem de programação que substituiu o Python.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! LangChain é um framework Python/JS que dá blocos prontos para "ligar" LLMs a memória, ferramentas externas, busca e agentes — acelerando o desenvolvimento.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. LangChain não é idioma, modelo ou linguagem: é um framework (biblioteca) que orquestra LLMs em aplicações reais.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="C">
+            <div class="quiz-q-label">Questão 02</div>
+            <div class="quiz-question">Qual destes problemas é tipicamente resolvido com LangChain?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Treinar um LLM do zero com bilhões de parâmetros.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Substituir totalmente o sistema operacional.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Criar um chatbot que consulte um manual interno antes de responder.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Renderizar gráficos 3D em tempo real.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Esse é o caso de uso clássico (RAG): combinar LLM + busca em base interna. LangChain entrega componentes prontos para construir esse fluxo rapidamente.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. LangChain não treina LLMs nem é um SO ou engine gráfica — orquestra aplicações em torno de modelos já existentes (LLMs, APIs, bases de dados, ferramentas).</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="A">
+            <div class="quiz-q-label">Questão 03</div>
+            <div class="quiz-question">Para um militar interessado em criar uma aplicação simples com LLM, LangChain ajuda principalmente porque:</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Oferece abstrações prontas (chains, agents, memory, tools) que poupam código repetitivo.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Garante resultados perfeitos independentemente da qualidade do prompt.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Substitui a necessidade de aprender Python.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Pode ser usado totalmente offline, sem nenhuma chamada externa.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! As abstrações do LangChain encurtam o caminho do "papel" ao protótipo funcional — concentrando o esforço na lógica do problema, não na "encanação".</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. LangChain não garante qualidade do prompt, não dispensa Python e geralmente depende de chamadas a APIs externas (OpenAI, Anthropic etc.).</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+        </div>
       </div>
 
       <div id="a2-s6" class="section-sep fade-in"><span class="sep-num">Item 06</span><span class="sep-title">Mão na Massa</span><span class="sep-line"></span></div>
@@ -1042,6 +1267,51 @@
       </div>
 
       <!-- QUIZ 2 -->
+      <div class="quiz-section fade-in" style="margin-top:28px;">
+        <div class="quiz-section-header"><span class="qs-label">Verifique seu aprendizado</span><span class="qs-title">Item 06 — Mão na Massa</span></div>
+        <div class="quiz-section-body">
+          <div class="quiz-block" data-correct="B">
+            <div class="quiz-q-label">Questão 01</div>
+            <div class="quiz-question">Ao prototipar uma aplicação com LLM, qual prática é mais recomendada?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Implementar tudo de uma vez antes de testar.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Construir incrementalmente: prompt simples → testes → refinamento → adição de ferramentas e contexto.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Evitar testar até a entrega final do projeto.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Esperar que o LLM acerte sem nenhum ajuste de prompt.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Iteração curta é a regra com IA: pequenos ajustes, testes constantes e métricas claras. Cada rodada revela problemas e oportunidades que não eram óbvios no plano.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Aplicações de IA precisam de loops curtos de teste e refinamento. Acreditar que "vai funcionar de primeira" é receita para retrabalho.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="A">
+            <div class="quiz-q-label">Questão 02</div>
+            <div class="quiz-question">Em uma aplicação de atendimento que usa agentes, qual indicador é o MAIS confiável para avaliar qualidade?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Métricas combinadas: taxa de resolução, satisfação do usuário e revisões humanas em amostras.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Apenas o tempo médio de resposta.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>O número total de mensagens trocadas.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>A opinião subjetiva de um único desenvolvedor.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Avaliação de IA pede triangulação: métricas objetivas (resolução, latência), satisfação humana e revisão de amostras — nenhum indicador isolado conta toda a história.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Tempo, volume e opinião isolada são parciais. Boa avaliação combina resultado (resolveu?), experiência (usuário satisfeito?) e auditoria (revisão humana).</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="D">
+            <div class="quiz-q-label">Questão 03</div>
+            <div class="quiz-question">Antes de colocar agentes em produção em uma organização militar, o cuidado mais importante é:</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Garantir a estética da interface gráfica.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Usar o LLM mais recente do mercado.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Implementar o sistema apenas no idioma inglês.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Validar segurança da informação, classificação de dados, conformidade e plano de auditoria.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Em contexto institucional/militar, segurança da informação e governança são pré-requisitos — não detalhes finais. Sem isso, mesmo a melhor aplicação de IA traz risco operacional.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Interface, modelo e idioma são secundários. O essencial é proteger dados, classificar acessos e manter rastreabilidade — exigências críticas em ambiente militar.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+        </div>
+      </div>
+
       <div id="a2-quiz" class="quiz-section fade-in">
         <div class="quiz-section-header"><span class="qs-label">Quiz</span><span class="qs-title">Avalie seu aprendizado — Aula 02</span></div>
         <div class="quiz-section-body">
