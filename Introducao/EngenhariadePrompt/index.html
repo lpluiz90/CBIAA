@@ -87,7 +87,7 @@
   .content{max-width:var(--section-w);margin:0 auto;padding:0 48px 80px;}
 
   /* Objectives */
-  #objetivos,#objetivos-2,#objetivos-3,#objetivos-4{background:var(--white);border-left:4px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:24px 28px;margin:36px 0 0;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+  #objetivos,#objetivos-2,#objetivos-3,#objetivos-4,#objetivos-5{background:var(--white);border-left:4px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:24px 28px;margin:36px 0 0;box-shadow:0 2px 10px rgba(0,0,0,.06);}
   .obj-title{font-family:'Rajdhani',sans-serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
   .obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px 22px;}
   .obj-item{display:flex;align-items:flex-start;gap:10px;font-size:18px;line-height:1.55;}
@@ -298,7 +298,7 @@
     .hero-logo{width:83px;height:83px;top:12px;right:12px;}
     .aula-tab{font-size:18px;padding:9px 18px;}
     .content{padding:0 14px 60px;}
-    #objetivos,#objetivos-2,#objetivos-3,#objetivos-4{padding:18px 16px;margin:20px 0 0;}
+    #objetivos,#objetivos-2,#objetivos-3,#objetivos-4,#objetivos-5{padding:18px 16px;margin:20px 0 0;}
     .obj-grid{grid-template-columns:1fr;gap:8px;}
     .obj-item{font-size:17.5px;}
     .intro-card{padding:20px 18px;font-size:17.5px;}
@@ -540,15 +540,30 @@
       </ul>
     </div>
 
-    <!-- Sidebar Panel 5 — Aula 05 (em produção) -->
+    <!-- Sidebar Panel 5 — Aula 05 Mais Técnicas -->
     <div class="sb-panel" id="sb-panel-5">
       <div class="sb-brand">
         <div style="font-size:15px;font-weight:700;color:var(--sky);font-family:'Rajdhani',sans-serif;letter-spacing:.3px;margin-bottom:4px;">Engenharia de Prompt</div>
-        <div class="course-title">Aula 05 — Em Produção</div>
+        <div class="course-title">Aula 05 — Mais Técnicas de Prompt</div>
       </div>
       <div class="sb-section-label">Navegação — Aula 05</div>
       <ul class="sb-nav">
-        <li><a href="#"><span class="num">—</span> Em Produção</a></li>
+        <li><a href="#objetivos-5"><span class="num">—</span> Objetivos</a></li>
+        <li class="section-divider"><a href="#ltm-intro"><span class="num">01</span> Least-to-Most Prompting</a></li>
+        <li><a href="#ltm-problema"><span class="num">1.1</span> O Problema da Amy</a></li>
+        <li><a href="#ltm-solucao"><span class="num">1.2</span> A Solução em Duas Etapas</a></li>
+        <li><a href="#ltm-resultado"><span class="num">1.3</span> Resultados e Custo</a></li>
+        <li><a href="#quiz-ltm"><span class="num">—</span> Exercício 06</a></li>
+        <li class="section-divider"><a href="#cov-intro"><span class="num">02</span> Chain-of-Verification</a></li>
+        <li><a href="#cov-fases"><span class="num">2.1</span> As Quatro Fases</a></li>
+        <li><a href="#cov-exemplo"><span class="num">2.2</span> Exemplo: Políticos de NY</a></li>
+        <li><a href="#quiz-cov"><span class="num">—</span> Exercício 07</a></li>
+        <li class="section-divider"><a href="#sc-intro"><span class="num">03</span> Self-Consistency</a></li>
+        <li><a href="#sc-como"><span class="num">3.1</span> Como Funciona</a></li>
+        <li><a href="#sc-exemplo"><span class="num">3.2</span> Exemplo Prático</a></li>
+        <li class="section-divider"><a href="#tecnicas-comparacao"><span class="num">04</span> Comparando as Técnicas</a></li>
+        <li class="section-divider"><a href="#ltm-facacomofiz"><span class="num">05</span> Faça Como Eu Fiz</a></li>
+        <li class="section-divider"><a href="#ltm-aprendemos"><span class="num">06</span> O que Aprendemos</a></li>
       </ul>
     </div>
 
@@ -634,10 +649,15 @@
       </div>
 
       <div class="hero-dyn" id="hero-dyn-5">
-        <h1 class="hero-title">Aula 05 — Em Produção</h1>
-        <p class="hero-subtitle">Este conteúdo está sendo preparado. Em breve você terá acesso ao material completo desta aula.</p>
+        <h1 class="hero-title">Aula 05 — Mais Técnicas de Prompt</h1>
+        <p class="hero-subtitle">Conheça três técnicas avançadas que emergiram do estado da arte em pesquisa de IA: <em>Least-to-Most</em>, <em>Chain-of-Verification</em> e <em>Self-Consistency</em> — cada uma resolvendo um problema específico de raciocínio ou precisão.</p>
         <div class="hero-tags">
-          <span class="hero-tag">Em Produção</span>
+          <span class="hero-tag">Least-to-Most</span>
+          <span class="hero-tag">Chain-of-Verification</span>
+          <span class="hero-tag">Self-Consistency</span>
+          <span class="hero-tag">Google</span>
+          <span class="hero-tag">Meta</span>
+          <span class="hero-tag">Raciocínio</span>
         </div>
       </div>
     </section>
@@ -3097,14 +3117,471 @@ Resposta:</pre>
     </div>
 
     <!-- ═══════════════════════════════════
-         PAINEL 5 — AULA 05 (EM PRODUÇÃO)
+         PAINEL 5 — AULA 05 — MAIS TÉCNICAS
     ════════════════════════════════════ -->
     <div class="content-panel" id="ct-panel-5">
-      <div class="content" style="min-height:60vh;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;text-align:center;padding:60px 48px;">
-        <div style="font-size:64px;">🚧</div>
-        <div style="font-family:'Rajdhani',sans-serif;font-size:40px;font-weight:700;color:var(--navy);">Aula 05 — Em Produção</div>
-        <p style="font-size:19px;color:var(--muted);max-width:520px;line-height:1.7;">Este conteúdo está sendo preparado. Em breve você terá acesso ao material completo desta aula.</p>
+      <div class="content">
+
+        <div id="objetivos-5" class="fade-in">
+          <div class="obj-title">◆ Objetivos da Instrução</div>
+          <div class="obj-grid">
+            <div class="obj-item"><span class="dot"></span>Compreender o Least-to-Most Prompting e como ele decompõe problemas complexos em subproblemas menores.</div>
+            <div class="obj-item"><span class="dot"></span>Aplicar o Chain-of-Verification para reduzir alucinações em respostas factuais.</div>
+            <div class="obj-item"><span class="dot"></span>Entender o Self-Consistency e como múltiplos caminhos de raciocínio aumentam a precisão.</div>
+            <div class="obj-item"><span class="dot"></span>Saber quando usar cada técnica avançada de acordo com o tipo de problema enfrentado.</div>
+          </div>
+        </div>
+
+        <!-- ─── ITEM 01 ─── -->
+        <div id="ltm-intro" class="section-sep fade-in">
+          <span class="sep-num">Item 01</span>
+          <span class="sep-title">Least-to-Most Prompting</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">🪜 Do Menor para o Maior</div>
+          <p>O <strong>Least-to-Most Prompting</strong> (Do Menor para o Maior) foi desenvolvido por <strong>Denny Zhou</strong> e pesquisadores do Google para resolver um problema específico: modelos de linguagem frequentemente falham em problemas que exigem raciocínio lógico encadeado quando a pergunta é feita de uma vez só.</p>
+          <p style="margin-top:10px;">A solução foi <strong>decompor o problema em subproblemas</strong> e resolvê-los sequencialmente — o resultado de cada etapa alimenta a próxima, construindo o raciocínio de baixo para cima.</p>
+          <p style="margin-top:10px;"><a href="https://arxiv.org/abs/2205.10625" target="_blank" rel="noopener noreferrer" style="color:var(--sky);font-weight:600;">📖 Acessar o artigo original →</a></p>
+        </div>
+
+        <div id="ltm-problema" class="card fade-in">
+          <div class="card-title">🌊 O Problema da Amy — Zero-Shot Falha</div>
+          <p>Temos a Amy, que leva <strong>4 minutos para subir</strong> ao topo de um toboágua e <strong>1 minuto para descer</strong>. O toboágua vai fechar daqui a <strong>15 minutos</strong>. Quantas vezes ela ainda consegue escorregar?</p>
+          <p style="margin-top:10px;">Quando essa pergunta é feita diretamente em Zero-Shot, o modelo tende a se confundir — mistura os números sem montar a lógica completa:</p>
+        </div>
+
+        <div class="prompt-pair fade-in">
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Zero-Shot — Uma pergunta direta — Clique para copiar</span>
+            <pre class="prompt-block prompt">Amy leva 4 minutos para subir ao topo de um toboágua. Para escorregar até o chão de volta, leva 1 minuto. O toboágua vai fechar daqui a 15 minutos. Quantas vezes ela ainda consegue escorregar?</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label danger">◉ Resposta confusa ❌</span>
+            <pre class="prompt-block danger">Amy consegue escorregar 15 vezes, pois o toboágua fecha em 15 minutos.</pre>
+          </div>
+        </div>
+
+        <div class="callout danger fade-in">
+          <strong>O problema:</strong> O modelo pegou o número "15 minutos" e o usou diretamente como resposta — ignorou por completo o tempo de cada viagem (4+1=5 min). É um erro típico quando o problema exige <em>múltiplos passos encadeados</em>.
+        </div>
+
+        <div id="ltm-solucao" class="card fade-in">
+          <div class="card-title">✅ A Solução em Duas Etapas</div>
+          <p>O Least-to-Most pede ao modelo para <strong>decompor o problema</strong> em perguntas menores primeiro. O resultado da primeira pergunta é incluído no contexto antes de fazer a pergunta principal:</p>
+        </div>
+
+        <div class="callout fade-in">
+          <strong>Etapa 1 — Subproblema:</strong> "Quanto tempo leva cada viagem completa?"
+        </div>
+
+        <div class="prompt-pair fade-in">
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Etapa 1 — Subproblema — Clique para copiar</span>
+            <pre class="prompt-block prompt">Amy leva 4 minutos para subir ao topo de um toboágua. Para escorregar até o chão de volta, leva 1 minuto. O toboágua vai fechar daqui a 15 minutos.
+
+Subproblema: Quanto tempo leva cada viagem completa (subir + descer)?</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ Resposta da IA — Etapa 1</span>
+            <pre class="prompt-block resposta">Amy leva 4 minutos para subir ao topo e 1 minuto para escorregar até o solo. Portanto, cada viagem completa leva 4 + 1 = 5 minutos.</pre>
+          </div>
+        </div>
+
+        <div class="callout fade-in">
+          <strong>Etapa 2 — Pergunta final com contexto acumulado:</strong> A resposta da Etapa 1 é inserida no prompt antes da pergunta principal.
+        </div>
+
+        <div class="prompt-pair fade-in">
+          <div class="prompt-wrap">
+            <span class="prompt-label prompt">✦ Etapa 2 — Pergunta final — Clique para copiar</span>
+            <pre class="prompt-block prompt">Amy leva 4 minutos para subir ao topo de um toboágua. Para escorregar até o chão de volta, leva 1 minuto. O toboágua vai fechar daqui a 15 minutos.
+
+Sabemos que: cada viagem completa (subir + descer) leva 4 + 1 = 5 minutos.
+
+Quantas vezes ela ainda consegue escorregar antes que o toboágua feche?</pre>
+          </div>
+          <div class="prompt-wrap">
+            <span class="prompt-label resposta">◉ Resposta correta ✅</span>
+            <pre class="prompt-block resposta">Com 15 minutos disponíveis e cada viagem levando 5 minutos, Amy pode completar 15 ÷ 5 = 3 viagens. Ela ainda consegue escorregar 3 vezes.</pre>
+          </div>
+        </div>
+
+        <div id="ltm-resultado" class="card fade-in">
+          <div class="card-title">📊 Resultados e Custo</div>
+        </div>
+
+        <div class="feature-grid fade-in">
+          <div class="feature-box green">
+            <h5>📈 De 16% para 99%</h5>
+            <p>Usando o GPT-3 DaVinci (modelo mais fraco da época), a precisão em problemas de lógica saltou de <strong>16% (com CoT)</strong> para <strong>99% (com Least-to-Most)</strong>, com apenas 14 exemplos.</p>
+          </div>
+          <div class="feature-box gold">
+            <h5>🔄 Como Funciona na Prática</h5>
+            <p>O modelo decompõe o problema automaticamente via API. Não é o usuário que faz os subproblemas — é o próprio modelo, de forma <strong>programática e automatizada</strong>.</p>
+          </div>
+          <div class="feature-box red">
+            <h5>💸 Custo Elevado</h5>
+            <p>Cada subproblema é uma chamada separada à API. Como as empresas (OpenAI, Google) cobram por <strong>token de entrada e saída</strong>, múltiplas chamadas encadeadas aumentam o custo total.</p>
+          </div>
+          <div class="feature-box purple">
+            <h5>🧠 Contexto Acumulado</h5>
+            <p>A cada etapa, todo o histórico anterior é enviado novamente. Em conversas longas, o contexto cresce, e um "grande mapa" de perguntas e respostas é enviado a cada chamada.</p>
+          </div>
+        </div>
+
+        <!-- Quiz 06 -->
+        <div id="quiz-ltm" class="quiz-section fade-in">
+          <div class="quiz-section-header">
+            <span class="qs-label">Exercício 06</span>
+            <span class="qs-title">Least-to-Most Prompting</span>
+          </div>
+          <div class="quiz-section-body">
+
+            <div class="quiz-block" data-correct="b"
+              data-feedback-ok="Correto! O Least-to-Most decompõe o problema em subproblemas menores e os resolve sequencialmente — o resultado de cada etapa alimenta a próxima. Isso permite ao modelo construir o raciocínio de forma encadeada em vez de tentar resolver tudo de uma vez."
+              data-feedback-err="Errado. O Least-to-Most não reduz o número de exemplos nem usa majoritação de respostas. O princípio central é a decomposição: dividir um problema complexo em partes menores e resolvê-las sequencialmente, passando os resultados intermediários para a etapa seguinte.">
+              <div class="quiz-q-label">Questão 01</div>
+              <div class="quiz-question">Qual é o princípio central do Least-to-Most Prompting?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Usar o menor número possível de exemplos no prompt para reduzir o custo por chamada.</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Decompor um problema complexo em subproblemas menores e resolvê-los sequencialmente, passando os resultados para a etapa seguinte.</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Gerar múltiplas respostas e escolher a mais comum entre elas por votação.</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Pedir ao modelo que ordene os fatos do menos importante para o mais importante antes de responder.</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+            <div class="quiz-block" data-correct="c"
+              data-feedback-ok="Correto! O custo elevado é a principal desvantagem: cada subproblema gera uma chamada separada à API, e cada chamada cobra por token (tanto da pergunta quanto da resposta). Em cadeias longas, o contexto acumulado cresce a cada etapa, aumentando o custo."
+              data-feedback-err="Errado. O Least-to-Most não limita o tamanho da resposta nem exige retreinamento. A desvantagem é financeira: múltiplas chamadas à API e contexto acumulado crescente resultam em maior consumo de tokens — e maior custo para quem usa as APIs comerciais.">
+              <div class="quiz-q-label">Questão 02</div>
+              <div class="quiz-question">Qual é a principal desvantagem do Least-to-Most Prompting em uso real?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> O modelo perde o contexto original da pergunta ao decompor em subproblemas.</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> A técnica exige retreinamento do modelo para funcionar corretamente.</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> O custo aumenta porque cada subproblema gera uma chamada separada à API, e o contexto acumulado cresce a cada etapa.</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Os resultados intermediários não podem ser usados como contexto para a pergunta seguinte.</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ─── ITEM 02 ─── -->
+        <div id="cov-intro" class="section-sep fade-in">
+          <span class="sep-num">Item 02</span>
+          <span class="sep-title">Chain-of-Verification</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">🔍 Cadeia de Verificação</div>
+          <p>O <strong>Chain-of-Verification</strong> (Cadeia de Verificação) foi proposto por <strong>Shehzaad Dhuliawala</strong> e pesquisadores da Meta. É uma técnica para reduzir <em>alucinações</em> — quando o modelo afirma fatos incorretos com confiança — especialmente em questões biográficas, históricas e factuais.</p>
+          <p style="margin-top:10px;">Em vez de aceitar a primeira resposta do modelo, o próprio modelo é instruído a <strong>verificar cada afirmação</strong> que fez, gerando e respondendo perguntas de verificação antes de entregar a resposta final.</p>
+          <p style="margin-top:10px;"><a href="https://arxiv.org/abs/2309.11495" target="_blank" rel="noopener noreferrer" style="color:var(--sky);font-weight:600;">📖 Acessar o artigo original →</a></p>
+        </div>
+
+        <div id="cov-fases" class="card fade-in">
+          <div class="card-title">⚙️ As Quatro Fases</div>
+        </div>
+
+        <div class="feature-grid fade-in">
+          <div class="feature-box">
+            <h5>Fase 1 — Resposta Inicial</h5>
+            <p>O modelo recebe o prompt e gera uma resposta inicial — sem verificação. Esta é a resposta "bruta", que pode conter alucinações.</p>
+          </div>
+          <div class="feature-box gold">
+            <h5>Fase 2 — Perguntas de Verificação</h5>
+            <p>Com base na resposta inicial, o modelo gera perguntas de verificação para cada afirmação feita. Ex.: "Onde nasceu Hillary Clinton?"</p>
+          </div>
+          <div class="feature-box green">
+            <h5>Fase 3 — Execução das Verificações</h5>
+            <p>O modelo responde cada pergunta de verificação independentemente, sem "olhar" para a resposta inicial — evitando o viés de confirmação.</p>
+          </div>
+          <div class="feature-box purple">
+            <h5>Fase 4 — Resposta Final Verificada</h5>
+            <p>O modelo compara as verificações com a resposta inicial, remove as afirmações incorretas e gera a resposta final corrigida.</p>
+          </div>
+        </div>
+
+        <div id="cov-exemplo" class="card fade-in">
+          <div class="card-title">🗽 Exemplo: Políticos de Nova Iorque</div>
+          <p>Prompt inicial: <em>"Cite alguns políticos que nasceram na cidade de Nova Iorque."</em></p>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Fase 1 — Resposta inicial do modelo — Clique para copiar</span>
+          <pre class="prompt-block prompt">Cite alguns políticos que nasceram na cidade de Nova Iorque.</pre>
+        </div>
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label resposta">◉ Fase 1 — Resposta inicial (com possíveis erros)</span>
+          <pre class="prompt-block resposta">Políticos nascidos em Nova Iorque: Hillary Clinton, Donald Trump, Michael Bloomberg e Bernie Sanders.</pre>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Fase 2 — Perguntas de verificação geradas pelo modelo</span>
+          <pre class="prompt-block prompt">Com base na lista acima, gere perguntas de verificação para cada nome:
+
+1. Onde nasceu Hillary Clinton?
+2. Onde nasceu Donald Trump?
+3. Onde nasceu Michael Bloomberg?
+4. Onde nasceu Bernie Sanders?</pre>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label resposta">◉ Fase 3 — Verificações executadas</span>
+          <pre class="prompt-block resposta">1. Hillary Clinton nasceu em Chicago, Illinois. ❌ Não nasceu em Nova Iorque.
+2. Donald Trump nasceu no Queens, Nova Iorque. ✅ Correto.
+3. Michael Bloomberg nasceu em Boston, Massachusetts. ❌ Não nasceu em Nova Iorque.
+4. Bernie Sanders nasceu no Brooklyn, Nova Iorque. ✅ Correto.</pre>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label resposta">◉ Fase 4 — Resposta final verificada</span>
+          <pre class="prompt-block resposta">Da lista inicial, confirmaram-se como nascidos em Nova Iorque: Donald Trump (Queens) e Bernie Sanders (Brooklyn). Hillary Clinton e Michael Bloomberg foram removidos por terem nascido em outros estados. Outros políticos nascidos em Nova Iorque incluem Alexandria Ocasio-Cortez (Bronx) e Rudy Giuliani (Brooklyn).</pre>
+        </div>
+
+        <div class="callout tip fade-in">
+          <strong>Resultado:</strong> A resposta final é mais precisa porque o modelo verificou cada afirmação antes de confirmá-la. Hillary Clinton e Michael Bloomberg foram removidos da lista — ambos eram alucinações da resposta inicial.
+        </div>
+
+        <div class="callout warn fade-in">
+          <strong>Mesma desvantagem do Least-to-Most:</strong> O Chain-of-Verification envolve múltiplas chamadas ao modelo (fase 2, fase 3 e fase 4 são chamadas separadas). Por isso, é uma técnica tipicamente usada de forma <strong>programática via API</strong>, não manualmente em um chat.
+        </div>
+
+        <!-- Quiz 07 -->
+        <div id="quiz-cov" class="quiz-section fade-in">
+          <div class="quiz-section-header">
+            <span class="qs-label">Exercício 07</span>
+            <span class="qs-title">Chain-of-Verification</span>
+          </div>
+          <div class="quiz-section-body">
+
+            <div class="quiz-block" data-correct="c"
+              data-feedback-ok="Correto! O Chain-of-Verification é especialmente indicado para verificar fatos — questões biográficas, históricas, geográficas — onde o modelo pode 'alucinar' com confiança. A técnica força o modelo a verificar cada afirmação antes de entregar a resposta final."
+              data-feedback-err="Errado. O Chain-of-Verification não é a técnica mais indicada para problemas matemáticos (Least-to-Most é melhor) nem para tradução (Few-Shot é suficiente). O foco desta técnica é na verificação de fatos reais, onde o risco de alucinação é maior.">
+              <div class="quiz-q-label">Questão 01</div>
+              <div class="quiz-question">Para qual tipo de tarefa o Chain-of-Verification é mais indicado?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Problemas matemáticos com múltiplas operações sequenciais.</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Tradução de textos com estilo e tom específicos.</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Verificação de fatos e informações biográficas, onde alucinação é um risco real.</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Geração de código e depuração de erros de programação.</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+            <div class="quiz-block" data-correct="c"
+              data-feedback-ok="Correto! Na Fase 3, o modelo responde cada pergunta de verificação de forma independente — sem 'olhar' para a resposta inicial. Isso evita o viés de confirmação e permite identificar afirmações incorretas. Hillary Clinton e Michael Bloomberg foram detectados como erros nessa fase."
+              data-feedback-err="Errado. A Fase 4 é onde a resposta final é gerada. A Fase 2 gera as perguntas. A Fase 3 é onde as verificações são executadas — o modelo responde independentemente cada pergunta, o que permite identificar as afirmações incorretas sem o viés de confirmar o que já disse antes.">
+              <div class="quiz-q-label">Questão 02</div>
+              <div class="quiz-question">No exemplo dos políticos de Nova Iorque, qual foi o papel da Fase 3?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Gerar uma nova lista de políticos com base em fontes externas confiáveis.</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Criar as perguntas de verificação para cada nome da lista inicial.</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Responder independentemente "onde nasceu X?" para cada pessoa, identificando as afirmações incorretas sem viés de confirmação.</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Apresentar a resposta final consolidada com os nomes verificados e corrigidos.</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ─── ITEM 03 ─── -->
+        <div id="sc-intro" class="section-sep fade-in">
+          <span class="sep-num">Item 03</span>
+          <span class="sep-title">Self-Consistency</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">🗳️ Consistência por Votação</div>
+          <p>O <strong>Self-Consistency</strong> foi proposto por <strong>Xuezhi Wang</strong> e pesquisadores do Google (2022). A ideia é simples mas poderosa: em vez de usar o caminho de raciocínio mais provável (geração gulosa), o modelo <strong>gera múltiplos caminhos de raciocínio</strong> diferentes para o mesmo problema — e a resposta final é a que aparece com mais frequência entre todos os caminhos.</p>
+          <p style="margin-top:10px;"><a href="https://arxiv.org/abs/2203.11171" target="_blank" rel="noopener noreferrer" style="color:var(--sky);font-weight:600;">📖 Acessar o artigo original →</a></p>
+        </div>
+
+        <div class="compare fade-in">
+          <div class="compare-col" style="border-top:3px solid var(--steel);">
+            <h4 style="color:var(--steel);">CoT Simples (geração gulosa)</h4>
+            <p>O modelo gera <strong>um único caminho</strong> de raciocínio e entrega aquela resposta — seja ela certa ou errada.</p>
+            <p style="margin-top:10px;color:var(--muted);font-size:16px;">Se esse caminho comete um erro intermediário, a resposta final é errada.</p>
+          </div>
+          <div class="compare-col" style="border-top:3px solid #a01010;">
+            <h4 style="color:#a01010;">Self-Consistency</h4>
+            <p>O modelo gera <strong>múltiplos caminhos</strong> de raciocínio. A resposta mais frequente entre todos os caminhos é escolhida — a "votação" filtra os erros.</p>
+            <p style="margin-top:10px;color:var(--muted);font-size:16px;">Um erro em um caminho é corrigido pela maioria dos outros caminhos.</p>
+          </div>
+        </div>
+
+        <div id="sc-como" class="card fade-in">
+          <div class="card-title">⚙️ Como Funciona</div>
+        </div>
+
+        <div class="feature-grid fade-in">
+          <div class="feature-box">
+            <h5>📝 Mesmo Prompt, Várias Vezes</h5>
+            <p>O mesmo prompt com Few-Shot + CoT é enviado ao modelo <strong>múltiplas vezes</strong> (tipicamente 5 a 20 vezes), com temperatura ligeiramente elevada para gerar caminhos de raciocínio diversos.</p>
+          </div>
+          <div class="feature-box gold">
+            <h5>🔀 Caminhos Diferentes</h5>
+            <p>Cada execução pode usar uma lógica diferente para chegar à resposta. Alguns caminhos podem errar — mas erros diferentes em cada um.</p>
+          </div>
+          <div class="feature-box green">
+            <h5>🗳️ Votação por Maioria</h5>
+            <p>A resposta final é <strong>a mais frequente</strong> entre todas as execuções. Se 7 de 10 caminhos chegam a "3 vezes", a resposta é 3 — independente dos 3 caminhos que erraram.</p>
+          </div>
+          <div class="feature-box red">
+            <h5>💸 Custo Multiplicado</h5>
+            <p>Gerar 10 caminhos custa <strong>10× mais tokens</strong> do que uma única chamada. É uma técnica para contextos onde precisão é crítica e custo é secundário.</p>
+          </div>
+        </div>
+
+        <div id="sc-exemplo" class="card fade-in">
+          <div class="card-title">🚂 Exemplo: O Trem</div>
+          <p>Problema: <em>"Um trem parte às 8h00 viajando a 120 km/h. A cidade destino fica a 360 km. A que horas o trem chega?"</em></p>
+          <p style="margin-top:8px;">O Self-Consistency enviaria esse prompt múltiplas vezes e compararia os resultados:</p>
+        </div>
+
+        <div class="feature-grid fade-in">
+          <div class="feature-box">
+            <h5>🛤️ Caminho 1</h5>
+            <p>360 ÷ 120 = 3 horas. <br>8h00 + 3h = <strong>11h00</strong> ✅</p>
+          </div>
+          <div class="feature-box gold">
+            <h5>🛤️ Caminho 2</h5>
+            <p>120 km/h × t = 360 km → t = 3h. <br>Chegada: 8 + 3 = <strong>11h00</strong> ✅</p>
+          </div>
+          <div class="feature-box green">
+            <h5>🛤️ Caminho 3</h5>
+            <p>A cada hora: 120 km. Após 3h: 360 km. <br>8h00 + 3h = <strong>11h00</strong> ✅</p>
+          </div>
+          <div class="feature-box red">
+            <h5>🗳️ Votação</h5>
+            <p>Todos os 3 caminhos chegaram a <strong>11h00</strong>. Resposta final: <strong>11h00</strong> — com alta confiança.</p>
+          </div>
+        </div>
+
+        <div class="highlight-box fade-in">
+          <strong>Quando usar Self-Consistency:</strong> em tarefas que exigem raciocínio matemático, lógico ou científico, onde precisão é crítica e onde diferentes abordagens deveriam convergir para a mesma resposta. É especialmente útil quando um único caminho de CoT já funciona bem, mas você precisa de ainda mais confiabilidade.
+        </div>
+
+        <!-- ─── ITEM 04 ─── -->
+        <div id="tecnicas-comparacao" class="section-sep fade-in">
+          <span class="sep-num">Item 04</span>
+          <span class="sep-title">Comparando as Técnicas</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">📊 Quando Usar Cada Técnica</div>
+          <p>Cada técnica resolve um problema específico. Conhecer as diferenças é essencial para escolher a abordagem certa:</p>
+        </div>
+
+        <div class="feature-grid fade-in">
+          <div class="feature-box">
+            <h5>🔗 Chain-of-Thought (Aula 04)</h5>
+            <p><strong>Problema:</strong> Resposta direta sem raciocínio.<br><strong>Solução:</strong> Mostrar o raciocínio passo a passo no exemplo.<br><strong>Custo:</strong> Baixo — uma chamada.<br><strong>Ideal para:</strong> Problemas que precisam de lógica explícita.</p>
+          </div>
+          <div class="feature-box gold">
+            <h5>🪜 Least-to-Most</h5>
+            <p><strong>Problema:</strong> Problemas complexos demais para uma chamada.<br><strong>Solução:</strong> Decompor em subproblemas sequenciais.<br><strong>Custo:</strong> Médio — N chamadas encadeadas.<br><strong>Ideal para:</strong> Problemas com múltiplas etapas interdependentes.</p>
+          </div>
+          <div class="feature-box green">
+            <h5>🔍 Chain-of-Verification</h5>
+            <p><strong>Problema:</strong> Alucinações em respostas factuais.<br><strong>Solução:</strong> O modelo verifica cada afirmação antes de confirmar.<br><strong>Custo:</strong> Alto — 4 fases separadas.<br><strong>Ideal para:</strong> Fatos, biografias, informações históricas.</p>
+          </div>
+          <div class="feature-box red">
+            <h5>🗳️ Self-Consistency</h5>
+            <p><strong>Problema:</strong> Um único caminho de raciocínio pode errar.<br><strong>Solução:</strong> Múltiplos caminhos + votação por maioria.<br><strong>Custo:</strong> Alto — N× o custo normal.<br><strong>Ideal para:</strong> Quando precisão máxima é obrigatória.</p>
+          </div>
+        </div>
+
+        <!-- ─── ITEM 05 ─── -->
+        <div id="ltm-facacomofiz" class="section-sep fade-in">
+          <span class="sep-num">Item 05</span>
+          <span class="sep-title">Faça Como Eu Fiz</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">🎯 Teste as Técnicas</div>
+          <p>Abra qualquer modelo de sua preferência e teste os prompts abaixo. Para o Least-to-Most e o Chain-of-Verification, execute as etapas sequencialmente — copiando a resposta de uma etapa para o contexto da próxima.</p>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Prompt 01 — Least-to-Most: Problema do Pelotão</span>
+          <pre class="prompt-block prompt">Um pelotão tem 48 militares. Na segunda-feira, 1/4 saiu para missão. Na terça-feira, 6 retornaram e mais 3 foram convocados para serviço externo. Na quarta-feira, metade dos que estavam disponíveis saiu para exercício de campo.
+
+Subproblema 1: Quantos ficaram no quartel após segunda-feira?</pre>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Prompt 02 — Chain-of-Verification: Verificação de Fatos</span>
+          <pre class="prompt-block prompt">Cite 4 inventores famosos e o que cada um inventou.
+
+[Após receber a resposta, use este prompt de verificação:]
+
+Com base na lista acima, gere uma pergunta de verificação para cada invenção listada e responda cada uma independentemente, confirmando se a atribuição está correta.</pre>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Prompt 03 — Zero-Shot CoT como base para Self-Consistency</span>
+          <pre class="prompt-block prompt">Uma empresa tem 240 funcionários. 30% trabalham em home office, 25% trabalham em regime híbrido e o restante trabalha presencialmente. Quantos funcionários trabalham presencialmente? Explique passo a passo.
+
+[Envie este mesmo prompt 3 vezes e compare as respostas. Se todas chegarem ao mesmo resultado, você tem alta confiança na resposta.]</pre>
+        </div>
+
+        <div class="callout tip fade-in">
+          <strong>Dica:</strong> Para o Self-Consistency manual, envie o mesmo prompt em abas diferentes do navegador (ou inicie novas conversas) para garantir que cada execução é independente — sem influência do histórico.
+        </div>
+
+        <!-- ─── ITEM 06 ─── -->
+        <div id="ltm-aprendemos" class="section-sep fade-in">
+          <span class="sep-num">Item 06</span>
+          <span class="sep-title">O que Aprendemos?</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="learned-grid fade-in">
+          <div class="learned-item">
+            <div class="li-num">01</div>
+            <div><strong>Least-to-Most Prompting</strong> (Google, Denny Zhou): decompõe problemas complexos em subproblemas menores e os resolve sequencialmente. Elevou a precisão de 16% para 99% em problemas de lógica com GPT-3, ao custo de múltiplas chamadas à API.</div>
+          </div>
+          <div class="learned-item">
+            <div class="li-num">02</div>
+            <div><strong>Chain-of-Verification</strong> (Meta, Shehzaad Dhuliawala): reduz alucinações em respostas factuais. O modelo gera verificações para cada afirmação, responde-as de forma independente e corrige a resposta final com base nessas verificações — em quatro fases.</div>
+          </div>
+          <div class="learned-item">
+            <div class="li-num">03</div>
+            <div><strong>Self-Consistency</strong> (Google, Xuezhi Wang): gera múltiplos caminhos de raciocínio para o mesmo problema e escolhe a resposta mais frequente por votação de maioria. Aumenta a confiabilidade quando precisão máxima é necessária, ao custo de N× o número de chamadas.</div>
+          </div>
+          <div class="learned-item">
+            <div class="li-num">04</div>
+            <div>As três técnicas têm em comum o fato de serem tipicamente usadas de forma <strong>programática via API</strong>, pois envolvem múltiplas chamadas encadeadas. Escolha a técnica com base no problema: decomposição (Least-to-Most), fatos (CoV) ou confiabilidade máxima (Self-Consistency).</div>
+          </div>
+        </div>
+
+        <div class="dark-card fade-in" style="margin-top:28px;">
+          <p>Com estas cinco aulas, você dominou as principais técnicas de Engenharia de Prompt — de Zero-Shot e Few-Shot até Chain-of-Thought, Least-to-Most, Chain-of-Verification e Self-Consistency. Estas são as ferramentas que pesquisadores e profissionais usam para extrair o máximo dos modelos de linguagem modernos.</p>
+        </div>
+
       </div>
+      <footer style="background:var(--navy);color:rgba(255,255,255,.35);text-align:center;font-size:10.5px;padding:16px;letter-spacing:.4px;">
+        Exército Brasileiro · Escola de Comunicações (Escola Coronel Hygino Corsetti) · EAD — Módulo de Engenharia de Prompt
+      </footer>
+    </div>
       <footer style="background:var(--navy);color:rgba(255,255,255,.35);text-align:center;font-size:10.5px;padding:16px;letter-spacing:.4px;">
         Exército Brasileiro · Escola de Comunicações (Escola Coronel Hygino Corsetti) · EAD — Módulo de Engenharia de Prompt
       </footer>
