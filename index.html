@@ -58,7 +58,7 @@
   .lesson-card:hover{transform:translateY(-3px);box-shadow:0 6px 24px rgba(0,0,0,.12);border-color:var(--sky);}
   .lesson-card.available::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--sky),var(--gold));}
   .lesson-card.soon::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--muted),var(--steel));opacity:.4;}
-  .lesson-icon{font-size:28px;line-height:1;}
+  .lesson-icon{font-size:28px;line-height:1;position:absolute;bottom:14px;right:16px;opacity:.2;pointer-events:none;}
   .lesson-num{font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
   .lesson-name{font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;color:var(--navy);line-height:1.2;}
   .lesson-desc{font-size:15px;color:var(--muted);line-height:1.6;flex:1;}
