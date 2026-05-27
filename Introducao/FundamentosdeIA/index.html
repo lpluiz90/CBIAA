@@ -1703,8 +1703,32 @@ Produto C (Categoria 2)</pre>
       </div>
 
       <div class="card fade-in">
+        <div class="card-title">O que é uma Rede Bayesiana?</div>
+        <p>Uma <strong>Rede Bayesiana</strong> é um modelo gráfico probabilístico que representa um conjunto de variáveis e as relações de influência entre elas. Visualmente, é um grafo: cada <strong>nó</strong> é uma variável do problema; cada <strong>aresta</strong> (seta) indica que uma variável influencia probabilisticamente outra.</p>
+        <p>A cada nó está associada uma <strong>Tabela de Probabilidade Condicional (CPD)</strong>, que quantifica exatamente o quanto os "pais" de uma variável afetam a probabilidade de seus diferentes valores. É essa tabela que torna a rede capaz de raciocinar: dado que observamos certas evidências, qual é a probabilidade de cada resultado possível?</p>
+        <div class="feature-grid fade-in" style="margin-top:14px;">
+          <div class="feature-box">
+            <h5>Por que usar?</h5>
+            <p>Permitem raciocinar com <strong>conhecimento incompleto</strong>. Em vez de precisar de todos os dados, o modelo combina as evidências disponíveis para estimar a probabilidade de cada desfecho.</p>
+          </div>
+          <div class="feature-box gold">
+            <h5>Onde se aplica?</h5>
+            <p>Diagnóstico médico, filtros de spam, sistemas de recomendação, análise de risco, detecção de fraudes — qualquer problema onde causas e efeitos se encadeiam com incerteza.</p>
+          </div>
+        </div>
+        <div class="callout fade-in" style="margin-top:14px;">
+          <strong>Exemplo — o modelo que vamos implementar:</strong><br/>
+          Queremos saber se um cliente vai comprar. Três variáveis influenciam essa decisão:<br/>
+          <strong>Histórico de Compras</strong> → <strong>Compra</strong><br/>
+          <strong>Tempo no Site</strong> → <strong>Compra</strong><br/>
+          <strong>Clicou em Promoção</strong> → <strong>Compra</strong><br/>
+          Cada uma dessas setas representa uma relação probabilística. Juntas, elas formam a rede — e o algoritmo calcula a probabilidade de compra combinando todas as evidências observadas.
+        </div>
+      </div>
+
+      <div class="card fade-in">
         <div class="card-title">Implementando com Python — incerteza.py</div>
-        <p>Biblioteca <strong>pgmpy</strong> para redes bayesianas. O modelo verifica se um cliente vai comprar com base em: histórico de compras, tempo no site e clique em promoção.</p>
+        <p>Usaremos a biblioteca <strong>pgmpy</strong> para construir a rede bayesiana descrita acima. Ela já fornece as classes para definir a estrutura do grafo, as tabelas de probabilidade condicional e o motor de inferência que responde às perguntas do modelo.</p>
       </div>
 
       <div class="callout purple fade-in" style="margin-top:14px;">
