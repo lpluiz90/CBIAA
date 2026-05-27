@@ -1432,43 +1432,43 @@ FIM PARA</pre>
       <div class="quiz-section fade-in" style="margin-top:28px;">
         <div class="quiz-section-header"><span class="qs-label">Verifique seu aprendizado</span><span class="qs-title">Item 03 — Aplicações Práticas</span></div>
         <div class="quiz-section-body">
-          <div class="quiz-block" data-correct="C">
+          <div class="quiz-block" data-correct="B">
             <div class="quiz-q-label">Questão 01</div>
-            <div class="quiz-question">Em um aplicativo de rotas (estilo Waze/Google Maps), qual algoritmo de busca é tipicamente usado?</div>
+            <div class="quiz-question">Segundo este item, como os <strong>chatbots</strong> combinam estratégias de busca para responder ao usuário?</div>
             <div class="quiz-options">
-              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Busca em profundidade (DFS).</div>
-              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Busca aleatória.</div>
-              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Variantes de busca informada como A* ou Dijkstra, usando distância e tempo como heurística/custo.</div>
-              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Apenas força bruta exaustiva.</div>
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Usam apenas busca em profundidade (DFS) em todas as situações.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Combinam busca não informada para identificar padrões com busca informada para interpretar intenções específicas do usuário.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Usam exclusivamente busca aleatória para gerar variação nas respostas.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Utilizam apenas regras fixas, sem qualquer estratégia de busca.</div>
             </div>
-            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Roteamento real combina Dijkstra (caminho mínimo) com heurísticas geográficas (estilo A*) — viabilizando cálculos rápidos em grafos com milhões de ruas.</div>
-            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. DFS e força bruta não escalam; aleatório não é confiável. GPS usa busca informada (A*, Dijkstra), aproveitando a geografia como heurística.</div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! O item descreve exatamente essa combinação: busca não informada para identificar padrões gerais + busca informada para interpretar o que o usuário quer naquele momento específico.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. O item apresenta chatbots como exemplo de combinação de abordagens: busca não informada (padrões) + busca informada (intenções específicas do usuário).</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="C">
+            <div class="quiz-q-label">Questão 02</div>
+            <div class="quiz-question">Conforme apresentado neste item, como os <strong>sistemas de navegação</strong> (como o Google Maps) aplicam estratégias de busca?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Usam apenas força bruta para calcular todas as rotas possíveis.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Usam somente DFS para explorar o mapa em profundidade.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Combinam BFS para mapear possibilidades com o A* para ajustar opções com base em dados de tráfego em tempo real.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Não usam busca — apenas consultam um banco de dados de rotas fixas pré-calculadas.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! O item descreve explicitamente essa combinação para sistemas de navegação: BFS para mapear possibilidades + A* para ajustar com dados de tráfego em tempo real.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. O item apresenta a combinação de BFS (mapear possibilidades) com A* (ajuste com tráfego em tempo real) como estratégia usada em sistemas como o Google Maps.</div>
             <button class="quiz-retry">↺ Tentar novamente</button>
           </div>
           <div class="quiz-block" data-correct="A">
-            <div class="quiz-q-label">Questão 02</div>
-            <div class="quiz-question">Em um sistema de recomendação que sugere "filmes parecidos", como a busca se manifesta?</div>
-            <div class="quiz-options">
-              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Buscando, no espaço de filmes, aqueles cuja "distância" (similaridade) ao filme atual é menor segundo alguma métrica.</div>
-              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Selecionando filmes aleatoriamente.</div>
-              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Mostrando sempre os filmes mais vendidos.</div>
-              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Listando filmes em ordem alfabética.</div>
-            </div>
-            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Recomendação é busca por vizinhos próximos: o "espaço" é o catálogo, a "distância" é a similaridade (gênero, atores, padrão de quem assistiu). O algoritmo busca os mais próximos.</div>
-            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Aleatório, popularidade ou ordem alfabética não são personalizados. Recomendação real usa similaridade — uma forma de busca em espaço vetorial.</div>
-            <button class="quiz-retry">↺ Tentar novamente</button>
-          </div>
-          <div class="quiz-block" data-correct="B">
             <div class="quiz-q-label">Questão 03</div>
-            <div class="quiz-question">Qual é o papel da <strong>heurística</strong> em uma busca informada?</div>
+            <div class="quiz-question">Na aplicação de IA em <strong>jogos digitais</strong> descrita neste item, qual algoritmo é mencionado para jogos de soma zero como o xadrez?</div>
             <div class="quiz-options">
-              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Garantir que sempre o melhor caminho será encontrado em qualquer cenário.</div>
-              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Estimar o custo restante até o objetivo, orientando o algoritmo a explorar primeiro os caminhos aparentemente mais promissores.</div>
-              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Substituir totalmente a definição do problema.</div>
-              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Acelerar o computador fisicamente.</div>
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Algoritmo Minimax, combinado com heurísticas que mapeiam a árvore de possibilidades de jogadas.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Busca em Largura (BFS), percorrendo nível por nível as jogadas possíveis.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Algoritmo A* com distância euclidiana como heurística.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Busca em Profundidade (DFS) sem nenhuma heurística associada.</div>
             </div>
-            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Heurística é uma estimativa razoável (não garantida) que orienta a busca. Boa heurística reduz drasticamente o número de nós explorados — ótima heurística + A* = caminho ótimo.</div>
-            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Heurística é uma ESTIMATIVA que orienta a busca. Ela não substitui a modelagem, não acelera hardware e não garante ótimo (a menos que satisfaça propriedades como admissibilidade em A*).</div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! O item cita explicitamente o Minimax para jogos de soma zero (como xadrez), combinado com heurísticas para mapear a árvore de possibilidades de jogadas.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Para jogos de soma zero como xadrez, o item menciona o algoritmo Minimax com heurísticas — não BFS, A* ou DFS simples.</div>
             <button class="quiz-retry">↺ Tentar novamente</button>
           </div>
         </div>
@@ -1628,17 +1628,17 @@ Produto C (Categoria 2)</pre>
       <div class="quiz-section fade-in" style="margin-top:28px;">
         <div class="quiz-section-header"><span class="qs-label">Verifique seu aprendizado</span><span class="qs-title">Item 05 — Faça como eu fiz</span></div>
         <div class="quiz-section-body">
-          <div class="quiz-block" data-correct="B">
+          <div class="quiz-block" data-correct="C">
             <div class="quiz-q-label">Questão 01</div>
-            <div class="quiz-question">Ao reproduzir o exercício de A* em Python, qual o passo MAIS importante para entender o algoritmo?</div>
+            <div class="quiz-question">O <strong>Passo 1</strong> do exercício pede a criação da classe <code>Produto</code>. Quais são os três atributos que essa classe deve ter?</div>
             <div class="quiz-options">
-              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Copiar e colar o código sem modificações e observar a saída.</div>
-              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Imprimir os valores de g(n), h(n) e f(n) a cada passo para visualizar como o algoritmo escolhe os nós.</div>
-              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Memorizar o código de cor.</div>
-              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Trocar a linguagem para C++ antes de qualquer teste.</div>
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>id, preço e estoque.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>usuário, data e avaliação.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>nome, categoria e probabilidade de conversão.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>nome, peso e cor.</div>
             </div>
-            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Imprimir g, h, f a cada iteração revela COMO o A* prioriza nós — transformando um algoritmo abstrato em algo que se pode "ver" funcionando.</div>
-            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Aprender um algoritmo é entender seu comportamento. A melhor forma é instrumentar o código (prints estratégicos) e analisar passo a passo.</div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! O exercício especifica exatamente esses três atributos para a classe Produto: nome, categoria e probabilidade de conversão — que será usada pela heurística no Passo 3.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. O Passo 1 do exercício define claramente: a classe Produto deve ter nome, categoria e probabilidade de conversão.</div>
             <button class="quiz-retry">↺ Tentar novamente</button>
           </div>
           <div class="quiz-block" data-correct="A">
@@ -1654,17 +1654,17 @@ Produto C (Categoria 2)</pre>
             <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Lista comum, pilha ou dicionário sem ordem não dão acesso eficiente ao "melhor" nó. A fila de prioridade (heap) é o padrão para o A*.</div>
             <button class="quiz-retry">↺ Tentar novamente</button>
           </div>
-          <div class="quiz-block" data-correct="D">
+          <div class="quiz-block" data-correct="B">
             <div class="quiz-q-label">Questão 03</div>
-            <div class="quiz-question">Se o A* está demorando demais, qual ajuste pode ajudar — sem perder optimality (quando ela é exigida)?</div>
+            <div class="quiz-question">O <strong>Passo 3</strong> do exercício pede a implementação da heurística. Em que ela é baseada, e qual é o critério de prioridade?</div>
             <div class="quiz-options">
-              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Eliminar completamente a heurística (h = 0).</div>
-              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Multiplicar a heurística por 100 para "acelerar".</div>
-              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Trocar A* por DFS aleatório.</div>
-              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Usar uma heurística mais informativa (e ainda admissível) ou aplicar técnicas como caching e podas.</div>
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>No número de avaliações positivas do produto — quanto mais avaliações, maior a prioridade.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Na probabilidade de conversão do produto — quanto maior a probabilidade, maior a prioridade na busca.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>No preço mais baixo — produtos mais baratos têm maior prioridade.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Na ordem alfabética do nome — produtos com nomes anteriores no alfabeto têm prioridade.</div>
             </div>
-            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Heurística melhor (mas ainda admissível) reduz drasticamente o espaço explorado. Caching de estados já visitados e podas geometricamente válidas também ajudam.</div>
-            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Zerar a heurística = Dijkstra (geralmente mais lento). Inflacionar quebra optimality. Trocar para DFS aleatório piora qualidade. A solução é ser mais "esperto" na heurística e nas estruturas auxiliares.</div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! O exercício especifica: a heurística deve ser baseada na probabilidade de conversão. Quanto maior a probabilidade de um produto despertar interesse, mais prioritário ele é na exploração do A*.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. O Passo 3 do exercício é explícito: a heurística é baseada na probabilidade de conversão — a chance de um produto despertar o interesse do usuário. Quanto maior, melhor.</div>
             <button class="quiz-retry">↺ Tentar novamente</button>
           </div>
         </div>
