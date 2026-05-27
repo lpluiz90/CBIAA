@@ -19,7 +19,7 @@
   /* Hero */
   #hero{
     background:linear-gradient(135deg,var(--navy) 0%,var(--steel) 60%,#2a5a8a 100%);
-    padding:60px 40px 52px 40px;position:relative;overflow:hidden;
+    padding:24px 40px 20px 40px;position:relative;overflow:hidden;
   }
   #hero::before{
     content:'';position:absolute;inset:0;
@@ -32,11 +32,7 @@
   .escom-label{font-family:'Rajdhani',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px;}
   .hero-title{font-family:'Rajdhani',sans-serif;font-size:42px;font-weight:700;color:var(--white);line-height:1.0;margin-bottom:10px;}
   .hero-title span{color:var(--sky);}
-  .hero-sub{font-size:18px;color:rgba(255,255,255,.65);line-height:1.65;max-width:580px;margin-bottom:28px;}
-  .hero-stats{display:flex;gap:32px;flex-wrap:wrap;}
-  .stat{display:flex;flex-direction:column;}
-  .stat-num{font-family:'Rajdhani',sans-serif;font-size:32px;font-weight:700;color:var(--gold);line-height:1;}
-  .stat-label{font-size:12px;color:rgba(255,255,255,.45);margin-top:2px;font-family:'Rajdhani',sans-serif;letter-spacing:.5px;}
+  .hero-sub{font-size:18px;color:rgba(255,255,255,.65);line-height:1.65;max-width:580px;margin-bottom:0;}
 
   /* Content */
   .content{max-width:2400px;margin:0 auto;padding:48px 48px 100px;}
@@ -81,7 +77,7 @@
   footer{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-top:1px solid var(--ice);}
 
   @media(max-width:700px){
-    #hero{padding:32px 18px 28px;}
+    #hero{padding:16px 18px 14px;}
     .hero-title{font-size:22px;}
     .hero-sub{font-size:16px;max-width:100%;}
     .content{padding:28px 14px 60px;}
@@ -91,8 +87,6 @@
     .lesson-grid{grid-template-columns:1fr;}
     .lesson-grid .lesson-card:last-child{grid-column:auto;max-width:100%;}
     .module-title{font-size:20px;}
-    .hero-stats{gap:20px;}
-    .stat-num{font-size:24px;}
   }
 
   /* ── IMPRESSÃO A4 ── */
@@ -105,8 +99,6 @@
     .hero-title{font-size:26px !important;}
     .hero-sub{font-size:12pt !important;}
     .course-img-wrap{display:none !important;}
-    .hero-stats{gap:20px !important;}
-    .stat-num{font-size:20px !important;}
 
     /* Conteúdo */
     .content{padding:16px 0 0 !important;max-width:100% !important;}
@@ -149,11 +141,6 @@
     <div class="escom-label">Escola de Comunicações · Plataforma EAD</div>
     <h1 class="hero-title">Curso Básico de <span>Inteligência Artificial Aplicada</span></h1>
     <p class="hero-sub">Capacitação em IA para profissionais da Escola de Comunicações. Acesse os módulos abaixo e aprenda no seu ritmo.</p>
-    <div class="hero-stats">
-      <div class="stat"><span class="stat-num">5</span><span class="stat-label">Assuntos · Módulo Introdução</span></div>
-      <div class="stat"><span class="stat-num">2</span><span class="stat-label">Disponível agora</span></div>
-      <div class="stat"><span class="stat-num">3</span><span class="stat-label">Em produção</span></div>
-    </div>
   </div>
 </div>
 
