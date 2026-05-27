@@ -928,35 +928,608 @@ Produto C (Categoria 2)</pre>
     <footer style="background:var(--navy);color:rgba(255,255,255,.35);text-align:center;font-size:10.5px;padding:16px;letter-spacing:.4px;">
       Exército Brasileiro &middot; Escola de Comunicações (Escola Coronel Hygino Corsetti) &middot; EAD — Módulo de Fundamentos de IA
     </footer>
-  </div>  <!-- ===== CONTENT PANEL 4 — Em Breve ===== -->
+  </div>    <!-- ===== CONTENT PANEL 4 ===== -->
   <div class="content-panel">
     <div class="content">
-      <div style="background:var(--white);border-radius:12px;padding:48px 40px;text-align:center;box-shadow:0 2px 20px rgba(0,0,0,.07);margin-top:48px;">
-        <div style="font-size:52px;margin-bottom:20px;">🧮</div>
-        <h2 style="font-family:'Rajdhani',sans-serif;font-size:28px;font-weight:700;color:var(--navy);margin-bottom:12px;">Aula 04 em Produção</h2>
-        <p style="font-size:18px;color:#5a6a7e;line-height:1.7;margin-bottom:24px;">Raciocínio em ambientes incertos — probabilidade, redes bayesianas e cadeias de Markov. Em breve!</p>
+
+      <div id="obj4" class="fade-in" style="background:var(--white);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:24px 28px;margin:36px 0 0;box-shadow:0 2px 10px rgba(0,0,0,.06);">
+        <div class="obj-title">Objetivos da Aula 04</div>
+        <div class="obj-grid">
+          <div class="obj-item"><span class="dot"></span>Compreender raciocínio probabilístico e variáveis aleatórias</div>
+          <div class="obj-item"><span class="dot"></span>Aplicar o Teorema de Bayes em sistemas de IA</div>
+          <div class="obj-item"><span class="dot"></span>Implementar redes bayesianas em Python com pgmpy</div>
+          <div class="obj-item"><span class="dot"></span>Utilizar cadeias de Markov para modelar sistemas dinâmicos</div>
+        </div>
       </div>
+
+      <div id="a4-s1" class="section-sep fade-in"><span class="sep-num">01</span><span class="sep-title">Lidando com Incertezas</span><span class="sep-line"></span></div>
+
+      <div class="card fade-in">
+        <div class="card-title">Raciocínio Probabilístico</div>
+        <p>Até agora, trabalhamos com sistemas onde tínhamos probabilidades bastante precisas. Mas em muitos cenários — como a previsão de vendas de fones Bluetooth ao longo do ano — há eventos incertos que afetam uns aos outros: surgimento de concorrentes, novos modelos, avanços tecnológicos.</p>
+        <p>Para isso, entramos no mundo da <strong>probabilidade estatística</strong>. Conceitos fundamentais:</p>
+        <div class="feature-grid" style="margin-top:12px;">
+          <div class="feature-box"><h5>Variáveis Aleatórias</h5><p>Representam eventos incertos que podem assumir um conjunto de valores. Ex: ao lançar um dado, cada face tem probabilidade igual, mas o resultado é incerto.</p></div>
+          <div class="feature-box gold"><h5>Distribuições Probabilísticas</h5><p>Determinam como as variáveis aleatórias se comportam. Distribuições discretas (contagem de vendas) vs. contínuas (tempo de entrega).</p></div>
+          <div class="feature-box green"><h5>Teorema de Bayes</h5><p>Descreve a probabilidade de um evento dado que outro ocorreu. Ex: dado que um cliente navegou em fones e tem histórico de compras, qual a probabilidade de comprar?</p></div>
+          <div class="feature-box purple"><h5>Redes Bayesianas</h5><p>Modelam dependências entre variáveis aleatórias com nós (variáveis), arestas (relações de dependência) e tabelas de probabilidade condicional.</p></div>
+        </div>
+      </div>
+
+      <div class="card fade-in">
+        <div class="card-title">Implementando com Python — incerteza.py</div>
+        <p>Biblioteca <strong>pgmpy</strong> para redes bayesianas. O modelo verifica se um cliente vai comprar com base em: histórico de compras, tempo no site e clique em promoção.</p>
+      </div>
+
+      <div class="prompt-wrap fade-in">
+        <span class="prompt-label neutro">Python 🐍 — incerteza.py</span>
+        <pre class="prompt-block neutro">import numpy as np
+from scipy.stats import norm
+from pgmpy.models import BayesianNetwork
+from pgmpy.factors.discrete import TabularCPD
+
+model = BayesianNetwork([
+    ("HistoricoCompras", "Compra"),
+    ("TempoNoSite", "Compra"),
+    ("ClicouEmPromocao", "Compra")
+])
+
+cpd_historico = TabularCPD(variable="HistoricoCompras", variable_card=2, values=[[0.7], [0.3]])
+cpd_tempo     = TabularCPD(variable="TempoNoSite",      variable_card=2, values=[[0.6], [0.4]])
+cpd_promocao  = TabularCPD(variable="ClicouEmPromocao", variable_card=2, values=[[0.8], [0.2]])
+
+cpd_compra = TabularCPD(
+    variable="Compra", variable_card=2,
+    values=[
+        [0.9, 0.7, 0.8, 0.4, 0.6, 0.2, 0.3, 0.1],
+        [0.1, 0.3, 0.2, 0.6, 0.4, 0.8, 0.7, 0.9]
+    ],
+    evidence=["HistoricoCompras", "TempoNoSite", "ClicouEmPromocao"],
+    evidence_card=[2, 2, 2]
+)
+
+model.add_cpds(cpd_historico, cpd_tempo, cpd_promocao, cpd_compra)
+assert model.check_model()
+
+from pgmpy.inference import VariableElimination
+inference = VariableElimination(model)
+result = inference.query(variables=["Compra"], evidence={
+    "HistoricoCompras": 1,
+    "TempoNoSite": 0,
+    "ClicouEmPromocao": 1
+})
+print("Probabilidades de Compra:")
+print(result)
+
+media_tempo = 5
+desvio_padrao_tempo = 2
+tempo_observado = 6
+prob_tempo = norm.cdf(tempo_observado, loc=media_tempo, scale=desvio_padrao_tempo)
+print(f"Probabilidade de o cliente passar menos de {tempo_observado} minutos no site: {prob_tempo:.2f}")</pre>
+      </div>
+
+      <div class="prompt-wrap fade-in">
+        <span class="prompt-label resposta">Saída</span>
+        <pre class="prompt-block resposta">Probabilidades de Compra:
+
++----------+--------------+
+| Compra   | phi(Compra)  |
++==========+==============+
+| Compra(0)| 0.2000       |
+| Compra(1)| 0.8000       |
++----------+--------------+
+
+Probabilidade de o cliente passar menos de 6 minutos no site: 0.69</pre>
+      </div>
+
+      <div id="a4-s2" class="section-sep fade-in"><span class="sep-num">02</span><span class="sep-title">Para Saber Mais: Teoria da Probabilidade</span><span class="sep-line"></span></div>
+
+      <div class="card fade-in">
+        <div class="card-title">Conceitos Fundamentais da Probabilidade</div>
+        <p>A teoria da probabilidade estuda fenômenos sujeitos à incerteza. Um exemplo prático é o lançamento de uma moeda: embora não possamos prever cara ou coroa, calculamos 50% para cada lado. Conceitos-chave:</p>
+        <ul class="bullet-list">
+          <li><strong>Espaço amostral:</strong> conjunto de todos os resultados possíveis. Ex: {cara, coroa}.</li>
+          <li><strong>Eventos:</strong> subconjuntos do espaço amostral. Ex: "sair número par" = {2, 4, 6}.</li>
+          <li><strong>Probabilidade condicional:</strong> probabilidade de um evento ocorrer dado que outro já aconteceu.</li>
+          <li><strong>Independência:</strong> dois eventos são independentes quando o resultado de um não afeta o outro.</li>
+        </ul>
+        <p style="margin-top:10px;">No contexto da IA, a probabilidade é essencial para lidar com incertezas, prever comportamentos de sistemas dinâmicos e realizar inferências em redes bayesianas.</p>
+      </div>
+
+      <div id="a4-s3" class="section-sep fade-in"><span class="sep-num">03</span><span class="sep-title">Faça como eu fiz: Rede Bayesiana</span><span class="sep-line"></span></div>
+
+      <div class="card fade-in">
+        <div class="card-title">Construindo uma Rede Bayesiana Simplificada</div>
+        <p>Implemente sem a biblioteca pgmpy, usando apenas um dicionário de probabilidades:</p>
+      </div>
+
+      <div class="prompt-wrap fade-in">
+        <span class="prompt-label neutro">Python 🐍 — bayesiana_simples.py</span>
+        <pre class="prompt-block neutro">probabilidades = {
+    "HistoricoCompras":  {0: 0.7, 1: 0.3},
+    "TempoNoSite":       {0: 0.6, 1: 0.4},
+    "ClicouEmPromocao":  {0: 0.8, 1: 0.2},
+    "Compra": {
+        (0, 0, 0): 0.1,  # sem histórico, pouco tempo, não clicou
+        (0, 0, 1): 0.3,
+        (0, 1, 0): 0.2,
+        (0, 1, 1): 0.6,
+        (1, 0, 0): 0.4,
+        (1, 0, 1): 0.7,
+        (1, 1, 0): 0.8,
+        (1, 1, 1): 0.9   # com histórico, muito tempo, clicou
+    }
+}
+
+def calcular_probabilidade_compra(evidencias):
+    h = evidencias["HistoricoCompras"]
+    t = evidencias["TempoNoSite"]
+    p = evidencias["ClicouEmPromocao"]
+    prob = probabilidades["Compra"][(h, t, p)]
+    return {"Comprar": prob, "Não Comprar": 1 - prob}
+
+evidencias = {"HistoricoCompras": 1, "TempoNoSite": 0, "ClicouEmPromocao": 1}
+for resultado, probabilidade in calcular_probabilidade_compra(evidencias).items():
+    print(f"{resultado}: {probabilidade:.2f}")</pre>
+      </div>
+
+      <div class="prompt-wrap fade-in">
+        <span class="prompt-label resposta">Saída</span>
+        <pre class="prompt-block resposta">Comprar: 0.70
+Não Comprar: 0.30</pre>
+      </div>
+
+      <div id="a4-s4" class="section-sep fade-in"><span class="sep-num">04</span><span class="sep-title">Modelando Processos Dinâmicos</span><span class="sep-line"></span></div>
+
+      <div class="card fade-in">
+        <div class="card-title">Redes Bayesianas Dinâmicas</div>
+        <p>Em um e-commerce, os equipamentos de entrega (caminhões, automóveis) precisam de monitoramento contínuo. Um caminhão pode estar saudável agora, mas vibração ou temperatura acima do normal indica desgaste.</p>
+        <p><strong>Redes bayesianas dinâmicas</strong> capturam a evolução temporal das variáveis e suas relações — essencial para prever falhas em equipamentos:</p>
+        <div class="feature-grid" style="margin-top:12px;">
+          <div class="feature-box"><h5>Modelo de Transição</h5><p>Define como o estado atual influencia o próximo. Ex: aumento de vibração hoje eleva probabilidade de desgaste amanhã.</p></div>
+          <div class="feature-box gold"><h5>Modelo de Observação</h5><p>Relaciona o estado oculto (falha) às observações disponíveis (leituras de sensores, histórico do equipamento).</p></div>
+        </div>
+      </div>
+
+      <div id="a4-s5" class="section-sep fade-in"><span class="sep-num">05</span><span class="sep-title">Cadeias de Markov</span><span class="sep-line"></span></div>
+
+      <div class="card fade-in">
+        <div class="card-title">Cadeias de Markov e Redes de Markov</div>
+        <p><strong>Cadeias de Markov</strong> se baseiam na <em>propriedade de Markov</em>: o próximo estado de um sistema depende apenas do estado atual. A previsão do tempo de amanhã depende das condições meteorológicas de hoje — análise simplificada sem perder precisão.</p>
+        <p><strong>Redes de Markov</strong> lidam com problemas mais complexos que possuem um grande conjunto de variáveis com relação de influência simultânea entre elas, como sistemas de diagnóstico médico.</p>
+        <p>Tabela de transição de estados para previsão do tempo:</p>
+      </div>
+
+      <table class="data-table fade-in">
+        <thead><tr><th>De \ Para</th><th>Ensolarado</th><th>Nublado</th><th>Chuvoso</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Ensolarado</strong></td><td>0.7</td><td>0.2</td><td>0.1</td></tr>
+          <tr><td><strong>Nublado</strong></td><td>0.3</td><td>0.5</td><td>0.2</td></tr>
+          <tr><td><strong>Chuvoso</strong></td><td>0.2</td><td>0.3</td><td>0.5</td></tr>
+        </tbody>
+      </table>
+
+      <div class="prompt-wrap fade-in">
+        <span class="prompt-label neutro">Python 🐍 — markov.py</span>
+        <pre class="prompt-block neutro">import numpy as np
+
+states = ["Ensolarado", "Nublado", "Chuvoso"]
+
+transition_matrix = [
+    [0.8, 0.15, 0.05],
+    [0.2, 0.6,  0.2 ],
+    [0.25, 0.25, 0.5]
+]
+
+initial_state = "Ensolarado"
+num_days = 10
+
+def get_state_index(state):
+    return states.index(state)
+
+def predict_weather(initial_state, num_days):
+    current_state = initial_state
+    forecast = [current_state]
+    for _ in range(num_days - 1):
+        idx = get_state_index(current_state)
+        next_state = np.random.choice(states, p=transition_matrix[idx])
+        forecast.append(next_state)
+        current_state = next_state
+    return forecast
+
+forecast = predict_weather(initial_state, num_days)
+print(f"Estado inicial: {initial_state}")
+print("Previsão para os próximos dias:")
+for day, state in enumerate(forecast, start=1):
+    print(f"Dia {day}: {state}")</pre>
+      </div>
+
+      <div class="prompt-wrap fade-in">
+        <span class="prompt-label resposta">Saída</span>
+        <pre class="prompt-block resposta">Estado inicial: Ensolarado
+Previsão para os próximos dias:
+Dia 1: Ensolarado
+Dia 2: Ensolarado
+Dia 3: Nublado
+Dia 4: Nublado
+Dia 5: Nublado
+Dia 6: Chuvoso
+Dia 7: Chuvoso
+Dia 8: Chuvoso
+Dia 9: Nublado
+Dia 10: Nublado</pre>
+      </div>
+
+      <div class="callout tip fade-in">
+        <strong>Aplicações das Cadeias de Markov:</strong> sistemas de recomendação (Spotify, Deezer), detecção de fraudes bancárias e otimização de fluxos em interfaces web.
+      </div>
+
+      <div id="a4-s6" class="section-sep fade-in"><span class="sep-num">06</span><span class="sep-title">Faça como eu fiz: Cadeias de Markov</span><span class="sep-line"></span></div>
+
+      <div class="card fade-in">
+        <div class="card-title">Prever o clima usando Cadeia de Markov</div>
+        <p>Sua tarefa: implemente o modelo de previsão de clima usando a cadeia de Markov com os estados "Ensolarado", "Nublado" e "Chuvoso".</p>
+        <div class="steps" style="margin-top:12px;">
+          <div class="step"><div class="step-num sky">1</div><div class="step-body"><strong>Defina os estados e a matriz de transição</strong> — garanta que as probabilidades em cada linha somem 1.</div></div>
+          <div class="step"><div class="step-num sky">2</div><div class="step-body"><strong>Implemente a lógica da cadeia</strong> — função que prevê o clima por um determinado número de dias, usando <code style="background:var(--ice);padding:1px 5px;border-radius:3px;font-family:monospace;font-size:13px;">numpy.random.choice</code> com as probabilidades da matriz.</div></div>
+          <div class="step"><div class="step-num sky">3</div><div class="step-body"><strong>Teste o modelo</strong> — escolha "Ensolarado" como estado inicial e preveja os próximos 10 dias.</div></div>
+        </div>
+      </div>
+
+      <div class="dark-card fade-in" style="margin-top:18px;">
+        <p><strong>O que aprendemos:</strong></p>
+        <p>Raciocínio probabilístico e modelagem de incertezas · Teorema de Bayes na previsão de probabilidades condicionais · Redes bayesianas em Python com pgmpy · Redes bayesianas dinâmicas para variáveis temporais · Cadeias de Markov e previsão de estados futuros · Redes de Markov para cenários complexos com múltiplas variáveis.</p>
+      </div>
+
+      <!-- QUIZ 4 -->
+      <div id="a4-quiz" class="quiz-section fade-in">
+        <div class="quiz-section-header"><span class="qs-label">Quiz</span><span class="qs-title">Avalie seu aprendizado — Aula 04</span></div>
+        <div class="quiz-section-body">
+          <div class="quiz-block" data-correct="B">
+            <div class="quiz-q-label">Questão 01</div>
+            <div class="quiz-question">O que são variáveis aleatórias no contexto do raciocínio probabilístico?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Variáveis com valor fixo e determinístico que não mudam com o tempo.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Representações de eventos incertos que podem assumir um conjunto de valores possíveis.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Sequências de instruções computacionais que definem o comportamento do agente.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Tipos especiais de banco de dados utilizados para armazenar dados probabilísticos.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Variáveis aleatórias representam eventos incertos que podem assumir diferentes valores — como o resultado de um lançamento de dado.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Variáveis aleatórias representam eventos incertos que podem assumir um conjunto de valores — o resultado nunca é fixo ou determinístico.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+          <div class="quiz-block" data-correct="C">
+            <div class="quiz-q-label">Questão 02</div>
+            <div class="quiz-question">Qual propriedade fundamental caracteriza as Cadeias de Markov?</div>
+            <div class="quiz-options">
+              <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>O próximo estado depende de todo o histórico de estados anteriores do sistema.</div>
+              <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Os estados são completamente aleatórios e independentes entre si.</div>
+              <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>O próximo estado depende apenas do estado atual — não do histórico passado.</div>
+              <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Os estados seguem sempre uma distribuição normal gaussiana.</div>
+            </div>
+            <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! A propriedade de Markov afirma que o próximo estado depende apenas do estado atual — simplificando a modelagem sem perder precisão.</div>
+            <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. A propriedade de Markov define que o próximo estado depende apenas do estado atual, não do histórico completo de estados anteriores.</div>
+            <button class="quiz-retry">↺ Tentar novamente</button>
+          </div>
+        </div>
+      </div>
+
     </div>
     <footer style="background:var(--navy);color:rgba(255,255,255,.35);text-align:center;font-size:10.5px;padding:16px;letter-spacing:.4px;">
       Exército Brasileiro &middot; Escola de Comunicações (Escola Coronel Hygino Corsetti) &middot; EAD — Módulo de Fundamentos de IA
     </footer>
   </div>
 
-  <!-- ===== CONTENT PANEL 5 — Em Breve ===== -->
+<!-- ===== CONTENT PANEL 5 ===== -->
   <div class="content-panel">
     <div class="content">
-      <div style="background:var(--white);border-radius:12px;padding:48px 40px;text-align:center;box-shadow:0 2px 20px rgba(0,0,0,.07);margin-top:48px;">
-        <div style="font-size:52px;margin-bottom:20px;">🧠</div>
-        <h2 style="font-family:'Rajdhani',sans-serif;font-size:28px;font-weight:700;color:var(--navy);margin-bottom:12px;">Aula 05 em Produção</h2>
-        <p style="font-size:18px;color:#5a6a7e;line-height:1.7;margin-bottom:24px;">Sistemas baseados em conhecimento — lógica formal, raciocínio automático e sistemas especialistas. Em breve!</p>
+
+      <div id="obj5" class="fade-in" style="background:var(--white);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:24px 28px;margin:36px 0 0;box-shadow:0 2px 10px rgba(0,0,0,.06);">
+        <div class="obj-title">Objetivos da Aula 05</div>
+        <div class="obj-grid">
+          <div class="obj-item"><span class="dot"></span>Compreender o papel das lógicas formais em sistemas de IA</div>
+          <div class="obj-item"><span class="dot"></span>Distinguir os diferentes tipos de raciocínio automático</div>
+          <div class="obj-item"><span class="dot"></span>Implementar um sistema especialista com encadeamento progressivo</div>
+          <div class="obj-item"><span class="dot"></span>Reconhecer aplicações de sistemas baseados em conhecimento no contexto militar</div>
+        </div>
       </div>
+
+      <!-- a5-s1: Lógicas Formais -->
+      <div id="a5-s1" class="fade-in item-block">
+        <div class="item-title-bar" style="background:var(--t5);">
+          <span class="item-num">01</span>
+          <span class="item-name">Lógicas formais: o fundamento do raciocínio automático</span>
+        </div>
+        <div class="item-body">
+          <p>Para que uma máquina possa <strong>raciocinar</strong>, ela precisa de um sistema formal para representar o conhecimento e derivar conclusões. As lógicas formais fornecem exatamente isso: uma linguagem precisa com regras de inferência bem definidas.</p>
+          <p>O tipo mais fundamental é a <strong>Lógica Proposicional</strong>, que trabalha com proposições simples (verdadeiro ou falso) e conectivos lógicos:</p>
+          <ul style="margin:12px 0 12px 20px;line-height:1.9;">
+            <li><strong>¬</strong> — negação (NÃO)</li>
+            <li><strong>∧</strong> — conjunção (E)</li>
+            <li><strong>∨</strong> — disjunção (OU)</li>
+            <li><strong>→</strong> — implicação (SE…ENTÃO)</li>
+            <li><strong>↔</strong> — bicondicional (SE E SOMENTE SE)</li>
+          </ul>
+          <p>Considere um sistema de diagnóstico médico simples:</p>
+          <ul style="margin:12px 0 12px 20px;line-height:1.9;">
+            <li><strong>P</strong> → paciente tem febre alta</li>
+            <li><strong>Q</strong> → paciente tem dor de garganta</li>
+            <li><strong>R</strong> → diagnóstico: amigdalite</li>
+          </ul>
+          <p>A regra de diagnóstico pode ser expressa como: <strong>(P ∧ Q) → R</strong></p>
+          <p>Isso significa: <em>SE o paciente tem febre alta E tem dor de garganta, ENTÃO o diagnóstico é amigdalite.</em></p>
+          <p>A <strong>Lógica de Primeira Ordem</strong> (LPO) vai além: permite quantificadores (<em>∀</em> para todos, <em>∃</em> existe) e predicados, tornando possível representar conhecimento mais rico, como "Todo militar que concluiu o curso recebe certificado".</p>
+          <div class="tip-box" style="background:#fff8e1;border-left:4px solid #f9a825;border-radius:6px;padding:14px 18px;margin:18px 0;">
+            <strong>Aplicação Militar:</strong> Sistemas de apoio à decisão em operações utilizam lógica formal para verificar se as condições de engajamento foram satisfeitas antes de autorizar determinada ação tática, garantindo conformidade com as regras de engajamento (ROE).
+          </div>
+        </div>
+      </div>
+
+      <!-- a5-s2: Para saber mais — Lógica Formal na IA -->
+      <div id="a5-s2" class="fade-in item-block">
+        <div class="item-title-bar" style="background:var(--t5);">
+          <span class="item-num" style="background:rgba(255,255,255,.18);">💡</span>
+          <span class="item-name">Para saber mais: Lógica formal na IA</span>
+        </div>
+        <div class="item-body">
+          <div class="saibamais-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:8px;">
+            <div class="sm-card" style="background:#f3e5f5;border-radius:10px;padding:18px;">
+              <div style="font-weight:700;color:#7b1fa2;margin-bottom:8px;">📐 Prolog</div>
+              <p style="font-size:.93rem;line-height:1.6;">Linguagem de programação baseada inteiramente em lógica de primeira ordem. Muito usada em IA simbólica, parsing de linguagem natural e sistemas especialistas.</p>
+            </div>
+            <div class="sm-card" style="background:#e8f5e9;border-radius:10px;padding:18px;">
+              <div style="font-weight:700;color:#2e7d32;margin-bottom:8px;">🔗 OWL e RDF</div>
+              <p style="font-size:.93rem;line-height:1.6;">Linguagens da Web Semântica que permitem representar ontologias — hierarquias de conceitos e relações — possibilitando raciocínio automatizado sobre grandes bases de conhecimento.</p>
+            </div>
+            <div class="sm-card" style="background:#e3f2fd;border-radius:10px;padding:18px;">
+              <div style="font-weight:700;color:#1565c0;margin-bottom:8px;">🤔 Lógica Fuzzy</div>
+              <p style="font-size:.93rem;line-height:1.6;">Extensão da lógica clássica que permite graus de verdade (ex.: 0.7 de "quente"), muito útil em sistemas de controle e quando o conhecimento é impreciso ou gradual.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- a5-s3: Raciocínio automático -->
+      <div id="a5-s3" class="fade-in item-block">
+        <div class="item-title-bar" style="background:var(--t5);">
+          <span class="item-num">02</span>
+          <span class="item-name">Raciocínio automático: dedução, indução e abdução</span>
+        </div>
+        <div class="item-body">
+          <p>Um sistema de IA pode raciocinar de três formas distintas, cada uma com suas características e aplicações:</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:18px 0;">
+            <div style="background:#fce4ec;border-radius:10px;padding:18px;">
+              <div style="font-weight:700;color:#c62828;margin-bottom:8px;">🔻 Raciocínio Dedutivo</div>
+              <p style="font-size:.93rem;line-height:1.6;margin-bottom:8px;"><em>Do geral para o específico.</em> A conclusão segue necessariamente das premissas.</p>
+              <p style="font-size:.88rem;background:#fff;padding:10px;border-radius:6px;font-family:monospace;">Premissa: Todo mamífero respira ar.<br>Premissa: Baleias são mamíferos.<br>Conclusão: Baleias respiram ar.</p>
+            </div>
+            <div style="background:#e8f5e9;border-radius:10px;padding:18px;">
+              <div style="font-weight:700;color:#2e7d32;margin-bottom:8px;">🔺 Raciocínio Indutivo</div>
+              <p style="font-size:.93rem;line-height:1.6;margin-bottom:8px;"><em>Do específico para o geral.</em> A conclusão é provável, mas não garantida.</p>
+              <p style="font-size:.88rem;background:#fff;padding:10px;border-radius:6px;font-family:monospace;">Observação: 1000 corvos foram vistos e eram pretos.<br>Conclusão: Todos os corvos são pretos.</p>
+            </div>
+            <div style="background:#e3f2fd;border-radius:10px;padding:18px;">
+              <div style="font-weight:700;color:#1565c0;margin-bottom:8px;">🔍 Raciocínio Abdutivo</div>
+              <p style="font-size:.93rem;line-height:1.6;margin-bottom:8px;"><em>Da observação para a hipótese mais plausível.</em> Busca a melhor explicação para os fatos.</p>
+              <p style="font-size:.88rem;background:#fff;padding:10px;border-radius:6px;font-family:monospace;">Observação: A grama está molhada.<br>Hipótese mais plausível: Choveu durante a noite.</p>
+            </div>
+          </div>
+          <p>Sistemas de IA modernos combinam os três tipos: redes neurais aprendem por <strong>indução</strong>, sistemas especialistas operam por <strong>dedução</strong>, e diagnósticos médicos automatizados utilizam <strong>abdução</strong>.</p>
+          <div class="tip-box" style="background:#e8eaf6;border-left:4px solid #3949ab;border-radius:6px;padding:14px 18px;margin:18px 0;">
+            <strong>Contexto Logístico:</strong> Um sistema de manutenção preditiva usa raciocínio <em>abdutivo</em> para identificar a causa mais provável de uma falha em uma viatura, com base nos sintomas reportados — reduzindo o tempo de diagnóstico e aumentando a disponibilidade operacional.
+          </div>
+        </div>
+      </div>
+
+      <!-- a5-s4: Sistema especialista -->
+      <div id="a5-s4" class="fade-in item-block">
+        <div class="item-title-bar" style="background:var(--t5);">
+          <span class="item-num">03</span>
+          <span class="item-name">Mão na Massa: construindo um sistema especialista</span>
+        </div>
+        <div class="item-body">
+          <p>Um <strong>sistema especialista</strong> é composto por dois elementos centrais: uma <strong>base de conhecimento</strong> (fatos e regras do domínio) e um <strong>mecanismo de inferência</strong> (motor que aplica as regras). Vamos construir um exemplo de diagnóstico logístico usando <strong>encadeamento progressivo</strong> (forward chaining):</p>
+          <div class="prompt-label neutro">sistema_especialista.py</div>
+<pre class="prompt-block neutro">
+class BaseDeConhecimento:
+    def __init__(self):
+        self.fatos = []
+        self.regras = []
+
+    def adicionar_fato(self, fato):
+        self.fatos.append(fato)
+
+    def adicionar_regra(self, condicao, conclusao):
+        self.regras.append((condicao, conclusao))
+
+
+class SistemaEspecialista:
+    def __init__(self, base):
+        self.base = base
+
+    def inferir(self):
+        mudou = True
+        while mudou:
+            mudou = False
+            for condicao, conclusao in self.base.regras:
+                conds_ok = all(c in self.base.fatos for c in condicao)
+                if conds_ok and conclusao not in self.base.fatos:
+                    self.base.fatos.append(conclusao)
+                    print(f"Inferido: {conclusao}")
+                    mudou = True
+
+
+# --- Base de conhecimento: diagnóstico de viaturas ---
+base = BaseDeConhecimento()
+
+# Fatos iniciais observados
+base.adicionar_fato("motor não parte")
+base.adicionar_fato("bateria fraca")
+
+# Regras de diagnóstico
+base.adicionar_regra(["bateria fraca"], "problema elétrico")
+base.adicionar_regra(["motor não parte", "problema elétrico"], "falha no sistema de partida")
+base.adicionar_regra(["falha no sistema de partida"], "viatura indisponível")
+base.adicionar_regra(["viatura indisponível"], "acionar manutenção Nível 2")
+
+# Executar inferência
+se = SistemaEspecialista(base)
+se.inferir()
+
+print("\nFatos na base após inferência:")
+for fato in base.fatos:
+    print(f"  - {fato}")
+</pre>
+          <div class="prompt-label resposta">Saída</div>
+<pre class="prompt-block resposta">
+Inferido: problema elétrico
+Inferido: falha no sistema de partida
+Inferido: viatura indisponível
+Inferido: acionar manutenção Nível 2
+
+Fatos na base após inferência:
+  - motor não parte
+  - bateria fraca
+  - problema elétrico
+  - falha no sistema de partida
+  - viatura indisponível
+  - acionar manutenção Nível 2
+</pre>
+          <p>O sistema parte dos fatos observados (<em>motor não parte</em>, <em>bateria fraca</em>) e, aplicando as regras em cadeia, chega automaticamente à conclusão de que deve <strong>acionar manutenção Nível 2</strong> — sem intervenção humana no raciocínio.</p>
+        </div>
+      </div>
+
+      <!-- a5-s5: Referências -->
+      <div id="a5-s5" class="fade-in item-block">
+        <div class="item-title-bar" style="background:var(--t5);">
+          <span class="item-num" style="background:rgba(255,255,255,.18);">📚</span>
+          <span class="item-name">Referências e leituras complementares</span>
+        </div>
+        <div class="item-body">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px;margin-top:8px;">
+            <a href="https://aima.cs.berkeley.edu/" target="_blank" rel="noopener" class="ref-card" style="display:block;background:#f9f9f9;border-radius:10px;padding:16px;text-decoration:none;border:1px solid #e0e0e0;transition:box-shadow .2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.12)'" onmouseout="this.style.boxShadow='none'">
+              <div style="font-weight:700;color:#1a237e;margin-bottom:6px;">📖 Russell & Norvig</div>
+              <div style="font-size:.88rem;color:#555;line-height:1.5;">Artificial Intelligence: A Modern Approach — referência global sobre IA simbólica, lógica e sistemas especialistas.</div>
+            </a>
+            <a href="https://www.amazon.com.br/Probabilistic-Graphical-Models-Principles-Computation/dp/0262013193" target="_blank" rel="noopener" class="ref-card" style="display:block;background:#f9f9f9;border-radius:10px;padding:16px;text-decoration:none;border:1px solid #e0e0e0;transition:box-shadow .2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.12)'" onmouseout="this.style.boxShadow='none'">
+              <div style="font-weight:700;color:#1a237e;margin-bottom:6px;">📖 Koller & Friedman</div>
+              <div style="font-size:.88rem;color:#555;line-height:1.5;">Probabilistic Graphical Models — fundamentos de modelos de raciocínio sob incerteza e redes bayesianas.</div>
+            </a>
+            <a href="https://numpy.org/doc/" target="_blank" rel="noopener" class="ref-card" style="display:block;background:#f9f9f9;border-radius:10px;padding:16px;text-decoration:none;border:1px solid #e0e0e0;transition:box-shadow .2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.12)'" onmouseout="this.style.boxShadow='none'">
+              <div style="font-weight:700;color:#1a237e;margin-bottom:6px;">🔧 NumPy Docs</div>
+              <div style="font-size:.88rem;color:#555;line-height:1.5;">Documentação oficial do NumPy — base para cálculos matriciais e simulações probabilísticas em Python.</div>
+            </a>
+            <a href="https://pgmpy.org/models/bayesiannetwork.html" target="_blank" rel="noopener" class="ref-card" style="display:block;background:#f9f9f9;border-radius:10px;padding:16px;text-decoration:none;border:1px solid #e0e0e0;transition:box-shadow .2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.12)'" onmouseout="this.style.boxShadow='none'">
+              <div style="font-weight:700;color:#1a237e;margin-bottom:6px;">🔧 pgmpy Docs</div>
+              <div style="font-size:.88rem;color:#555;line-height:1.5;">Documentação da biblioteca pgmpy para construção e inferência em redes bayesianas com Python.</div>
+            </a>
+            <a href="https://matplotlib.org/stable/index.html" target="_blank" rel="noopener" class="ref-card" style="display:block;background:#f9f9f9;border-radius:10px;padding:16px;text-decoration:none;border:1px solid #e0e0e0;transition:box-shadow .2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.12)'" onmouseout="this.style.boxShadow='none'">
+              <div style="font-weight:700;color:#1a237e;margin-bottom:6px;">🔧 Matplotlib Docs</div>
+              <div style="font-size:.88rem;color:#555;line-height:1.5;">Documentação da principal biblioteca de visualização de dados em Python, útil para plotar grafos bayesianos e distribuições.</div>
+            </a>
+            <a href="https://www.casadocodigo.com.br/products/livro-inteligencia-artificial" target="_blank" rel="noopener" class="ref-card" style="display:block;background:#f9f9f9;border-radius:10px;padding:16px;text-decoration:none;border:1px solid #e0e0e0;transition:box-shadow .2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.12)'" onmouseout="this.style.boxShadow='none'">
+              <div style="font-weight:700;color:#1a237e;margin-bottom:6px;">📖 Fabrício Carraro</div>
+              <div style="font-size:.88rem;color:#555;line-height:1.5;">Inteligência Artificial — livro em português com abordagem prática e didática sobre os fundamentos e aplicações de IA.</div>
+            </a>
+            <a href="https://towardsdatascience.com/" target="_blank" rel="noopener" class="ref-card" style="display:block;background:#f9f9f9;border-radius:10px;padding:16px;text-decoration:none;border:1px solid #e0e0e0;transition:box-shadow .2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.12)'" onmouseout="this.style.boxShadow='none'">
+              <div style="font-weight:700;color:#1a237e;margin-bottom:6px;">🌐 Towards Data Science</div>
+              <div style="font-size:.88rem;color:#555;line-height:1.5;">Portal de artigos práticos e atualizados sobre machine learning, IA e ciência de dados — ótimo para explorar casos reais.</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- O que aprendemos -->
+      <div id="a5-resumo" class="fade-in item-block">
+        <div class="item-title-bar" style="background:#455a64;">
+          <span class="item-num">04</span>
+          <span class="item-name">O que aprendemos nesta aula</span>
+        </div>
+        <div class="item-body">
+          <ul style="line-height:2;margin-left:18px;">
+            <li>Lógicas formais (proposicional e de primeira ordem) são a base do raciocínio automático em IA simbólica</li>
+            <li>Raciocínio <strong>dedutivo</strong> vai do geral ao específico; <strong>indutivo</strong>, do específico ao geral; <strong>abdutivo</strong> busca a melhor hipótese explicativa</li>
+            <li>Sistemas especialistas combinam uma <strong>base de conhecimento</strong> com um <strong>mecanismo de inferência</strong> para derivar conclusões automaticamente</li>
+            <li>O encadeamento progressivo (forward chaining) aplica regras em cadeia a partir de fatos observados até esgotar as inferências possíveis</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Conclusão do módulo -->
+      <div id="a5-conclusao" class="fade-in item-block">
+        <div class="item-title-bar" style="background:var(--navy);">
+          <span class="item-num">05</span>
+          <span class="item-name">Conclusão do Módulo: Fundamentos de IA</span>
+        </div>
+        <div class="item-body">
+          <p>Ao longo deste módulo, percorremos os principais pilares que sustentam os sistemas de Inteligência Artificial modernos:</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0;">
+            <div style="background:#e3f2fd;border-radius:8px;padding:14px;">
+              <div style="font-weight:700;color:#1565c0;margin-bottom:6px;">Aula 01</div>
+              <div style="font-size:.9rem;line-height:1.5;">Construindo máquinas inteligentes — definições, histórico e abordagens de IA</div>
+            </div>
+            <div style="background:#e8f5e9;border-radius:8px;padding:14px;">
+              <div style="font-weight:700;color:#2e7d32;margin-bottom:6px;">Aula 02</div>
+              <div style="font-size:.9rem;line-height:1.5;">Agentes inteligentes — estrutura, tipos e orquestração de agentes autônomos</div>
+            </div>
+            <div style="background:#f3e5f5;border-radius:8px;padding:14px;">
+              <div style="font-weight:700;color:#7b1fa2;margin-bottom:6px;">Aula 03</div>
+              <div style="font-size:.9rem;line-height:1.5;">Resolução de problemas — busca informada, algoritmo A* e espaço de estados</div>
+            </div>
+            <div style="background:#fff3e0;border-radius:8px;padding:14px;">
+              <div style="font-weight:700;color:#e65100;margin-bottom:6px;">Aula 04</div>
+              <div style="font-size:.9rem;line-height:1.5;">Raciocínio probabilístico — Bayes, redes bayesianas e Cadeias de Markov</div>
+            </div>
+            <div style="background:#fce4ec;border-radius:8px;padding:14px;">
+              <div style="font-weight:700;color:#c62828;margin-bottom:6px;">Aula 05</div>
+              <div style="font-size:.9rem;line-height:1.5;">Sistemas baseados em conhecimento — lógica formal, raciocínio e sistemas especialistas</div>
+            </div>
+          </div>
+          <p>Com estes fundamentos, você está preparado para compreender e contribuir com projetos de IA aplicados ao ambiente operacional e logístico do Exército Brasileiro. O domínio desses conceitos é o ponto de partida para explorar tecnologias cada vez mais presentes no campo militar — de análise de inteligência a manutenção preditiva, de otimização logística a apoio à decisão em tempo real.</p>
+          <div class="tip-box" style="background:#e8f5e9;border-left:4px solid #2e7d32;border-radius:6px;padding:16px 20px;margin:20px 0;text-align:center;">
+            <strong>Parabéns por concluir o Módulo de Fundamentos de IA!</strong><br>
+            <span style="font-size:.93rem;">Continue sua jornada nos próximos módulos do CBIAA.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quiz Aula 05 -->
+      <div id="quiz5" class="fade-in quiz-block" data-correct="B">
+        <div class="quiz-header">📝 Quiz — Aula 05</div>
+        <div class="quiz-question">
+          <strong>Questão 1:</strong> Um sistema especialista é composto por:
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Redes neurais e algoritmos de aprendizado supervisionado.</div>
+          <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Uma base de conhecimento e um mecanismo de inferência.</div>
+          <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Um banco de dados relacional e uma interface gráfica.</div>
+          <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Um modelo probabilístico e um conjunto de dados de treinamento.</div>
+        </div>
+        <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! Sistemas especialistas combinam uma base de conhecimento (fatos e regras do domínio) com um mecanismo de inferência que aplica as regras para derivar conclusões.</div>
+        <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. Sistemas especialistas são definidos pela combinação de base de conhecimento e mecanismo de inferência — independente de aprendizado de máquina ou bancos de dados.</div>
+        <button class="quiz-retry">↺ Tentar novamente</button>
+      </div>
+
+      <div id="quiz5b" class="fade-in quiz-block" data-correct="C">
+        <div class="quiz-question">
+          <strong>Questão 2:</strong> O raciocínio <strong>abdutivo</strong> consiste em:
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-opt="A"><span class="opt-letter">A</span>Derivar conclusões necessárias a partir de premissas gerais.</div>
+          <div class="quiz-option" data-opt="B"><span class="opt-letter">B</span>Generalizar a partir de múltiplas observações específicas.</div>
+          <div class="quiz-option" data-opt="C"><span class="opt-letter">C</span>Formular a hipótese mais plausível para explicar uma observação.</div>
+          <div class="quiz-option" data-opt="D"><span class="opt-letter">D</span>Aplicar regras lógicas em encadeamento progressivo.</div>
+        </div>
+        <div class="quiz-feedback acerto"><span class="fb-icon">✅</span>Correto! O raciocínio abdutivo busca a melhor explicação para os fatos observados — como um médico que formula hipóteses diagnósticas a partir dos sintomas do paciente.</div>
+        <div class="quiz-feedback erro"><span class="fb-icon">❌</span>Não é essa. O raciocínio abdutivo é o da hipótese mais plausível. Dedutivo vai do geral ao específico; indutivo generaliza a partir de casos; encadeamento progressivo é mecanismo de sistemas especialistas.</div>
+        <button class="quiz-retry">↺ Tentar novamente</button>
+      </div>
+
     </div>
     <footer style="background:var(--navy);color:rgba(255,255,255,.35);text-align:center;font-size:10.5px;padding:16px;letter-spacing:.4px;">
       Exército Brasileiro &middot; Escola de Comunicações (Escola Coronel Hygino Corsetti) &middot; EAD — Módulo de Fundamentos de IA
     </footer>
-  </div>
-
-</div><!-- /#main-area -->
+  </div></div><!-- /#main-area -->
 </div><!-- /#wrapper -->
 
 <button id="back-to-top" aria-label="Voltar ao topo">&#8679; Voltar ao topo</button>
