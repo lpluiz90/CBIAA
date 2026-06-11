@@ -245,6 +245,9 @@
       <li><a href="#a1-s4-code"><span class="num">4.1</span> Implementação Python</a></li>
       <li><a href="#a1-s4-resultados"><span class="num">4.2</span> Resultados</a></li>
       <li><a href="#a1-s4-desafios"><span class="num">4.3</span> Desafios</a></li>
+      <li class="section-divider"><a href="#a1-s5"><span class="num">05</span> Para Saber Mais</a></li>
+      <li><a href="#a1-s5-metricas"><span class="num">5.1</span> Métricas</a></li>
+      <li><a href="#a1-s5-cv"><span class="num">5.2</span> Validação Cruzada</a></li>
 
       <li class="section-divider"><a href="#a1-quiz"><span class="num">—</span> Quiz</a></li>
     </ul>
@@ -630,6 +633,41 @@ Média dos scores de validação cruzada: 0.95</pre>
         <p style="margin-top:12px;">Já o <strong>underfitting</strong> (subajuste) ocorre quando o modelo não vai bem nem com o conjunto de dados de treinamento. Modelos muito simples não conseguem compreender as características presentes no dataset e não conseguem generalizar ou prever corretamente — resultando em subajuste.</p>
         <div class="highlight-box" style="margin-top:16px;">
           O objetivo é encontrar o equilíbrio: um modelo que <strong>generaliza bem</strong>, aprendendo os padrões reais dos dados sem decorar exemplos específicos (overfitting) e sem ser simples demais para capturá-los (underfitting).
+        </div>
+      </div>
+
+      <!-- Item 05: Para Saber Mais — Entendendo a Avaliação de Modelos -->
+      <div id="a1-s5" class="section-sep fade-in"><span class="sep-num">Item 05</span><span class="sep-title">Para Saber Mais: Entendendo a Avaliação de Modelos</span><span class="sep-line"></span></div>
+
+      <div id="a1-s5-metricas" class="card fade-in">
+        <div class="card-title">Principais métricas de avaliação</div>
+        <p>Ao avaliar um modelo de Machine Learning, utilizamos métricas para medir seu desempenho e entender sua capacidade de generalização. As principais métricas para <strong>modelos de regressão</strong> são:</p>
+        <ul class="bullet-list" style="margin-top:12px;">
+          <li><strong>R² (Coeficiente de Determinação):</strong> Mede o quão bem os dados se ajustam ao modelo. Um valor próximo de 1 indica um bom ajuste; valores baixos sugerem que o modelo não explica bem os dados.</li>
+          <li><strong>MAE (Erro Médio Absoluto):</strong> Representa a média dos erros absolutos entre as previsões e os valores reais. Quanto menor o MAE, melhor o modelo.</li>
+          <li><strong>RMSE (Raiz do Erro Quadrático Médio):</strong> Semelhante ao MAE, mas dá mais peso a erros maiores — tornando-o mais sensível a outliers.</li>
+        </ul>
+        <p style="margin-top:16px;">Além das métricas, é fundamental garantir que o modelo <strong>generalize bem</strong> para novos dados, evitando dois problemas comuns:</p>
+        <div class="feature-grid" style="margin-top:14px;">
+          <div class="feature-box" style="border-left-color:#d32f2f;">
+            <h5>Overfitting (Superajuste)</h5>
+            <p>O modelo memoriza os dados de treino, mas vai mal nos dados de teste. Sinal: R² alto no treino e baixo no teste.</p>
+          </div>
+          <div class="feature-box" style="border-left-color:#f57c00;">
+            <h5>Underfitting (Subajuste)</h5>
+            <p>O modelo é simples demais para capturar os padrões dos dados. Sinal: R² baixo tanto no treino quanto no teste.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="a1-s5-cv" class="card fade-in">
+        <div class="card-title">Validação cruzada (Cross-Validation)</div>
+        <p>Uma técnica que podemos adotar para avaliar o desempenho do modelo sem depender de uma única divisão entre treino e teste é a <strong>validação cruzada</strong>. No código do Item 04, usamos <code>cross_val_score(model, features, labels, cv=5, scoring='r2')</code>, que divide os dados em <strong>5 partes</strong>: treina o modelo em 4 e testa na parte restante. Esse processo é repetido até que todas as partes sejam usadas como teste — e a média dos resultados indica a capacidade do modelo de generalizar para novos dados.</p>
+        <div class="callout tip fade-in" style="margin-top:14px;">
+          <strong>Analogia:</strong> em vez de aplicar uma única prova para avaliar um aluno, o professor aplica <strong>cinco provas diferentes</strong> e calcula a média. O resultado final é mais justo e representativo do real conhecimento — da mesma forma, a validação cruzada fornece uma avaliação mais robusta do modelo.
+        </div>
+        <div class="highlight-box" style="margin-top:16px;">
+          Uma <strong>boa média de validação cruzada</strong> próxima ao R² do conjunto de teste indica que o modelo está generalizando bem — sem overfitting nem underfitting.
         </div>
       </div>
 
