@@ -480,8 +480,14 @@
         <li><a href="#ep-principio1"><span class="num">4.1</span> Os 5 Princípios</a></li>
         <li><a href="#ep-detetive"><span class="num">4.2</span> Jogo do Detetive</a></li>
         <li><a href="#quiz-ep2"><span class="num">—</span> Exercício 04</a></li>
-        <li class="section-divider"><a href="#sec-faca-como2"><span class="num">05</span> Faça Como Eu Fiz</a></li>
-        <li class="section-divider"><a href="#sec-aprendemos2"><span class="num">06</span> O que Aprendemos</a></li>
+        <li class="section-divider"><a href="#sec-fundamentos"><span class="num">05</span> Fundamentos</a></li>
+        <li class="section-divider"><a href="#sec-prompt-struct"><span class="num">06</span> Estrutura P.R.O.M.P.T.</a></li>
+        <li class="section-divider"><a href="#sec-tecnicas-basicas"><span class="num">07</span> Técnicas Básicas</a></li>
+        <li class="section-divider"><a href="#sec-tecnicas-avancadas"><span class="num">08</span> Técnicas Avançadas</a></li>
+        <li class="section-divider"><a href="#sec-alucinacoes"><span class="num">09</span> Evitando Alucinações</a></li>
+        <li class="section-divider"><a href="#sec-custom-instructions"><span class="num">10</span> Instruções Personalizadas</a></li>
+        <li class="section-divider"><a href="#sec-faca-como2"><span class="num">11</span> Faça Como Eu Fiz</a></li>
+        <li class="section-divider"><a href="#sec-aprendemos2"><span class="num">12</span> O que Aprendemos</a></li>
       </ul>
     </div>
 
@@ -1837,9 +1843,278 @@ Frase: "Doze anos de lealdade, e ele nem olhou para mim na última semana."</pre
         </div>
 
         <!-- ─── ITEM 05 ─── -->
-        <div id="sec-faca-como2" class="section-sep fade-in">
+        <div id="sec-fundamentos" class="section-sep fade-in">
           <span class="sep-num">Item 05</span>
-          <span class="sep-title">Faça Como Eu Fiz</span>
+          <span class="sep-title">Fundamentos da Engenharia de Prompt</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">Definição e Importância</div>
+          <p>A <strong>engenharia de prompt</strong> é a ciência empírica de planejar, criar e testar prompts para gerar melhores respostas em grandes modelos de linguagem. Não é uma ciência exata — exige experimentação, iteração e sensibilidade para como os modelos interpretam linguagem natural.</p>
+          <div class="callout purple fade-in" style="margin-top:14px;">
+            <strong>Meta-habilidade:</strong> A engenharia de prompt destrava todas as outras capacidades dos LLMs, permitindo aplicá-los a qualquer domínio — de geração de conteúdo a análise de dados e automação. Empresas como a Anthropic oferecem salários de até <strong>R$ 2,7 milhões por ano</strong> para engenheiros de prompt especializados.
+          </div>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">Regras de Ouro</div>
+          <div class="feature-grid" style="margin-top:10px;">
+            <div class="feature-box gold">
+              <h5>🗣️ A Regra da Pessoa ao Lado</h5>
+              <p>Ao criar um prompt, pense em como você explicaria a tarefa para uma pessoa ao seu lado. Se a explicação for clara para um humano, provavelmente também será para o modelo de linguagem.</p>
+            </div>
+            <div class="feature-box green">
+              <h5>💎 Comece pelo Melhor</h5>
+              <p>Inicie o desenvolvimento usando modelos mais caros e poderosos — eles tendem a gerar melhores resultados. Após validar o prompt, otimize-o para funcionar em modelos mais baratos e rápidos.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── ITEM 06 ─── -->
+        <div id="sec-prompt-struct" class="section-sep fade-in">
+          <span class="sep-num">Item 06</span>
+          <span class="sep-title">Estrutura P.R.O.M.P.T.</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">Os 6 Componentes de um Prompt Eficaz</div>
+          <p>O acrônimo <strong>P.R.O.M.P.T.</strong> resume os elementos fundamentais de um prompt bem estruturado:</p>
+          <div class="feature-grid" style="margin-top:14px;">
+            <div class="feature-box purple">
+              <h5>P — Persona</h5>
+              <p>Defina o papel que o modelo deve assumir. Ex.: "Você é um especialista em segurança da informação com 20 anos de experiência."</p>
+            </div>
+            <div class="feature-box">
+              <h5>R — Roteiro</h5>
+              <p>Especifique a tarefa que o modelo deve realizar. Seja claro sobre o que precisa ser feito, passo a passo se necessário.</p>
+            </div>
+            <div class="feature-box gold">
+              <h5>O — Objetivo</h5>
+              <p>Deixe claro o objetivo e o que se espera alcançar. O modelo precisa saber qual é o resultado desejado.</p>
+            </div>
+            <div class="feature-box green">
+              <h5>M — Modelo</h5>
+              <p>Indique o formato ou estrutura da resposta. Ex.: "Responda em tópicos", "Use uma tabela", "Escreva em linguagem formal".</p>
+            </div>
+            <div class="feature-box red">
+              <h5>P — Panorama</h5>
+              <p>Forneça contexto relevante: quem é o público, qual a situação, quais restrições existem.</p>
+            </div>
+            <div class="feature-box" style="border-left-color:#0097a7;">
+              <h5>T — Transformar</h5>
+              <p>Esteja preparado para refinar e iterar com base nos resultados. Forneça feedback e exemplos adicionais se necessário.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-img-wrap fade-in">
+          <img src="../../assets/images/processodoprompt.png" alt="Processo de criação de prompt — das etapas de definição à produção" loading="lazy"/>
+          <div class="img-cap">Processo de criação e refinamento de prompts — da definição da tarefa à produção.</div>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">Processo de Criação em 6 Etapas</div>
+          <ol style="margin-top:14px;padding-left:22px;line-height:2.1;">
+            <li><strong>Definir a tarefa e critérios de sucesso</strong> — Determine claramente o que o modelo deve fazer e estabeleça critérios mensuráveis para avaliar o sucesso.</li>
+            <li style="margin-top:8px;"><strong>Desenvolver casos de teste</strong> — Crie um conjunto de casos que cubram os principais cenários e casos extremos.</li>
+            <li style="margin-top:8px;"><strong>Projetar o prompt preliminar</strong> — Desenvolva uma primeira versão incluindo a definição da tarefa, características de uma boa resposta e contexto relevante.</li>
+            <li style="margin-top:8px;"><strong>Testar o prompt</strong> — Avalie o desempenho usando os casos de teste e registre os resultados.</li>
+            <li style="margin-top:8px;"><strong>Refinar o prompt</strong> — Com base nos resultados, refine adicionando esclarecimentos, exemplos ou restrições.</li>
+            <li style="margin-top:8px;"><strong>Colocar em produção</strong> — Após alcançar resultados satisfatórios, implemente o prompt em seu fluxo de trabalho.</li>
+          </ol>
+        </div>
+
+        <!-- ─── ITEM 07 ─── -->
+        <div id="sec-tecnicas-basicas" class="section-sep fade-in">
+          <span class="sep-num">Item 07</span>
+          <span class="sep-title">Técnicas Básicas</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">Formatação e Estrutura</div>
+          <div class="feature-grid" style="margin-top:10px;">
+            <div class="feature-box">
+              <h5>Markdown</h5>
+              <p>Use formatação Markdown para estruturar seus prompts: títulos (<code>#</code> <code>##</code>), <strong>negrito</strong>, <em>itálico</em>, listas e blocos de código. Melhora a legibilidade e ajuda o modelo a entender a hierarquia do prompt.</p>
+            </div>
+            <div class="feature-box gold">
+              <h5>Delimitadores</h5>
+              <p>Utilize <code>---</code> ou tags XML (<code>&lt;tag&gt;conteúdo&lt;/tag&gt;</code>) para separar seções do prompt — instruções, exemplos e dados. Ajuda o modelo a distinguir as diferentes partes da instrução.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">Variáveis e Prompt do Sistema</div>
+          <div class="feature-grid" style="margin-top:10px;">
+            <div class="feature-box purple">
+              <h5>Variáveis</h5>
+              <p>Em plataformas como o console da Anthropic, defina variáveis com a sintaxe <code>&#123;&#123;variável&#125;&#125;</code>. Permite criar prompts genéricos facilmente adaptáveis para casos específicos.</p>
+            </div>
+            <div class="feature-box green">
+              <h5>Prompt do Sistema</h5>
+              <p>Use o <em>system prompt</em> para definir o comportamento geral do modelo: persona, tom, estilo e restrições. É a base sobre a qual todas as conversas da aplicação serão construídas.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">Zero-Shot e Estímulo Direcional</div>
+          <div class="feature-grid" style="margin-top:10px;">
+            <div class="feature-box">
+              <h5>Zero-Shot</h5>
+              <p>Instrução direta sem exemplos. Útil para tarefas simples onde o modelo já possui conhecimento suficiente para gerar uma resposta adequada sem precisar de contexto adicional.</p>
+            </div>
+            <div class="feature-box gold">
+              <h5>Estímulo Direcional</h5>
+              <p>Insira "dicas" ou palavras-chave estratégicas para guiar o modelo ao resultado esperado com poucas palavras. Pequenos estímulos direcionais têm impacto significativo na qualidade da resposta.</p>
+              <p style="margin-top:8px;font-size:13px;color:var(--muted);">Referência: <a href="https://arxiv.org/abs/2302.11520" target="_blank" rel="noopener" style="color:var(--sky);">arxiv.org/abs/2302.11520</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">Few-Shot e Chain-of-Thought</div>
+          <div class="feature-grid" style="margin-top:10px;">
+            <div class="feature-box purple">
+              <h5>Few-Shot</h5>
+              <p>Forneça de 1 a 5 exemplos de entradas e saídas desejadas no prompt. Ajuda o modelo a entender o padrão da tarefa e gerar respostas mais precisas e consistentes. Os exemplos devem ser representativos.</p>
+            </div>
+            <div class="feature-box green">
+              <h5>Chain-of-Thought (CoT)</h5>
+              <p>Peça ao modelo que explique seu raciocínio passo a passo antes de chegar à resposta final. Especialmente útil para tarefas que exigem lógica, matemática ou resolução de problemas complexos.</p>
+              <p style="margin-top:8px;font-size:13px;color:var(--muted);">Referência: <a href="https://arxiv.org/abs/2201.11903" target="_blank" rel="noopener" style="color:var(--sky);">arxiv.org/abs/2201.11903</a></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── ITEM 08 ─── -->
+        <div id="sec-tecnicas-avancadas" class="section-sep fade-in">
+          <span class="sep-num">Item 08</span>
+          <span class="sep-title">Técnicas Avançadas</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">Self-Consistency e Tree-of-Thought</div>
+          <div class="feature-grid" style="margin-top:10px;">
+            <div class="feature-box">
+              <h5>Self-Consistency</h5>
+              <p>Gere múltiplas cadeias de pensamento para a mesma tarefa e peça ao modelo que escolha a resposta mais consistente entre elas. Reduz erros aproveitando a capacidade do modelo de avaliar seu próprio raciocínio.</p>
+              <p style="margin-top:8px;font-size:13px;color:var(--muted);">Ref.: <a href="https://arxiv.org/abs/2203.11171" target="_blank" rel="noopener" style="color:var(--sky);">arxiv.org/abs/2203.11171</a></p>
+            </div>
+            <div class="feature-box gold">
+              <h5>Tree-of-Thought (ToT)</h5>
+              <p>Expande a Chain-of-Thought gerando uma árvore de raciocínio com múltiplos caminhos. O modelo explora diferentes abordagens e escolhe a mais promissora — ideal para problemas com várias soluções possíveis.</p>
+              <p style="margin-top:8px;font-size:13px;color:var(--muted);">Ref.: <a href="https://arxiv.org/abs/2305.10601" target="_blank" rel="noopener" style="color:var(--sky);">arxiv.org/abs/2305.10601</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">Skeleton-of-Thought e Generated Knowledge</div>
+          <div class="feature-grid" style="margin-top:10px;">
+            <div class="feature-box purple">
+              <h5>Skeleton-of-Thought (SoT)</h5>
+              <p>Gere um esqueleto (índice de tópicos) antes de desenvolver o conteúdo completo. O modelo primeiro cria a estrutura e depois preenche cada tópico com detalhes — garante que todos os pontos-chave sejam cobertos.</p>
+              <p style="margin-top:8px;font-size:13px;color:var(--muted);">Ref.: <a href="https://arxiv.org/abs/2307.15337" target="_blank" rel="noopener" style="color:var(--sky);">arxiv.org/abs/2307.15337</a></p>
+            </div>
+            <div class="feature-box green">
+              <h5>Generated Knowledge</h5>
+              <p>Peça ao modelo que gere conhecimento contextual antes de responder. O modelo produz informações relevantes sobre o tema, que são incorporadas ao prompt para respostas mais precisas e informativas.</p>
+              <p style="margin-top:8px;font-size:13px;color:var(--muted);">Ref.: <a href="https://arxiv.org/abs/2110.08387" target="_blank" rel="noopener" style="color:var(--sky);">arxiv.org/abs/2110.08387</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">Prompt Maiêutico, RAG, PAL e ReAct</div>
+          <div class="feature-grid" style="margin-top:10px;">
+            <div class="feature-box red">
+              <h5>Prompt Maiêutico</h5>
+              <p>Peça ao modelo que justifique suas respostas explicando o raciocínio por trás delas. Incentiva explicações mais detalhadas, reduzindo afirmações genéricas ou sem embasamento.</p>
+              <p style="margin-top:8px;font-size:13px;color:var(--muted);">Ref.: <a href="https://arxiv.org/abs/2205.11822" target="_blank" rel="noopener" style="color:var(--sky);">arxiv.org/abs/2205.11822</a></p>
+            </div>
+            <div class="feature-box" style="border-left-color:#0097a7;">
+              <h5>RAG — Retrieval Augmented Generation</h5>
+              <p>Combina LLMs com bases de conhecimento externas. O modelo recupera informações relevantes e as utiliza para complementar seu conhecimento ao gerar a resposta — essencial para dados atualizados ou proprietários.</p>
+              <p style="margin-top:8px;font-size:13px;color:var(--muted);">Ref.: <a href="https://aclanthology.org/2020.findings-emnlp.76/" target="_blank" rel="noopener" style="color:var(--sky);">aclanthology.org</a></p>
+            </div>
+            <div class="feature-box gold">
+              <h5>PAL — Program-Aided Language Models</h5>
+              <p>Use conceitos de programação — variáveis, funções, templates — dentro dos prompts. Torna os prompts mais modulares, reutilizáveis e fáceis de adaptar para diferentes casos de uso.</p>
+              <p style="margin-top:8px;font-size:13px;color:var(--muted);">Ref.: <a href="https://arxiv.org/abs/2211.10435" target="_blank" rel="noopener" style="color:var(--sky);">arxiv.org/abs/2211.10435</a></p>
+            </div>
+            <div class="feature-box purple">
+              <h5>ReAct — Reason + Act</h5>
+              <p>Divide tarefas complexas em etapas de raciocínio e ação. O modelo raciocina, decide qual ação tomar, executa e repete até concluir. Ideal para tarefas com múltiplas etapas ou uso de ferramentas externas.</p>
+              <p style="margin-top:8px;font-size:13px;color:var(--muted);">Ref.: <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener" style="color:var(--sky);">arxiv.org/abs/2210.03629</a></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── ITEM 09 ─── -->
+        <div id="sec-alucinacoes" class="section-sep fade-in">
+          <span class="sep-num">Item 09</span>
+          <span class="sep-title">Evitando Alucinações</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="card fade-in">
+          <p>As <strong>alucinações</strong> ocorrem quando o modelo gera informações incorretas com aparente confiança. Existem técnicas de prompt para reduzir esse problema significativamente:</p>
+          <ul class="bullet-list" style="margin-top:14px;">
+            <li><strong>Permitir que o modelo diga que não sabe</strong> — dê permissão explícita para admitir incerteza. Ex.: <em>"Se não tiver certeza, diga que não sabe em vez de inventar."</em></li>
+            <li><strong>Pedir evidências antes de responder</strong> — instrua o modelo a localizar trechos relevantes no contexto antes de gerar a resposta. Use tags como <code>&lt;Citações&gt;</code> para indicar onde citar as fontes encontradas.</li>
+            <li><strong>Permitir que o modelo "pense" antes de responder</strong> — dê espaço para reflexão antes da resposta final. Ex.: <em>"Pense passo a passo antes de responder."</em></li>
+            <li><strong>Controlar a temperatura</strong> — valores baixos de temperatura geram respostas mais factuais e determinísticas, reduzindo a criatividade excessiva que pode levar a alucinações.</li>
+            <li><strong>Consistência própria</strong> — gere múltiplas respostas independentes e peça ao modelo que desenvolva um consenso entre elas, favorecendo as afirmações que se repetem.</li>
+          </ul>
+        </div>
+
+        <!-- ─── ITEM 10 ─── -->
+        <div id="sec-custom-instructions" class="section-sep fade-in">
+          <span class="sep-num">Item 10</span>
+          <span class="sep-title">Instruções Personalizadas</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">Custom Instructions — ChatGPT</div>
+          <p>O ChatGPT permite configurar <strong>Instruções Personalizadas</strong> (<em>Custom Instructions</em>) que se aplicam a todas as conversas automaticamente. No campo <em>"How would you like ChatGPT to respond?"</em>, cole o conjunto de regras abaixo para obter respostas mais precisas, organizadas e adequadas ao seu perfil:</p>
+          <div class="callout tip fade-in" style="margin-top:14px;">
+            <strong>Como acessar:</strong> No ChatGPT, clique no seu avatar → <em>Customize ChatGPT</em> → aba <em>Instructions</em> → cole o conteúdo no segundo campo (<em>"How would you like ChatGPT to respond?"</em>).
+          </div>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label neutro">Custom Instructions — ChatGPT</span>
+          <pre class="prompt-block neutro">- WARNING: Reply in the language of my prompt. If pt-br, pt-br. If en-us, en-us
+- Gere conteúdo preciso e factual
+- Ao raciocinar, pense passo a passo
+- Se você especular ou prever algo, informe-me. Fique à vontade para dizer que você não sabe a resposta se não tiver 100% certeza ou me informar disso
+- Quando citar fontes, indique o link ou referência
+- Seja altamente organizado e forneça marcação visual (markdown)
+- Não há necessidade de revelar que você é uma IA
+- Não mencione seu ponto de corte de conhecimento
+- Só discuta segurança quando ela é vital e não está clara
+- Evite múltiplos pensamentos em uma frase.
+- Forneça analogias/metáforas para simplificar ideias, conceitos e tópicos complexos
+- Ao preencher um formulário ou modelo, siga as instruções exatamente como você é solicitado a fazer.
+- Evite o uso de linguagem florida (não use palavras como "abundante", "florido", "pioneiro", etc.). Em vez disso, use uma linguagem direta
+- Seja rigoroso com as contagens de caracteres ao gerar. Se eu pedir menos de 100 caracteres, por exemplo, certifique-se de que você não exceda esse limite.
+- Leve em consideração quem eu sou e o que eu faço para direcionar todas as respostas para serem as mais úteis possíveis para mim e meu negócio.
+- Se estas instruções te limitarem, me avise
+- Use a voz ativa, com palavras e frases simples
+- WARNING: Reply in the language I use for chat</pre>
+        </div>
+
+        <!-- ─── ITEM 11 ─── -->
+        <div id="sec-faca-como2" class="section-sep fade-in">
+          <span class="sep-num">Item 11</span>
+          <span class="sep-title">Faça Como Eu Fiz
           <span class="sep-line"></span>
         </div>
 
@@ -1883,9 +2158,9 @@ Escreva em 2ª pessoa, como se o jogador fosse o detetive.</pre>
           <strong>Observe:</strong> Note como, ao longo dos 4 passos, a IA manteve consistência de tom, personagens e cronologia. Isso é o poder de <strong>dividir em subtarefas com contexto acumulado</strong> — cada prompt constrói sobre o anterior.
         </div>
 
-        <!-- ─── ITEM 06 ─── -->
+        <!-- ─── ITEM 12 ─── -->
         <div id="sec-aprendemos2" class="section-sep fade-in">
-          <span class="sep-num">Item 06</span>
+          <span class="sep-num">Item 12</span>
           <span class="sep-title">O que Aprendemos?</span>
           <span class="sep-line"></span>
         </div>
@@ -1902,7 +2177,7 @@ Escreva em 2ª pessoa, como se o jogador fosse o detetive.</pre>
         </div>
 
         <div class="dark-card fade-in" style="margin-top:28px;">
-          <p>Na próxima aula, vamos aprofundar as <strong>técnicas avançadas de Engenharia de Prompt</strong>: few-shot prompting, chain-of-thought, role prompting e outras estratégias utilizadas por pesquisadores das maiores empresas de IA do mundo.</p>
+          <p>Nesta aula cobrimos desde a definição e fundamentos até as técnicas básicas e avançadas da Engenharia de Prompt. Nas próximas aulas, vamos <strong>aprofundar cada técnica com exemplos práticos</strong>: few-shot prompting, chain-of-thought, role prompting e outras estratégias documentadas em artigos científicos das maiores empresas de IA do mundo.</p>
         </div>
 
       </div>
