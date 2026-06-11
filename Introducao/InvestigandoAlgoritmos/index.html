@@ -239,6 +239,10 @@
       <li><a href="#a1-s2-res"><span class="num">2.2</span> Análise dos resultados</a></li>
       <li class="section-divider"><a href="#a1-s3"><span class="num">03</span> Para Saber Mais</a></li>
       <li><a href="#a1-s3-modelos"><span class="num">3.1</span> Modelos em ML</a></li>
+      <li class="section-divider"><a href="#a1-s4"><span class="num">04</span> Desempenho de Modelos</a></li>
+      <li><a href="#a1-s4-code"><span class="num">4.1</span> Código Python</a></li>
+      <li><a href="#a1-s4-resultados"><span class="num">4.2</span> Resultados</a></li>
+      <li><a href="#a1-s4-desafios"><span class="num">4.3</span> Desafios</a></li>
 
       <li class="section-divider"><a href="#a1-quiz"><span class="num">—</span> Quiz</a></li>
     </ul>
@@ -486,6 +490,144 @@ print(f"Acurácia do modelo: {accuracy * 100:.2f}%")
         <p style="margin-top:12px;">Utilizamos um modelo de <strong>Árvore de Decisão</strong>, que funciona como um fluxograma: ele faz perguntas sobre as características das flores (por exemplo, <em>&ldquo;O comprimento da pétala é maior que 2 cm?&rdquo;</em>) e, com base nas respostas, decide a qual espécie a flor pertence.</p>
         <div class="highlight-box" style="margin-top:16px;">
           O papel do modelo é <strong>generalizar o conhecimento</strong> obtido durante o treinamento — sendo capaz de fazer previsões precisas mesmo para dados que nunca viu antes. Por isso, dividimos os dados em dois conjuntos: um para <strong>treinar</strong> o modelo e outro para <strong>testá-lo</strong>.
+        </div>
+      </div>
+
+      <!-- Item 04: Analisando o desempenho de modelos -->
+      <div id="a1-s4" class="section-sep fade-in"><span class="sep-num">Item 04</span><span class="sep-title">Analisando o desempenho de modelos</span><span class="sep-line"></span></div>
+
+      <div class="card fade-in">
+        <p>No aprendizado de máquina supervisionado, não basta apenas escolher o modelo, treiná-lo e testá-lo observando a acurácia para garantir um desempenho significativo. É essencial entender como esse modelo se comporta sob <strong>diferentes perspectivas</strong>. Isso permite verificar se ele possui uma boa capacidade de previsão e se evita a identificação de padrões inexistentes — como classificar incorretamente o subtipo de uma flor do tipo íris ou o tipo de um animal em uma imagem. Esse mesmo princípio se aplica a problemas mais complexos, como a <strong>detecção de fraudes</strong>.</p>
+      </div>
+
+      <div id="a1-s4-prev" class="card fade-in">
+        <div class="card-title">Garantindo previsões confiáveis</div>
+        <p>Se quisermos, por exemplo, detectar um e-mail como <strong>spam</strong>, é fundamental que o modelo faça essa classificação corretamente. Um erro nesse processo pode permitir que um e-mail indesejado chegue à caixa de entrada e potencialmente cause prejuízos. Portanto, garantir o bom desempenho dos modelos com os quais trabalhamos é essencial para obter <strong>previsões confiáveis e seguras</strong>.</p>
+      </div>
+
+      <div id="a1-s4-code" class="card fade-in">
+        <div class="card-title">Criando um conjunto de dados para análise</div>
+        <p>Para aprofundar essa análise, utilizaremos um novo conjunto de dados. Desta vez, desenvolveremos um algoritmo para <strong>prever o preço de um imóvel</strong>. Em vez de um dataset existente, geraremos nosso próprio conjunto de dados. Para isso, continuaremos no Colab, no mesmo arquivo em que estamos trabalhando, e colaremos um novo código.</p>
+        <p style="margin-top:12px;">No passo seguinte, faremos a divisão em <strong>Features</strong> e <strong>Labels</strong>. As Features são as características dos dados — neste caso, o tamanho do imóvel. As Labels são os rótulos ou classificações — neste caso, o preço do imóvel, ou seja, a saída desejada do modelo. Utilizaremos o modelo de <strong>Regressão Linear</strong>, que consiste em uma função polinomial de primeiro grau: <em>y = ax + b</em>.</p>
+      </div>
+
+      <div class="callout purple fade-in" style="margin-top:14px;">
+        <strong>O que este código faz:</strong> O foco deste código é construir um modelo de <strong>Regressão Linear</strong> para prever o preço de imóveis com base no tamanho em m². Geramos um dataset simulado de 100 imóveis, treinamos o modelo com 80% dos dados e avaliamos seu desempenho com três métricas: <strong>R²</strong> (ajuste ao modelo), <strong>MAE</strong> (erro médio absoluto) e <strong>RMSE</strong> (raiz do erro quadrático médio). Aplicamos também <strong>validação cruzada</strong> com 5 subconjuntos para uma avaliação mais robusta, e ao final plotamos a reta de regressão obtida.
+      </div>
+
+      <div class="prompt-wrap fade-in">
+        <span class="prompt-label neutro">Python 🐍 — regressao_linear.py</span>
+        <pre class="prompt-block neutro"><span class="cm"># ── Bloco 1: Importações ─────────────────────────────────────────────</span>
+import numpy as np
+<span class="cm"># → numpy: cálculos vetoriais e geração de dados aleatórios</span>
+import matplotlib.pyplot as plt
+<span class="cm"># → matplotlib: criação do gráfico da reta de regressão</span>
+from sklearn.linear_model import LinearRegression
+<span class="cm"># → LinearRegression: o modelo de regressão linear (y = ax + b)</span>
+from sklearn.model_selection import train_test_split, cross_val_score
+<span class="cm"># → train_test_split: divide os dados em treino/teste
+#   cross_val_score: avaliação cruzada (k-fold)</span>
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+<span class="cm"># → métricas para avaliar o desempenho do modelo: MAE, RMSE e R²</span>
+
+<span class="cm"># ── Bloco 2: Criar dados simulados de imóveis ────────────────────────</span>
+np.random.seed(42)                                       <span class="cm"># garante que os dados gerados são sempre os mesmos</span>
+X = 2.5 * np.random.randn(100, 1) + 25                  <span class="cm"># tamanho do imóvel (m²), média ≈ 25 m²</span>
+y = 500 + (X * 20) + np.random.randn(100, 1) * 10       <span class="cm"># preço do imóvel (R$ mil): a cada 1 m² a mais, +R$ 20 mil</span>
+
+<span class="cm"># ── Bloco 3: Definir Features e Labels ───────────────────────────────</span>
+features = X   <span class="cm"># feature: variável de entrada — tamanho do imóvel</span>
+labels   = y   <span class="cm"># label:   variável de saída — preço do imóvel (o que queremos prever)</span>
+
+<span class="cm"># ── Bloco 4: Dividir em Treino e Teste ───────────────────────────────</span>
+X_train, X_test, y_train, y_test = train_test_split(
+    features, labels, test_size=0.2, random_state=42
+)
+<span class="cm"># → 80% dos dados para treino · 20% reservados para teste
+#   random_state=42 garante a mesma divisão toda vez que o código rodar</span>
+
+<span class="cm"># ── Bloco 5: Criar e treinar o modelo ────────────────────────────────</span>
+model = LinearRegression()    <span class="cm"># cria o modelo de regressão linear</span>
+model.fit(X_train, y_train)   <span class="cm"># treina: ajusta os coeficientes a e b da equação y = ax + b</span>
+
+<span class="cm"># ── Bloco 6: Fórmula da Regressão Linear ─────────────────────────────</span>
+<span class="cm"># y = ax + b   (polinômio de 1º grau)
+# y → variável de saída    (preço do imóvel)
+# x → variável de entrada  (tamanho do imóvel)
+# a → coeficiente angular  (quanto o preço varia por m²)
+# b → intercepto           (valor base quando x = 0)</span>
+
+<span class="cm"># ── Bloco 7: Coeficientes da regressão ───────────────────────────────</span>
+print(f"Coeficiente angular (b1): {model.coef_[0][0]:.2f}")
+print(f"Intercepto (b0): {model.intercept_[0]:.2f}")
+
+<span class="cm"># ── Bloco 8: Predições nos dados de teste ────────────────────────────</span>
+y_pred = model.predict(X_test)
+<span class="cm"># → aplica o modelo treinado nos dados de teste (que ele nunca viu antes)</span>
+
+<span class="cm"># ── Bloco 9: Métricas de avaliação ───────────────────────────────────</span>
+r2   = r2_score(y_test, y_pred)                     <span class="cm"># R²: quão bem o modelo se ajusta (0 = ruim · 1 = perfeito)</span>
+mae  = mean_absolute_error(y_test, y_pred)          <span class="cm"># MAE: média dos erros absolutos em R$ mil</span>
+rmse = np.sqrt(mean_squared_error(y_test, y_pred))  <span class="cm"># RMSE: penaliza erros grandes (raiz do erro quadrático médio)</span>
+
+print(f"\nMétricas de avaliação:")
+print(f"R² no teste: {r2:.2f}")
+print(f"Erro Médio Absoluto (MAE): {mae:.2f}")
+print(f"Raiz do Erro Quadrático Médio (RMSE): {rmse:.2f}")
+
+<span class="cm"># ── Bloco 10: Avaliação cruzada (5-fold) ─────────────────────────────</span>
+cv_scores = cross_val_score(model, features, labels, cv=5, scoring='r2')
+<span class="cm"># → divide o dataset em 5 subconjuntos
+#   treina em 4, testa no 5º — repete 5 vezes — e tira a média dos R²</span>
+print(f"\nMédia dos scores de validação cruzada: {cv_scores.mean():.2f}")
+
+<span class="cm"># ── Bloco 11: Gráfico da reta de regressão ───────────────────────────</span>
+plt.figure(figsize=(8, 6))
+plt.scatter(X_test, y_test, color='blue', label='Dados reais')               <span class="cm"># pontos azuis: dados reais de teste</span>
+plt.plot(X_test, y_pred, color='red', linewidth=2, label='Regressão Linear') <span class="cm"># reta vermelha: modelo obtido</span>
+plt.xlabel("Tamanho do imóvel")
+plt.ylabel("Preço do imóvel")
+plt.title("Regressão Linear: Preço x Tamanho do Imóvel")
+plt.legend()
+plt.show()</pre>
+      </div>
+
+      <div class="prompt-wrap fade-in">
+        <span class="prompt-label resposta">Saída</span>
+        <pre class="prompt-block resposta">Coeficiente angular (b1): 19.43
+Intercepto (b0): 514.29
+
+Métricas de avaliação:
+R² no teste: 0.94
+Erro Médio Absoluto (MAE): 7.39
+Raiz do Erro Quadrático Médio (RMSE): 9.34
+
+Média dos scores de validação cruzada: 0.95</pre>
+      </div>
+
+      <div class="fade-in" style="text-align:center; margin-bottom:24px; margin-top:16px;">
+        <img src="../../assets/images/regressaolinearprecotamanho.png" alt="Gráfico Regressão Linear: Preço x Tamanho do Imóvel" style="max-width:100%; height:auto;">
+      </div>
+
+      <div id="a1-s4-resultados" class="card fade-in">
+        <div class="card-title">Interpretando os resultados</div>
+        <p>O coeficiente angular obtido foi <strong>19,43</strong> e o intercepto foi <strong>514,29</strong> — ou seja, a fórmula do modelo é aproximadamente <em>y = 19,43x + 514,29</em>. As métricas de avaliação foram: <strong>R² = 0,94</strong>, <strong>MAE = 7,39</strong> e <strong>RMSE = 9,34</strong>. A média dos scores de validação cruzada foi de <strong>0,95</strong> — uma boa média.</p>
+        <p style="margin-top:12px;">No gráfico, os <strong>pontos azuis</strong> representam os dados reais gerados no início do código. A <strong>reta vermelha</strong> é o modelo obtido — a fórmula matemática <em>y = ax + b</em> —, que nos permite inferir o valor de um imóvel a partir do seu tamanho. Alguns pontos estão bem sobre a reta, outros mais próximos e outros mais distantes. Essa distância entre o ponto e a reta representa o <strong>erro do modelo</strong>. Quanto mais distante, maior o erro. Um ponto muito fora da curva é chamado de <strong>outlier</strong>, e pode impactar negativamente nas métricas.</p>
+        <div class="callout tip fade-in" style="margin-top:14px;">
+          <strong>Atenção à qualidade dos dados:</strong> ao preparar e coletar o dataset, é fundamental evitar incluir outliers que possam prejudicar o desempenho do modelo. O modelo tenta se ajustar para reduzir o erro, mas dados que não pertencem ao padrão do conjunto não fazem sentido e distorcem os resultados.
+        </div>
+      </div>
+
+      <div id="a1-s4-desafios" class="card fade-in">
+        <div class="card-title">Desafios no treinamento de modelos</div>
+        <div class="fade-in" style="text-align:center; margin-bottom:20px; margin-top:10px;">
+          <img src="../../assets/images/overfitting.png" alt="Gráficos de Overfitting e Underfitting" style="max-width:100%; height:auto;">
+        </div>
+        <p>Dois problemas comuns no treinamento de Machine Learning são o <strong>underfitting</strong> e o <strong>overfitting</strong>.</p>
+        <p style="margin-top:12px;">O <strong>overfitting</strong> (superajuste) ocorre quando o modelo tenta se ajustar a todos os dados do dataset durante o treinamento. Apesar de parecer ótimo, ele só prevê bem para os dados com os quais foi treinado — qualquer dado fora do dataset não será bem previsto, resultando em mau desempenho na prática.</p>
+        <p style="margin-top:12px;">Já o <strong>underfitting</strong> (subajuste) ocorre quando o modelo não vai bem nem com o conjunto de dados de treinamento. Modelos muito simples não conseguem compreender as características presentes no dataset e não conseguem generalizar ou prever corretamente — resultando em subajuste.</p>
+        <div class="highlight-box" style="margin-top:16px;">
+          O objetivo é encontrar o equilíbrio: um modelo que <strong>generaliza bem</strong>, aprendendo os padrões reais dos dados sem decorar exemplos específicos (overfitting) e sem ser simples demais para capturá-los (underfitting).
         </div>
       </div>
 
