@@ -248,6 +248,9 @@
       <li class="section-divider"><a href="#a1-s5"><span class="num">05</span> Para Saber Mais</a></li>
       <li><a href="#a1-s5-metricas"><span class="num">5.1</span> Métricas</a></li>
       <li><a href="#a1-s5-cv"><span class="num">5.2</span> Validação Cruzada</a></li>
+      <li class="section-divider"><a href="#a1-s6"><span class="num">06</span> Mão na Massa</a></li>
+      <li><a href="#a1-s6-tarefa"><span class="num">6.1</span> A tarefa</a></li>
+      <li><a href="#a1-s6-code"><span class="num">6.2</span> Implementação Python</a></li>
 
       <li class="section-divider"><a href="#a1-quiz"><span class="num">—</span> Quiz</a></li>
     </ul>
@@ -672,6 +675,134 @@ Média dos scores de validação cruzada: 0.95</pre>
         <div class="highlight-box" style="margin-top:16px;">
           Uma <strong>boa média de validação cruzada</strong> próxima ao R² do conjunto de teste indica que o modelo está generalizando bem — sem overfitting nem underfitting.
         </div>
+      </div>
+
+      <!-- Item 06: Mão na massa — Construindo um classificador com o Dataset Iris -->
+      <div id="a1-s6" class="section-sep fade-in"><span class="sep-num">Item 06</span><span class="sep-title">Mão na Massa: Construindo um Classificador com o Dataset Iris</span><span class="sep-line"></span></div>
+
+      <div class="card fade-in">
+        <p>Exploramos como funciona o <strong>aprendizado supervisionado</strong>, em que um modelo aprende a partir de dados rotulados para realizar previsões. Agora, é hora de colocar a mão na massa e aplicar o que aprendemos até aqui!</p>
+        <p style="margin-top:12px;">Imagine que você está desenvolvendo um sistema capaz de <strong>classificar diferentes espécies de flores</strong> com base em características como tamanho das pétalas e sépalas. Para isso, utilizaremos o <strong>Dataset Iris</strong>, um dos conjuntos de dados mais populares para experimentos no campo de aprendizado de máquina.</p>
+      </div>
+
+      <div id="a1-s6-tarefa" class="card fade-in">
+        <div class="card-title">A tarefa</div>
+        <p>Sua tarefa é construir um <strong>classificador</strong> utilizando a abordagem de aprendizado supervisionado com Python no Google Colaboratory. Para facilitar o processo, siga as etapas abaixo:</p>
+        <ol style="margin-top:14px; padding-left:22px; line-height:2;">
+          <li>
+            <strong>Carregar e explorar os dados</strong>
+            <ul class="bullet-list" style="margin-top:4px;">
+              <li>Carregue o Dataset Iris a partir da biblioteca <code>sklearn.datasets</code>.</li>
+              <li>Converta os dados para um DataFrame do Pandas e visualize as primeiras linhas.</li>
+            </ul>
+          </li>
+          <li style="margin-top:10px;">
+            <strong>Pré-processar os dados</strong>
+            <ul class="bullet-list" style="margin-top:4px;">
+              <li>Separe os atributos (características das flores) e os rótulos (espécie correspondente).</li>
+              <li>Divida os dados em conjunto de treino e conjunto de teste.</li>
+            </ul>
+          </li>
+          <li style="margin-top:10px;">
+            <strong>Treinar um modelo de classificação</strong>
+            <ul class="bullet-list" style="margin-top:4px;">
+              <li>Escolha um algoritmo simples — como <strong>Árvore de Decisão</strong> ou <strong>KNN</strong>.</li>
+              <li>Treine o modelo usando os dados de treino.</li>
+            </ul>
+          </li>
+          <li style="margin-top:10px;">
+            <strong>Avaliar o desempenho do modelo</strong>
+            <ul class="bullet-list" style="margin-top:4px;">
+              <li>Faça previsões utilizando os dados de teste.</li>
+              <li>Analise a acurácia e aplique validação cruzada.</li>
+            </ul>
+          </li>
+          <li style="margin-top:10px;">
+            <strong>Testar com novos exemplos</strong>
+            <ul class="bullet-list" style="margin-top:4px;">
+              <li>Insira novas amostras de flores e observe como o modelo as classifica.</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+
+      <div id="a1-s6-code" class="card fade-in">
+        <div class="card-title">Implementando o classificador em Python</div>
+        <p>Implementamos aqui um <strong>workflow típico de aprendizado supervisionado</strong>: carregamos o Dataset Iris com <code>sklearn.datasets</code>, convertemos para um DataFrame do Pandas, separamos os atributos e rótulos, dividimos em treino e teste, treinamos a Árvore de Decisão, avaliamos a acurácia, aplicamos validação cruzada e testamos com uma nova amostra de flor.</p>
+      </div>
+
+      <div class="callout purple fade-in" style="margin-top:14px;">
+        <strong>O que este código faz:</strong> O foco deste código é construir um <strong>classificador completo com o Dataset Iris</strong> usando uma Árvore de Decisão. Carregamos os dados com <code>sklearn.datasets</code> e os convertemos para um <strong>DataFrame do Pandas</strong>. Em seguida, separamos os atributos (<em>X</em>) dos rótulos (<em>y</em>), dividimos em 80% treino e 20% teste, treinamos o modelo com <code>DecisionTreeClassifier</code>, avaliamos a <strong>acurácia</strong>, aplicamos <strong>validação cruzada</strong> com 5 subconjuntos e testamos com uma nova amostra de flor para verificar a classificação prevista.
+      </div>
+
+      <div class="prompt-wrap fade-in">
+        <span class="prompt-label neutro">Python 🐍 — classificador_iris_completo.py</span>
+        <pre class="prompt-block neutro"><span class="cm"># ── Bloco 1: Importações ─────────────────────────────────────────────</span>
+import numpy as np
+import pandas as pd
+<span class="cm"># → numpy: manipulação de arrays · pandas: organização dos dados em tabela</span>
+from sklearn import datasets
+<span class="cm"># → datasets: acesso ao Dataset Iris já embutido no scikit-learn</span>
+from sklearn.model_selection import train_test_split, cross_val_score
+<span class="cm"># → train_test_split: divide treino/teste · cross_val_score: validação cruzada</span>
+from sklearn.tree import DecisionTreeClassifier
+<span class="cm"># → DecisionTreeClassifier: modelo de Árvore de Decisão para classificação</span>
+from sklearn.metrics import accuracy_score
+<span class="cm"># → accuracy_score: calcula a proporção de previsões corretas</span>
+
+<span class="cm"># ── Bloco 2: Carregar o Dataset Iris ─────────────────────────────────</span>
+dataset = datasets.load_iris()
+<span class="cm"># → carrega o dataset com 150 amostras, 4 atributos e 3 classes (espécies)</span>
+
+<span class="cm"># ── Bloco 3: Converter para DataFrame do Pandas ──────────────────────</span>
+df = pd.DataFrame(data=dataset.data, columns=dataset.feature_names)
+df['target'] = dataset.target  <span class="cm"># adiciona a coluna com as classes (0=setosa, 1=versicolor, 2=virginica)</span>
+
+<span class="cm"># ── Bloco 4: Separar atributos e rótulos ─────────────────────────────</span>
+X = df.iloc[:, :-1]  <span class="cm"># X: todas as colunas exceto a última (os 4 atributos das flores)</span>
+y = df['target']     <span class="cm"># y: última coluna — a espécie de cada flor (rótulo desejado)</span>
+
+<span class="cm"># ── Bloco 5: Dividir em Treino e Teste ───────────────────────────────</span>
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+<span class="cm"># → 80% dos dados para treino · 20% para teste
+#   random_state=42 garante a mesma divisão toda vez que o código rodar</span>
+
+<span class="cm"># ── Bloco 6: Criar e treinar o modelo ────────────────────────────────</span>
+model = DecisionTreeClassifier(random_state=42)  <span class="cm"># cria a Árvore de Decisão</span>
+model.fit(X_train, y_train)                      <span class="cm"># treina: aprende as regras de classificação a partir dos dados</span>
+
+<span class="cm"># ── Bloco 7: Fazer previsões nos dados de teste ──────────────────────</span>
+y_pred = model.predict(X_test)
+<span class="cm"># → aplica o modelo treinado nas amostras de teste (que ele nunca viu antes)</span>
+
+<span class="cm"># ── Bloco 8: Avaliar a acurácia ──────────────────────────────────────</span>
+accuracy = accuracy_score(y_test, y_pred)
+<span class="cm"># → compara os rótulos previstos (y_pred) com os rótulos reais (y_test)</span>
+print(f'Acurácia do modelo: {accuracy:.2f}')
+
+<span class="cm"># ── Bloco 9: Validação cruzada (5-fold) ──────────────────────────────</span>
+cross_val_scores = cross_val_score(model, X, y, cv=5)
+<span class="cm"># → divide o dataset em 5 partes · treina em 4 · testa na 5ª · repete 5 vezes</span>
+print(f'Acurácia média na validação cruzada: {cross_val_scores.mean():.2f}')
+
+<span class="cm"># ── Bloco 10: Testar com uma nova amostra ────────────────────────────</span>
+nova_amostra = np.array([[5.1, 3.5, 1.4, 0.2]])  <span class="cm"># medidas: sépala (comp/larg) + pétala (comp/larg)</span>
+predicao = model.predict(nova_amostra)
+print(f'Classe prevista para a nova amostra: {dataset.target_names[predicao[0]]}')
+<span class="cm"># → exibe o nome da espécie prevista pelo modelo para essa flor</span></pre>
+      </div>
+
+      <div class="prompt-wrap fade-in">
+        <span class="prompt-label resposta">Saída</span>
+        <pre class="prompt-block resposta">Acurácia do modelo: 1.00
+Acurácia média na validação cruzada: 0.95
+Classe prevista para a nova amostra: setosa</pre>
+      </div>
+
+      <div class="callout tip fade-in" style="margin-top:14px;">
+        <strong>Workflow completo:</strong> essa abordagem demonstra um ciclo típico de aprendizado supervisionado — da preparação dos dados ao treinamento, avaliação e uso do modelo para classificar novos exemplos.
       </div>
 
     </div>
