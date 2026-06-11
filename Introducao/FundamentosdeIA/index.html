@@ -80,7 +80,10 @@
   .bullet-list li{display:block;font-size:18.5px;line-height:1.74;color:var(--text);padding:9px 0 9px 22px;border-bottom:1px solid var(--ice);position:relative;}
   .bullet-list li:last-child{border-bottom:none;}
   .bullet-list li::before{content:'▸';color:var(--sky);font-size:12px;position:absolute;left:0;top:11px;}
-  .prompt-wrap{margin:16px 0;}
+  .prompt-wrap{margin:16px 0;position:relative;}
+  .btn-copy{position:absolute;top:5px;right:10px;background:#3a3a3a;color:#aaa;border:none;border-radius:4px;padding:3px 9px;font-size:10px;font-family:'Source Code Pro',monospace;font-weight:600;letter-spacing:.5px;cursor:pointer;transition:background .15s,color .15s;z-index:2;}
+  .btn-copy:hover{background:#555;color:#fff;}
+  .btn-copy.copied{background:#2e7d32;color:#9cdcfe;}
   .prompt-label{font-family:'Source Code Pro',monospace;font-size:11px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;padding:5px 14px;display:inline-flex;align-items:center;gap:6px;border-radius:6px 6px 0 0;cursor:default;user-select:none;}
   .prompt-label.prompt{background:#1e1e1e;color:#569cd6;}
   .prompt-label.resposta{background:#0d2818;color:#4ec94e;}
@@ -2641,7 +2644,8 @@ Dia 10: Nublado</pre>
       <div id="a5-s4-impl" class="card fade-in">
         <div class="card-title">Mão na massa: construindo um sistema especialista em Python</div>
         <p>Um <strong>sistema especialista</strong> é composto por dois elementos centrais: uma <strong>base de conhecimento</strong> (fatos e regras do domínio) e um <strong>mecanismo de inferência</strong> (motor que aplica as regras). Vamos construir um exemplo de diagnóstico logístico usando <strong>encadeamento progressivo</strong> (forward chaining):</p>
-          <div class="prompt-label neutro">sistema_especialista.py</div>
+      <div class="prompt-wrap fade-in">
+        <span class="prompt-label neutro">Python 🐍 — sistema_especialista.py</span>
 <pre class="prompt-block neutro"><span class="cm"># ── Bloco 1: Classe BaseDeConhecimento ───────────────────────────────</span>
 class BaseDeConhecimento:
     def __init__(self):
@@ -2693,7 +2697,9 @@ print("\nFatos na base após inferência:")
 for fato in base.fatos:
     print(f"  - {fato}")  <span class="cm"># lista todos os fatos — incluindo os inferidos automaticamente</span>
 </pre>
-          <div class="prompt-label resposta">Saída</div>
+      </div>
+      <div class="prompt-wrap fade-in">
+        <span class="prompt-label resposta">Saída</span>
 <pre class="prompt-block resposta">
 Inferido: problema elétrico
 Inferido: falha no sistema de partida
@@ -2708,6 +2714,7 @@ Fatos na base após inferência:
   - viatura indisponível
   - acionar manutenção Nível 2
 </pre>
+      </div>
         <p>O sistema parte dos fatos observados (<em>motor não parte</em>, <em>bateria fraca</em>) e, aplicando as regras em cadeia, chega automaticamente à conclusão de que deve <strong>acionar manutenção Nível 2</strong> — sem intervenção humana no raciocínio.</p>
         <div class="callout">
           <strong>Por que isso é poderoso?</strong> Um sistema especialista permite que conhecimento especializado seja codificado uma única vez e aplicado de forma consistente em milhares de casos — preservando expertise crítica e reduzindo erros humanos em diagnósticos rotineiros.
@@ -3053,6 +3060,28 @@ Fatos na base após inferência:
   });
 
   activate(parseInt(localStorage.getItem('fia-tab')) || 0);
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('.prompt-wrap').forEach(function(w){
+    var lbl = w.querySelector('.prompt-label');
+    var pre = w.querySelector('pre.prompt-block.neutro');
+    if(!pre||!lbl) return;
+    if((lbl.textContent||'').indexOf('.py')===-1) return;
+    var btn = document.createElement('button');
+    btn.className='btn-copy';
+    btn.textContent='Copiar';
+    btn.title='Copiar código';
+    btn.addEventListener('click',function(){
+      navigator.clipboard.writeText(pre.textContent).then(function(){
+        btn.textContent='✓ Copiado!';
+        btn.classList.add('copied');
+        setTimeout(function(){btn.textContent='Copiar';btn.classList.remove('copied');},2000);
+      });
+    });
+    w.appendChild(btn);
+  });
 })();
 </script>
 

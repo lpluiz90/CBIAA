@@ -72,7 +72,10 @@
   .bullet-list li{display:block;font-size:18.5px;line-height:1.74;color:var(--text);padding:9px 0 9px 22px;border-bottom:1px solid var(--ice);position:relative;}
   .bullet-list li:last-child{border-bottom:none;}
   .bullet-list li::before{content:'▸';color:var(--sky);font-size:12px;position:absolute;left:0;top:11px;}
-  .prompt-wrap{margin:16px 0;}
+  .prompt-wrap{margin:16px 0;position:relative;}
+  .btn-copy{position:absolute;top:5px;right:10px;background:#3a3a3a;color:#aaa;border:none;border-radius:4px;padding:3px 9px;font-size:10px;font-family:'Source Code Pro',monospace;font-weight:600;letter-spacing:.5px;cursor:pointer;transition:background .15s,color .15s;z-index:2;}
+  .btn-copy:hover{background:#555;color:#fff;}
+  .btn-copy.copied{background:#2e7d32;color:#9cdcfe;}
   .prompt-label{font-family:'Source Code Pro',monospace;font-size:11px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;padding:5px 14px;display:inline-flex;align-items:center;gap:6px;border-radius:6px 6px 0 0;cursor:default;user-select:none;}
   .prompt-label.neutro{background:#2a2a2a;color:#ce9178;}
   pre.prompt-block{font-family:'Source Code Pro',monospace;font-size:14px;line-height:1.72;padding:16px 20px;border-radius:0 8px 8px 8px;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-word;}
@@ -589,6 +592,28 @@ print(f"Acurácia do modelo: {accuracy * 100:.2f}%")
   });
 
   activate(parseInt(localStorage.getItem('ia-alg-tab')) || 0);
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('.prompt-wrap').forEach(function(w){
+    var lbl = w.querySelector('.prompt-label');
+    var pre = w.querySelector('pre.prompt-block.neutro');
+    if(!pre||!lbl) return;
+    if((lbl.textContent||'').indexOf('.py')===-1) return;
+    var btn = document.createElement('button');
+    btn.className='btn-copy';
+    btn.textContent='Copiar';
+    btn.title='Copiar código';
+    btn.addEventListener('click',function(){
+      navigator.clipboard.writeText(pre.textContent).then(function(){
+        btn.textContent='✓ Copiado!';
+        btn.classList.add('copied');
+        setTimeout(function(){btn.textContent='Copiar';btn.classList.remove('copied');},2000);
+      });
+    });
+    w.appendChild(btn);
+  });
 })();
 </script>
 
