@@ -354,35 +354,8 @@
         <p style="margin-top:12px;">Cada amostra possui quatro atributos medidos: comprimento e largura da pétala, comprimento e largura da sépala. O objetivo é treinar um algoritmo capaz de classificar corretamente cada flor com base nessas medidas — um caso clássico de <strong>aprendizado supervisionado</strong>.</p>
       </div>
 
-      <div class="card fade-in">
-        <div class="card-title">O que o código faz — antes de executar</div>
-        <p>O código a seguir implementa um <strong>classificador de Árvore de Decisão</strong> usando a biblioteca Scikit-Learn. O processo segue cinco passos:</p>
-        <div class="steps" style="margin-top:14px;">
-          <div class="step">
-            <div class="step-num sky">1</div>
-            <div class="step-body"><strong>Importar bibliotecas</strong> — carrega o Scikit-Learn com as ferramentas de dataset, divisão de dados, modelo e métricas.</div>
-          </div>
-          <div class="step">
-            <div class="step-num sky">2</div>
-            <div class="step-body"><strong>Carregar o dataset</strong> — obtém as 150 amostras do dataset Iris com seus 4 atributos e 3 rótulos de classe.</div>
-          </div>
-          <div class="step">
-            <div class="step-num sky">3</div>
-            <div class="step-body"><strong>Dividir em treino e teste</strong> — separa 70% dos dados para treinar o modelo e 30% para medir seu desempenho.</div>
-          </div>
-          <div class="step">
-            <div class="step-num sky">4</div>
-            <div class="step-body"><strong>Treinar o modelo</strong> — a Árvore de Decisão aprende quais atributos separam melhor as três espécies.</div>
-          </div>
-          <div class="step">
-            <div class="step-num sky">5</div>
-            <div class="step-body"><strong>Avaliar o desempenho</strong> — aplica o modelo treinado nos dados de teste e calcula a acurácia das previsões.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="callout fade-in" style="margin-top:4px;">
-        <strong>Biblioteca utilizada:</strong> <code>Scikit-Learn</code> é a principal biblioteca Python para ciência de dados e Machine Learning — oferece algoritmos prontos, ferramentas de pré-processamento e métricas de avaliação.
+      <div class="callout purple fade-in" style="margin-top:14px;">
+        <strong>O que este código faz:</strong> O foco deste código é treinar um <strong>classificador de Árvore de Decisão</strong> para identificar espécies de flores do tipo íris. Importamos o <code>Scikit-Learn</code> com as ferramentas de dataset, divisão de dados, modelo e métricas. Carregamos o dataset Iris (150 amostras com 4 atributos cada), dividimos os dados em 70% para treino e 30% para teste, treinamos a Árvore de Decisão e avaliamos seu desempenho. Ao final, o código exibe a <strong>acurácia do modelo</strong> — a proporção de flores classificadas corretamente nos dados de teste.
       </div>
 
       <div class="prompt-wrap fade-in">
