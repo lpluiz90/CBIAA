@@ -516,7 +516,10 @@ print(f"Acurácia do modelo: {accuracy * 100:.2f}%")
         <p style="margin-top:12px;">No passo seguinte, faremos a divisão em <strong>Features</strong> e <strong>Labels</strong>. As Features são as características dos dados — neste caso, o tamanho do imóvel. As Labels são os rótulos ou classificações — neste caso, o preço do imóvel, ou seja, a saída desejada do modelo. Utilizaremos o modelo de <strong>Regressão Linear</strong>, que consiste em uma função polinomial de primeiro grau: <em>y = ax + b</em>.</p>
       </div>
 
-      <div class="callout warn fade-in" style="margin-top:14px;">
+      <div class="callout purple fade-in" style="margin-top:14px;">
+        <strong>O que este código faz:</strong> O foco deste código é construir um modelo de <strong>Regressão Linear</strong> para prever o preço de imóveis com base no tamanho em m². Importamos as bibliotecas necessárias (NumPy, Matplotlib e Scikit-Learn), geramos um dataset de 100 imóveis, definimos as <strong>Features</strong> (tamanho do imóvel) e as <strong>Labels</strong> (preço), e dividimos os dados em 80% para treino e 20% para teste. Treinamos o modelo com <code>LinearRegression</code>, exibimos os coeficientes da reta (<em>coeficiente angular</em> e <em>intercepto</em>), e avaliamos o desempenho com três métricas: <strong>R²</strong>, <strong>MAE</strong> e <strong>RMSE</strong>. Por fim, aplicamos <strong>validação cruzada</strong> com 5 subconjuntos e plotamos a reta de regressão obtida.
+      </div>
+      <div class="callout warn fade-in" style="margin-top:8px;">
         <strong>Atenção:</strong> Os dados utilizados neste código são <strong>simulados e gerados aleatoriamente dentro do próprio código</strong> — não representam imóveis reais.
       </div>
 
