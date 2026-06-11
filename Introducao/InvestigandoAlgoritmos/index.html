@@ -82,6 +82,7 @@
   .callout.warn{background:#fff8e6;border-color:var(--gold);}
   .callout.purple{background:#f3e5f5;border-color:#7b1fa2;}
   .callout strong{color:var(--navy);}
+  .cm{color:#6a9955;}
   .highlight-box{background:var(--navy);color:rgba(255,255,255,.88);border-radius:8px;padding:18px 22px;margin:14px 0;font-size:18px;line-height:1.72;}
   .highlight-box strong{color:var(--sky);}
   .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:10px 0;}
@@ -366,30 +367,49 @@
 
       <div class="prompt-wrap fade-in">
         <span class="prompt-label neutro">Python 🐍 — classificador_iris.py</span>
-        <pre class="prompt-block neutro"># Passo 1: Importar as bibliotecas necessárias
-from sklearn.datasets import load_iris           # dataset Iris pré-embutido no scikit-learn
-from sklearn.model_selection import train_test_split  # divide dados em treino e teste
-from sklearn.tree import DecisionTreeClassifier  # algoritmo de árvore de decisão
-from sklearn.metrics import accuracy_score       # calcula a acurácia do modelo
+        <pre class="prompt-block neutro"><span class="cm"># ── Bloco 1: Importações ────────────────────────────────────────────</span>
+from sklearn.datasets import load_iris
+<span class="cm"># → load_iris() é para carregar o dataset Iris já embutido no scikit-learn
+#   — 150 amostras de flores com 4 atributos e 3 classes (espécies) já rotuladas</span>
 
-# Passo 2: Carregar o dataset Iris
+from sklearn.model_selection import train_test_split
+<span class="cm"># → train_test_split() é para dividir os dados em dois grupos:
+#   treino (para o modelo aprender) e teste (para avaliar o resultado)</span>
+
+from sklearn.tree import DecisionTreeClassifier
+<span class="cm"># → DecisionTreeClassifier é para criar a Árvore de Decisão — algoritmo que
+#   aprende regras do tipo "se largura da pétala &gt; X → espécie Y"</span>
+
+from sklearn.metrics import accuracy_score
+<span class="cm"># → accuracy_score() é para calcular a porcentagem de classificações corretas</span>
+
+<span class="cm"># ── Bloco 2: Carregar os dados ──────────────────────────────────────</span>
 iris = load_iris()
-X = iris.data    # características: comprimento/largura de pétalas e sépalas (150 amostras × 4 atributos)
-y = iris.target  # rótulos: 0 = setosa, 1 = versicolor, 2 = virginica
+X = iris.data    <span class="cm"># características: comprimento/largura de pétalas e sépalas (150 × 4)</span>
+y = iris.target  <span class="cm"># rótulos: 0 = setosa · 1 = versicolor · 2 = virginica</span>
 
-# Passo 3: Dividir os dados em treino e teste
+<span class="cm"># ── Bloco 3: Dividir em treino e teste ──────────────────────────────</span>
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.3, random_state=42  # 70% treino, 30% teste; random_state garante reprodutibilidade
+    X, y, test_size=0.3, random_state=42
 )
+<span class="cm"># → 70% dos dados vão para treino (X_train, y_train)
+# → 30% ficam reservados para teste  (X_test,  y_test)
+# → random_state=42 garante que a divisão seja idêntica toda vez que o código rodar</span>
 
-# Passo 4: Criar e treinar o modelo
-model = DecisionTreeClassifier()   # cria a árvore de decisão com parâmetros padrão
-model.fit(X_train, y_train)        # treina: a árvore aprende a separar as três espécies
+<span class="cm"># ── Bloco 4: Criar e treinar o modelo ───────────────────────────────</span>
+model = DecisionTreeClassifier()
+<span class="cm"># → cria a Árvore de Decisão com configurações padrão</span>
+model.fit(X_train, y_train)
+<span class="cm"># → fit() é o passo do treinamento: o modelo analisa os dados e aprende
+#   a separar as três espécies com base nos atributos das flores</span>
 
-# Passo 5: Fazer previsões e avaliar o desempenho
-y_pred = model.predict(X_test)               # aplica o modelo treinado nos dados de teste
-accuracy = accuracy_score(y_test, y_pred)    # compara previsões com os rótulos reais
-print(f"Acurácia do modelo: {accuracy * 100:.2f}%")  # exibe o resultado em percentual</pre>
+<span class="cm"># ── Bloco 5: Fazer previsões e avaliar ──────────────────────────────</span>
+y_pred = model.predict(X_test)
+<span class="cm"># → predict() aplica o modelo treinado nos dados de teste (que ele nunca viu antes)</span>
+accuracy = accuracy_score(y_test, y_pred)
+<span class="cm"># → compara os rótulos previstos (y_pred) com os rótulos reais (y_test)</span>
+print(f"Acurácia do modelo: {accuracy * 100:.2f}%")
+<span class="cm"># → exibe o resultado: a proporção de flores classificadas corretamente</span></pre>
       </div>
 
       <div class="callout tip fade-in">
