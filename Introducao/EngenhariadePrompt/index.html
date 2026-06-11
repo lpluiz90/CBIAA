@@ -1920,61 +1920,120 @@ Frase: "Doze anos de lealdade, e ele nem olhou para mim na última semana."</pre
         </div>
 
         <div class="card fade-in">
-          <div class="card-title">Formatação e Estrutura</div>
+          <p>As técnicas básicas definem <strong>como você estrutura e apresenta</strong> suas instruções. Dominar esses recursos é o primeiro passo para prompts consistentes — independentemente da ferramenta ou objetivo.</p>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">Formatação: Markdown e Delimitadores</div>
           <div class="feature-grid" style="margin-top:10px;">
             <div class="feature-box">
-              <h5>Markdown</h5>
-              <p>Use formatação Markdown para estruturar seus prompts: títulos (<code>#</code> <code>##</code>), <strong>negrito</strong>, <em>itálico</em>, listas e blocos de código. Melhora a legibilidade e ajuda o modelo a entender a hierarquia do prompt.</p>
+              <h5>📝 Markdown</h5>
+              <p>Use <code>#</code> e <code>##</code> para títulos, <strong>**negrito**</strong> para destaque e <code>```</code> para blocos de código. O modelo lê a hierarquia visual e organiza a resposta com a mesma estrutura — se você formatar bem a instrução, a resposta vem formatada também.</p>
+              <p style="margin-top:8px;font-size:13px;color:var(--gold);">✦ Ideal para: relatórios, tutoriais, resumos estruturados</p>
             </div>
             <div class="feature-box gold">
-              <h5>Delimitadores</h5>
-              <p>Utilize <code>---</code> ou tags XML (<code>&lt;tag&gt;conteúdo&lt;/tag&gt;</code>) para separar seções do prompt — instruções, exemplos e dados. Ajuda o modelo a distinguir as diferentes partes da instrução.</p>
+              <h5>🏷️ Delimitadores XML</h5>
+              <p>Separe as partes do prompt com tags como <code>&lt;contexto&gt;</code>, <code>&lt;tarefa&gt;</code>, <code>&lt;exemplo&gt;</code>. Sem isso, o modelo pode confundir instrução com dado. Com tags, cada seção é inequivocamente separada — especialmente útil em prompts longos.</p>
+              <p style="margin-top:8px;font-size:13px;color:var(--gold);">✦ Ideal para: análise de documentos, extração de dados</p>
             </div>
           </div>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Exemplo — Prompt com Delimitadores XML</span>
+          <pre class="prompt-block prompt">&lt;contexto&gt;
+Você é um assistente de comunicação do Exército Brasileiro.
+&lt;/contexto&gt;
+
+&lt;tarefa&gt;
+Resuma o texto abaixo em 3 pontos-chave, em linguagem formal e objetiva.
+&lt;/tarefa&gt;
+
+&lt;texto&gt;
+[Cole aqui o documento a ser resumido]
+&lt;/texto&gt;</pre>
         </div>
 
         <div class="card fade-in">
           <div class="card-title">Variáveis e Prompt do Sistema</div>
           <div class="feature-grid" style="margin-top:10px;">
             <div class="feature-box purple">
-              <h5>Variáveis</h5>
-              <p>Em plataformas como o console da Anthropic, defina variáveis com a sintaxe <code>&#123;&#123;variável&#125;&#125;</code>. Permite criar prompts genéricos facilmente adaptáveis para casos específicos.</p>
+              <h5>🔧 Variáveis <code>&#123;&#123;nome&#125;&#125;</code></h5>
+              <p>Crie prompts com lacunas marcadas como <code>&#123;&#123;cargo&#125;&#125;</code> ou <code>&#123;&#123;assunto&#125;&#125;</code>. Você preenche os valores e reutiliza o mesmo template para dezenas de situações — sem reescrever tudo. Funciona como um formulário inteligente.</p>
+              <p style="margin-top:8px;font-size:13px;color:var(--sky);">✦ Disponível em: Anthropic Console, n8n, Make, PromptFlow</p>
             </div>
             <div class="feature-box green">
-              <h5>Prompt do Sistema</h5>
-              <p>Use o <em>system prompt</em> para definir o comportamento geral do modelo: persona, tom, estilo e restrições. É a base sobre a qual todas as conversas da aplicação serão construídas.</p>
+              <h5>⚙️ Prompt do Sistema</h5>
+              <p>O <em>system prompt</em> é uma instrução invisível ao usuário que define a personalidade, o tom e as restrições do modelo em <strong>toda a conversa</strong>. É configurado uma vez e vale para todas as interações — a "identidade fixa" da IA na sua aplicação.</p>
+              <p style="margin-top:8px;font-size:13px;color:var(--sky);">✦ Disponível em: ChatGPT API, Claude, Mistral, Gemini</p>
             </div>
           </div>
         </div>
 
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Exemplo — Template com Variáveis</span>
+          <pre class="prompt-block prompt">Você é um especialista em {{area_de_conhecimento}}.
+
+Elabore um plano de aula de {{duracao}} minutos sobre o tema "{{tema}}"
+para uma turma de {{nivel}} com {{numero_alunos}} alunos.
+Inclua: objetivos de aprendizagem, metodologia e forma de avaliação.
+
+--- Preenchimento para esta aula ---
+area_de_conhecimento = "comunicações militares"
+duracao = "90"
+tema = "redes táticas em operações combinadas"
+nivel = "Tenentes recém-formados"
+numero_alunos = "30"</pre>
+        </div>
+
         <div class="card fade-in">
-          <div class="card-title">Zero-Shot e Estímulo Direcional</div>
+          <div class="card-title">Zero-Shot, Estímulo Direcional, Few-Shot e Chain-of-Thought</div>
           <div class="feature-grid" style="margin-top:10px;">
             <div class="feature-box">
-              <h5>Zero-Shot</h5>
-              <p>Instrução direta sem exemplos. Útil para tarefas simples onde o modelo já possui conhecimento suficiente para gerar uma resposta adequada sem precisar de contexto adicional.</p>
+              <h5>⚡ Zero-Shot</h5>
+              <p>Instrução direta sem nenhum exemplo. Funciona quando a tarefa é simples e o modelo já conhece o padrão esperado. É sempre o ponto de partida — se a resposta ficar ruim, avance para Few-Shot.</p>
             </div>
             <div class="feature-box gold">
-              <h5>Estímulo Direcional</h5>
-              <p>Insira "dicas" ou palavras-chave estratégicas para guiar o modelo ao resultado esperado com poucas palavras. Pequenos estímulos direcionais têm impacto significativo na qualidade da resposta.</p>
-              <p style="margin-top:8px;font-size:13px;color:var(--muted);">Referência: <a href="https://arxiv.org/abs/2302.11520" target="_blank" rel="noopener" style="color:var(--sky);">arxiv.org/abs/2302.11520</a></p>
+              <h5>🎯 Estímulo Direcional</h5>
+              <p>Adicione uma "dica" ao final do prompt para guiar o modelo. Em vez de <em>"Escreva um resumo"</em>, use <em>"Escreva um resumo. <strong>Comece pela conclusão mais importante:</strong>"</em>. Uma frase muda completamente o foco da resposta.</p>
+              <p style="margin-top:8px;font-size:13px;color:var(--muted);">Ref.: <a href="https://arxiv.org/abs/2302.11520" target="_blank" rel="noopener" style="color:var(--sky);">arxiv.org/abs/2302.11520</a></p>
+            </div>
+            <div class="feature-box purple">
+              <h5>📚 Few-Shot (1–5 exemplos)</h5>
+              <p>Mostre ao modelo 1 a 5 pares de entrada → saída antes da sua pergunta real. O modelo "aprende" o padrão e replica o formato ou estilo — <strong>sem retreinamento</strong>, só pelos exemplos no prompt.</p>
+            </div>
+            <div class="feature-box green">
+              <h5>🔗 Chain-of-Thought (CoT)</h5>
+              <p>Peça ao modelo que <strong>pense em voz alta</strong> antes de responder: <em>"Raciocine passo a passo"</em>. Aumenta muito a precisão em lógica, matemática e análise — o modelo erra menos quando "mostra o rascunho" em vez de pular direto à conclusão.</p>
+              <p style="margin-top:8px;font-size:13px;color:var(--muted);">Ref.: <a href="https://arxiv.org/abs/2201.11903" target="_blank" rel="noopener" style="color:var(--sky);">arxiv.org/abs/2201.11903</a></p>
             </div>
           </div>
         </div>
 
-        <div class="card fade-in">
-          <div class="card-title">Few-Shot e Chain-of-Thought</div>
-          <div class="feature-grid" style="margin-top:10px;">
-            <div class="feature-box purple">
-              <h5>Few-Shot</h5>
-              <p>Forneça de 1 a 5 exemplos de entradas e saídas desejadas no prompt. Ajuda o modelo a entender o padrão da tarefa e gerar respostas mais precisas e consistentes. Os exemplos devem ser representativos.</p>
-            </div>
-            <div class="feature-box green">
-              <h5>Chain-of-Thought (CoT)</h5>
-              <p>Peça ao modelo que explique seu raciocínio passo a passo antes de chegar à resposta final. Especialmente útil para tarefas que exigem lógica, matemática ou resolução de problemas complexos.</p>
-              <p style="margin-top:8px;font-size:13px;color:var(--muted);">Referência: <a href="https://arxiv.org/abs/2201.11903" target="_blank" rel="noopener" style="color:var(--sky);">arxiv.org/abs/2201.11903</a></p>
-            </div>
-          </div>
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Exemplo — Few-Shot: Classificação de Sentimento</span>
+          <pre class="prompt-block prompt">Classifique o sentimento das frases abaixo como POSITIVO, NEGATIVO ou NEUTRO.
+
+Exemplos:
+"O equipamento funcionou perfeitamente durante o exercício." → POSITIVO
+"A missão foi cancelada sem nenhum aviso prévio." → NEGATIVO
+"O relatório foi entregue ao comandante às 14h." → NEUTRO
+
+Agora classifique:
+"A comunicação com o posto avançado foi interrompida durante a operação."</pre>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Exemplo — Chain-of-Thought: Problema de Lógica</span>
+          <pre class="prompt-block prompt">Pense passo a passo antes de apresentar a resposta final.
+
+Uma viatura sai às 06h00 a 60 km/h em direção ao posto avançado.
+Uma segunda viatura parte do mesmo ponto às 07h00, na mesma direção, a 90 km/h.
+Em quanto tempo a segunda viatura alcança a primeira?</pre>
+        </div>
+
+        <div class="callout tip fade-in">
+          <strong>Por que o CoT funciona?</strong> Ao "pensar em voz alta", o modelo verifica cada etapa antes de avançar — como um aluno que anota o desenvolvimento antes de marcar a resposta. Isso reduz drasticamente erros de lógica e cálculo.
         </div>
 
         <!-- ─── ITEM 06 ─── -->
@@ -1985,61 +2044,116 @@ Frase: "Doze anos de lealdade, e ele nem olhou para mim na última semana."</pre
         </div>
 
         <div class="card fade-in">
+          <p>As técnicas avançadas foram documentadas em artigos acadêmicos das principais empresas e universidades de IA. Elas resolvem problemas que as básicas não cobrem: inconsistência em respostas críticas, raciocínio profundo em múltiplos caminhos e integração com dados externos.</p>
+          <div class="callout purple fade-in" style="margin-top:14px;">
+            <strong>Quando usar?</strong> Comece sempre pelas técnicas básicas. Avance para as técnicas avançadas quando a tarefa exigir raciocínio profundo, múltiplas abordagens simultâneas ou dados que o modelo não possui no treinamento.
+          </div>
+        </div>
+
+        <div class="card fade-in">
           <div class="card-title">Self-Consistency e Tree-of-Thought</div>
           <div class="feature-grid" style="margin-top:10px;">
             <div class="feature-box">
-              <h5>Self-Consistency</h5>
-              <p>Gere múltiplas cadeias de pensamento para a mesma tarefa e peça ao modelo que escolha a resposta mais consistente entre elas. Reduz erros aproveitando a capacidade do modelo de avaliar seu próprio raciocínio.</p>
+              <h5>🔄 Self-Consistency</h5>
+              <p>Em vez de pedir uma resposta, peça <strong>três respostas independentes</strong> para a mesma pergunta — sem que uma consulte a outra. Depois, peça ao modelo que identifique qual é a mais consistente entre elas. Reduz alucinações e erros em cálculos críticos.</p>
               <p style="margin-top:8px;font-size:13px;color:var(--muted);">Ref.: <a href="https://arxiv.org/abs/2203.11171" target="_blank" rel="noopener" style="color:var(--sky);">arxiv.org/abs/2203.11171</a></p>
             </div>
             <div class="feature-box gold">
-              <h5>Tree-of-Thought (ToT)</h5>
-              <p>Expande a Chain-of-Thought gerando uma árvore de raciocínio com múltiplos caminhos. O modelo explora diferentes abordagens e escolhe a mais promissora — ideal para problemas com várias soluções possíveis.</p>
+              <h5>🌳 Tree-of-Thought (ToT)</h5>
+              <p>Peça ao modelo que explore <strong>múltiplos caminhos de raciocínio</strong> como ramos de uma árvore, avalie qual é o mais promissor e continue por ele. Supera o Chain-of-Thought em problemas onde a primeira abordagem pode estar errada.</p>
               <p style="margin-top:8px;font-size:13px;color:var(--muted);">Ref.: <a href="https://arxiv.org/abs/2305.10601" target="_blank" rel="noopener" style="color:var(--sky);">arxiv.org/abs/2305.10601</a></p>
             </div>
           </div>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Exemplo — Self-Consistency: Verificando um Cálculo Crítico</span>
+          <pre class="prompt-block prompt">Resolva o problema abaixo de três formas independentes (Abordagem A, B e C),
+sem consultar as respostas anteriores ao desenvolver cada uma.
+Depois, compare as três e indique qual resultado aparece com mais consistência.
+
+Problema: Qual é o prazo mínimo para treinar 12 operadores em um novo sistema
+de comunicação, se cada operador precisa de 8h individuais e há apenas
+2 instrutores disponíveis trabalhando 6h por dia?</pre>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Exemplo — Tree-of-Thought: Explorando Abordagens</span>
+          <pre class="prompt-block prompt">Explore três abordagens diferentes para o problema abaixo.
+Para cada abordagem, avalie: (1) viabilidade, (2) custo estimado, (3) prazo.
+Depois, escolha a abordagem mais equilibrada e desenvolva-a com detalhes.
+
+Problema: Como reduzir o tempo de resposta a incidentes de segurança
+cibernética em uma organização com 500 usuários e equipe de TI de 3 pessoas?</pre>
         </div>
 
         <div class="card fade-in">
           <div class="card-title">Skeleton-of-Thought e Generated Knowledge</div>
           <div class="feature-grid" style="margin-top:10px;">
             <div class="feature-box purple">
-              <h5>Skeleton-of-Thought (SoT)</h5>
-              <p>Gere um esqueleto (índice de tópicos) antes de desenvolver o conteúdo completo. O modelo primeiro cria a estrutura e depois preenche cada tópico com detalhes — garante que todos os pontos-chave sejam cobertos.</p>
+              <h5>🦴 Skeleton-of-Thought (SoT)</h5>
+              <p>Peça ao modelo que crie primeiro o <strong>esqueleto</strong> — índice, tópicos, estrutura — e só depois preencha cada seção. Garante que nenhum ponto-chave seja esquecido. Pense como a estrutura de uma apresentação antes de escrever os slides.</p>
               <p style="margin-top:8px;font-size:13px;color:var(--muted);">Ref.: <a href="https://arxiv.org/abs/2307.15337" target="_blank" rel="noopener" style="color:var(--sky);">arxiv.org/abs/2307.15337</a></p>
             </div>
             <div class="feature-box green">
-              <h5>Generated Knowledge</h5>
-              <p>Peça ao modelo que gere conhecimento contextual antes de responder. O modelo produz informações relevantes sobre o tema, que são incorporadas ao prompt para respostas mais precisas e informativas.</p>
+              <h5>🧠 Generated Knowledge</h5>
+              <p>Antes de responder, peça ao modelo que <strong>liste o que sabe</strong> sobre o tema: fatos, conceitos, relações. Esse conhecimento gerado é incorporado ao contexto, tornando a resposta final mais embasada. É como pedir ao modelo que "faça uma pesquisa rápida" antes de escrever.</p>
               <p style="margin-top:8px;font-size:13px;color:var(--muted);">Ref.: <a href="https://arxiv.org/abs/2110.08387" target="_blank" rel="noopener" style="color:var(--sky);">arxiv.org/abs/2110.08387</a></p>
             </div>
           </div>
         </div>
 
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Exemplo — Skeleton-of-Thought em dois passos</span>
+          <pre class="prompt-block prompt">PASSO 1 — Crie apenas o esqueleto (índice numerado com subtópicos) de um
+manual de boas práticas de segurança da informação para militares.
+Não escreva o conteúdo ainda — apenas os títulos das seções e subseções.
+
+[Após receber o esqueleto, envie na mesma conversa:]
+
+PASSO 2 — Agora desenvolva a Seção 3 do esqueleto acima com
+detalhes práticos e exemplos aplicados ao ambiente operacional.</pre>
+        </div>
+
         <div class="card fade-in">
-          <div class="card-title">Prompt Maiêutico, RAG, PAL e ReAct</div>
+          <div class="card-title">RAG, PAL, ReAct e Prompt Maiêutico</div>
           <div class="feature-grid" style="margin-top:10px;">
-            <div class="feature-box red">
-              <h5>Prompt Maiêutico</h5>
-              <p>Peça ao modelo que justifique suas respostas explicando o raciocínio por trás delas. Incentiva explicações mais detalhadas, reduzindo afirmações genéricas ou sem embasamento.</p>
-              <p style="margin-top:8px;font-size:13px;color:var(--muted);">Ref.: <a href="https://arxiv.org/abs/2205.11822" target="_blank" rel="noopener" style="color:var(--sky);">arxiv.org/abs/2205.11822</a></p>
-            </div>
             <div class="feature-box" style="border-left-color:#0097a7;">
-              <h5>RAG — Retrieval Augmented Generation</h5>
-              <p>Combina LLMs com bases de conhecimento externas. O modelo recupera informações relevantes e as utiliza para complementar seu conhecimento ao gerar a resposta — essencial para dados atualizados ou proprietários.</p>
+              <h5>📡 RAG — Retrieval Augmented Generation</h5>
+              <p>Conecta o LLM a uma <strong>base de dados externa</strong> — documentos, regulamentos, manuais internos. Em vez de depender do treinamento (que tem data de corte), o modelo busca informações atualizadas antes de responder. Indispensável para dados proprietários ou recentes.</p>
               <p style="margin-top:8px;font-size:13px;color:var(--muted);">Ref.: <a href="https://aclanthology.org/2020.findings-emnlp.76/" target="_blank" rel="noopener" style="color:var(--sky);">aclanthology.org</a></p>
             </div>
             <div class="feature-box gold">
-              <h5>PAL — Program-Aided Language Models</h5>
-              <p>Use conceitos de programação — variáveis, funções, templates — dentro dos prompts. Torna os prompts mais modulares, reutilizáveis e fáceis de adaptar para diferentes casos de uso.</p>
+              <h5>💻 PAL — Program-Aided Language</h5>
+              <p>Estruture o prompt como um <strong>programa modular</strong>: defina variáveis, funções e templates reutilizáveis. Cada componente pode ser atualizado independentemente — como peças de um sistema. Facilita manutenção e adaptação sem reescrever o prompt inteiro.</p>
               <p style="margin-top:8px;font-size:13px;color:var(--muted);">Ref.: <a href="https://arxiv.org/abs/2211.10435" target="_blank" rel="noopener" style="color:var(--sky);">arxiv.org/abs/2211.10435</a></p>
             </div>
             <div class="feature-box purple">
-              <h5>ReAct — Reason + Act</h5>
-              <p>Divide tarefas complexas em etapas de raciocínio e ação. O modelo raciocina, decide qual ação tomar, executa e repete até concluir. Ideal para tarefas com múltiplas etapas ou uso de ferramentas externas.</p>
+              <h5>⚙️ ReAct — Reason + Act</h5>
+              <p>O modelo segue um ciclo: <strong>raciocinar → decidir uma ação → executar → observar o resultado → raciocinar de novo</strong>. Ideal para agentes que usam ferramentas externas (busca, calculadora, API) e precisam completar tarefas em múltiplas etapas autônomas.</p>
               <p style="margin-top:8px;font-size:13px;color:var(--muted);">Ref.: <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener" style="color:var(--sky);">arxiv.org/abs/2210.03629</a></p>
             </div>
+            <div class="feature-box red">
+              <h5>🏛️ Prompt Maiêutico</h5>
+              <p>Peça ao modelo que <strong>justifique cada afirmação antes de concluir</strong> — inspirado na maiêutica socrática. O modelo questiona suas próprias premissas, o que elimina respostas genéricas e superficiais, trazendo análises mais profundas e embasadas.</p>
+              <p style="margin-top:8px;font-size:13px;color:var(--muted);">Ref.: <a href="https://arxiv.org/abs/2205.11822" target="_blank" rel="noopener" style="color:var(--sky);">arxiv.org/abs/2205.11822</a></p>
+            </div>
           </div>
+        </div>
+
+        <div class="prompt-wrap fade-in">
+          <span class="prompt-label prompt">✦ Exemplo — Prompt Maiêutico</span>
+          <pre class="prompt-block prompt">Antes de responder à pergunta abaixo, siga este processo:
+1. Liste as premissas que sustentam sua resposta
+2. Questione cada premissa — ela é sempre verdadeira? Em quais contextos falha?
+3. Só então apresente sua conclusão final, levando em conta as ressalvas
+
+Pergunta: O uso de IA generativa em operações militares aumenta ou reduz
+a segurança das informações classificadas?</pre>
+        </div>
+
+        <div class="callout fade-in">
+          <strong>Combinando técnicas:</strong> As melhores respostas geralmente misturam técnicas — ex.: <strong>Few-Shot + CoT</strong> (exemplos com raciocínio explícito) ou <strong>Skeleton + Generated Knowledge</strong> (estrutura definida antes de gerar o conteúdo). Experimente combinações conforme a complexidade da tarefa.
         </div>
 
         <!-- ─── ITEM 07 ─── -->
@@ -2106,7 +2220,8 @@ Frase: "Doze anos de lealdade, e ele nem olhou para mim na última semana."</pre
 
         <div class="card fade-in">
           <div class="card-title">🎮 Sua Vez: Continue o Jogo do Detetive</div>
-          <p>Você viu os dois primeiros passos do jogo de detetive. Agora é sua vez de criar o <strong>Passo 3 — as pistas</strong> e conduzi-lo à conclusão. Abra o Mistral AI e tente os dois prompts abaixo em sequência, dentro da mesma conversa:</p>
+          <p>Lembra do <strong><a href="#ep-detetive" style="color:var(--sky);">Jogo do Detetive no Item 04</a></strong> — Princípio 2: Dividir em Subtarefas? Você acompanhou como dois prompts encadeados transformaram uma instrução vaga em uma narrativa noir completa — com cenário, suspeitos e contexto acumulado a cada passo.</p>
+          <p style="margin-top:12px;">Agora é <strong>a sua vez</strong>. O caso do Detetive Marlowe ainda não foi resolvido: faltam as pistas e a revelação final. Abra o Mistral AI, retome a conversa do Item 04 (ou reenvie os Passos 1 e 2 para recriar o contexto) e complete o caso com os dois prompts abaixo, em sequência na mesma conversa:</p>
         </div>
 
         <div class="content-img-wrap fade-in">
