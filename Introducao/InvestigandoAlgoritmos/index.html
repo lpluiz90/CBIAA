@@ -237,6 +237,8 @@
       <li class="section-divider"><a href="#a1-s2"><span class="num">02</span> Dataset Iris</a></li>
       <li><a href="#a1-s2-code"><span class="num">2.1</span> Código Python</a></li>
       <li><a href="#a1-s2-res"><span class="num">2.2</span> Análise dos resultados</a></li>
+      <li class="section-divider"><a href="#a1-s3"><span class="num">03</span> Para Saber Mais</a></li>
+      <li><a href="#a1-s3-modelos"><span class="num">3.1</span> Modelos em ML</a></li>
 
       <li class="section-divider"><a href="#a1-quiz"><span class="num">—</span> Quiz</a></li>
     </ul>
@@ -425,6 +427,19 @@ print(f"Acurácia do modelo: {accuracy * 100:.2f}%")
         <p>O mesmo princípio pode ser aplicado a outros problemas: com um dataset de animais de estimação, poderíamos treinar um modelo para classificar cães, gatos e outros animais — embora a acurácia provavelmente seria menor, refletindo a complexidade maior das imagens.</p>
         <div class="highlight-box" style="margin-top:16px;">
           <strong>Machine Learning, em essência,</strong> é ensinar máquinas a realizar tarefas específicas com base em exemplos. Quanto mais bem estruturado o conjunto de dados de treinamento, mais preciso e confiável será o modelo resultante.
+        </div>
+      </div>
+
+      <!-- Item 03: Para Saber Mais — Modelos e Aprendizado Supervisionado -->
+      <div id="a1-s3" class="section-sep fade-in"><span class="sep-num">Item 03</span><span class="sep-title">Para Saber Mais: Modelos e Aprendizado Supervisionado</span><span class="sep-line"></span></div>
+
+      <div id="a1-s3-modelos" class="card fade-in">
+        <div class="card-title">O que é um modelo em Machine Learning?</div>
+        <p>No exemplo anterior, exploramos um caso clássico de <strong>Aprendizado Supervisionado</strong>. Nessa abordagem, um modelo é treinado com dados que já possuem respostas &ldquo;corretas&rdquo;, conhecidas como <strong>rótulos</strong>. No caso do Dataset Iris, os rótulos são as espécies das flores (<em>Setosa</em>, <em>Versicolour</em> e <em>Virginica</em>).</p>
+        <p style="margin-top:12px;"><strong>Mas o que é um modelo no contexto de Machine Learning?</strong> Um modelo é como uma &ldquo;fórmula matemática&rdquo; que aprende a identificar padrões nos dados. Ele é criado durante o <strong>treinamento</strong>, quando o algoritmo analisa as características dos dados (como o comprimento e a largura das pétalas e sépalas) e descobre como elas se relacionam com os rótulos.</p>
+        <p style="margin-top:12px;">Utilizamos um modelo de <strong>Árvore de Decisão</strong>, que funciona como um fluxograma: ele faz perguntas sobre as características das flores (por exemplo, <em>&ldquo;O comprimento da pétala é maior que 2 cm?&rdquo;</em>) e, com base nas respostas, decide a qual espécie a flor pertence.</p>
+        <div class="highlight-box" style="margin-top:16px;">
+          O papel do modelo é <strong>generalizar o conhecimento</strong> obtido durante o treinamento — sendo capaz de fazer previsões precisas mesmo para dados que nunca viu antes. Por isso, dividimos os dados em dois conjuntos: um para <strong>treinar</strong> o modelo e outro para <strong>testá-lo</strong>.
         </div>
       </div>
 
