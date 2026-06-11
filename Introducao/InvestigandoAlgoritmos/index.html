@@ -427,7 +427,10 @@
       </div>
 
       <div class="callout purple fade-in" style="margin-top:14px;">
-        <strong>O que este código faz:</strong> O foco deste código é treinar um <strong>classificador de Árvore de Decisão</strong> para identificar espécies de flores do tipo íris. Importamos o <code>Scikit-Learn</code> com as ferramentas de dataset, divisão de dados, modelo e métricas. Carregamos o dataset Iris (150 amostras com 4 atributos cada), dividimos os dados em 70% para treino e 30% para teste, treinamos a Árvore de Decisão e avaliamos seu desempenho. Ao final, o código exibe a <strong>acurácia do modelo</strong> — a proporção de flores classificadas corretamente nos dados de teste.
+        <strong>O que este código faz — e como funciona na prática:</strong><br><br>
+        Este código <strong>não usa imagens</strong>. Os "dados" do Dataset Iris são <strong>medidas numéricas</strong> de flores reais coletadas em laboratório — comprimento e largura da sépala e da pétala. Cada flor é representada por 4 números, por exemplo: <code>[5.1, 3.5, 1.4, 0.2]</code>.<br><br>
+        O algoritmo carrega 150 dessas linhas, separa 70% para <strong>treino</strong> (o modelo aprende as regras, como <em>"se largura da pétala &lt; 0,8 → é setosa"</em>) e 30% para <strong>teste</strong> (apresenta flores que o modelo nunca viu, sem dizer a espécie, e verifica se ele acerta). A <strong>acurácia</strong> mede quantas ele classificou corretamente.<br><br>
+        <strong>Por que a acurácia pode chegar a 100%?</strong> Porque o teste é feito em linhas do mesmo dataset controlado — dados limpos, bem separados. Não é o mundo real. Na prática, para classificar uma flor desconhecida, você mediria ela com uma régua e chamaria: <code>model.predict([[5.1, 3.5, 1.4, 0.2]])</code>. Se quisesse classificar <strong>por foto</strong>, precisaria de um modelo completamente diferente — uma Rede Neural Convolucional (CNN).
       </div>
 
       <div class="card fade-in" style="background:#f0f7ff;border-left:4px solid #4a9fc8;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 24px;margin-bottom:18px;">
