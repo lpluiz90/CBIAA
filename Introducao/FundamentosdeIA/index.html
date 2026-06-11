@@ -94,6 +94,7 @@
   .callout.tip{background:#f0fff4;border-color:#2e7d32;}
   .callout.purple{background:#f3e5f5;border-color:#7b1fa2;}
   .callout strong{color:var(--navy);}
+  .cm{color:#6a9955;}
   .highlight-box{background:var(--navy);color:rgba(255,255,255,.88);border-radius:8px;padding:18px 22px;margin:14px 0;font-size:18px;line-height:1.72;}
   .highlight-box strong{color:var(--sky);}
   .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:10px 0;}
@@ -1511,52 +1512,57 @@ FIM PARA</pre>
       </div>
       <div class="prompt-wrap fade-in">
         <span class="prompt-label neutro">Python 🐍 — recomendador.py</span>
-        <pre class="prompt-block neutro">import heapq  # biblioteca para fila de prioridade (heap), essencial para o A*
+        <pre class="prompt-block neutro"><span class="cm"># ── Bloco 1: Importação ─────────────────────────────────────────────</span>
+import heapq
+<span class="cm"># → heapq cria e gerencia uma fila de prioridade (min-heap)
+#   — garante que sempre processamos o nó com menor custo f primeiro</span>
 
+<span class="cm"># ── Bloco 2: Classe Produto ──────────────────────────────────────────</span>
 class Produto:
     def __init__(self, nome, categoria, conversao_probabilidade):
         self.nome = nome
         self.categoria = categoria
-        self.conversao_probabilidade = conversao_probabilidade  # chance do produto interessar ao usuário
+        self.conversao_probabilidade = conversao_probabilidade  <span class="cm"># chance do produto interessar ao usuário (0 a 1)</span>
 
     def __repr__(self):
-        return f"{self.nome} ({self.categoria})"  # exibe o produto de forma legível
+        return f"{self.nome} ({self.categoria})"  <span class="cm"># exibe o produto de forma legível no terminal</span>
 
+<span class="cm"># ── Bloco 3: Classe AStarRecommendation ──────────────────────────────</span>
 class AStarRecommendation:
     def __init__(self, produtos, heuristica):
         self.produtos = produtos
         self.heuristica = heuristica
-        self.grafo = self.criar_grafo()  # cria o grafo ao inicializar o sistema
+        self.grafo = self.criar_grafo()  <span class="cm"># cria o grafo ao inicializar o sistema</span>
 
     def criar_grafo(self):
         grafo = {}
         for produto in self.produtos:
-            # cada produto se conecta a todos os outros (grafo completo simplificado)
+            <span class="cm"># cada produto se conecta a todos os outros (grafo completo simplificado)</span>
             grafo[produto] = [p for p in self.produtos if p != produto]
         return grafo
 
     def a_star(self, inicio, objetivo):
         fila_prioridade = []
-        # insere o produto inicial na fila com custo f = 0 + h(inicio)
+        <span class="cm"># insere o produto inicial na fila com custo f = 0 + h(inicio)</span>
         heapq.heappush(fila_prioridade, (0 + self.heuristica(inicio), 0, inicio))
-        visitados = set()  # produtos já explorados
-        caminhos = {}      # registra qual produto levou a cada vizinho
+        visitados = set()  <span class="cm"># produtos já explorados — evita revisitar</span>
+        caminhos = {}      <span class="cm"># registra qual produto levou a cada vizinho (para reconstruir o caminho)</span>
 
         while fila_prioridade:
-            _, g, atual = heapq.heappop(fila_prioridade)  # extrai o de menor custo f
+            _, g, atual = heapq.heappop(fila_prioridade)  <span class="cm"># extrai o de menor custo f</span>
             if atual in visitados:
-                continue           # ignora se já foi explorado anteriormente
+                continue           <span class="cm"># ignora se já foi explorado anteriormente</span>
             visitados.add(atual)
             if atual == objetivo:
-                break              # chegou ao destino — encerra a busca
+                break              <span class="cm"># chegou ao destino — encerra a busca</span>
             for vizinho in self.grafo[atual]:
                 if vizinho not in visitados:
                     h = self.heuristica(vizinho)
-                    # f = g (custo acumulado) + 1 (custo do passo) + h (estimativa heurística)
+                    <span class="cm"># f = g (custo acumulado) + 1 (custo do passo) + h (estimativa heurística)</span>
                     heapq.heappush(fila_prioridade, (g + 1 + h, g + 1, vizinho))
-                    caminhos[vizinho] = atual  # registra o caminho percorrido
+                    caminhos[vizinho] = atual  <span class="cm"># registra o caminho percorrido</span>
 
-        # reconstrói o caminho do objetivo de volta ao ponto de partida
+        <span class="cm"># reconstrói o caminho do objetivo de volta ao ponto de partida</span>
         caminho = []
         produto = objetivo
         while produto in caminhos:
@@ -1564,11 +1570,12 @@ class AStarRecommendation:
             produto = caminhos[produto]
         return caminho
 
+<span class="cm"># ── Bloco 4: Heurística ──────────────────────────────────────────────</span>
 def heuristica(produto):
-    # negativo: como o heap minimiza, usar negativo prioriza a maior probabilidade
     return -produto.conversao_probabilidade
+<span class="cm"># → negativo: como o heap minimiza, inverter o sinal prioriza a MAIOR probabilidade de conversão</span>
 
-# --- Configuração e execução ---
+<span class="cm"># ── Bloco 5: Configuração e execução ─────────────────────────────────</span>
 produtos = [
     Produto("Produto A", "Categoria 1", 0.9),
     Produto("Produto B", "Categoria 1", 0.8),
@@ -1577,13 +1584,13 @@ produtos = [
 ]
 
 recomendador = AStarRecommendation(produtos, heuristica)
-inicio = produtos[0]   # Produto A — ponto de partida
-objetivo = produtos[2] # Produto C — produto-alvo da recomendação
+inicio   = produtos[0]  <span class="cm"># Produto A — ponto de partida da busca</span>
+objetivo = produtos[2]  <span class="cm"># Produto C — produto-alvo da recomendação</span>
 
 caminho_recomendado = recomendador.a_star(inicio, objetivo)
 print("Caminho recomendado:")
 for p in caminho_recomendado:
-    print(p)  # exibe os produtos do caminho sugerido pelo A*</pre>
+    print(p)  <span class="cm"># exibe os produtos do caminho sugerido pelo A*</span></pre>
       </div>
 
       <div class="prompt-wrap fade-in">
@@ -1807,55 +1814,70 @@ Produto C (Categoria 2)</pre>
       </div>
       <div class="prompt-wrap fade-in">
         <span class="prompt-label neutro">Python 🐍 — incerteza.py</span>
-        <pre class="prompt-block neutro">import numpy as np                              # cálculos numéricos gerais
-from scipy.stats import norm                    # distribuição normal, usada no cálculo de tempo no site
-from pgmpy.models import BayesianNetwork        # estrutura da rede bayesiana
-from pgmpy.factors.discrete import TabularCPD  # tabelas de probabilidade condicional
+        <pre class="prompt-block neutro"><span class="cm"># ── Bloco 1: Importações ─────────────────────────────────────────────</span>
+import numpy as np
+<span class="cm"># → numpy é para cálculos numéricos gerais (usado na parte de distribuição normal)</span>
+from scipy.stats import norm
+<span class="cm"># → norm é para trabalhar com distribuição normal — usada para estimar tempo de permanência no site</span>
+from pgmpy.models import BayesianNetwork
+<span class="cm"># → BayesianNetwork define a estrutura da rede: quais variáveis influenciam quais</span>
+from pgmpy.factors.discrete import TabularCPD
+<span class="cm"># → TabularCPD cria as tabelas de probabilidade condicional de cada variável</span>
 
-# define a estrutura da rede: cada tupla indica "variável pai → variável filha"
+<span class="cm"># ── Bloco 2: Estrutura da rede ───────────────────────────────────────</span>
+<span class="cm"># cada tupla indica "variável pai → variável filha" (relação de causa e efeito)</span>
 model = BayesianNetwork([
-    ("HistoricoCompras", "Compra"),
-    ("TempoNoSite", "Compra"),
-    ("ClicouEmPromocao", "Compra")
+    ("HistoricoCompras",  "Compra"),
+    ("TempoNoSite",       "Compra"),
+    ("ClicouEmPromocao",  "Compra")
 ])
 
-# CPD das variáveis independentes (sem pais): [P(não), P(sim)]
+<span class="cm"># ── Bloco 3: CPDs das variáveis independentes ────────────────────────</span>
+<span class="cm"># variáveis sem pais: apenas P(não) e P(sim)</span>
 cpd_historico = TabularCPD(variable="HistoricoCompras", variable_card=2, values=[[0.7], [0.3]])
+<span class="cm"># → 70% dos clientes não têm histórico de compras · 30% têm</span>
 cpd_tempo     = TabularCPD(variable="TempoNoSite",      variable_card=2, values=[[0.6], [0.4]])
+<span class="cm"># → 60% ficam pouco tempo no site · 40% ficam bastante tempo</span>
 cpd_promocao  = TabularCPD(variable="ClicouEmPromocao", variable_card=2, values=[[0.8], [0.2]])
+<span class="cm"># → 80% não clicam em promoções · 20% clicam</span>
 
-# CPD de "Compra" depende das 3 variáveis acima (2³ = 8 combinações possíveis)
+<span class="cm"># ── Bloco 4: CPD da variável dependente (Compra) ─────────────────────</span>
+<span class="cm"># "Compra" depende das 3 variáveis acima: 2³ = 8 combinações possíveis</span>
 cpd_compra = TabularCPD(
     variable="Compra", variable_card=2,
     values=[
-        [0.9, 0.7, 0.8, 0.4, 0.6, 0.2, 0.3, 0.1],  # P(Não Comprar | combinação)
-        [0.1, 0.3, 0.2, 0.6, 0.4, 0.8, 0.7, 0.9]   # P(Comprar | combinação)
+        [0.9, 0.7, 0.8, 0.4, 0.6, 0.2, 0.3, 0.1],  <span class="cm"># P(Não Comprar | combinação)</span>
+        [0.1, 0.3, 0.2, 0.6, 0.4, 0.8, 0.7, 0.9]   <span class="cm"># P(Comprar    | combinação)</span>
     ],
     evidence=["HistoricoCompras", "TempoNoSite", "ClicouEmPromocao"],
     evidence_card=[2, 2, 2]
 )
 
+<span class="cm"># ── Bloco 5: Validar e configurar o modelo ───────────────────────────</span>
 model.add_cpds(cpd_historico, cpd_tempo, cpd_promocao, cpd_compra)
-assert model.check_model()  # valida que o modelo está matematicamente correto
+assert model.check_model()  <span class="cm"># verifica se as probabilidades são consistentes (cada CPD soma 1)</span>
 
+<span class="cm"># ── Bloco 6: Motor de inferência ─────────────────────────────────────</span>
 from pgmpy.inference import VariableElimination
-inference = VariableElimination(model)  # motor de inferência por eliminação de variáveis
+inference = VariableElimination(model)
+<span class="cm"># → VariableElimination responde perguntas eliminando variáveis irrelevantes da rede</span>
 
-# consulta: cliente com histórico (1), pouco tempo no site (0) e clicou em promoção (1)
+<span class="cm"># consulta: qual a probabilidade de compra dado o comportamento observado do cliente?</span>
 result = inference.query(variables=["Compra"], evidence={
-    "HistoricoCompras": 1,
-    "TempoNoSite": 0,
-    "ClicouEmPromocao": 1
+    "HistoricoCompras": 1,    <span class="cm"># tem histórico de compras</span>
+    "TempoNoSite": 0,         <span class="cm"># ficou pouco tempo no site</span>
+    "ClicouEmPromocao": 1     <span class="cm"># clicou em promoção</span>
 })
 print("Probabilidades de Compra:")
 print(result)
 
-# complemento: usando distribuição normal para estimar probabilidade de tempo no site
-media_tempo = 5              # tempo médio esperado (em minutos)
-desvio_padrao_tempo = 2      # variação esperada em torno da média
-tempo_observado = 6
-# cdf: probabilidade acumulada de o cliente ficar MENOS do que o tempo observado
+<span class="cm"># ── Bloco 7: Distribuição normal (complemento) ───────────────────────</span>
+<span class="cm"># usando scipy.stats.norm para estimar probabilidade de tempo de permanência no site</span>
+media_tempo         = 5  <span class="cm"># tempo médio esperado (minutos)</span>
+desvio_padrao_tempo = 2  <span class="cm"># variação em torno da média</span>
+tempo_observado     = 6
 prob_tempo = norm.cdf(tempo_observado, loc=media_tempo, scale=desvio_padrao_tempo)
+<span class="cm"># → cdf() calcula a probabilidade acumulada de o cliente ficar MENOS do que o tempo observado</span>
 print(f"Probabilidade de o cliente passar menos de {tempo_observado} minutos no site: {prob_tempo:.2f}")</pre>
       </div>
 
@@ -1991,38 +2013,40 @@ Probabilidade de o cliente passar menos de 6 minutos no site: 0.69</pre>
       </div>
       <div class="prompt-wrap fade-in">
         <span class="prompt-label neutro">Python 🐍 — bayesiana_simples.py</span>
-        <pre class="prompt-block neutro"># dicionário com todas as probabilidades do modelo
-# as variáveis independentes usam 0 = não e 1 = sim
+        <pre class="prompt-block neutro"><span class="cm"># ── Bloco 1: Tabela de probabilidades ────────────────────────────────</span>
+<span class="cm"># variáveis independentes: 0 = não · 1 = sim</span>
 probabilidades = {
-    "HistoricoCompras":  {0: 0.7, 1: 0.3},  # 70% dos clientes não têm histórico
-    "TempoNoSite":       {0: 0.6, 1: 0.4},  # 60% ficam pouco tempo no site
-    "ClicouEmPromocao":  {0: 0.8, 1: 0.2},  # 80% não clicam em promoções
+    "HistoricoCompras":  {0: 0.7, 1: 0.3},  <span class="cm"># 70% não têm histórico de compras</span>
+    "TempoNoSite":       {0: 0.6, 1: 0.4},  <span class="cm"># 60% ficam pouco tempo no site</span>
+    "ClicouEmPromocao":  {0: 0.8, 1: 0.2},  <span class="cm"># 80% não clicam em promoções</span>
     "Compra": {
-        # chave: (HistoricoCompras, TempoNoSite, ClicouEmPromocao)
-        # valor: probabilidade de comprar nessa combinação de evidências
-        (0, 0, 0): 0.1,  # sem histórico, pouco tempo, não clicou — menor chance
+        <span class="cm"># chave: (HistoricoCompras, TempoNoSite, ClicouEmPromocao)</span>
+        <span class="cm"># valor: probabilidade de comprar nessa combinação de evidências</span>
+        (0, 0, 0): 0.1,  <span class="cm"># sem histórico, pouco tempo, não clicou — menor chance</span>
         (0, 0, 1): 0.3,
         (0, 1, 0): 0.2,
         (0, 1, 1): 0.6,
         (1, 0, 0): 0.4,
         (1, 0, 1): 0.7,
         (1, 1, 0): 0.8,
-        (1, 1, 1): 0.9   # com histórico, muito tempo, clicou — maior chance
+        (1, 1, 1): 0.9   <span class="cm"># com histórico, muito tempo, clicou — maior chance</span>
     }
 }
 
+<span class="cm"># ── Bloco 2: Função de cálculo ───────────────────────────────────────</span>
 def calcular_probabilidade_compra(evidencias):
-    # extrai os valores de cada evidência fornecida
     h = evidencias["HistoricoCompras"]
     t = evidencias["TempoNoSite"]
     p = evidencias["ClicouEmPromocao"]
-    prob = probabilidades["Compra"][(h, t, p)]  # consulta a tabela com a combinação exata
-    return {"Comprar": prob, "Não Comprar": 1 - prob}  # retorna as duas probabilidades complementares
+    prob = probabilidades["Compra"][(h, t, p)]  <span class="cm"># consulta a tabela com a combinação exata</span>
+    return {"Comprar": prob, "Não Comprar": 1 - prob}
+<span class="cm"># → retorna as duas probabilidades complementares (comprar e não comprar)</span>
 
-# define o cenário: cliente com histórico, pouco tempo no site, que clicou em promoção
+<span class="cm"># ── Bloco 3: Execução ────────────────────────────────────────────────</span>
+<span class="cm"># cenário: cliente com histórico, pouco tempo no site, que clicou em promoção</span>
 evidencias = {"HistoricoCompras": 1, "TempoNoSite": 0, "ClicouEmPromocao": 1}
 for resultado, probabilidade in calcular_probabilidade_compra(evidencias).items():
-    print(f"{resultado}: {probabilidade:.2f}")  # exibe resultado formatado com 2 decimais</pre>
+    print(f"{resultado}: {probabilidade:.2f}")  <span class="cm"># exibe resultado formatado com 2 decimais</span></pre>
       </div>
 
       <div class="prompt-wrap fade-in">
@@ -2160,42 +2184,50 @@ Não Comprar: 0.30</pre>
       </div>
       <div class="prompt-wrap fade-in">
         <span class="prompt-label neutro">Python 🐍 — markov.py</span>
-        <pre class="prompt-block neutro">import numpy as np  # usada para sortear o próximo estado com base nas probabilidades
+        <pre class="prompt-block neutro"><span class="cm"># ── Bloco 1: Importação ──────────────────────────────────────────────</span>
+import numpy as np
+<span class="cm"># → numpy é para sortear o próximo estado com base nas probabilidades da matriz de transição</span>
 
-# lista dos estados climáticos possíveis
+<span class="cm"># ── Bloco 2: Estados e matriz de transição ───────────────────────────</span>
 states = ["Ensolarado", "Nublado", "Chuvoso"]
+<span class="cm"># → lista dos estados climáticos possíveis do sistema</span>
 
-# matriz de transição: cada linha representa um estado atual
-# os três valores de cada linha são as probabilidades de ir para Ensolarado, Nublado e Chuvoso
-# cada linha deve somar 1 (o sistema sempre transita para algum estado)
+<span class="cm"># matriz de transição: cada linha = estado atual · cada coluna = estado de destino
+# os três valores de cada linha somam 1 (o sistema sempre transita para algum estado)</span>
 transition_matrix = [
-    [0.8, 0.15, 0.05],  # de Ensolarado: 80% continua, 15% nublado, 5% chuvoso
-    [0.2, 0.6,  0.2 ],  # de Nublado:   20% sol, 60% continua, 20% chuva
-    [0.25, 0.25, 0.5]   # de Chuvoso:   25% sol, 25% nublado, 50% continua
+    [0.8, 0.15, 0.05],  <span class="cm"># de Ensolarado: 80% continua · 15% nublado · 5% chuvoso</span>
+    [0.2, 0.6,  0.2 ],  <span class="cm"># de Nublado:    20% sol     · 60% continua · 20% chuva</span>
+    [0.25, 0.25, 0.5]   <span class="cm"># de Chuvoso:    25% sol     · 25% nublado  · 50% continua</span>
 ]
 
-initial_state = "Ensolarado"  # estado climático inicial da simulação
-num_days = 10                  # quantidade de dias a prever
+<span class="cm"># ── Bloco 3: Configurações iniciais ──────────────────────────────────</span>
+initial_state = "Ensolarado"  <span class="cm"># estado climático de partida da simulação</span>
+num_days      = 10             <span class="cm"># quantidade de dias a prever</span>
 
+<span class="cm"># ── Bloco 4: Funções auxiliares ──────────────────────────────────────</span>
 def get_state_index(state):
-    return states.index(state)  # retorna o índice do estado na lista (0, 1 ou 2)
+    return states.index(state)
+<span class="cm"># → retorna o índice do estado na lista (Ensolarado=0, Nublado=1, Chuvoso=2)
+#   necessário para buscar a linha correta na transition_matrix</span>
 
+<span class="cm"># ── Bloco 5: Função de previsão ──────────────────────────────────────</span>
 def predict_weather(initial_state, num_days):
     current_state = initial_state
-    forecast = [current_state]   # inicia a lista de previsões com o estado atual
+    forecast = [current_state]   <span class="cm"># inicia a lista com o estado atual</span>
     for _ in range(num_days - 1):
         idx = get_state_index(current_state)
-        # sorteia o próximo estado usando as probabilidades da linha correspondente da matriz
         next_state = np.random.choice(states, p=transition_matrix[idx])
+        <span class="cm"># → random.choice sorteia o próximo estado usando as probabilidades da linha idx</span>
         forecast.append(next_state)
-        current_state = next_state  # atualiza o estado atual para a próxima iteração
+        current_state = next_state  <span class="cm"># atualiza o estado para a próxima iteração</span>
     return forecast
 
+<span class="cm"># ── Bloco 6: Execução e saída ─────────────────────────────────────────</span>
 forecast = predict_weather(initial_state, num_days)
 print(f"Estado inicial: {initial_state}")
 print("Previsão para os próximos dias:")
 for day, state in enumerate(forecast, start=1):
-    print(f"Dia {day}: {state}")  # exibe cada dia com seu estado climático previsto</pre>
+    print(f"Dia {day}: {state}")  <span class="cm"># exibe cada dia com seu estado climático previsto</span></pre>
       </div>
 
       <div class="prompt-wrap fade-in">
@@ -2610,55 +2642,56 @@ Dia 10: Nublado</pre>
         <div class="card-title">Mão na massa: construindo um sistema especialista em Python</div>
         <p>Um <strong>sistema especialista</strong> é composto por dois elementos centrais: uma <strong>base de conhecimento</strong> (fatos e regras do domínio) e um <strong>mecanismo de inferência</strong> (motor que aplica as regras). Vamos construir um exemplo de diagnóstico logístico usando <strong>encadeamento progressivo</strong> (forward chaining):</p>
           <div class="prompt-label neutro">sistema_especialista.py</div>
-<pre class="prompt-block neutro">
+<pre class="prompt-block neutro"><span class="cm"># ── Bloco 1: Classe BaseDeConhecimento ───────────────────────────────</span>
 class BaseDeConhecimento:
     def __init__(self):
-        self.fatos = []
-        self.regras = []
+        self.fatos = []   <span class="cm"># lista de fatos conhecidos (observações reais)</span>
+        self.regras = []  <span class="cm"># lista de regras no formato (condições, conclusão)</span>
 
     def adicionar_fato(self, fato):
-        self.fatos.append(fato)
+        self.fatos.append(fato)  <span class="cm"># registra um novo fato na base</span>
 
     def adicionar_regra(self, condicao, conclusao):
-        self.regras.append((condicao, conclusao))
+        self.regras.append((condicao, conclusao))  <span class="cm"># SE condicao ENTÃO conclusao</span>
 
-
+<span class="cm"># ── Bloco 2: Classe SistemaEspecialista ──────────────────────────────</span>
 class SistemaEspecialista:
     def __init__(self, base):
-        self.base = base
+        self.base = base  <span class="cm"># associa a base de conhecimento ao sistema</span>
 
     def inferir(self):
         mudou = True
-        while mudou:
+        while mudou:  <span class="cm"># continua enquanto houver novas conclusões a inferir</span>
             mudou = False
             for condicao, conclusao in self.base.regras:
                 conds_ok = all(c in self.base.fatos for c in condicao)
+                <span class="cm"># → verifica se TODAS as condições da regra estão satisfeitas pelos fatos conhecidos</span>
                 if conds_ok and conclusao not in self.base.fatos:
-                    self.base.fatos.append(conclusao)
+                    self.base.fatos.append(conclusao)  <span class="cm"># adiciona a nova conclusão aos fatos</span>
                     print(f"Inferido: {conclusao}")
-                    mudou = True
+                    mudou = True  <span class="cm"># sinaliza que houve mudança — o loop continua</span>
 
-
-# --- Base de conhecimento: diagnóstico de viaturas ---
+<span class="cm"># ── Bloco 3: Base de conhecimento — diagnóstico de viaturas ──────────</span>
 base = BaseDeConhecimento()
 
-# Fatos iniciais observados
+<span class="cm"># fatos iniciais: situações observadas no campo</span>
 base.adicionar_fato("motor não parte")
 base.adicionar_fato("bateria fraca")
 
-# Regras de diagnóstico
-base.adicionar_regra(["bateria fraca"], "problema elétrico")
-base.adicionar_regra(["motor não parte", "problema elétrico"], "falha no sistema de partida")
-base.adicionar_regra(["falha no sistema de partida"], "viatura indisponível")
-base.adicionar_regra(["viatura indisponível"], "acionar manutenção Nível 2")
+<span class="cm"># ── Bloco 4: Regras de diagnóstico ───────────────────────────────────</span>
+<span class="cm"># formato: SE [condições] ENTÃO conclusão</span>
+base.adicionar_regra(["bateria fraca"],                           "problema elétrico")
+base.adicionar_regra(["motor não parte", "problema elétrico"],   "falha no sistema de partida")
+base.adicionar_regra(["falha no sistema de partida"],            "viatura indisponível")
+base.adicionar_regra(["viatura indisponível"],                   "acionar manutenção Nível 2")
 
-# Executar inferência
+<span class="cm"># ── Bloco 5: Execução e saída ─────────────────────────────────────────</span>
 se = SistemaEspecialista(base)
-se.inferir()
+se.inferir()  <span class="cm"># dispara o encadeamento progressivo (forward chaining)</span>
 
 print("\nFatos na base após inferência:")
 for fato in base.fatos:
-    print(f"  - {fato}")
+    print(f"  - {fato}")  <span class="cm"># lista todos os fatos — incluindo os inferidos automaticamente</span>
 </pre>
           <div class="prompt-label resposta">Saída</div>
 <pre class="prompt-block resposta">
