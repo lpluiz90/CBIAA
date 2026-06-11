@@ -516,8 +516,8 @@ print(f"Acurácia do modelo: {accuracy * 100:.2f}%")
         <p style="margin-top:12px;">No passo seguinte, faremos a divisão em <strong>Features</strong> e <strong>Labels</strong>. As Features são as características dos dados — neste caso, o tamanho do imóvel. As Labels são os rótulos ou classificações — neste caso, o preço do imóvel, ou seja, a saída desejada do modelo. Utilizaremos o modelo de <strong>Regressão Linear</strong>, que consiste em uma função polinomial de primeiro grau: <em>y = ax + b</em>.</p>
       </div>
 
-      <div class="callout purple fade-in" style="margin-top:14px;">
-        <strong>O que este código faz:</strong> O foco deste código é construir um modelo de <strong>Regressão Linear</strong> para prever o preço de imóveis com base no tamanho em m². Geramos um dataset simulado de 100 imóveis, treinamos o modelo com 80% dos dados e avaliamos seu desempenho com três métricas: <strong>R²</strong> (ajuste ao modelo), <strong>MAE</strong> (erro médio absoluto) e <strong>RMSE</strong> (raiz do erro quadrático médio). Aplicamos também <strong>validação cruzada</strong> com 5 subconjuntos para uma avaliação mais robusta, e ao final plotamos a reta de regressão obtida.
+      <div class="callout warn fade-in" style="margin-top:14px;">
+        <strong>Atenção:</strong> Os dados utilizados neste código são <strong>simulados e gerados aleatoriamente dentro do próprio código</strong> — não representam imóveis reais.
       </div>
 
       <div class="prompt-wrap fade-in">
