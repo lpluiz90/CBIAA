@@ -472,22 +472,22 @@
       <ul class="sb-nav">
         <li class="section-divider"><a href="#sec-o-que-e"><span class="num">01</span> O que é Eng. de Prompt?</a></li>
         <li><a href="#ep-conceito"><span class="num">1.1</span> Conceito e Exemplos</a></li>
+        <li><a href="#ep-importancia"><span class="num">1.2</span> Por que importa?</a></li>
         <li class="section-divider"><a href="#sec-motivando"><span class="num">02</span> Motivando a Ação</a></li>
         <li><a href="#ep-etimologia"><span class="num">2.1</span> Etimologia de "Prompt"</a></li>
         <li class="section-divider"><a href="#sec-ambiente2"><span class="num">03</span> Preparando o Ambiente</a></li>
         <li><a href="#ep-mistral"><span class="num">3.1</span> Mistral AI</a></li>
         <li class="section-divider"><a href="#sec-principios"><span class="num">04</span> Princípios de Criação</a></li>
         <li><a href="#ep-principio1"><span class="num">4.1</span> Os 5 Princípios</a></li>
-        <li><a href="#ep-detetive"><span class="num">4.2</span> Jogo do Detetive</a></li>
+        <li><a href="#sec-prompt-struct"><span class="num">4.2</span> Estrutura P.R.O.M.P.T.</a></li>
+        <li><a href="#ep-detetive"><span class="num">4.3</span> Jogo do Detetive</a></li>
         <li><a href="#quiz-ep2"><span class="num">—</span> Exercício 04</a></li>
-        <li class="section-divider"><a href="#sec-fundamentos"><span class="num">05</span> Fundamentos</a></li>
-        <li class="section-divider"><a href="#sec-prompt-struct"><span class="num">06</span> Estrutura P.R.O.M.P.T.</a></li>
-        <li class="section-divider"><a href="#sec-tecnicas-basicas"><span class="num">07</span> Técnicas Básicas</a></li>
-        <li class="section-divider"><a href="#sec-tecnicas-avancadas"><span class="num">08</span> Técnicas Avançadas</a></li>
-        <li class="section-divider"><a href="#sec-alucinacoes"><span class="num">09</span> Evitando Alucinações</a></li>
-        <li class="section-divider"><a href="#sec-custom-instructions"><span class="num">10</span> Instruções Personalizadas</a></li>
-        <li class="section-divider"><a href="#sec-faca-como2"><span class="num">11</span> Faça Como Eu Fiz</a></li>
-        <li class="section-divider"><a href="#sec-aprendemos2"><span class="num">12</span> O que Aprendemos</a></li>
+        <li class="section-divider"><a href="#sec-tecnicas-basicas"><span class="num">05</span> Técnicas Básicas</a></li>
+        <li class="section-divider"><a href="#sec-tecnicas-avancadas"><span class="num">06</span> Técnicas Avançadas</a></li>
+        <li class="section-divider"><a href="#sec-alucinacoes"><span class="num">07</span> Evitando Alucinações</a></li>
+        <li class="section-divider"><a href="#sec-custom-instructions"><span class="num">08</span> Instruções Personalizadas</a></li>
+        <li class="section-divider"><a href="#sec-faca-como2"><span class="num">09</span> Faça Como Eu Fiz</a></li>
+        <li class="section-divider"><a href="#sec-aprendemos2"><span class="num">10</span> O que Aprendemos</a></li>
       </ul>
     </div>
 
@@ -1574,6 +1574,28 @@ combinações de probabilidade muito baixa]</pre>
           <strong>Em uma frase:</strong> Engenharia de Prompt é a arte de fazer as perguntas certas — da maneira certa — para que a IA entregue exatamente o que você precisa.
         </div>
 
+        <div id="ep-importancia" class="card fade-in">
+          <div class="card-title">Por que isso importa?</div>
+          <p>A <strong>engenharia de prompt</strong> é a ciência empírica de planejar, criar e testar prompts — não é uma ciência exata, mas exige experimentação, iteração e sensibilidade para como os modelos interpretam linguagem natural.</p>
+          <div class="callout purple fade-in" style="margin-top:14px;">
+            <strong>Meta-habilidade:</strong> A engenharia de prompt destrava todas as outras capacidades dos LLMs, permitindo aplicá-los a qualquer domínio — da geração de conteúdo à análise de dados e automação. Empresas como a Anthropic oferecem salários de até <strong>R$ 2,7 milhões por ano</strong> para engenheiros de prompt especializados.
+          </div>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">Regras de Ouro</div>
+          <div class="feature-grid" style="margin-top:10px;">
+            <div class="feature-box gold">
+              <h5>🗣️ A Regra da Pessoa ao Lado</h5>
+              <p>Ao criar um prompt, pense em como você explicaria a tarefa para uma pessoa ao seu lado. Se a explicação for clara para um humano, provavelmente também será para o modelo de linguagem.</p>
+            </div>
+            <div class="feature-box green">
+              <h5>💎 Comece pelo Melhor</h5>
+              <p>Inicie o desenvolvimento usando modelos mais caros e poderosos — eles tendem a gerar melhores resultados. Após validar o prompt, otimize-o para funcionar em modelos mais baratos e rápidos.</p>
+            </div>
+          </div>
+        </div>
+
         <!-- ─── ITEM 02 ─── -->
         <div id="sec-motivando" class="section-sep fade-in">
           <span class="sep-num">Item 02</span>
@@ -1685,6 +1707,54 @@ combinações de probabilidade muito baixa]</pre>
             <h5>5️⃣ Autoconsistência</h5>
             <p>Envie o mesmo prompt várias vezes e colete a resposta mais frequente. Especialmente útil para cálculos numéricos e análises onde a IA pode errar de primeira. <strong>Dica:</strong> os princípios 1 a 4 são os mais úteis no cotidiano — o 5 é mais indicado para análises matemáticas.</p>
           </div>
+        </div>
+
+        <div id="sec-prompt-struct" class="card fade-in">
+          <div class="card-title">Estrutura P.R.O.M.P.T. — Os 6 Componentes</div>
+          <p>O acrônimo <strong>P.R.O.M.P.T.</strong> resume os elementos que devem estar presentes em um prompt bem estruturado:</p>
+          <div class="feature-grid" style="margin-top:14px;">
+            <div class="feature-box purple">
+              <h5>P — Persona</h5>
+              <p>Defina o papel que o modelo deve assumir. Ex.: "Você é um especialista em segurança da informação com 20 anos de experiência."</p>
+            </div>
+            <div class="feature-box">
+              <h5>R — Roteiro</h5>
+              <p>Especifique a tarefa que o modelo deve realizar. Seja claro sobre o que precisa ser feito, passo a passo se necessário.</p>
+            </div>
+            <div class="feature-box gold">
+              <h5>O — Objetivo</h5>
+              <p>Deixe claro o objetivo e o resultado esperado. O modelo precisa saber o que você quer alcançar.</p>
+            </div>
+            <div class="feature-box green">
+              <h5>M — Modelo</h5>
+              <p>Indique o formato ou estrutura da resposta. Ex.: "Responda em tópicos", "Use uma tabela", "Escreva em linguagem formal".</p>
+            </div>
+            <div class="feature-box red">
+              <h5>P — Panorama</h5>
+              <p>Forneça contexto relevante: quem é o público, qual a situação, quais restrições existem.</p>
+            </div>
+            <div class="feature-box" style="border-left-color:#0097a7;">
+              <h5>T — Transformar</h5>
+              <p>Esteja preparado para refinar e iterar com base nos resultados. Forneça feedback e exemplos adicionais se necessário.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-img-wrap fade-in">
+          <img src="../../assets/images/processodoprompt.png" alt="Processo de criação de prompt" loading="lazy"/>
+          <div class="img-cap">Processo de criação e refinamento de prompts — da definição da tarefa à produção.</div>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">Processo de Criação em 6 Etapas</div>
+          <ol style="margin-top:14px;padding-left:22px;line-height:2.1;">
+            <li><strong>Definir a tarefa e critérios de sucesso</strong> — Determine claramente o que o modelo deve fazer e estabeleça critérios mensuráveis para avaliar o sucesso.</li>
+            <li style="margin-top:8px;"><strong>Desenvolver casos de teste</strong> — Crie um conjunto de casos que cubram os principais cenários e casos extremos.</li>
+            <li style="margin-top:8px;"><strong>Projetar o prompt preliminar</strong> — Desenvolva uma primeira versão incluindo definição da tarefa, características de uma boa resposta e contexto relevante.</li>
+            <li style="margin-top:8px;"><strong>Testar o prompt</strong> — Avalie o desempenho usando os casos de teste e registre os resultados.</li>
+            <li style="margin-top:8px;"><strong>Refinar o prompt</strong> — Com base nos resultados, refine adicionando esclarecimentos, exemplos ou restrições.</li>
+            <li style="margin-top:8px;"><strong>Colocar em produção</strong> — Após alcançar resultados satisfatórios, implemente o prompt em seu fluxo de trabalho.</li>
+          </ol>
         </div>
 
         <!-- Jogo do Detetive -->
@@ -1843,92 +1913,8 @@ Frase: "Doze anos de lealdade, e ele nem olhou para mim na última semana."</pre
         </div>
 
         <!-- ─── ITEM 05 ─── -->
-        <div id="sec-fundamentos" class="section-sep fade-in">
-          <span class="sep-num">Item 05</span>
-          <span class="sep-title">Fundamentos da Engenharia de Prompt</span>
-          <span class="sep-line"></span>
-        </div>
-
-        <div class="card fade-in">
-          <div class="card-title">Definição e Importância</div>
-          <p>A <strong>engenharia de prompt</strong> é a ciência empírica de planejar, criar e testar prompts para gerar melhores respostas em grandes modelos de linguagem. Não é uma ciência exata — exige experimentação, iteração e sensibilidade para como os modelos interpretam linguagem natural.</p>
-          <div class="callout purple fade-in" style="margin-top:14px;">
-            <strong>Meta-habilidade:</strong> A engenharia de prompt destrava todas as outras capacidades dos LLMs, permitindo aplicá-los a qualquer domínio — de geração de conteúdo a análise de dados e automação. Empresas como a Anthropic oferecem salários de até <strong>R$ 2,7 milhões por ano</strong> para engenheiros de prompt especializados.
-          </div>
-        </div>
-
-        <div class="card fade-in">
-          <div class="card-title">Regras de Ouro</div>
-          <div class="feature-grid" style="margin-top:10px;">
-            <div class="feature-box gold">
-              <h5>🗣️ A Regra da Pessoa ao Lado</h5>
-              <p>Ao criar um prompt, pense em como você explicaria a tarefa para uma pessoa ao seu lado. Se a explicação for clara para um humano, provavelmente também será para o modelo de linguagem.</p>
-            </div>
-            <div class="feature-box green">
-              <h5>💎 Comece pelo Melhor</h5>
-              <p>Inicie o desenvolvimento usando modelos mais caros e poderosos — eles tendem a gerar melhores resultados. Após validar o prompt, otimize-o para funcionar em modelos mais baratos e rápidos.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- ─── ITEM 06 ─── -->
-        <div id="sec-prompt-struct" class="section-sep fade-in">
-          <span class="sep-num">Item 06</span>
-          <span class="sep-title">Estrutura P.R.O.M.P.T.</span>
-          <span class="sep-line"></span>
-        </div>
-
-        <div class="card fade-in">
-          <div class="card-title">Os 6 Componentes de um Prompt Eficaz</div>
-          <p>O acrônimo <strong>P.R.O.M.P.T.</strong> resume os elementos fundamentais de um prompt bem estruturado:</p>
-          <div class="feature-grid" style="margin-top:14px;">
-            <div class="feature-box purple">
-              <h5>P — Persona</h5>
-              <p>Defina o papel que o modelo deve assumir. Ex.: "Você é um especialista em segurança da informação com 20 anos de experiência."</p>
-            </div>
-            <div class="feature-box">
-              <h5>R — Roteiro</h5>
-              <p>Especifique a tarefa que o modelo deve realizar. Seja claro sobre o que precisa ser feito, passo a passo se necessário.</p>
-            </div>
-            <div class="feature-box gold">
-              <h5>O — Objetivo</h5>
-              <p>Deixe claro o objetivo e o que se espera alcançar. O modelo precisa saber qual é o resultado desejado.</p>
-            </div>
-            <div class="feature-box green">
-              <h5>M — Modelo</h5>
-              <p>Indique o formato ou estrutura da resposta. Ex.: "Responda em tópicos", "Use uma tabela", "Escreva em linguagem formal".</p>
-            </div>
-            <div class="feature-box red">
-              <h5>P — Panorama</h5>
-              <p>Forneça contexto relevante: quem é o público, qual a situação, quais restrições existem.</p>
-            </div>
-            <div class="feature-box" style="border-left-color:#0097a7;">
-              <h5>T — Transformar</h5>
-              <p>Esteja preparado para refinar e iterar com base nos resultados. Forneça feedback e exemplos adicionais se necessário.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="content-img-wrap fade-in">
-          <img src="../../assets/images/processodoprompt.png" alt="Processo de criação de prompt — das etapas de definição à produção" loading="lazy"/>
-          <div class="img-cap">Processo de criação e refinamento de prompts — da definição da tarefa à produção.</div>
-        </div>
-
-        <div class="card fade-in">
-          <div class="card-title">Processo de Criação em 6 Etapas</div>
-          <ol style="margin-top:14px;padding-left:22px;line-height:2.1;">
-            <li><strong>Definir a tarefa e critérios de sucesso</strong> — Determine claramente o que o modelo deve fazer e estabeleça critérios mensuráveis para avaliar o sucesso.</li>
-            <li style="margin-top:8px;"><strong>Desenvolver casos de teste</strong> — Crie um conjunto de casos que cubram os principais cenários e casos extremos.</li>
-            <li style="margin-top:8px;"><strong>Projetar o prompt preliminar</strong> — Desenvolva uma primeira versão incluindo a definição da tarefa, características de uma boa resposta e contexto relevante.</li>
-            <li style="margin-top:8px;"><strong>Testar o prompt</strong> — Avalie o desempenho usando os casos de teste e registre os resultados.</li>
-            <li style="margin-top:8px;"><strong>Refinar o prompt</strong> — Com base nos resultados, refine adicionando esclarecimentos, exemplos ou restrições.</li>
-            <li style="margin-top:8px;"><strong>Colocar em produção</strong> — Após alcançar resultados satisfatórios, implemente o prompt em seu fluxo de trabalho.</li>
-          </ol>
-        </div>
-
-        <!-- ─── ITEM 07 ─── -->
         <div id="sec-tecnicas-basicas" class="section-sep fade-in">
-          <span class="sep-num">Item 07</span>
+          <span class="sep-num">Item 05</span>
           <span class="sep-title">Técnicas Básicas</span>
           <span class="sep-line"></span>
         </div>
@@ -1991,9 +1977,9 @@ Frase: "Doze anos de lealdade, e ele nem olhou para mim na última semana."</pre
           </div>
         </div>
 
-        <!-- ─── ITEM 08 ─── -->
+        <!-- ─── ITEM 06 ─── -->
         <div id="sec-tecnicas-avancadas" class="section-sep fade-in">
-          <span class="sep-num">Item 08</span>
+          <span class="sep-num">Item 06</span>
           <span class="sep-title">Técnicas Avançadas</span>
           <span class="sep-line"></span>
         </div>
@@ -2056,9 +2042,9 @@ Frase: "Doze anos de lealdade, e ele nem olhou para mim na última semana."</pre
           </div>
         </div>
 
-        <!-- ─── ITEM 09 ─── -->
+        <!-- ─── ITEM 07 ─── -->
         <div id="sec-alucinacoes" class="section-sep fade-in">
-          <span class="sep-num">Item 09</span>
+          <span class="sep-num">Item 07</span>
           <span class="sep-title">Evitando Alucinações</span>
           <span class="sep-line"></span>
         </div>
@@ -2074,9 +2060,9 @@ Frase: "Doze anos de lealdade, e ele nem olhou para mim na última semana."</pre
           </ul>
         </div>
 
-        <!-- ─── ITEM 10 ─── -->
+        <!-- ─── ITEM 08 ─── -->
         <div id="sec-custom-instructions" class="section-sep fade-in">
-          <span class="sep-num">Item 10</span>
+          <span class="sep-num">Item 08</span>
           <span class="sep-title">Instruções Personalizadas</span>
           <span class="sep-line"></span>
         </div>
@@ -2111,9 +2097,9 @@ Frase: "Doze anos de lealdade, e ele nem olhou para mim na última semana."</pre
 - WARNING: Reply in the language I use for chat</pre>
         </div>
 
-        <!-- ─── ITEM 11 ─── -->
+        <!-- ─── ITEM 09 ─── -->
         <div id="sec-faca-como2" class="section-sep fade-in">
-          <span class="sep-num">Item 11</span>
+          <span class="sep-num">Item 09</span>
           <span class="sep-title">Faça Como Eu Fiz
           <span class="sep-line"></span>
         </div>
@@ -2158,9 +2144,9 @@ Escreva em 2ª pessoa, como se o jogador fosse o detetive.</pre>
           <strong>Observe:</strong> Note como, ao longo dos 4 passos, a IA manteve consistência de tom, personagens e cronologia. Isso é o poder de <strong>dividir em subtarefas com contexto acumulado</strong> — cada prompt constrói sobre o anterior.
         </div>
 
-        <!-- ─── ITEM 12 ─── -->
+        <!-- ─── ITEM 10 ─── -->
         <div id="sec-aprendemos2" class="section-sep fade-in">
-          <span class="sep-num">Item 12</span>
+          <span class="sep-num">Item 10</span>
           <span class="sep-title">O que Aprendemos?</span>
           <span class="sep-line"></span>
         </div>
