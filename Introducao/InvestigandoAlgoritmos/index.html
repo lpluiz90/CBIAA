@@ -271,13 +271,20 @@
   <div class="sb-panel" id="sb-panel-2">
     <div class="sb-brand">
       <div style="font-size:15px;font-weight:700;color:var(--sky);font-family:'Rajdhani',sans-serif;letter-spacing:.3px;margin-bottom:4px;">Investigando Algoritmos</div>
-      <div class="course-title">Aula 02 — [Título a preencher]</div>
+      <div class="course-title">Aula 02 — Supervisionando o aprendizado</div>
     </div>
     <div class="sb-section-label">Navegação</div>
     <ul class="sb-nav">
       <li><a href="#obj2"><span class="num">—</span> Objetivos</a></li>
       <li><a href="#intro-a2"><span class="num">—</span> Introdução</a></li>
-      <li class="section-divider"><a href="#a2-s1"><span class="num">01</span> [Item a preencher]</a></li>
+      <li class="section-divider"><a href="#a2-s1"><span class="num">01</span> Regressão e classificação</a></li>
+      <li><a href="#entendendo-classificacao"><span class="num">—</span> Entendendo a classificação</a></li>
+      <li><a href="#diferenciando-reg-class"><span class="num">—</span> Diferenciando as abordagens</a></li>
+      <li><a href="#treinando-regressao"><span class="num">—</span> Treinando o modelo</a></li>
+      <li><a href="#avaliando-regressao"><span class="num">—</span> Avaliando o desempenho</a></li>
+      <li><a href="#explorando-classificacao"><span class="num">—</span> Modelo de classificação</a></li>
+      <li><a href="#interpretando-classificacao"><span class="num">—</span> Interpretando o modelo</a></li>
+      <li><a href="#conclusao-a2"><span class="num">—</span> Conclusão</a></li>
     </ul>
   </div>
 
@@ -365,10 +372,15 @@
     </div>
 
     <div class="hero-dyn" id="hero-dyn-2">
-      <h1 class="hero-title">Aula 02 — [Título a preencher]</h1>
-      <p class="hero-subtitle">[Subtítulo da aula a preencher]</p>
+      <h1 class="hero-title">Aula 02 — Supervisionando o aprendizado</h1>
+      <p class="hero-subtitle">Compreenda as diferenças entre regressão e classificação. Treine modelos com datasets reais e interprete métricas como MSE, R² e acurácia.</p>
       <div class="hero-tags">
-        <span class="hero-tag">[Tag a preencher]</span>
+        <span class="hero-tag">Machine Learning</span>
+        <span class="hero-tag">Aprendizado Supervisionado</span>
+        <span class="hero-tag">Regressão Linear</span>
+        <span class="hero-tag">Classificação Logística</span>
+        <span class="hero-tag">Scikit-Learn</span>
+        <span class="hero-tag">Python</span>
       </div>
     </div>
 
@@ -999,24 +1011,216 @@ Classe prevista para a nova amostra: setosa</pre>
       <div id="obj2" class="fade-in" style="background:var(--white);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:24px 28px;margin:36px 0 0;box-shadow:0 2px 10px rgba(0,0,0,.06);">
         <div class="obj-title">◆ Objetivos da Instrução</div>
         <div class="obj-grid">
-          <div class="obj-item"><span class="dot"></span>[Objetivo 1 a preencher]</div>
-          <div class="obj-item"><span class="dot"></span>[Objetivo 2 a preencher]</div>
-          <div class="obj-item"><span class="dot"></span>[Objetivo 3 a preencher]</div>
-          <div class="obj-item"><span class="dot"></span>[Objetivo 4 a preencher]</div>
+          <div class="obj-item"><span class="dot"></span>Compreender as diferenças entre algoritmos de regressão e classificação no aprendizado supervisionado</div>
+          <div class="obj-item"><span class="dot"></span>Treinar um modelo de regressão linear para prever preços de imóveis com o dataset California Housing</div>
+          <div class="obj-item"><span class="dot"></span>Implementar um modelo de classificação logística para diagnóstico de diabetes</div>
+          <div class="obj-item"><span class="dot"></span>Interpretar métricas de avaliação como MSE, R² e acurácia, além da matriz de confusão</div>
         </div>
       </div>
 
       <!-- Introdução -->
       <div id="intro-a2" class="intro-card fade-in">
-        <p>[Texto de introdução da Aula 02 a preencher]</p>
+        <p>Exploramos o mundo do aprendizado supervisionado, começando com o dataset Iris. Em seguida, geramos um dataset para entender melhor como utilizar um modelo de regressão.</p>
+        <p>Com isso, surgiu a dúvida: o que é um modelo de regressão e o que é um modelo de classificação, que utilizamos e testamos com o dataset Iris? Qual a diferença entre eles? Quando usamos regressão e quando usamos classificação?</p>
       </div>
 
       <!-- Item 01 -->
-      <div id="a2-s1" class="section-sep fade-in"><span class="sep-num">Item 01</span><span class="sep-title">[Título do Item 01 a preencher]</span><span class="sep-line"></span></div>
+      <div id="a2-s1" class="section-sep fade-in"><span class="sep-num">Item 01</span><span class="sep-title">Algoritmos de regressão e classificação</span><span class="sep-line"></span></div>
+
+      <!-- Entendendo a classificação -->
+      <div id="entendendo-classificacao" class="card fade-in">
+        <div class="card-title">Entendendo a classificação</div>
+        <p>Vamos entender a classificação. Por exemplo, quando um e-mail chega na caixa de entrada, precisa ser classificado como <strong>seguro</strong>, indo diretamente para a caixa de entrada, permitindo abrir anexos e ver informações, ou como <strong>spam</strong>, sendo direcionado para outra caixa com a etiqueta de e-mail não seguro, que deve ser verificado com cautela para proteger a segurança e privacidade dos dados.</p>
+        <p>Esse tipo de classificação pode ser aplicado a imagens, identificando se ela contém um animal ou representa um dia de sol ou chuva. Esses são exemplos clássicos de aplicações de classificação.</p>
+      </div>
+
+      <!-- Diferenciando classificação de regressão -->
+      <div id="diferenciando-reg-class" class="card fade-in">
+        <div class="card-title">Diferenciando classificação de regressão</div>
+        <p>Vamos entender melhor quando usar classificação e regressão, e as principais diferenças entre essas abordagens no campo do aprendizado supervisionado, onde temos um conjunto de dados rotulados para o processo de treinamento em Machine Learning.</p>
+        <p>Para isso, utilizaremos um dataset de imóveis, especificamente com preços de imóveis na Califórnia. No Colab, na próxima célula vazia, colaremos o código abaixo que carrega esse dataset.</p>
+      </div>
+
+      <div class="prompt-wrap fade-in">
+        <span class="prompt-label neutro">Python 🐍 — california_housing.py</span>
+        <pre class="prompt-block neutro"><span class="cm"># Carregar o dataset California Housing do scikit-learn</span>
+from sklearn.datasets import fetch_california_housing
+import pandas as pd
+
+california = fetch_california_housing()
+df = pd.DataFrame(california.data, columns=california.feature_names)
+df['PRICE'] = california.target
+
+<span class="cm"># Ver as primeiras linhas dos dados</span>
+print(df.head())</pre>
+      </div>
+
+      <div class="callout fade-in">Ao executar, verificaremos as primeiras linhas do conjunto de dados, que incluem idade da casa, número médio de quartos e salas, população, ocupação, latitude, longitude e preço. Consideramos não apenas a área do imóvel, mas também suas características e localização.</div>
+
+      <div class="prompt-wrap fade-in">
+        <span class="prompt-label resposta">Saída</span>
+        <pre class="prompt-block resposta">   MedInc  HouseAge  AveRooms  AveBedrms  Population  AveOccup  Latitude  Longitude  PRICE
+0  8.3252      41.0  6.984127   1.023810       322.0  2.555556     37.88    -122.23  4.526
+1  8.3014      21.0  6.238137   0.971880      2401.0  2.109842     37.86    -122.22  3.585
+2  7.2574      52.0  8.288136   1.073446       496.0  2.802260     37.85    -122.24  3.521
+3  5.6431      52.0  5.817352   1.073059       558.0  2.547945     37.85    -122.25  3.413
+4  3.8462      52.0  6.281853   1.081081       565.0  2.181467     37.85    -122.25  3.422</pre>
+      </div>
+
+      <!-- Treinando um modelo de regressão -->
+      <div id="treinando-regressao" class="card fade-in">
+        <div class="card-title">Treinando um modelo de regressão</div>
+        <p>Com o dataset em mãos, treinaremos um modelo para prever o preço de imóveis na Califórnia. Utilizaremos um algoritmo de regressão, pois queremos <strong>estimar o preço do imóvel</strong> em vez de classificar como caro ou barato. Queremos um valor contínuo em dólares, incluindo os centavos.</p>
+        <p>O código a seguir importa as bibliotecas necessárias, carrega o conjunto de dados, divide em treino e teste, treina o modelo usando regressão linear, faz previsões e avalia o modelo usando R² e MSE. Por fim, exibe as métricas calculadas e visualiza os resultados com um gráfico de dispersão.</p>
+      </div>
+
+      <div class="prompt-wrap fade-in">
+        <span class="prompt-label neutro">Python 🐍 — regressao_linear_california.py</span>
+        <pre class="prompt-block neutro">import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.datasets import fetch_california_housing
+
+<span class="cm"># Carregar o conjunto de dados</span>
+california = fetch_california_housing()
+df = pd.DataFrame(california.data, columns=california.feature_names)
+df['PRICE'] = california.target
+
+<span class="cm"># Dividir os dados em treino e teste</span>
+X = df.drop('PRICE', axis=1)
+y = df['PRICE']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+<span class="cm"># Treinar o modelo</span>
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+<span class="cm"># Fazer previsões</span>
+y_pred = model.predict(X_test)
+
+<span class="cm"># Avaliar o modelo</span>
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+
+<span class="cm"># Exibir métricas</span>
+print(f"Erro Quadrático Médio (MSE): {mse:.2f}")
+print(f"Coeficiente de Determinação (R²): {r2:.2f}")
+
+<span class="cm"># Visualização dos resultados</span>
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x=y_test, y=y_pred, alpha=0.6)
+plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], '--r', linewidth=2)  <span class="cm"># Linha de referência</span>
+plt.xlabel("Valores Reais")
+plt.ylabel("Valores Preditos")
+plt.title("Regressão Linear: Valores Reais vs. Preditos")
+plt.show()</pre>
+      </div>
+
+      <!-- Avaliando o desempenho -->
+      <div id="avaliando-regressao" class="card fade-in">
+        <div class="card-title">Avaliando o desempenho do modelo de regressão</div>
+        <p>Após executar o código, temos um erro apreciável na predição dos valores dos imóveis. O erro quadrático médio é de 0,53. Se calcularmos a raiz quadrada desse erro, obteríamos um valor que poderia alcançar <strong>73 mil dólares de diferença</strong> entre o valor predito e o valor real do imóvel. Isso indica uma diferença considerável.</p>
+      </div>
+
+      <div class="prompt-wrap fade-in">
+        <span class="prompt-label resposta">Saída</span>
+        <pre class="prompt-block resposta">Erro Quadrático Médio (MSE): 0.53
+Coeficiente de Determinação (R²): 0.60</pre>
+      </div>
+
+      <div class="content-img-wrap fade-in">
+        <img src="../../assets/images/regressaolinear.png" alt="Gráfico de Regressão Linear: Valores Reais vs. Preditos">
+        <div class="img-cap">Regressão Linear: Valores Reais vs. Preditos — Créditos da imagem: Alura</div>
+      </div>
 
       <div class="card fade-in">
-        <div class="card-title">[Título do card a preencher]</div>
-        <p>[Conteúdo a preencher]</p>
+        <p>Esse fato nos aponta que o modelo de regressão utilizado é muito simples. Como ele é muito simples, observamos um <strong>underfitting</strong> — ou seja, alguns dados estão ajustados, mas muitos estão fora da previsão do modelo. Portanto, esse modelo não tem uma boa capacidade de previsão do preço de imóveis.</p>
+        <p>Nesse caso, seria necessário usar um modelo de regressão mais complexo, diferente do modelo de regressão linear, que é o mais simples (representado pela equação <strong>Y = AX + B</strong>).</p>
+      </div>
+
+      <!-- Explorando o modelo de classificação -->
+      <div id="explorando-classificacao" class="card fade-in">
+        <div class="card-title">Explorando o modelo de classificação</div>
+        <p>Agora, vamos explorar um pouco mais o modelo de classificação. Para isso, utilizaremos um código que carregará um dataset de pacientes anonimizados, com e sem diabetes, para classificar se um dado se refere a um paciente potencialmente diabético ou não.</p>
+        <p>O código abaixo importa as bibliotecas, carrega os dados do dataset de pacientes diabéticos, transforma a variável target em binária para o processo de classificação, divide os dados em treino e teste, treina o modelo, faz as previsões e avalia o modelo. Por fim, gera a <strong>matriz de confusão</strong> para avaliar os resultados obtidos, comparando as inferências do modelo treinado com os dados reais.</p>
+      </div>
+
+      <div class="prompt-wrap fade-in">
+        <span class="prompt-label neutro">Python 🐍 — classificacao_diabetes.py</span>
+        <pre class="prompt-block neutro">import pandas as pd
+from sklearn.datasets import load_diabetes
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDisplay
+import matplotlib.pyplot as plt
+
+<span class="cm"># Carregar os dados</span>
+diabetes = load_diabetes()
+df = pd.DataFrame(diabetes.data, columns=diabetes.feature_names)
+df['OUTCOME'] = diabetes.target
+
+<span class="cm"># Transformar a variável target em binária (classificação)</span>
+df['OUTCOME'] = (df['OUTCOME'] &gt; df['OUTCOME'].median()).astype(int)  <span class="cm"># 1 acima da mediana, 0 abaixo</span>
+
+<span class="cm"># Dividir os dados em treino e teste</span>
+X = df.drop('OUTCOME', axis=1)
+y = df['OUTCOME']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+<span class="cm"># Treinar o modelo</span>
+model = LogisticRegression(max_iter=1000)  <span class="cm"># Aumentando iterações para evitar warnings</span>
+model.fit(X_train, y_train)
+
+<span class="cm"># Fazer previsões</span>
+y_pred = model.predict(X_test)
+
+<span class="cm"># Avaliar o modelo</span>
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Acurácia do Modelo: {accuracy * 100:.2f}%")
+
+<span class="cm"># Matriz de Confusão</span>
+cm = confusion_matrix(y_test, y_pred)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['Não Diabético', 'Diabético'])
+disp.plot(cmap=plt.cm.Blues)
+plt.title("Matriz de Confusão - Diagnóstico de Diabetes")
+plt.show()</pre>
+      </div>
+
+      <!-- Interpretando o modelo de classificação -->
+      <div id="interpretando-classificacao" class="card fade-in">
+        <div class="card-title">Interpretando o modelo de classificação</div>
+        <p>Ao executar o código, observamos que a acurácia do modelo de classificação foi de 80,45%. Essa é uma acurácia relativa, e sempre buscamos nos aproximar o máximo possível de 100%.</p>
+        <p>A <strong>matriz de confusão</strong> apresenta o True Label (rótulo verdadeiro) e o Predicted Label (rótulo previsto). A partir dela, comparamos os dados reais com os previstos.</p>
+      </div>
+
+      <div class="prompt-wrap fade-in">
+        <span class="prompt-label resposta">Saída</span>
+        <pre class="prompt-block resposta">Acurácia do Modelo: 80.45%</pre>
+      </div>
+
+      <div class="content-img-wrap fade-in">
+        <img src="../../assets/images/matrriz%20de%20confusao.png" alt="Matriz de Confusão — Diagnóstico de Diabetes">
+        <div class="img-cap">Matriz de Confusão — Diagnóstico de Diabetes — Créditos da imagem: Alura</div>
+      </div>
+
+      <div class="card fade-in">
+        <p>Na matriz de confusão, no quadrante superior esquerdo, temos <strong>56 pessoas não diabéticas</strong> corretamente diagnosticadas como não diabéticas. No quadrante superior direito, <strong>16 pessoas não diabéticas</strong> foram classificadas erroneamente como diabéticas. No quadrante inferior esquerdo, <strong>51 pessoas diabéticas</strong> foram corretamente classificadas como diabéticas, enquanto <strong>10 diabéticas</strong> foram classificadas como não diabéticas.</p>
+        <p>A matriz de confusão nos mostra que o modelo acertou mais do que errou nesse conjunto de dados.</p>
+      </div>
+
+      <!-- Conclusão -->
+      <div id="conclusao-a2" class="card fade-in">
+        <div class="card-title">Conclusão</div>
+        <p>Percebemos a diferença entre classificação e regressão. Na <strong>classificação</strong>, atribuímos um rótulo a partir de um conjunto de características dos dados. No caso dos pacientes, inferimos se possuem ou não diabetes. Na <strong>regressão</strong>, a partir de um conjunto de características, estimamos um valor contínuo, como o valor de um imóvel.</p>
+        <p>Podemos aplicar a regressão no setor financeiro, por exemplo, e a classificação em diferentes demandas de variados setores.</p>
+      </div>
+
+      <div class="callout tip fade-in">
+        <strong>Próximos passos:</strong> Compreendendo melhor o que são regressão e classificação, avançaremos explorando outras técnicas e configurações no processo de treinamento de modelos.
       </div>
 
     </div>
