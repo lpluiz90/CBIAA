@@ -4,47 +4,867 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Ética em IA — EsCom EAD</title>
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet"/>
 <style>
-  :root{--navy:#192437;--steel:#2d4a6b;--ice2:#eef3f6;--sky:#4a9fc8;--gold:#c89b3c;--white:#fff;--text:#1a2535;}
+  :root{--navy:#192437;--navy2:#1e2d42;--steel:#2d4a6b;--ice:#dfe6eb;--ice2:#eef3f6;--sky:#4a9fc8;--gold:#c89b3c;--white:#fff;--text:#1a2535;--muted:#5a6a7e;--section-w:900px;--sidebar-w:252px;--radius:10px;}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'Source Sans 3',sans-serif;background:var(--ice2);color:var(--text);min-height:100vh;}
-  #hero{background:linear-gradient(135deg,var(--navy) 0%,var(--steel) 60%,#2a5a8a 100%);padding:52px 60px;position:relative;overflow:hidden;}
-  #hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,.03) 39px,rgba(255,255,255,.03) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,.03) 39px,rgba(255,255,255,.03) 40px);pointer-events:none;}
-  .bc-line{font-family:'Rajdhani',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;}
-  .bc-line-1{color:rgba(255,255,255,.42);}
-  .bc-line-2{color:var(--sky);font-size:13px;}
-  .back-link{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.5);font-family:'Rajdhani',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;margin-bottom:20px;transition:color .15s;}
-  .back-link:hover{color:var(--sky);}
-  .hero-title{font-family:'Rajdhani',sans-serif;font-size:46px;font-weight:700;color:var(--white);line-height:1.05;margin-top:14px;margin-bottom:14px;}
-  .hero-subtitle{font-size:17.5px;color:rgba(255,255,255,.68);max-width:640px;line-height:1.65;margin-bottom:24px;}
-  .badge{background:rgba(255,165,0,.18);border:1px solid rgba(255,165,0,.35);color:#ffd580;padding:4px 14px;border-radius:20px;font-size:11px;font-family:'Rajdhani',sans-serif;letter-spacing:.5px;display:inline-block;}
-  .content{max-width:860px;margin:0 auto;padding:60px 48px 100px;}
-  .coming-card{background:var(--white);border-radius:12px;padding:48px 40px;text-align:center;box-shadow:0 2px 20px rgba(0,0,0,.07);}
-  .coming-icon{font-size:52px;margin-bottom:20px;}
-  .coming-card h2{font-family:'Rajdhani',sans-serif;font-size:28px;font-weight:700;color:var(--navy);margin-bottom:12px;}
-  .coming-card p{font-size:18px;color:#5a6a7e;line-height:1.7;margin-bottom:24px;}
-  .btn-home{display:inline-block;background:var(--navy);color:var(--white);text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:12px 28px;border-radius:8px;transition:background .15s;}
-  .btn-home:hover{background:var(--steel);}
-  @media(max-width:700px){#hero{padding:32px 18px;}.hero-title{font-size:28px;}.content{padding:32px 14px 60px;}.coming-card{padding:30px 18px;}}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Source Sans 3',sans-serif;background:var(--ice2);color:var(--text);display:block;min-height:100vh;}
+  #wrapper{display:flex;min-height:100vh;}
+  #sidebar{width:var(--sidebar-w);min-width:var(--sidebar-w);background:var(--navy);position:sticky;top:0;height:100vh;overflow-y:auto;flex-shrink:0;z-index:50;}
+  #sidebar::-webkit-scrollbar{width:4px;}
+  #sidebar::-webkit-scrollbar-track{background:var(--navy2);}
+  #sidebar::-webkit-scrollbar-thumb{background:var(--steel);border-radius:2px;}
+  .sb-brand{padding:22px 18px 16px;border-bottom:1px solid rgba(255,255,255,.12);}
+  .sb-brand .escom-label{font-family:'Rajdhani',sans-serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:4px;}
+  .sb-brand .course-title{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;color:var(--white);line-height:1.25;}
+  .sb-brand .course-sub{font-size:13px;font-family:'Rajdhani',sans-serif;font-weight:600;color:var(--sky);margin-top:4px;line-height:1.3;}
+  .sb-section-label{font-family:'Rajdhani',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);padding:16px 18px 5px;}
+  .sb-nav{list-style:none;padding:0 7px 14px;}
+  .sb-nav li a{display:flex;align-items:center;gap:9px;padding:6px 11px;border-radius:6px;text-decoration:none;font-size:12px;color:rgba(255,255,255,.60);transition:all .15s;line-height:1.3;}
+  .sb-nav li a:hover,.sb-nav li a.active{background:rgba(255,255,255,.1);color:var(--white);}
+  .sb-nav li a .num{font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;color:var(--sky);min-width:24px;flex-shrink:0;}
+  .sb-nav li.section-divider a{color:var(--gold);font-weight:700;font-family:'Rajdhani',sans-serif;font-size:11.5px;letter-spacing:.4px;margin-top:6px;border-top:1px solid rgba(255,255,255,.08);padding-top:10px;}
+  .sb-nav li.section-divider a:hover{background:rgba(200,155,60,.15);}
+  .sb-panel{display:none;}
+  .sb-panel.active{display:block;}
+  #main-area{flex:1;overflow-x:hidden;}
+  #hero-global{background:linear-gradient(135deg,var(--navy) 0%,var(--steel) 60%,#2a5a8a 100%);padding:44px 60px 36px;position:relative;overflow:hidden;}
+  #hero-global::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,.03) 39px,rgba(255,255,255,.03) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,.03) 39px,rgba(255,255,255,.03) 40px);pointer-events:none;}
+  .hero-logo{position:fixed;top:16px;right:30px;width:140px;height:140px;object-fit:contain;filter:drop-shadow(0 2px 12px rgba(0,0,0,.45));z-index:9999;}
+  .hero-breadcrumb{display:flex;flex-direction:column;align-items:flex-start;gap:2px;margin-bottom:24px;width:100%;}
+  .bc-line{font-family:'Rajdhani',sans-serif;font-size:22px !important;letter-spacing:1.5px;text-transform:uppercase;line-height:1.4;}
+  .bc-line-1{color:rgba(255,255,255,.65);}
+  .bc-line-2{color:var(--sky);font-weight:700;}
+  .bc-sep{color:var(--gold);font-size:22px !important;margin:0 10px;font-weight:700;line-height:1.4;}
+  .aulas-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;margin-bottom:0;position:relative;z-index:2;}
+  .aula-tab{font-family:'Rajdhani',sans-serif;font-size:26px;font-weight:700;letter-spacing:.4px;color:rgba(255,255,255,.95);border:2.5px solid rgba(255,255,255,.25);border-radius:8px;padding:12px 30px;cursor:pointer;transition:all .18s;white-space:nowrap;line-height:1.2;}
+  .aula-tab:hover{filter:brightness(1.2);transform:translateY(-1px);}
+  .aula-tab-1{background:#1a6fa8;border-color:#4a9fc8;}
+  .aula-tab-1.active{background:#4a9fc8;border-color:#fff;color:#fff;box-shadow:0 0 0 3px rgba(74,159,200,.5);}
+  .aula-tab-2{background:#2e7d52;border-color:#4caf80;}
+  .aula-tab-2.active{background:#4caf80;border-color:#fff;color:#fff;box-shadow:0 0 0 3px rgba(76,175,128,.5);}
+  .hero-dyn{display:none;margin-top:22px;}
+  .hero-dyn.active{display:block;}
+  .hero-dyn .hero-title{font-family:'Rajdhani',sans-serif;font-size:50px;font-weight:700;color:var(--white);line-height:1.05;margin-bottom:14px;}
+  .hero-dyn .hero-subtitle{font-size:18px;color:rgba(255,255,255,.68);max-width:100%;line-height:1.65;margin-bottom:22px;}
+  .hero-dyn .hero-tags{display:flex;flex-wrap:wrap;gap:9px;}
+  .hero-dyn .hero-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.78);padding:4px 13px;border-radius:20px;font-size:11.5px;font-family:'Rajdhani',sans-serif;letter-spacing:.4px;}
+  .content-panel{display:none;}
+  .content-panel.active{display:block;}
+  .content{max-width:var(--section-w);margin:0 auto;padding:0 48px 80px;}
+  #objetivos,#objetivos-2{background:var(--white);border-left:4px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:24px 28px;margin:36px 0 0;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+  .obj-title{font-family:'Rajdhani',sans-serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+  .obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px 22px;}
+  .obj-item{display:flex;align-items:flex-start;gap:10px;font-size:18px;line-height:1.55;}
+  .obj-item .dot{width:7px;height:7px;background:var(--sky);border-radius:50%;margin-top:6px;flex-shrink:0;}
+  .intro-card{background:var(--navy);border-radius:var(--radius);padding:28px 32px;margin:20px 0 0;color:rgba(255,255,255,.83);font-size:18.5px;line-height:1.78;}
+  .intro-card p+p{margin-top:12px;}
+  .section-sep{display:flex;align-items:center;gap:14px;margin:52px 0 0;border-bottom:4px solid #7b1fa2;padding-bottom:10px;margin-bottom:28px !important;}
+  .section-sep .sep-num{font-family:'Rajdhani',sans-serif;font-size:42px !important;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--white);background:var(--navy);padding:5px 13px;border-radius:4px;white-space:nowrap;}
+  .section-sep .sep-title{font-family:'Rajdhani',sans-serif;font-size:42px !important;font-weight:700;color:var(--navy);white-space:normal;line-height:1.1 !important;}
+  .section-sep .sep-line{flex:1;height:2px;background:linear-gradient(to right,var(--navy),transparent);border-radius:1px;}
+  .card{background:var(--white);border-radius:var(--radius);padding:26px 30px;margin-bottom:18px;box-shadow:0 1px 7px rgba(0,0,0,.055);}
+  .card-title{font-family:'Rajdhani',sans-serif;font-size:19px;font-weight:700;color:var(--navy);margin-bottom:13px;padding-bottom:9px;border-bottom:2px solid var(--ice);}
+  .card p{font-size:18.5px;line-height:1.80;color:var(--text);}
+  .card p+p{margin-top:11px;}
+  .bullet-list{list-style:none;padding:0;margin:6px 0;}
+  .bullet-list li{display:block;font-size:18.5px;line-height:1.74;color:var(--text);padding:9px 0 9px 22px;border-bottom:1px solid var(--ice);position:relative;}
+  .bullet-list li:last-child{border-bottom:none;}
+  .bullet-list li::before{content:'▸';color:var(--sky);font-size:12px;position:absolute;left:0;top:11px;}
+  .callout{background:#f0f7ff;border-left:4px solid var(--sky);border-radius:0 8px 8px 0;padding:13px 17px;font-size:17.5px;color:var(--navy2);line-height:1.65;margin:13px 0;}
+  .callout.tip{background:#f0fff4;border-color:#2e7d32;}
+  .callout.warn{background:#fff8e6;border-color:var(--gold);}
+  .callout.purple{background:#f3e5f5;border-color:#7b1fa2;}
+  .callout.danger{background:#fdecea;border-color:#c62828;}
+  .callout strong{color:var(--navy);}
+  .highlight-box{background:var(--navy);color:rgba(255,255,255,.88);border-radius:8px;padding:18px 22px;margin:14px 0;font-size:18px;line-height:1.72;}
+  .highlight-box strong{color:var(--sky);}
+  .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:10px 0;}
+  .feature-box{background:var(--ice2);border-radius:8px;padding:16px 18px;border-left:3px solid var(--sky);}
+  .feature-box.gold{border-left-color:var(--gold);}
+  .feature-box.green{border-left-color:#2e7d32;}
+  .feature-box.purple{border-left-color:#7b1fa2;}
+  .feature-box.red{border-left-color:#c62828;}
+  .feature-box h5{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+  .feature-box p{font-size:17px;line-height:1.58;color:var(--muted);}
+  .dark-card{background:linear-gradient(135deg,var(--navy),var(--steel));border-radius:var(--radius);padding:28px 32px;color:rgba(255,255,255,.83);font-size:18.5px;line-height:1.78;}
+  .dark-card p+p{margin-top:11px;}
+  .learned-grid{display:flex;flex-direction:column;gap:14px;margin-top:20px;}
+  .learned-item{display:flex;gap:18px;align-items:flex-start;background:var(--white);border-radius:var(--radius);padding:18px 22px;box-shadow:0 1px 6px rgba(0,0,0,.06);}
+  .li-num{font-family:'Rajdhani',sans-serif;font-size:28px;font-weight:700;color:var(--sky);min-width:36px;line-height:1;}
+  .learned-item div{font-size:18px;line-height:1.68;color:var(--text);}
+  #progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(to right,var(--sky),var(--gold));z-index:999;width:0%;transition:width .1s;}
+  .fade-in{opacity:0;transform:translateY(16px);transition:opacity .42s ease,transform .42s ease;}
+  .fade-in.visible{opacity:1;transform:none;}
+  #back-to-top{position:fixed;bottom:28px;right:28px;z-index:999;background:var(--gold);color:var(--navy);border:none;border-radius:50px;padding:12px 22px;font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;letter-spacing:.5px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.25);display:flex;align-items:center;gap:8px;opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .25s,transform .25s;}
+  #back-to-top.visible{opacity:1;pointer-events:all;transform:translateY(0);}
+  #back-to-top:hover{background:#e0b050;transform:translateY(-2px);}
+  #print-btn{position:fixed;bottom:28px;left:calc(var(--sidebar-w) + 20px);z-index:999;background:var(--navy);color:var(--white);border:2px solid var(--steel);border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.30);display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s,border-color .2s;}
+  #print-btn:hover{background:var(--steel);border-color:var(--sky);transform:translateY(-2px);}
+  .quiz-section{margin:32px 0 8px}
+  .quiz-section-header{background:linear-gradient(135deg,#192437 0%,#1e2d42 100%);border-radius:10px 10px 0 0;padding:16px 24px;border-left:4px solid #c89b3c}
+  .quiz-section-header .qs-label{font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#c89b3c;display:block;margin-bottom:4px}
+  .quiz-section-header .qs-title{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;color:rgba(255,255,255,.9)}
+  .quiz-section-body{background:#fff;border:1px solid #dfe6eb;border-top:none;border-radius:0 0 10px 10px;padding:24px 24px 20px;box-shadow:0 3px 12px rgba(0,0,0,.07)}
+  .quiz-block{margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid #eef3f6}
+  .quiz-block:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+  .quiz-q-label{font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#4a9fc8;margin-bottom:6px}
+  .quiz-question{font-size:18.5px;font-weight:600;color:#1a2535;line-height:1.5;margin-bottom:14px}
+  .quiz-options{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+  .quiz-option{display:flex;align-items:flex-start;gap:11px;padding:10px 14px;border:2px solid #dfe6eb;border-radius:8px;cursor:pointer;font-size:17.5px;line-height:1.5;color:#1a2535;background:#f8fafc;transition:border-color .15s,background .15s;user-select:none}
+  .quiz-option:hover:not(.disabled){border-color:#4a9fc8;background:#eef3f6}
+  .quiz-option .opt-letter{font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;color:#4a9fc8;min-width:20px;height:20px;border:2px solid #4a9fc8;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;transition:all .15s}
+  .quiz-option.correct{border-color:#2e9e60;background:#eaf7f0}
+  .quiz-option.correct .opt-letter{background:#2e9e60;border-color:#2e9e60;color:#fff}
+  .quiz-option.wrong{border-color:#c0392b;background:#fdecea}
+  .quiz-option.wrong .opt-letter{background:#c0392b;border-color:#c0392b;color:#fff}
+  .quiz-option.disabled{cursor:default;opacity:.55}
+  .quiz-option.correct.disabled,.quiz-option.wrong.disabled{opacity:1}
+  .quiz-feedback{display:none;align-items:flex-start;gap:10px;padding:10px 14px;border-radius:8px;font-size:17px;line-height:1.55;margin-top:4px}
+  .quiz-feedback.show{display:flex}
+  .quiz-feedback.acerto{background:#eaf7f0;border-left:4px solid #2e9e60;color:#1a4a2e}
+  .quiz-feedback.erro{background:#fdecea;border-left:4px solid #c0392b;color:#5a1a1a}
+  .quiz-feedback .fb-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+  .quiz-retry{display:none;margin-top:10px;font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#4a9fc8;background:none;border:2px solid #4a9fc8;border-radius:6px;padding:5px 16px;cursor:pointer;transition:background .15s,color .15s}
+  .quiz-retry:hover{background:#4a9fc8;color:#fff}
+  .quiz-retry.show{display:inline-block}
+  @media(max-width:900px){
+    :root{--sidebar-w:0px;--section-w:100%;--radius:8px;}
+    #sidebar{display:none;}
+    #main-area{width:100%;}
+    #hero-global{padding:28px 20px 24px;}
+    .bc-line{font-size:14px !important;}
+    .bc-sep{font-size:14px !important;}
+    .hero-dyn .hero-title{font-size:28px;}
+    .hero-logo{width:83px;height:83px;top:12px;right:12px;}
+    .aula-tab{font-size:18px;padding:9px 18px;}
+    .content{padding:0 14px 60px;}
+    #objetivos,#objetivos-2{padding:18px 16px;margin:20px 0 0;}
+    .obj-grid{grid-template-columns:1fr;gap:8px;}
+    .section-sep{margin:36px 0 16px !important;gap:10px;flex-wrap:wrap;}
+    .section-sep .sep-num{font-size:30px !important;padding:5px 13px;}
+    .section-sep .sep-title{font-size:30px !important;}
+    .section-sep .sep-line{display:none;}
+    .card{padding:18px 16px;margin-bottom:14px;}
+    .card p{font-size:17.5px;line-height:1.72;}
+    .feature-grid{grid-template-columns:1fr;}
+    .callout{font-size:17px;padding:10px 14px;}
+    .dark-card{padding:20px 18px;font-size:17.5px;}
+    #back-to-top{bottom:16px;right:16px;padding:10px 16px;font-size:17px;}
+    #print-btn{left:16px;bottom:16px;width:46px;height:46px;font-size:20px;}
+  }
+  @media(max-width:480px){
+    #hero-global{padding:22px 14px 22px;}
+    .hero-dyn .hero-title{font-size:22px;}
+    .hero-logo{width:60px;height:60px;top:10px;right:10px;}
+    .content{padding:0 10px 50px;}
+    .card{padding:14px 12px;}
+    .aula-tab{font-size:17px;padding:7px 12px;}
+    .bc-line{font-size:12px !important;}
+  }
+  @media print{
+    @page{size:A4 portrait;margin:15mm 18mm;}
+    *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
+    #sidebar,#progress-bar,#back-to-top,#print-btn,.aulas-tabs,.hero-logo,.quiz-retry{display:none !important;}
+    #wrapper{display:block !important;}
+    #main-area{width:100% !important;overflow:visible !important;}
+    #hero-global{padding:16px 20px 14px !important;background:#192437 !important;}
+    .bc-line{font-size:13px !important;letter-spacing:1px;}
+    .hero-dyn .hero-title{font-size:28px !important;margin-bottom:8px;}
+    .hero-dyn .hero-subtitle{font-size:13px !important;margin-bottom:10px;}
+    .hero-dyn .hero-tags{display:none;}
+    .content-panel{display:none !important;}
+    .content-panel.active{display:block !important;}
+    .hero-dyn{display:none !important;}
+    .hero-dyn.active{display:block !important;}
+    .sb-panel{display:none !important;}
+    .content{max-width:100% !important;padding:0 !important;}
+    .fade-in{opacity:1 !important;transform:none !important;}
+    .card p,.bullet-list li,.callout,.obj-item,.intro-card p,.dark-card p,.highlight-box,.learned-item div{font-size:11pt !important;line-height:1.55 !important;}
+    .card-title{font-size:13pt !important;}
+    .section-sep .sep-num,.section-sep .sep-title{font-size:18pt !important;}
+    .section-sep{break-before:page;margin-top:0 !important;}
+    .quiz-section,.quiz-block,.card,.callout{break-inside:avoid;}
+  }
 </style>
 </head>
 <body>
-<div id="hero">
-  <a class="back-link" href="../../index.html">← Voltar ao Início</a>
-  <div class="bc-line bc-line-1">EsCom EAD · Módulo Introdução</div>
-  <div class="bc-line bc-line-2">Ética em IA</div>
-  <h1 class="hero-title">Ética em IA</h1>
-  <p class="hero-subtitle">Reflita sobre os impactos sociais, vieses e responsabilidades éticas no uso da Inteligência Artificial.</p>
-  <span class="badge">Em breve</span>
-</div>
-<div class="content">
-  <div class="coming-card">
-    <div class="coming-icon">⚖️</div>
-    <h2>Aula em Produção</h2>
-    <p>Esta aula está sendo preparada e estará disponível em breve.<br>Volte à página inicial para acessar as aulas já publicadas.</p>
-    <a class="btn-home" href="../../index.html">← Ir para o Início</a>
-  </div>
-</div>
+<div id="progress-bar"></div>
+<a href="https://www.instagram.com/escom_exercito/" target="_blank" rel="noopener noreferrer"
+   style="position:fixed;top:16px;right:30px;z-index:9999;display:block;width:140px;height:140px;cursor:pointer;"
+   title="EsCom no Instagram" aria-label="Instagram da EsCom">
+  <img src="../../assets/images/logo-escom.png" alt="Logo EsCom" class="hero-logo"/>
+</a>
+
+<div id="wrapper">
+  <nav id="sidebar" aria-label="Navegação lateral">
+    <div class="sb-brand">
+      <div class="escom-label">EsCom EAD · Introdução</div>
+      <div class="course-title">Assunto 05</div>
+      <div class="course-sub">⚖️ Ética em Inteligência Artificial</div>
+    </div>
+
+    <!-- Sidebar Panel 1 — Aula 01 -->
+    <div class="sb-panel" id="sb-panel-1">
+      <div class="sb-brand">
+        <div style="font-size:15px;font-weight:700;color:var(--sky);font-family:'Rajdhani',sans-serif;letter-spacing:.3px;margin-bottom:4px;">Ética em IA</div>
+        <div class="course-title">Aula 01 — Vieses e Equidade</div>
+      </div>
+      <div class="sb-section-label">Navegação — Aula 01</div>
+      <ul class="sb-nav">
+        <li class="section-divider"><a href="#sec-o-que-e"><span class="num">01</span> O que é Ética em IA?</a></li>
+        <li><a href="#etica-definicao"><span class="num">1.1</span> Definição e Importância</a></li>
+        <li><a href="#etica-pilares"><span class="num">1.2</span> Os 4 Pilares</a></li>
+        <li class="section-divider"><a href="#sec-vieses"><span class="num">02</span> Vieses Algorítmicos</a></li>
+        <li><a href="#vieses-origem"><span class="num">2.1</span> Como Surgem</a></li>
+        <li><a href="#vieses-exemplos"><span class="num">2.2</span> Casos Reais</a></li>
+        <li class="section-divider"><a href="#sec-equidade"><span class="num">03</span> Equidade e Fairness</a></li>
+        <li><a href="#quiz-a1"><span class="num">—</span> Exercício 01</a></li>
+        <li class="section-divider"><a href="#sec-aprendemos-1"><span class="num">04</span> O que Aprendemos?</a></li>
+      </ul>
+    </div>
+
+    <!-- Sidebar Panel 2 — Aula 02 -->
+    <div class="sb-panel" id="sb-panel-2">
+      <div class="sb-brand">
+        <div style="font-size:15px;font-weight:700;color:var(--sky);font-family:'Rajdhani',sans-serif;letter-spacing:.3px;margin-bottom:4px;">Ética em IA</div>
+        <div class="course-title">Aula 02 — Transparência</div>
+      </div>
+      <div class="sb-section-label">Navegação — Aula 02</div>
+      <ul class="sb-nav">
+        <li class="section-divider"><a href="#sec-xai"><span class="num">01</span> Explicabilidade (XAI)</a></li>
+        <li><a href="#xai-conceito"><span class="num">1.1</span> Por que importa?</a></li>
+        <li><a href="#xai-ferramentas"><span class="num">1.2</span> Ferramentas XAI</a></li>
+        <li class="section-divider"><a href="#sec-regulacao"><span class="num">02</span> Marcos Regulatórios</a></li>
+        <li><a href="#reg-aiact"><span class="num">2.1</span> AI Act (UE)</a></li>
+        <li><a href="#reg-lgpd"><span class="num">2.2</span> LGPD e IA no Brasil</a></li>
+        <li class="section-divider"><a href="#sec-boas-praticas"><span class="num">03</span> Boas Práticas</a></li>
+        <li><a href="#quiz-a2"><span class="num">—</span> Exercício 02</a></li>
+        <li class="section-divider"><a href="#sec-aprendemos-2"><span class="num">04</span> O que Aprendemos?</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="main-area">
+    <section id="hero-global">
+      <div class="hero-breadcrumb">
+        <div style="display:flex;align-items:center;flex-wrap:wrap;">
+          <span class="bc-line bc-line-1">EsCom EAD · Módulo Introdução</span>
+          <span class="bc-sep">›</span>
+          <span class="bc-line bc-line-2">Assunto 05 — Ética em IA</span>
+        </div>
+      </div>
+
+      <div class="aulas-tabs" role="tablist" aria-label="Aulas">
+        <button class="aula-tab aula-tab-1 active" role="tab" aria-selected="true">Aula 01</button>
+        <button class="aula-tab aula-tab-2" role="tab" aria-selected="false">Aula 02</button>
+      </div>
+
+      <div class="hero-dyn active" id="hero-dyn-1">
+        <div class="hero-title">⚖️ Vieses e Equidade em IA</div>
+        <div class="hero-subtitle">Entenda como os vieses entram nos sistemas de IA, por que eles importam e como identificar e mitigar seus efeitos na tomada de decisão automatizada.</div>
+        <div class="hero-tags">
+          <span class="hero-tag">Ética em IA</span>
+          <span class="hero-tag">Viés Algorítmico</span>
+          <span class="hero-tag">Fairness</span>
+          <span class="hero-tag">Accountability</span>
+          <span class="hero-tag">3 hrs/aula</span>
+        </div>
+      </div>
+
+      <div class="hero-dyn" id="hero-dyn-2">
+        <div class="hero-title">🔍 Transparência e Regulamentação</div>
+        <div class="hero-subtitle">Conheça os princípios de explicabilidade de IA, os principais marcos regulatórios globais (AI Act, LGPD) e as boas práticas para o desenvolvimento responsável de sistemas inteligentes.</div>
+        <div class="hero-tags">
+          <span class="hero-tag">XAI</span>
+          <span class="hero-tag">AI Act</span>
+          <span class="hero-tag">LGPD</span>
+          <span class="hero-tag">Governança de IA</span>
+          <span class="hero-tag">3 hrs/aula</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+         PAINEL 1 — AULA 01
+    ════════════════════════════════════ -->
+    <div class="content-panel active" id="ct-panel-1">
+      <div class="content">
+
+        <div id="objetivos" class="fade-in">
+          <div class="obj-title">⊞ Objetivos da Aula 01</div>
+          <div class="obj-grid">
+            <div class="obj-item"><div class="dot"></div><div>Compreender o conceito de ética aplicada à Inteligência Artificial</div></div>
+            <div class="obj-item"><div class="dot"></div><div>Identificar os 4 pilares da ética em IA: fairness, accountability, transparência e privacidade</div></div>
+            <div class="obj-item"><div class="dot"></div><div>Entender como e por que vieses algorítmicos surgem nos sistemas de IA</div></div>
+            <div class="obj-item"><div class="dot"></div><div>Analisar casos reais de vieses em sistemas de IA e suas consequências</div></div>
+          </div>
+        </div>
+
+        <div class="intro-card fade-in">
+          <p>A <strong>Inteligência Artificial</strong> toma decisões que afetam contratações, concessão de crédito, diagnósticos médicos e até sentenças judiciais. Quando esses sistemas cometem erros sistematicamente contra determinados grupos — por raça, gênero ou classe social — as consequências são reais e graves.</p>
+          <p>A ética em IA não é uma preocupação filosófica abstrata. É uma disciplina prática que determina quem se beneficia e quem é prejudicado pelos sistemas que desenvolvemos e utilizamos.</p>
+        </div>
+
+        <!-- ─── ITEM 01 ─── -->
+        <div id="sec-o-que-e" class="section-sep fade-in">
+          <span class="sep-num">Item 01</span>
+          <span class="sep-title">O que é Ética em IA?</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div id="etica-definicao" class="card fade-in">
+          <div class="card-title">Definição e Importância</div>
+          <p>A <strong>ética em IA</strong> é o conjunto de princípios, valores e práticas que orientam o desenvolvimento, implantação e uso responsável de sistemas de Inteligência Artificial. Ela responde à pergunta: <em>como garantir que a IA sirva ao bem comum, sem reproduzir ou amplificar injustiças?</em></p>
+          <p>Diferentemente da ética humana tradicional, a ética em IA precisa ser codificada — transformada em critérios mensuráveis, políticas de dados e salvaguardas técnicas. Uma intenção boa não é suficiente; o sistema precisa ser projetado para ser justo.</p>
+          <div class="callout purple fade-in" style="margin-top:14px;">
+            <strong>Por que isso importa para militares?</strong> Sistemas de IA são usados em reconhecimento de imagens, análise de inteligência, seleção de pessoal e apoio à decisão em operações. Vieses nesses sistemas podem comprometer missões e violar princípios do Direito Internacional Humanitário.
+          </div>
+        </div>
+
+        <div id="etica-pilares" class="card fade-in">
+          <div class="card-title">Os 4 Pilares da Ética em IA</div>
+          <div class="feature-grid" style="margin-top:10px;">
+            <div class="feature-box">
+              <h5>⚖️ Fairness (Equidade)</h5>
+              <p>O sistema não deve discriminar grupos com base em características protegidas como raça, gênero, idade ou religião. A equidade pode ser medida matematicamente — e precisa ser verificada nos dados e nos resultados.</p>
+            </div>
+            <div class="feature-box gold">
+              <h5>📋 Accountability (Responsabilidade)</h5>
+              <p>Deve ser possível identificar quem é responsável pelas decisões de um sistema de IA. Quando o sistema erra, há um humano ou organização que responde por isso — a IA não pode ser um escudo de responsabilidade.</p>
+            </div>
+            <div class="feature-box purple">
+              <h5>🔍 Transparência</h5>
+              <p>Os critérios usados pelo sistema para tomar decisões devem ser explicáveis e auditáveis. "A IA decidiu assim" não é uma justificativa aceitável em decisões que afetam pessoas.</p>
+            </div>
+            <div class="feature-box green">
+              <h5>🔒 Privacidade</h5>
+              <p>Os dados pessoais usados para treinar e operar sistemas de IA devem ser coletados com consentimento, armazenados com segurança e usados apenas para o fim declarado.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── ITEM 02 ─── -->
+        <div id="sec-vieses" class="section-sep fade-in">
+          <span class="sep-num">Item 02</span>
+          <span class="sep-title">Vieses Algorítmicos</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div id="vieses-origem" class="card fade-in">
+          <div class="card-title">Como os Vieses Surgem</div>
+          <p>Um algoritmo aprende a partir de dados históricos. Se esses dados refletem desigualdades passadas, o modelo as reproduz — e muitas vezes as amplifica. O viés não é uma falha acidental: é o resultado previsível de treinar modelos em dados que representam um mundo imperfeito.</p>
+          <div class="feature-grid" style="margin-top:14px;">
+            <div class="feature-box red">
+              <h5>⚠️ Viés nos Dados</h5>
+              <p>Dados históricos sub-representam certos grupos ou registram decisões passadas discriminatórias. Ex.: um modelo treinado em currículos de contratações passadas pode aprender a rejeitar mulheres para posições de liderança.</p>
+            </div>
+            <div class="feature-box gold">
+              <h5>⚠️ Viés de Seleção</h5>
+              <p>Os dados de treinamento não representam a população que o sistema vai servir. Ex.: um reconhecimento facial treinado majoritariamente em rostos brancos terá menor precisão em rostos de outras etnias.</p>
+            </div>
+            <div class="feature-box purple">
+              <h5>⚠️ Viés de Confirmação</h5>
+              <p>O modelo aprende a confirmar hipóteses pré-existentes nos dados. Ex.: se crimes foram historicamente mais registrados em certas regiões, o modelo prevê mais crimes lá, gerando mais policiamento — um ciclo de retroalimentação.</p>
+            </div>
+            <div class="feature-box">
+              <h5>⚠️ Viés de Medição</h5>
+              <p>A forma como os dados foram coletados introduz distorções. Ex.: usar internações hospitalares como proxy para saúde ignora grupos sem acesso ao sistema de saúde, tornando-os invisíveis para o modelo.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="vieses-exemplos" class="card fade-in">
+          <div class="card-title">Casos Reais</div>
+          <ul class="bullet-list">
+            <li><strong>COMPAS (EUA, 2016)</strong> — Algoritmo usado em tribunais para prever reincidência criminal foi considerado duas vezes mais propenso a classificar réus negros como alto risco, comparado a réus brancos com perfil similar. (Fonte: ProPublica)</li>
+            <li><strong>Amazon Recruiting (2018)</strong> — Sistema de IA para triagem de currículos foi desativado após descobrir que penalizava candidatas mulheres, por ter aprendido padrões de contratação masculinos da empresa na última década.</li>
+            <li><strong>Reconhecimento Facial (MIT, 2018)</strong> — Pesquisadora Joy Buolamwini demonstrou que sistemas de reconhecimento facial tinham taxa de erro de 1% para homens brancos e até 35% para mulheres negras.</li>
+            <li><strong>Saúde (EUA, 2019)</strong> — Algoritmo usado por hospitais para alocar cuidados foi identificado como menos propenso a encaminhar pacientes negros para programas de alto custo, mesmo com necessidade médica equivalente.</li>
+          </ul>
+        </div>
+
+        <!-- ─── ITEM 03 ─── -->
+        <div id="sec-equidade" class="section-sep fade-in">
+          <span class="sep-num">Item 03</span>
+          <span class="sep-title">Equidade e Fairness</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">Tipos de Fairness</div>
+          <p>A equidade não é um conceito único — existem definições matemáticas diferentes, e elas frequentemente são <strong>incompatíveis entre si</strong>. Escolher qual tipo de fairness aplicar é uma decisão ética e política, não apenas técnica.</p>
+          <div class="feature-grid" style="margin-top:14px;">
+            <div class="feature-box">
+              <h5>Paridade Demográfica</h5>
+              <p>A taxa de resultados positivos deve ser igual para todos os grupos. Ex.: a mesma porcentagem de candidatos de cada grupo racial deve ser aprovada num processo seletivo.</p>
+            </div>
+            <div class="feature-box gold">
+              <h5>Equidade de Oportunidade</h5>
+              <p>A taxa de verdadeiros positivos deve ser igual entre grupos. Ex.: de todos os candidatos qualificados, a mesma proporção de cada grupo deve ser identificada como qualificada pelo modelo.</p>
+            </div>
+            <div class="feature-box purple">
+              <h5>Calibração</h5>
+              <p>Se o modelo atribui 80% de probabilidade a um evento, esse evento deve ocorrer em 80% dos casos para todos os grupos — independentemente de raça, gênero ou outra característica.</p>
+            </div>
+            <div class="feature-box green">
+              <h5>Fairness Individual</h5>
+              <p>Indivíduos semelhantes devem receber tratamentos semelhantes. Duas pessoas com o mesmo perfil de crédito devem receber a mesma decisão — independentemente de qualquer característica não relevante.</p>
+            </div>
+          </div>
+          <div class="callout warn fade-in" style="margin-top:16px;">
+            <strong>O dilema:</strong> É matematicamente impossível satisfazer todas as definições de fairness simultaneamente quando as taxas de base diferem entre grupos. A escolha de qual critério priorizar é uma decisão de valores, não de algoritmos.
+          </div>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">Estratégias de Mitigação</div>
+          <ul class="bullet-list">
+            <li><strong>Pré-processamento</strong> — Balancear o dataset, remover atributos proxies e aumentar a representatividade dos grupos sub-representados.</li>
+            <li><strong>Durante o treino</strong> — Incluir restrições de fairness na função de perda, penalizando matematicamente previsões enviesadas.</li>
+            <li><strong>Pós-processamento</strong> — Ajustar os limiares de decisão por grupo para equalizar taxas de erro após o treinamento.</li>
+            <li><strong>Auditoria contínua</strong> — Monitorar os resultados do sistema regularmente, comparando métricas entre grupos ao longo do tempo.</li>
+            <li><strong>Diversidade nas equipes</strong> — Incluir perspectivas diversas desde a concepção — quem não está na sala não está no modelo.</li>
+          </ul>
+        </div>
+
+        <!-- ─── QUIZ 01 ─── -->
+        <div id="quiz-a1" class="quiz-section fade-in">
+          <div class="quiz-section-header">
+            <span class="qs-label">Exercício 01 · Ética em IA</span>
+            <span class="qs-title">Vieses e Equidade</span>
+          </div>
+          <div class="quiz-section-body">
+
+            <div class="quiz-block" data-correct="b"
+                 data-feedback-ok="Correto! O viés de seleção ocorre quando os dados de treinamento não representam adequadamente a população que o sistema vai servir — resultando em desempenho desigual entre grupos."
+                 data-feedback-err="Não é essa a definição. O viés de seleção refere-se à falta de representatividade dos dados de treinamento em relação à população real que o sistema atenderá.">
+              <div class="quiz-q-label">Questão 01</div>
+              <div class="quiz-question">Um sistema de reconhecimento facial é treinado com 95% de imagens de pessoas brancas e apresenta alta taxa de erro para pessoas negras. Que tipo de viés está presente?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Viés de confirmação</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Viés de seleção</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Viés de medição</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Viés de calibração</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+            <div class="quiz-block" data-correct="c"
+                 data-feedback-ok="Exato! A paridade demográfica exige que a taxa de resultados positivos seja igual para todos os grupos — é uma das definições mais diretas de fairness."
+                 data-feedback-err="Não está certo. A paridade demográfica exige que a proporção de aprovados seja igual para todos os grupos populacionais, independentemente de outras métricas.">
+              <div class="quiz-q-label">Questão 02</div>
+              <div class="quiz-question">Um banco usa IA para aprovação de crédito. Para garantir paridade demográfica, o sistema deve:</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Ignorar completamente raça e gênero nos dados</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Aprovar mais solicitantes do grupo majoritário</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Ter a mesma taxa de aprovação para todos os grupos demográficos</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Usar apenas dados financeiros, sem dados pessoais</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ─── ITEM 04 ─── -->
+        <div id="sec-aprendemos-1" class="section-sep fade-in">
+          <span class="sep-num">Item 04</span>
+          <span class="sep-title">O que Aprendemos?</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="learned-grid fade-in">
+          <div class="learned-item">
+            <div class="li-num">01</div>
+            <div><strong>Ética em IA</strong> é um conjunto prático de princípios — fairness, accountability, transparência e privacidade — que orientam o desenvolvimento responsável de sistemas inteligentes, com consequências reais para as pessoas afetadas.</div>
+          </div>
+          <div class="learned-item">
+            <div class="li-num">02</div>
+            <div><strong>Vieses algorítmicos</strong> surgem do treinamento em dados históricos que refletem desigualdades. Identificar o tipo de viés (dados, seleção, confirmação, medição) é o primeiro passo para corrigi-lo.</div>
+          </div>
+          <div class="learned-item">
+            <div class="li-num">03</div>
+            <div><strong>Fairness</strong> tem múltiplas definições matemáticas — paridade demográfica, equidade de oportunidade, calibração e fairness individual — e é impossível satisfazê-las todas simultaneamente. Escolher qual priorizar é uma decisão de valores.</div>
+          </div>
+          <div class="learned-item">
+            <div class="li-num">04</div>
+            <div>A mitigação de vieses exige intervenções em todas as etapas: <strong>pré-processamento dos dados</strong>, restrições no treinamento, ajustes pós-treinamento e auditoria contínua — além de diversidade nas equipes que constroem os sistemas.</div>
+          </div>
+        </div>
+
+        <div class="dark-card fade-in" style="margin-top:28px;">
+          <p>Na próxima aula, vamos explorar como tornar os sistemas de IA <strong>explicáveis e auditáveis</strong> — a área conhecida como XAI (Explainable AI) — e conhecer os marcos regulatórios globais que estão definindo as regras do jogo: o AI Act europeu e a LGPD brasileira.</p>
+        </div>
+
+      </div>
+      <footer style="background:var(--navy);color:rgba(255,255,255,.35);text-align:center;font-size:10.5px;padding:16px;letter-spacing:.4px;">
+        Exército Brasileiro · Escola de Comunicações (Escola Coronel Hygino Corsetti) · EAD — Módulo de Ética em IA
+      </footer>
+    </div><!-- /#ct-panel-1 -->
+
+    <!-- ═══════════════════════════════════
+         PAINEL 2 — AULA 02
+    ════════════════════════════════════ -->
+    <div class="content-panel" id="ct-panel-2">
+      <div class="content">
+
+        <div id="objetivos-2" class="fade-in">
+          <div class="obj-title">⊞ Objetivos da Aula 02</div>
+          <div class="obj-grid">
+            <div class="obj-item"><div class="dot"></div><div>Compreender o conceito de Explainable AI (XAI) e sua importância para a confiança em sistemas de IA</div></div>
+            <div class="obj-item"><div class="dot"></div><div>Conhecer as principais técnicas de explicabilidade: LIME, SHAP e saliency maps</div></div>
+            <div class="obj-item"><div class="dot"></div><div>Analisar os principais marcos regulatórios de IA: AI Act (UE) e LGPD (Brasil)</div></div>
+            <div class="obj-item"><div class="dot"></div><div>Aplicar boas práticas de desenvolvimento ético de IA em projetos reais</div></div>
+          </div>
+        </div>
+
+        <div class="intro-card fade-in">
+          <p>Um sistema justo que ninguém consegue entender é tão problemático quanto um sistema injusto. A <strong>transparência</strong> não é apenas abrir o código-fonte — é garantir que as pessoas afetadas por decisões automatizadas possam compreendê-las, questioná-las e recorrer delas.</p>
+          <p>Paralelamente, governos ao redor do mundo estão criando marcos legais para regular a IA. Conhecer essas regras não é opcional para quem desenvolve ou usa sistemas inteligentes.</p>
+        </div>
+
+        <!-- ─── ITEM 01 ─── -->
+        <div id="sec-xai" class="section-sep fade-in">
+          <span class="sep-num">Item 01</span>
+          <span class="sep-title">Explicabilidade (XAI)</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div id="xai-conceito" class="card fade-in">
+          <div class="card-title">Por que a Explicabilidade Importa?</div>
+          <p><strong>Explainable AI (XAI)</strong> é o conjunto de técnicas que permite compreender como um modelo chegou a uma determinada decisão. Em vez de uma "caixa-preta" opaca, o objetivo é uma "caixa de vidro" auditável.</p>
+          <div class="feature-grid" style="margin-top:14px;">
+            <div class="feature-box purple">
+              <h5>🏥 Na Saúde</h5>
+              <p>Um médico precisa entender por que o modelo indicou câncer — para validar o diagnóstico, explicar ao paciente e assumir responsabilidade pela decisão final.</p>
+            </div>
+            <div class="feature-box gold">
+              <h5>⚖️ Na Justiça</h5>
+              <p>Um réu tem direito de saber por que um algoritmo o classificou como alto risco. Decisões jurídicas baseadas em IA opaca violam o direito ao contraditório.</p>
+            </div>
+            <div class="feature-box">
+              <h5>💰 No Crédito</h5>
+              <p>Regulamentações como a LGPD (Brasil) e o GDPR (UE) garantem ao cidadão o direito de explicação sobre decisões automatizadas que o afetam.</p>
+            </div>
+            <div class="feature-box green">
+              <h5>🎖️ Em Operações Militares</h5>
+              <p>Sistemas de apoio à decisão operacional devem ser auditáveis. O comandante que usa IA precisa entender os critérios da recomendação para manter controle humano sobre a decisão final.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="xai-ferramentas" class="card fade-in">
+          <div class="card-title">Principais Técnicas de XAI</div>
+          <div class="feature-grid" style="margin-top:10px;">
+            <div class="feature-box">
+              <h5>🔬 LIME</h5>
+              <p><em>Local Interpretable Model-agnostic Explanations</em> — explica individualmente cada previsão perturbando os dados de entrada e observando como a saída muda. Funciona com qualquer modelo.</p>
+            </div>
+            <div class="feature-box gold">
+              <h5>📊 SHAP</h5>
+              <p><em>SHapley Additive exPlanations</em> — calcula a contribuição de cada feature para uma previsão específica, baseado na teoria de jogos cooperativos. Consistente e matematicamente fundamentado.</p>
+            </div>
+            <div class="feature-box purple">
+              <h5>🗺️ Saliency Maps</h5>
+              <p>Em visão computacional, destacam quais regiões da imagem influenciaram a decisão do modelo. Essencial para auditoria de sistemas de reconhecimento facial e análise de imagens médicas.</p>
+            </div>
+            <div class="feature-box green">
+              <h5>🌳 Modelos Interpretáveis</h5>
+              <p>Quando a aplicação exige total transparência, usar modelos inerentemente interpretáveis — árvores de decisão, regressão logística — pode ser preferível a redes neurais profundas.</p>
+            </div>
+          </div>
+          <div class="callout tip fade-in" style="margin-top:16px;">
+            <strong>Acurácia vs. Interpretabilidade:</strong> Em geral, modelos mais precisos são menos interpretáveis. Em aplicações de alto impacto, pode ser mais responsável usar um modelo menos preciso, porém explicável, do que uma caixa-preta de alta acurácia.
+          </div>
+        </div>
+
+        <!-- ─── ITEM 02 ─── -->
+        <div id="sec-regulacao" class="section-sep fade-in">
+          <span class="sep-num">Item 02</span>
+          <span class="sep-title">Marcos Regulatórios</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div id="reg-aiact" class="card fade-in">
+          <div class="card-title">AI Act — União Europeia (2024)</div>
+          <p>O <strong>AI Act</strong> é o primeiro marco regulatório abrangente de IA do mundo, aprovado pelo Parlamento Europeu em 2024. Ele classifica sistemas de IA por nível de risco e impõe obrigações proporcionais.</p>
+          <div class="feature-grid" style="margin-top:14px;">
+            <div class="feature-box red">
+              <h5>🚫 Risco Inaceitável — Proibido</h5>
+              <p>Sistemas de pontuação social, manipulação subliminar, exploração de vulnerabilidades, identificação biométrica em tempo real em espaços públicos (com exceções limitadas).</p>
+            </div>
+            <div class="feature-box gold">
+              <h5>⚠️ Alto Risco — Regulado</h5>
+              <p>Infraestrutura crítica, educação, emprego, aplicação da lei, sistema judiciário. Exige avaliações de conformidade, logs de auditoria e supervisão humana obrigatória.</p>
+            </div>
+            <div class="feature-box">
+              <h5>⚡ Risco Limitado — Transparência</h5>
+              <p>Chatbots devem informar que são IA. Deepfakes devem ser identificados como conteúdo sintético. Obrigações de transparência sem requisitos de conformidade pesados.</p>
+            </div>
+            <div class="feature-box green">
+              <h5>✅ Risco Mínimo — Livre</h5>
+              <p>Filtros de spam, videogames com IA, sistemas de recomendação de conteúdo sem impacto significativo sobre direitos fundamentais.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="reg-lgpd" class="card fade-in">
+          <div class="card-title">LGPD e IA no Brasil</div>
+          <p>A <strong>Lei Geral de Proteção de Dados (LGPD — Lei 13.709/2018)</strong> não é uma lei de IA, mas tem implicações diretas para sistemas inteligentes que processam dados pessoais de brasileiros.</p>
+          <ul class="bullet-list" style="margin-top:14px;">
+            <li><strong>Art. 20 — Direito de revisão:</strong> O titular tem direito de solicitar revisão de decisões tomadas exclusivamente por meios automatizados que afetem seus interesses — inclusive profissionais, de consumo, creditícios ou de proteção social.</li>
+            <li><strong>Base legal e consentimento:</strong> Dados usados para treinar modelos de IA precisam de base legal adequada. O consentimento vago não é suficiente.</li>
+            <li><strong>Minimização de dados:</strong> Usar apenas os dados estritamente necessários para a finalidade declarada — reduz o risco de vazamentos e de uso indevido em modelos.</li>
+            <li><strong>Anonimização:</strong> Dados anonimizados estão fora do escopo da LGPD. Atenção: a "anonimização" pode ser revertida em datasets ricos — o que é um risco real em IA.</li>
+          </ul>
+          <div class="callout warn fade-in" style="margin-top:14px;">
+            <strong>Em desenvolvimento:</strong> O Brasil está elaborando um marco específico para regulação da IA (PL 2338/2023). Acompanhe o <a href="https://www.gov.br/anpd" target="_blank" rel="noopener" style="color:var(--sky);">site da ANPD</a> para atualizações.
+          </div>
+        </div>
+
+        <!-- ─── ITEM 03 ─── -->
+        <div id="sec-boas-praticas" class="section-sep fade-in">
+          <span class="sep-num">Item 03</span>
+          <span class="sep-title">Boas Práticas</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">Desenvolvimento Ético de IA — Por Etapa</div>
+          <div class="feature-grid" style="margin-top:14px;">
+            <div class="feature-box">
+              <h5>📋 Antes de Construir</h5>
+              <p>Defina o propósito e os limites do sistema. Identifique os grupos afetados. Mapeie os riscos. Determine critérios de sucesso que incluam fairness, não apenas acurácia.</p>
+            </div>
+            <div class="feature-box gold">
+              <h5>🔧 Durante o Desenvolvimento</h5>
+              <p>Audite os dados de treinamento. Meça fairness em subgrupos. Documente as decisões de design. Inclua vozes diversas na equipe. Teste em cenários adversariais.</p>
+            </div>
+            <div class="feature-box purple">
+              <h5>🚀 Ao Implantar</h5>
+              <p>Mantenha supervisão humana em decisões de alto impacto. Crie mecanismos de contestação. Comunique claramente quando a IA está sendo usada. Estabeleça limites de uso.</p>
+            </div>
+            <div class="feature-box green">
+              <h5>🔄 Em Operação</h5>
+              <p>Monitore métricas de fairness continuamente. Detecte desvios de distribuição nos dados (data drift). Atualize modelos regularmente. Tenha um plano de desativação.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-title">Frameworks e Referências Globais</div>
+          <ul class="bullet-list">
+            <li><strong>Responsible AI (Microsoft)</strong> — 6 princípios: equidade, confiabilidade, privacidade, inclusão, transparência e accountability. Acompanhado de ferramentas como o Fairlearn e o InterpretML.</li>
+            <li><strong>AI Principles (Google)</strong> — Compromisso de não desenvolver IA para armas autônomas, vigilância que viole normas internacionais ou que cause danos gerais à sociedade.</li>
+            <li><strong>Model Card</strong> — Documentação padronizada que acompanha cada modelo de ML, descrevendo intenção, desempenho por subgrupo e limitações conhecidas.</li>
+            <li><strong>Datasheets for Datasets</strong> — Documentação estruturada de datasets: como foram coletados, quem participou, quais vieses são conhecidos. Essencial para rastreabilidade.</li>
+            <li><strong>UNESCO Recommendation on AI Ethics (2021)</strong> — Primeiro instrumento global de ética em IA adotado por 193 países membros, incluindo o Brasil.</li>
+          </ul>
+        </div>
+
+        <!-- ─── QUIZ 02 ─── -->
+        <div id="quiz-a2" class="quiz-section fade-in">
+          <div class="quiz-section-header">
+            <span class="qs-label">Exercício 02 · Ética em IA</span>
+            <span class="qs-title">Transparência e Regulamentação</span>
+          </div>
+          <div class="quiz-section-body">
+
+            <div class="quiz-block" data-correct="b"
+                 data-feedback-ok="Correto! O SHAP calcula a contribuição de cada feature individual para uma previsão específica, baseado na teoria de jogos cooperativos — tornando-o especialmente útil para explicar decisões individuais de forma matematicamente fundamentada."
+                 data-feedback-err="Não está certo. O SHAP (SHapley Additive exPlanations) é a técnica indicada para calcular quanto cada variável contribuiu para uma decisão específica do modelo.">
+              <div class="quiz-q-label">Questão 01</div>
+              <div class="quiz-question">Um hospital usa IA para triagem de pacientes e um médico precisa entender por que um paciente específico recebeu prioridade baixa. Qual técnica de XAI é mais indicada?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Retreinar o modelo com mais dados</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> SHAP — para calcular a contribuição de cada variável na decisão individual</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Substituir a rede neural por uma planilha</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Auditoria dos logs de sistema dos últimos 30 dias</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+            <div class="quiz-block" data-correct="c"
+                 data-feedback-ok="Exato! O Art. 20 da LGPD garante ao titular o direito de solicitar revisão de decisões tomadas exclusivamente por meios automatizados que afetem seus interesses — incluindo decisões de crédito, emprego e proteção social."
+                 data-feedback-err="Não está certo. A LGPD, em seu Art. 20, garante especificamente o direito de revisão de decisões automatizadas que afetem os interesses do titular dos dados.">
+              <div class="quiz-q-label">Questão 02</div>
+              <div class="quiz-question">Um cidadão brasileiro teve seu crédito negado por um sistema de IA. De acordo com a LGPD, ele tem direito a:</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Acesso ao código-fonte do algoritmo</div>
+                <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Indenização automática pelo valor do crédito negado</div>
+                <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Solicitar revisão da decisão tomada exclusivamente por meio automatizado</div>
+                <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Exigir que a empresa desative o sistema de IA</div>
+              </div>
+              <div class="quiz-feedback acerto"><span class="fb-icon">✅</span><span class="fb-text"></span></div>
+              <div class="quiz-feedback erro"><span class="fb-icon">❌</span><span class="fb-text"></span></div>
+              <button class="quiz-retry">↺ Tentar novamente</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ─── ITEM 04 ─── -->
+        <div id="sec-aprendemos-2" class="section-sep fade-in">
+          <span class="sep-num">Item 04</span>
+          <span class="sep-title">O que Aprendemos?</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <div class="learned-grid fade-in">
+          <div class="learned-item">
+            <div class="li-num">01</div>
+            <div><strong>Explainable AI (XAI)</strong> torna as decisões de modelos compreensíveis — LIME, SHAP e saliency maps são as principais ferramentas. Em aplicações de alto impacto, pode ser mais responsável usar um modelo menos preciso, porém explicável.</div>
+          </div>
+          <div class="learned-item">
+            <div class="li-num">02</div>
+            <div>O <strong>AI Act europeu</strong> classifica sistemas de IA por nível de risco (inaceitável, alto, limitado e mínimo) com obrigações proporcionais — sendo o primeiro marco regulatório abrangente de IA do mundo, com efeito global.</div>
+          </div>
+          <div class="learned-item">
+            <div class="li-num">03</div>
+            <div>A <strong>LGPD</strong> garante ao cidadão brasileiro o direito de revisão de decisões automatizadas (Art. 20) e impõe bases legais para o uso de dados pessoais em sistemas de IA.</div>
+          </div>
+          <div class="learned-item">
+            <div class="li-num">04</div>
+            <div>Boas práticas éticas devem ser aplicadas em <strong>todo o ciclo de vida</strong> do sistema — concepção, desenvolvimento, implantação e operação — com documentação (Model Cards), auditoria contínua e mecanismos de contestação.</div>
+          </div>
+        </div>
+
+        <div class="dark-card fade-in" style="margin-top:28px;">
+          <p>Ética em IA não é um módulo que se conclui — é uma prática contínua. Os sistemas que desenvolvemos hoje moldarão decisões por décadas. A responsabilidade de construí-los bem é de todos que participam da cadeia: desenvolvedores, gestores, usuários e reguladores.</p>
+        </div>
+
+      </div>
+      <footer style="background:var(--navy);color:rgba(255,255,255,.35);text-align:center;font-size:10.5px;padding:16px;letter-spacing:.4px;">
+        Exército Brasileiro · Escola de Comunicações (Escola Coronel Hygino Corsetti) · EAD — Módulo de Ética em IA
+      </footer>
+    </div><!-- /#ct-panel-2 -->
+
+  </div><!-- /#main-area -->
+</div><!-- /#wrapper -->
+
+<button id="back-to-top" aria-label="Voltar ao topo">&#8679; Voltar ao topo</button>
+<button id="print-btn" onclick="window.print()" title="Imprimir esta aula" aria-label="Imprimir">🖨️</button>
+
+<script>
+(function(){
+  var tabs     = document.querySelectorAll('.aula-tab');
+  var sbPanels = document.querySelectorAll('.sb-panel');
+  var heroDyns = document.querySelectorAll('.hero-dyn');
+  var ctPanels = document.querySelectorAll('.content-panel');
+  var bar      = document.getElementById('progress-bar');
+
+  function activate(idx) {
+    tabs.forEach(function(t,i)     { t.classList.toggle('active', i===idx); });
+    sbPanels.forEach(function(p,i) { p.classList.toggle('active', i===idx); });
+    heroDyns.forEach(function(h,i) { h.classList.toggle('active', i===idx); });
+    ctPanels.forEach(function(c,i) { c.classList.toggle('active', i===idx); });
+    window.scrollTo(0, 0);
+    localStorage.setItem('etica-ia-tab', idx);
+  }
+
+  tabs.forEach(function(t, i) {
+    t.addEventListener('click', function() { activate(i); });
+  });
+
+  function updBar() {
+    if (!bar) return;
+    var pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    bar.style.width = (isNaN(pct) ? 0 : pct) + '%';
+  }
+  window.addEventListener('scroll', updBar, {passive:true});
+
+  var ios = document.querySelectorAll('.fade-in');
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, {threshold:0.08});
+  ios.forEach(function(el) { obs.observe(el); });
+
+  window.addEventListener('scroll', function() {
+    var activePanel = document.querySelector('.content-panel.active');
+    if (!activePanel) return;
+    var sections = activePanel.querySelectorAll('[id]');
+    var activeSb = document.querySelector('.sb-panel.active');
+    if (!activeSb) return;
+    var links = activeSb.querySelectorAll('a');
+    var current = '';
+    sections.forEach(function(s) { if (window.scrollY >= s.offsetTop - 130) current = s.id; });
+    links.forEach(function(a) {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  }, {passive:true});
+
+  document.querySelectorAll('.quiz-block').forEach(function(block) {
+    var opts     = block.querySelectorAll('.quiz-option');
+    var correct  = block.dataset.correct;
+    var fbOk     = block.querySelector('.quiz-feedback.acerto');
+    var fbErr    = block.querySelector('.quiz-feedback.erro');
+    var retry    = block.querySelector('.quiz-retry');
+    var answered = false;
+
+    function reset() {
+      answered = false;
+      opts.forEach(function(o) { o.classList.remove('correct','wrong','disabled'); });
+      fbOk.classList.remove('show');
+      fbErr.classList.remove('show');
+      retry.classList.remove('show');
+    }
+
+    opts.forEach(function(opt) {
+      opt.addEventListener('click', function() {
+        if (answered) return;
+        answered = true;
+        opts.forEach(function(o) { o.classList.add('disabled'); });
+        if (opt.dataset.opt === correct) {
+          opt.classList.add('correct');
+          fbOk.querySelector('.fb-text').textContent = block.dataset.feedbackOk;
+          fbOk.classList.add('show');
+        } else {
+          opt.classList.add('wrong');
+          opts.forEach(function(o) { if (o.dataset.opt === correct) o.classList.add('correct'); });
+          fbErr.querySelector('.fb-text').textContent = block.dataset.feedbackErr;
+          fbErr.classList.add('show');
+          retry.classList.add('show');
+        }
+      });
+    });
+    retry.addEventListener('click', reset);
+  });
+
+  document.querySelectorAll('.sb-panel a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var targetId = link.getAttribute('href').slice(1);
+      var activePanel = document.querySelector('.content-panel.active');
+      if (!activePanel) return;
+      var target = activePanel.querySelector('#' + targetId) || document.getElementById(targetId);
+      if (target) {
+        var offset = target.getBoundingClientRect().top + window.scrollY - 20;
+        window.scrollTo({ top: offset, behavior: 'smooth' });
+      }
+    });
+  });
+
+  var btt = document.getElementById('back-to-top');
+  window.addEventListener('scroll', function() {
+    btt.classList.toggle('visible', window.scrollY > 300);
+  }, {passive: true});
+  btt.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  activate(parseInt(localStorage.getItem('etica-ia-tab')) || 0);
+})();
+</script>
 </body>
 </html>
