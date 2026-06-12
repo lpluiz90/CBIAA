@@ -1041,18 +1041,36 @@ Classe prevista para a nova amostra: setosa</pre>
         <p>Para isso, utilizaremos um dataset de imóveis, especificamente com preços de imóveis na Califórnia. No Colab, na próxima célula vazia, colaremos o código abaixo que carrega esse dataset.</p>
       </div>
 
+      <div class="callout purple fade-in" style="margin-top:14px;">
+        <strong>O que este código faz — e como funciona na prática:</strong><br><br>
+        Este código carrega o dataset <strong>California Housing</strong> diretamente do scikit-learn — sem arquivo externo. O dataset contém dados de <strong>20.640 blocos residenciais</strong> da Califórnia, com 8 atributos por imóvel (renda mediana, idade da casa, número de quartos etc.) e o preço médio em centenas de milhares de dólares.<br><br>
+        Usamos <strong>pandas</strong> para transformar os dados em um DataFrame (tabela com colunas nomeadas), adicionamos a coluna <em>PRICE</em> e exibimos as primeiras linhas para entender a estrutura antes de treinar o modelo.
+      </div>
+
       <div class="prompt-wrap fade-in">
         <span class="prompt-label neutro">Python 🐍 — california_housing.py</span>
-        <pre class="prompt-block neutro"><span class="cm"># Carregar o dataset California Housing do scikit-learn</span>
+        <pre class="prompt-block neutro"><span class="cm"># ── Bloco 1: Importações ────────────────────────────────────────────</span>
 from sklearn.datasets import fetch_california_housing
+<span class="cm"># → fetch_california_housing() carrega o dataset embutido no scikit-learn
+#   — 20.640 amostras com 8 atributos (renda, idade, quartos, localização etc.)</span>
+
 import pandas as pd
+<span class="cm"># → pandas: biblioteca para criar e manipular tabelas de dados (DataFrames)</span>
 
+<span class="cm"># ── Bloco 2: Carregar e organizar os dados ───────────────────────────</span>
 california = fetch_california_housing()
-df = pd.DataFrame(california.data, columns=california.feature_names)
-df['PRICE'] = california.target
+<span class="cm"># → o objeto retornado contém .data (atributos) e .target (preços)</span>
 
-<span class="cm"># Ver as primeiras linhas dos dados</span>
-print(df.head())</pre>
+df = pd.DataFrame(california.data, columns=california.feature_names)
+<span class="cm"># → transforma o array em DataFrame com colunas nomeadas:
+#   MedInc, HouseAge, AveRooms, AveBedrms, Population, AveOccup, Latitude, Longitude</span>
+
+df['PRICE'] = california.target
+<span class="cm"># → adiciona a coluna PRICE (em centenas de mil dólares — ex: 4.526 = U$452.600)</span>
+
+<span class="cm"># ── Bloco 3: Explorar os dados ───────────────────────────────────────</span>
+print(df.head())
+<span class="cm"># → exibe as 5 primeiras linhas para verificar a estrutura dos dados</span></pre>
       </div>
 
       <div class="callout fade-in">Ao executar, verificaremos as primeiras linhas do conjunto de dados, que incluem idade da casa, número médio de quartos e salas, população, ocupação, latitude, longitude e preço. Consideramos não apenas a área do imóvel, mas também suas características e localização.</div>
@@ -1074,46 +1092,78 @@ print(df.head())</pre>
         <p>O código a seguir importa as bibliotecas necessárias, carrega o conjunto de dados, divide em treino e teste, treina o modelo usando regressão linear, faz previsões e avalia o modelo usando R² e MSE. Por fim, exibe as métricas calculadas e visualiza os resultados com um gráfico de dispersão.</p>
       </div>
 
+      <div class="callout purple fade-in" style="margin-top:14px;">
+        <strong>O que este código faz — e como funciona na prática:</strong><br><br>
+        Este código treina um modelo de <strong>regressão linear</strong> para estimar o preço de imóveis. A regressão linear encontra a "reta que melhor se ajusta" aos dados (equação <strong>Y = AX + B</strong>), tentando prever um valor contínuo — o preço em centenas de milhares de dólares.<br><br>
+        Avaliamos o modelo com duas métricas: <strong>MSE</strong> (Erro Quadrático Médio — quanto o modelo erra em média) e <strong>R²</strong> (Coeficiente de Determinação — vai de 0 a 1, indica o quanto o modelo explica a variação dos dados). Por fim, um gráfico de dispersão mostra os valores reais vs. preditos — quanto mais próximos da reta diagonal, melhor o ajuste.
+      </div>
+
       <div class="prompt-wrap fade-in">
         <span class="prompt-label neutro">Python 🐍 — regressao_linear_california.py</span>
-        <pre class="prompt-block neutro">import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, r2_score
-from sklearn.datasets import fetch_california_housing
+        <pre class="prompt-block neutro"><span class="cm"># ── Bloco 1: Importações ─────────────────────────────────────────────</span>
+import numpy as np
+<span class="cm"># → numpy: operações matemáticas vetoriais (usadas internamente pelo sklearn)</span>
 
-<span class="cm"># Carregar o conjunto de dados</span>
+import pandas as pd
+<span class="cm"># → pandas: manipulação de tabelas de dados</span>
+
+import matplotlib.pyplot as plt
+<span class="cm"># → matplotlib: criação de gráficos</span>
+
+import seaborn as sns
+<span class="cm"># → seaborn: gráficos estatísticos com visual aprimorado (baseado no matplotlib)</span>
+
+from sklearn.linear_model import LinearRegression
+<span class="cm"># → LinearRegression: ajusta a reta Y = AX + B que minimiza os erros de previsão</span>
+
+from sklearn.model_selection import train_test_split
+<span class="cm"># → divide os dados em treino (aprender) e teste (avaliar)</span>
+
+from sklearn.metrics import mean_squared_error, r2_score
+<span class="cm"># → mean_squared_error (MSE): média dos erros ao quadrado — quanto menor, melhor
+# → r2_score (R²): de 0 a 1, indica o quanto o modelo explica a variação dos dados</span>
+
+from sklearn.datasets import fetch_california_housing
+<span class="cm"># → carrega o dataset de imóveis da Califórnia embutido no scikit-learn</span>
+
+<span class="cm"># ── Bloco 2: Carregar o conjunto de dados ────────────────────────────</span>
 california = fetch_california_housing()
 df = pd.DataFrame(california.data, columns=california.feature_names)
 df['PRICE'] = california.target
+<span class="cm"># → PRICE em centenas de mil dólares (ex: 4.526 = U$452.600)</span>
 
-<span class="cm"># Dividir os dados em treino e teste</span>
-X = df.drop('PRICE', axis=1)
-y = df['PRICE']
+<span class="cm"># ── Bloco 3: Separar variáveis e dividir em treino/teste ─────────────</span>
+X = df.drop('PRICE', axis=1)   <span class="cm"># atributos de entrada (8 colunas)</span>
+y = df['PRICE']                 <span class="cm"># variável alvo — o valor que queremos prever</span>
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+<span class="cm"># → 70% para treino · 30% para teste · random_state=42 garante reprodutibilidade</span>
 
-<span class="cm"># Treinar o modelo</span>
+<span class="cm"># ── Bloco 4: Criar e treinar o modelo ────────────────────────────────</span>
 model = LinearRegression()
+<span class="cm"># → instancia o modelo de regressão linear</span>
 model.fit(X_train, y_train)
+<span class="cm"># → fit() ajusta os coeficientes A e B da reta aos dados de treino</span>
 
-<span class="cm"># Fazer previsões</span>
+<span class="cm"># ── Bloco 5: Fazer previsões ─────────────────────────────────────────</span>
 y_pred = model.predict(X_test)
+<span class="cm"># → aplica o modelo nos dados de teste para gerar os preços previstos</span>
 
-<span class="cm"># Avaliar o modelo</span>
+<span class="cm"># ── Bloco 6: Avaliar o modelo ────────────────────────────────────────</span>
 mse = mean_squared_error(y_test, y_pred)
+<span class="cm"># → mede o erro médio ao quadrado entre preços reais e previstos</span>
 r2 = r2_score(y_test, y_pred)
+<span class="cm"># → R² próximo de 1 = modelo excelente · R² = 0,60 = ajuste moderado</span>
 
-<span class="cm"># Exibir métricas</span>
+<span class="cm"># ── Bloco 7: Exibir métricas ─────────────────────────────────────────</span>
 print(f"Erro Quadrático Médio (MSE): {mse:.2f}")
 print(f"Coeficiente de Determinação (R²): {r2:.2f}")
 
-<span class="cm"># Visualização dos resultados</span>
+<span class="cm"># ── Bloco 8: Visualizar resultados ───────────────────────────────────</span>
 plt.figure(figsize=(10, 6))
 sns.scatterplot(x=y_test, y=y_pred, alpha=0.6)
-plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], '--r', linewidth=2)  <span class="cm"># Linha de referência</span>
+<span class="cm"># → cada ponto = um imóvel: eixo X = preço real · eixo Y = preço previsto</span>
+plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], '--r', linewidth=2)
+<span class="cm"># → reta de referência perfeita: pontos sobre ela significam previsão exata</span>
 plt.xlabel("Valores Reais")
 plt.ylabel("Valores Preditos")
 plt.title("Regressão Linear: Valores Reais vs. Preditos")
@@ -1149,41 +1199,71 @@ Coeficiente de Determinação (R²): 0.60</pre>
         <p>O código abaixo importa as bibliotecas, carrega os dados do dataset de pacientes diabéticos, transforma a variável target em binária para o processo de classificação, divide os dados em treino e teste, treina o modelo, faz as previsões e avalia o modelo. Por fim, gera a <strong>matriz de confusão</strong> para avaliar os resultados obtidos, comparando as inferências do modelo treinado com os dados reais.</p>
       </div>
 
+      <div class="callout purple fade-in" style="margin-top:14px;">
+        <strong>O que este código faz — e como funciona na prática:</strong><br><br>
+        Este código implementa um <strong>classificador logístico</strong> para diagnosticar diabetes. Diferentemente da regressão (que prevê valores contínuos), a classificação logística prevê uma <strong>categoria</strong> — diabético (1) ou não diabético (0).<br><br>
+        Como o dataset original é de regressão (progressão da doença), transformamos o target em binário: pacientes acima da mediana recebem rótulo 1. Avaliamos o modelo com <strong>acurácia</strong> (% de acertos) e a <strong>matriz de confusão</strong>, que mostra acertos e erros separados por categoria — permitindo identificar falsos positivos e falsos negativos.
+      </div>
+
       <div class="prompt-wrap fade-in">
         <span class="prompt-label neutro">Python 🐍 — classificacao_diabetes.py</span>
-        <pre class="prompt-block neutro">import pandas as pd
-from sklearn.datasets import load_diabetes
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDisplay
-import matplotlib.pyplot as plt
+        <pre class="prompt-block neutro"><span class="cm"># ── Bloco 1: Importações ─────────────────────────────────────────────</span>
+import pandas as pd
+<span class="cm"># → pandas: manipulação de tabelas de dados</span>
 
-<span class="cm"># Carregar os dados</span>
+from sklearn.datasets import load_diabetes
+<span class="cm"># → load_diabetes(): 442 pacientes com 10 atributos clínicos normalizados
+#   (idade, sexo, IMC, pressão arterial e 6 marcadores séricos)</span>
+
+from sklearn.linear_model import LogisticRegression
+<span class="cm"># → LogisticRegression: classifica dados em categorias (0 ou 1)
+#   — apesar do nome, é um algoritmo de CLASSIFICAÇÃO, não de regressão</span>
+
+from sklearn.model_selection import train_test_split
+<span class="cm"># → divide os dados em conjuntos de treino e teste</span>
+
+from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDisplay
+<span class="cm"># → accuracy_score: porcentagem de previsões corretas
+# → confusion_matrix: tabela 2×2 com acertos e erros por categoria
+# → ConfusionMatrixDisplay: visualização gráfica da matriz de confusão</span>
+
+import matplotlib.pyplot as plt
+<span class="cm"># → matplotlib: renderização do gráfico da matriz</span>
+
+<span class="cm"># ── Bloco 2: Carregar os dados ───────────────────────────────────────</span>
 diabetes = load_diabetes()
 df = pd.DataFrame(diabetes.data, columns=diabetes.feature_names)
 df['OUTCOME'] = diabetes.target
+<span class="cm"># → OUTCOME original é contínuo (progressão da doença) — precisamos torná-lo binário</span>
 
-<span class="cm"># Transformar a variável target em binária (classificação)</span>
-df['OUTCOME'] = (df['OUTCOME'] &gt; df['OUTCOME'].median()).astype(int)  <span class="cm"># 1 acima da mediana, 0 abaixo</span>
+<span class="cm"># ── Bloco 3: Transformar em problema de classificação ────────────────</span>
+df['OUTCOME'] = (df['OUTCOME'] &gt; df['OUTCOME'].median()).astype(int)
+<span class="cm"># → pacientes acima da mediana → OUTCOME = 1 (diabético)
+# → pacientes abaixo da mediana → OUTCOME = 0 (não diabético)
+# → astype(int) converte True/False em 1/0</span>
 
-<span class="cm"># Dividir os dados em treino e teste</span>
-X = df.drop('OUTCOME', axis=1)
-y = df['OUTCOME']
+<span class="cm"># ── Bloco 4: Separar variáveis e dividir em treino/teste ─────────────</span>
+X = df.drop('OUTCOME', axis=1)  <span class="cm"># 10 atributos clínicos de entrada</span>
+y = df['OUTCOME']               <span class="cm"># 0 = não diabético · 1 = diabético</span>
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+<span class="cm"># → 70% treino · 30% teste · random_state=42 para reprodutibilidade</span>
 
-<span class="cm"># Treinar o modelo</span>
-model = LogisticRegression(max_iter=1000)  <span class="cm"># Aumentando iterações para evitar warnings</span>
+<span class="cm"># ── Bloco 5: Criar e treinar o modelo ────────────────────────────────</span>
+model = LogisticRegression(max_iter=1000)
+<span class="cm"># → max_iter=1000 aumenta o limite de iterações para garantir convergência</span>
 model.fit(X_train, y_train)
+<span class="cm"># → aprende a fronteira de decisão entre diabéticos e não diabéticos</span>
 
-<span class="cm"># Fazer previsões</span>
+<span class="cm"># ── Bloco 6: Fazer previsões e avaliar ───────────────────────────────</span>
 y_pred = model.predict(X_test)
-
-<span class="cm"># Avaliar o modelo</span>
 accuracy = accuracy_score(y_test, y_pred)
 print(f"Acurácia do Modelo: {accuracy * 100:.2f}%")
+<span class="cm"># → porcentagem de pacientes classificados corretamente</span>
 
-<span class="cm"># Matriz de Confusão</span>
+<span class="cm"># ── Bloco 7: Gerar a Matriz de Confusão ──────────────────────────────</span>
 cm = confusion_matrix(y_test, y_pred)
+<span class="cm"># → retorna uma matriz 2×2: verdadeiros positivos, falsos positivos,
+#   falsos negativos e verdadeiros negativos</span>
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['Não Diabético', 'Diabético'])
 disp.plot(cmap=plt.cm.Blues)
 plt.title("Matriz de Confusão - Diagnóstico de Diabetes")
