@@ -287,6 +287,11 @@
       <li><a href="#conclusao-a2"><span class="num">1.7</span> Conclusão</a></li>
       <li class="section-divider"><a href="#a2-s2"><span class="num">02</span> Para Saber Mais</a></li>
       <li><a href="#a2-s2-pratica"><span class="num">2.1</span> Regressão e classificação</a></li>
+      <li class="section-divider"><a href="#a2-s3"><span class="num">03</span> Selecionando features</a></li>
+      <li><a href="#a2-s3-otim"><span class="num">3.1</span> Otimizando modelos</a></li>
+      <li><a href="#a2-s3-gridsearch"><span class="num">3.2</span> Grid Search</a></li>
+      <li><a href="#a2-s3-features"><span class="num">3.3</span> Selecionando features</a></li>
+      <li><a href="#a2-s3-aplicando"><span class="num">3.4</span> Aplicando as técnicas</a></li>
     </ul>
   </div>
 
@@ -1305,6 +1310,167 @@ plt.show()</pre>
         <div class="highlight-box" style="margin-top:16px;">
           Compreender bem a diferença entre essas abordagens e os modelos disponíveis é essencial para tomar decisões mais eficazes ao construir sistemas de aprendizado de máquina.
         </div>
+      </div>
+
+      <!-- Item 03 -->
+      <div id="a2-s3" class="section-sep fade-in"><span class="sep-num">Item 03</span><span class="sep-title">Selecionando features e ajustando parâmetros</span><span class="sep-line"></span></div>
+
+      <div class="intro-card fade-in">
+        <p>Quando estamos lidando com o processo de treinamento de modelos, gerenciamos diversos projetos para atender demandas específicas. Podemos utilizar modelos de classificação ou de regressão, de acordo com a demanda que desejamos atender.</p>
+        <p>Nesse processo, já avaliamos como analisar alguns indicadores de desempenho desses modelos — ou seja, a capacidade de generalização quando apresentamos novos dados, diferentes daqueles utilizados no treinamento.</p>
+      </div>
+
+      <div id="a2-s3-otim" class="card fade-in">
+        <div class="card-title">Otimizando o desempenho dos modelos</div>
+        <p>Nosso objetivo, independentemente do projeto em que estamos trabalhando, é obter modelos com boa capacidade de previsão, bom desempenho e capacidade de generalização. Para isso, além de avaliar o desempenho utilizando diferentes métricas, podemos empregar outras técnicas.</p>
+        <p>Essas técnicas podem, por exemplo, selecionar parâmetros do modelo que possuem maior importância no treinamento ou escolher as features do conjunto de dados mais relevantes para a obtenção de um modelo específico.</p>
+        <p>Para melhorar modelos de Machine Learning, temos algumas opções:</p>
+        <ul class="bullet-list">
+          <li>Ajustar os parâmetros do modelo.</li>
+          <li>Selecionar as principais features do banco de dados.</li>
+        </ul>
+      </div>
+
+      <div id="a2-s3-gridsearch" class="card fade-in">
+        <div class="card-title">Aplicando no Google Colab</div>
+        <p>Para entender melhor, vamos voltar ao Google Colab. Na próxima célula vazia, inseriremos o trecho de código abaixo. Ele retoma o caso do preço de imóveis na Califórnia — mas agora, em vez de regressão linear, utilizamos uma <strong>Árvore de Decisão</strong> com ajuste automático de hiperparâmetros via <strong>Grid Search</strong>.</p>
+      </div>
+
+      <div class="callout purple fade-in" style="margin-top:14px;">
+        <strong>O que este código faz — e como funciona na prática:</strong><br><br>
+        Este código usa a técnica de <strong>Grid Search</strong> para encontrar automaticamente os melhores hiperparâmetros de uma Árvore de Decisão. Ao contrário da regressão linear, a Árvore de Decisão possui parâmetros internos como profundidade máxima, número mínimo de amostras por nó e por folha — cada um afeta diretamente o desempenho.<br><br>
+        O Grid Search testa todas as combinações possíveis (4 × 3 × 3 = <strong>36 combinações</strong>) usando <strong>validação cruzada com 5 dobras</strong> (cv=5), e seleciona a combinação que minimiza o erro quadrático médio.
+      </div>
+
+      <div class="prompt-wrap fade-in">
+        <span class="prompt-label neutro">Python 🐍 — gridsearch_california.py</span>
+        <pre class="prompt-block neutro"><span class="cm"># ── Bloco 1: Importações ─────────────────────────────────────────────</span>
+from sklearn.datasets import fetch_california_housing
+<span class="cm"># → dataset de imóveis da Califórnia embutido no scikit-learn</span>
+
+from sklearn.model_selection import train_test_split, GridSearchCV
+<span class="cm"># → train_test_split: divide dados em treino e teste
+# → GridSearchCV: testa combinações de hiperparâmetros automaticamente</span>
+
+from sklearn.tree import DecisionTreeRegressor
+<span class="cm"># → Árvore de Decisão para regressão (mais flexível que regressão linear)</span>
+
+<span class="cm"># ── Bloco 2: Carregar dataset ─────────────────────────────────────────</span>
+X, y = fetch_california_housing(return_X_y=True)
+<span class="cm"># → return_X_y=True retorna diretamente (X, y) sem criar o objeto completo</span>
+
+<span class="cm"># ── Bloco 3: Dividir em treino e teste ───────────────────────────────</span>
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+<span class="cm"># → 70% treino · 30% teste · random_state=42 para reprodutibilidade</span>
+
+<span class="cm"># ── Bloco 4: Definir grade de hiperparâmetros ────────────────────────</span>
+param_grid = {
+    'max_depth': [3, 5, 7, 10],        <span class="cm"># profundidade máxima da árvore de decisão</span>
+    'min_samples_split': [2, 5, 10],   <span class="cm"># nº mínimo de amostras para dividir um nó</span>
+    'min_samples_leaf': [1, 2, 4]      <span class="cm"># nº mínimo de amostras por folha</span>
+}
+<span class="cm"># → 4 × 3 × 3 = 36 combinações serão testadas pelo GridSearch</span>
+
+<span class="cm"># ── Bloco 5: Aplicar Grid Search ─────────────────────────────────────</span>
+grid_search = GridSearchCV(DecisionTreeRegressor(), param_grid, cv=5, scoring='neg_mean_squared_error')
+<span class="cm"># → cv=5: validação cruzada com 5 dobras (cada combinação avaliada 5 vezes)
+# → scoring='neg_mean_squared_error': usa MSE negativo como métrica de seleção</span>
+grid_search.fit(X_train, y_train)
+<span class="cm"># → treina o modelo com cada combinação de hiperparâmetros</span>
+
+<span class="cm"># ── Bloco 6: Exibir melhores parâmetros ──────────────────────────────</span>
+print(f"Melhores parâmetros: {grid_search.best_params_}")</pre>
+      </div>
+
+      <div class="card fade-in">
+        <div class="card-title">Ajustando hiperparâmetros com Grid Search</div>
+        <p>Nesse modelo de Árvore de Decisão, existem características internas da arquitetura, como a <strong>profundidade da árvore</strong>. Podemos imaginar essa árvore como uma estrutura com folhas e nós — onde os nós são o entrelaçamento entre os ramos.</p>
+        <p>O número mínimo de amostras para dividir um nó e o número mínimo de amostras por folha também são parâmetros internos do modelo. O Grid Search combina sistematicamente todos esses valores para encontrar a combinação ótima, usando o <strong>erro quadrático médio negativo</strong> como critério de seleção.</p>
+        <p>Após a execução, obtivemos os melhores parâmetros: profundidade máxima da árvore = <strong>10</strong>, mínimo de amostras por folha = <strong>4</strong> e mínimo de amostras para dividir um nó = <strong>10</strong>.</p>
+      </div>
+
+      <div class="prompt-wrap fade-in">
+        <span class="prompt-label resposta">Saída</span>
+        <pre class="prompt-block resposta">Melhores parâmetros: {'max_depth': 10, 'min_samples_leaf': 4, 'min_samples_split': 10}</pre>
+      </div>
+
+      <div class="callout tip fade-in">Podemos definir esses parâmetros como ótimos para essa árvore de decisão com o dataset California Housing. Esse é um processo simples de ajuste de hiperparâmetros para melhorar o desempenho do modelo.</div>
+
+      <div id="a2-s3-features" class="card fade-in">
+        <div class="card-title">Selecionando features relevantes</div>
+        <p>Por outro lado, podemos selecionar algumas <strong>features</strong> (características) do dataset que têm maior influência naquilo que queremos inferir ou prever. Agora, usaremos o dataset de diabetes para entender quais são as features mais relevantes.</p>
+        <p>O código abaixo utiliza o <strong>Random Forest Regressor</strong>, que consegue calcular a importância de cada variável nas previsões. O atributo <code>feature_importances_</code> retorna um peso para cada feature — quanto maior o valor, mais relevante ela é para o modelo.</p>
+      </div>
+
+      <div class="callout purple fade-in" style="margin-top:14px;">
+        <strong>O que este código faz — e como funciona na prática:</strong><br><br>
+        O <strong>Random Forest</strong> é um algoritmo de <em>ensemble</em> que combina múltiplas Árvores de Decisão. Por essa natureza combinada, ele consegue medir a contribuição de cada variável nas previsões por meio do atributo <code>feature_importances_</code> — um array em que a soma de todos os valores é 1.0.<br><br>
+        O resultado é visualizado como um <strong>gráfico de barras horizontais</strong>: barras mais longas indicam features com maior influência no modelo treinado.
+      </div>
+
+      <div class="prompt-wrap fade-in">
+        <span class="prompt-label neutro">Python 🐍 — feature_importance_diabetes.py</span>
+        <pre class="prompt-block neutro"><span class="cm"># ── Bloco 1: Importações ─────────────────────────────────────────────</span>
+import pandas as pd
+<span class="cm"># → pandas: manipulação de tabelas de dados</span>
+
+from sklearn.datasets import load_diabetes
+<span class="cm"># → 442 pacientes com 10 atributos clínicos normalizados</span>
+
+from sklearn.model_selection import train_test_split
+<span class="cm"># → divide os dados em treino e teste</span>
+
+from sklearn.ensemble import RandomForestRegressor
+<span class="cm"># → conjunto de múltiplas Árvores de Decisão
+# → mais robusto que uma única árvore e capaz de calcular importância das features</span>
+
+import matplotlib.pyplot as plt
+<span class="cm"># → matplotlib: criação do gráfico de barras</span>
+
+<span class="cm"># ── Bloco 2: Carregar o dataset ───────────────────────────────────────</span>
+diabetes = load_diabetes()
+X = diabetes.data    <span class="cm"># variáveis independentes (10 atributos clínicos)</span>
+y = diabetes.target  <span class="cm"># variável dependente (progressão da doença)</span>
+
+<span class="cm"># ── Bloco 3: Dividir os dados em treino e teste ───────────────────────</span>
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+<span class="cm"># → 70% treino · 30% teste</span>
+
+<span class="cm"># ── Bloco 4: Criar e treinar o modelo ────────────────────────────────</span>
+model = RandomForestRegressor()
+<span class="cm"># → instancia o Random Forest com parâmetros padrão</span>
+model.fit(X_train, y_train)
+<span class="cm"># → treina o modelo — internamente cria múltiplas árvores e as combina</span>
+
+<span class="cm"># ── Bloco 5: Obter importância das features ───────────────────────────</span>
+importances = model.feature_importances_
+<span class="cm"># → array com o peso de cada feature nas decisões do modelo (soma = 1.0)</span>
+feature_names = diabetes.feature_names
+<span class="cm"># → nomes das colunas: age, sex, bmi, bp, s1, s2, s3, s4, s5, s6</span>
+
+<span class="cm"># ── Bloco 6: Visualizar importância das features ──────────────────────</span>
+plt.figure(figsize=(10, 6))
+plt.barh(feature_names, importances)
+<span class="cm"># → gráfico de barras horizontais: barras mais longas = features mais importantes</span>
+plt.title("Importância das Features")
+plt.xlabel("Importância")
+plt.ylabel("Feature")
+plt.show()</pre>
+      </div>
+
+      <div class="content-img-wrap fade-in">
+        <img src="../../assets/images/importanciadasfeatures.png" alt="Gráfico: Importância das Features no Dataset de Diabetes">
+        <div class="img-cap">Importância das Features — Dataset de Diabetes — Créditos da imagem: Alura</div>
+      </div>
+
+      <div class="card fade-in">
+        <p>A feature com maior relevância foi o <strong>bmi</strong> (Índice de Massa Corporal), com grande preponderância na identificação de padrões. A <strong>s5</strong> e a <strong>bp</strong> (pressão arterial) apresentam grau de importância relativa. Já a <strong>age</strong> (idade) tem componente muito pequeno e o sexo da pessoa possui importância pouco significativa, enquanto outros marcadores séricos têm grau de relevância intermediário.</p>
+      </div>
+
+      <div id="a2-s3-aplicando" class="card fade-in">
+        <div class="card-title">Aplicando as técnicas exploradas</div>
+        <p>Essas técnicas não têm apenas significado teórico em Machine Learning — são usadas amplamente na prática. Por exemplo, em <strong>sistemas de recomendação</strong> de itens no e-commerce para clientes, a seleção das features é crucial para recomendar aquilo que realmente atrairá a atenção da pessoa.</p>
+        <p>Da mesma forma, o <strong>ajuste de hiperparâmetros</strong> nos ajuda a ter um modelo de recomendação otimizado para a clientela. Compreender ambas as técnicas é essencial para construir sistemas de Machine Learning eficazes e eficientes.</p>
       </div>
 
       <!-- Conclusão -->
