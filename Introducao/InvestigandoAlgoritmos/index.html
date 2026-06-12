@@ -116,7 +116,7 @@
   .step-num.sky{background:var(--sky);}
   .step-body{font-size:18.5px;line-height:1.68;color:var(--text);}
   .step-body strong{color:var(--navy);}
-  #progress-bar-line{position:fixed;top:0;left:0;height:3px;background:linear-gradient(to right,var(--sky),var(--gold));z-index:999;width:0%;transition:width .1s;}
+  #progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(to right,var(--sky),var(--gold));z-index:999;width:0%;transition:width .1s;}
   .fade-in{opacity:0;transform:translateY(16px);transition:opacity .42s ease,transform .42s ease;}
   .fade-in.visible{opacity:1;transform:none;}
   #back-to-top{position:fixed;bottom:28px;right:28px;z-index:999;background:var(--gold);color:var(--navy);border:none;border-radius:50px;padding:12px 22px;font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;letter-spacing:.5px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.25);display:flex;align-items:center;gap:8px;opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .25s,transform .25s;}
@@ -214,8 +214,6 @@
 </style>
 </head>
 <body>
-<div id="progress-bar"></div>
-
 <div id="progress-bar"></div>
 <a href="https://www.instagram.com/escom_exercito/" target="_blank" rel="noopener noreferrer"
    style="position:fixed;top:16px;right:30px;z-index:9999;display:block;width:140px;height:140px;cursor:pointer;"
@@ -1569,7 +1567,7 @@ plt.show()</pre>
 </div><!-- /#wrapper -->
 
 <button id="back-to-top" aria-label="Voltar ao topo">&#8679; Voltar ao topo</button>
-<button id="print-btn" onclick="window.print()" title="Imprimir esta aula" aria-label="Imprimir">&#128438;</button>
+<button id="print-btn" onclick="window.print()" title="Imprimir esta aula" aria-label="Imprimir">🖨️</button>
 
 <script>
 (function(){
