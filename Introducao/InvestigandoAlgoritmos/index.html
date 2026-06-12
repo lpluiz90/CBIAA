@@ -285,6 +285,8 @@
       <li><a href="#explorando-classificacao"><span class="num">1.5</span> Modelo de classificação</a></li>
       <li><a href="#interpretando-classificacao"><span class="num">1.6</span> Interpretando o modelo</a></li>
       <li><a href="#conclusao-a2"><span class="num">1.7</span> Conclusão</a></li>
+      <li class="section-divider"><a href="#a2-s2"><span class="num">02</span> Para Saber Mais</a></li>
+      <li><a href="#a2-s2-pratica"><span class="num">2.1</span> Regressão e classificação</a></li>
     </ul>
   </div>
 
@@ -1290,6 +1292,19 @@ plt.show()</pre>
       <div class="card fade-in">
         <p>Na matriz de confusão, no quadrante superior esquerdo, temos <strong>56 pessoas não diabéticas</strong> corretamente diagnosticadas como não diabéticas. No quadrante superior direito, <strong>16 pessoas não diabéticas</strong> foram classificadas erroneamente como diabéticas. No quadrante inferior esquerdo, <strong>51 pessoas diabéticas</strong> foram corretamente classificadas como diabéticas, enquanto <strong>10 diabéticas</strong> foram classificadas como não diabéticas.</p>
         <p>A matriz de confusão nos mostra que o modelo acertou mais do que errou nesse conjunto de dados.</p>
+      </div>
+
+      <!-- Item 02 -->
+      <div id="a2-s2" class="section-sep fade-in"><span class="sep-num">Item 02</span><span class="sep-title">Para saber mais: regressão e classificação na prática</span><span class="sep-line"></span></div>
+
+      <div id="a2-s2-pratica" class="card fade-in">
+        <div class="card-title">Regressão e classificação na prática</div>
+        <p>A escolha entre regressão e classificação depende do tipo de resposta que buscamos. Se queremos prever um <strong>valor contínuo</strong>, como a temperatura de amanhã ou o faturamento de uma empresa, usamos regressão. Se o objetivo é <strong>categorizar</strong>, como identificar se um e-mail é spam ou não, usamos classificação.</p>
+        <p>Um exemplo clássico de regressão é a previsão do preço de imóveis. Modelos como <strong>Regressão Linear</strong> ou <strong>Random Forest Regressor</strong> podem ser usados para estimar o preço com base em fatores como localização e número de quartos. Já na classificação, um exemplo comum é a detecção de fraudes em transações bancárias, onde algoritmos como <strong>Árvores de Decisão</strong>, <strong>SVM</strong> ou <strong>Redes Neurais</strong> ajudam a identificar padrões suspeitos.</p>
+        <p>Além disso, alguns problemas podem ser tratados tanto como regressão quanto como classificação, dependendo da abordagem. Por exemplo, ao prever o risco de um cliente não pagar um empréstimo, podemos usar <strong>regressão logística</strong> para obter uma probabilidade ou um modelo de classificação para categorizar diretamente como "alto" ou "baixo risco".</p>
+        <div class="highlight-box" style="margin-top:16px;">
+          Compreender bem a diferença entre essas abordagens e os modelos disponíveis é essencial para tomar decisões mais eficazes ao construir sistemas de aprendizado de máquina.
+        </div>
       </div>
 
       <!-- Conclusão -->
