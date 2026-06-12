@@ -2203,7 +2203,7 @@ a segurança das informações classificadas?</pre>
         </div>
 
         <div class="prompt-wrap fade-in">
-          <span class="prompt-label neutro">Custom Instructions — ChatGPT</span>
+          <span class="prompt-label neutro copyable">Custom Instructions — ChatGPT — clique para copiar</span>
           <pre class="prompt-block neutro">- WARNING: Reply in the language of my prompt. If pt-br, pt-br. If en-us, en-us
 - Gere conteúdo preciso e factual
 - Ao raciocinar, pense passo a passo
@@ -4058,7 +4058,7 @@ Com base na lista acima, gere uma pergunta de verificação para cada invenção
   }, {passive:true});
 
   // Copy prompts (clique no label do prompt copia o conteúdo do bloco)
-  document.querySelectorAll('.prompt-label.prompt').forEach(function(label) {
+  document.querySelectorAll('.prompt-label.prompt, .prompt-label.copyable').forEach(function(label) {
     var pre = label.nextElementSibling;
     if (!pre || !pre.classList.contains('prompt-block')) return;
     label.addEventListener('click', function() {
