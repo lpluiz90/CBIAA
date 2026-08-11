@@ -305,6 +305,61 @@ body.sidebar-collapsed .sidebar-toggle-fixed {
   box-shadow: 0 0 0 3px rgba(200,155,60,.5);
 }
 
+/* SEQUÊNCIA DE CORES DAS ABAS — igual à dos Assuntos 01–04.
+   -------------------------------------------------------------------
+   Hexadecimais copiados das outras páginas do curso, sem adaptação:
+   inativa usa o tom escuro e a borda clara; ativa usa o tom claro com
+   borda branca e halo da própria cor.
+
+   A numeração segue o NÚMERO DA AULA, não a posição da aba — assim
+   Aula 01 é azul aqui e nas demais páginas. Referências recebe a 4ª
+   cor da sequência e Home fica no dourado (aba que só existe aqui).
+
+   Estas regras têm de vir DEPOIS de .aula-tab.active: a especificidade
+   é a mesma (0,2,0) e quem ganha é a última declarada. Mover para cima
+   faz tudo voltar a ficar azul.
+
+   ATENÇÃO: pasta espelhada de
+   github.com/sgt-matheus-henrique/minicurso-etica-em-ia — numa
+   re-sincronização isto se perde e precisa ser reaplicado. */
+
+.aula-tab-1 { background: #1a6fa8; border-color: #4a9fc8; }
+.aula-tab-2 { background: #2e7d52; border-color: #4caf80; }
+.aula-tab-3 { background: #7b3fa0; border-color: #b06fd6; }
+.aula-tab-4 { background: #b85c1a; border-color: #e08040; }
+.aula-tab-home { background: #8a6a20; border-color: #c89b3c; }
+
+.aula-tab-1.active {
+  background: #4a9fc8;
+  border-color: #fff;
+  color: #fff;
+  box-shadow: 0 0 0 3px rgba(74,159,200,.5);
+}
+.aula-tab-2.active {
+  background: #4caf80;
+  border-color: #fff;
+  color: #fff;
+  box-shadow: 0 0 0 3px rgba(76,175,128,.5);
+}
+.aula-tab-3.active {
+  background: #b06fd6;
+  border-color: #fff;
+  color: #fff;
+  box-shadow: 0 0 0 3px rgba(176,111,214,.5);
+}
+.aula-tab-4.active {
+  background: #e08040;
+  border-color: #fff;
+  color: #fff;
+  box-shadow: 0 0 0 3px rgba(224,128,64,.5);
+}
+.aula-tab-home.active {
+  background: var(--gold);
+  border-color: #fff;
+  color: #fff;
+  box-shadow: 0 0 0 3px rgba(200,155,60,.5);
+}
+
 /* Hero Dinâmico por Aula */
 .hero-dyn {
   display: none;

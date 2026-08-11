@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Minicurso: Ética em Inteligência Artificial — EsCom EAD</title>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/main.css?v=2"/>
+  <link rel="stylesheet" href="css/main.css?v=3"/>
 </head>
 <body>
 
@@ -161,11 +161,16 @@
 
         <!-- Abas de Navegação SPA -->
         <div class="aulas-tabs" role="tablist" aria-label="Navegação por Aulas">
+          <!-- As classes aula-tab-N dão a cada aba a cor da sequência usada
+               nos Assuntos 01–04 (azul, verde, roxo, laranja, vermelho).
+               A numeração acompanha o NÚMERO DA AULA, não a posição, para
+               que Aula 01 seja azul aqui e nas outras páginas; Referências
+               herda a 4ª cor e Home fica no dourado, que só existe aqui. -->
           <button class="aula-tab aula-tab-home active" role="tab">Home</button>
-          <button class="aula-tab" role="tab">Aula 01</button>
-          <button class="aula-tab" role="tab">Aula 02</button>
-          <button class="aula-tab" role="tab">Aula 03</button>
-          <button class="aula-tab" role="tab">Referências</button>
+          <button class="aula-tab aula-tab-1" role="tab">Aula 01</button>
+          <button class="aula-tab aula-tab-2" role="tab">Aula 02</button>
+          <button class="aula-tab aula-tab-3" role="tab">Aula 03</button>
+          <button class="aula-tab aula-tab-4" role="tab">Referências</button>
         </div>
 
         <!-- Header Dinâmico — Home -->
