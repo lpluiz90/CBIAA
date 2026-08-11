@@ -33,21 +33,34 @@
               min-width .3s cubic-bezier(.4, 0, .2, 1);
 }
 
-body.sidebar-collapsed #sidebar {
-  margin-left: calc(-1 * var(--sidebar-w));
-  width: 0;
-  min-width: 0;
-  overflow: hidden;
-}
-
-body.sidebar-collapsed #main-area {
-  flex: 1;
-  width: 100%;
-  min-width: 0;
+/* Contenção do layout — as duas regras que faltavam.
+   -------------------------------------------------------------------
+   A referência declara #wrapper{overflow-x:hidden} e
+   #main-area{min-width:0}; as quatro páginas têm as duas versões sem
+   essas linhas. São elas que seguram o layout quando a barra recolhe:
+   sem min-width:0, o mínimo de um item flex é o tamanho do conteúdo,
+   então o #main-area não encolhe e empurra a página para o lado. */
+#wrapper {
+  overflow-x: hidden;
 }
 
 #main-area {
-  transition: margin-left .3s cubic-bezier(.4, 0, .2, 1);
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+/* Recolhe pela LARGURA, e só por ela.
+   -------------------------------------------------------------------
+   Cuidado ao mexer aqui: largura zero e margem negativa recolhem a
+   barra cada uma por si, mas somam quando usadas juntas. Com
+   width:0 no #sidebar o flex já devolve o espaço ao #main-area
+   sozinho, e não é preciso dizer mais nada sobre a largura dele —
+   um width:100% ali dentro de um flex do tamanho da janela força
+   100vw e volta a deslocar tudo. */
+body.sidebar-collapsed #sidebar {
+  width: 0;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .sidebar-toggle-fixed {
