@@ -1,0 +1,392 @@
+/* ====================================================================
+   PADRÃO VISUAL COMPARTILHADO — CBIAA / EsCom EAD
+   --------------------------------------------------------------------
+   Uniformiza os Assuntos 01–04 com o Assunto 05 (Ética em IA), que é a
+   página de referência do curso.
+
+   Este arquivo é uma CAMADA DE SOBREPOSIÇÃO: ele não reescreve o CSS
+   embutido de cada página, só acrescenta o que faltava e normaliza as
+   poucas divergências. Por isso precisa ser carregado DEPOIS do <style>
+   embutido da página (ou seja, imediatamente antes de </head>).
+
+   O que ele entrega:
+     1. Recolher / expandir o menu lateral
+     2. Modo claro / modo escuro
+     3. Brasão da EsCom com o mesmo tamanho renderizado em todas
+     4. Botões flutuantes com a mesma cor e o mesmo tamanho
+
+   A barra lateral (fontes, cores, espaçamentos) já era idêntica à da
+   referência em todas as páginas — não há nada a corrigir nela aqui.
+
+   Fonte dos valores: Introducao/EticaemIA/css/{main,layout,components}.css
+   ==================================================================== */
+
+/* ====================================================================
+   1. RECOLHER / EXPANDIR O MENU LATERAL
+   ==================================================================== */
+
+/* A transição fica só na camada padrão: a regra original do #sidebar
+   não tem transition, então animar aqui não conflita com nada. */
+#sidebar {
+  transition: margin-left .3s cubic-bezier(.4, 0, .2, 1),
+              width .3s cubic-bezier(.4, 0, .2, 1),
+              min-width .3s cubic-bezier(.4, 0, .2, 1);
+}
+
+body.sidebar-collapsed #sidebar {
+  margin-left: calc(-1 * var(--sidebar-w));
+  width: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+body.sidebar-collapsed #main-area {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+}
+
+#main-area {
+  transition: margin-left .3s cubic-bezier(.4, 0, .2, 1);
+}
+
+.sidebar-toggle-fixed {
+  position: fixed;
+  top: 14px;
+  left: calc(var(--sidebar-w) + 14px);
+  z-index: 10000;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 34px;
+  padding: 0 14px;
+  background: var(--navy);
+  border: 1.5px solid var(--gold);
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+  transition: left .3s cubic-bezier(.4, 0, .2, 1), background .2s ease,
+              transform .2s ease, border-color .2s ease;
+  user-select: none;
+}
+
+.sidebar-toggle-fixed:hover {
+  background: var(--sky);
+  border-color: #fff;
+  transform: translateY(-1px);
+}
+
+body.sidebar-collapsed .sidebar-toggle-fixed {
+  left: 14px;
+  background: var(--navy);
+  border-color: var(--sky);
+  box-shadow: 0 4px 16px rgba(74, 159, 200, .45);
+}
+
+/* ====================================================================
+   2. BOTÃO DE TEMA (pílula no topo direito, igual à referência)
+   ==================================================================== */
+
+.top-ctrl-wrap {
+  position: fixed;
+  top: 16px;
+  right: 180px;
+  z-index: 9999;
+  display: flex;
+  gap: 8px;
+}
+
+.top-ctrl-btn {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 13px;
+  padding: 6px 14px;
+  background: rgba(25, 36, 55, .85);
+  border: 1px solid var(--steel);
+  color: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.top-ctrl-btn:hover {
+  background: var(--steel);
+  border-color: var(--sky);
+  transform: translateY(-1px);
+}
+
+/* ====================================================================
+   3. BRASÃO DA ESCOM — MESMO TAMANHO RENDERIZADO EM TODAS AS PÁGINAS
+   --------------------------------------------------------------------
+   Antes, cada página trazia o brasão embutido em base64 com 120x114px,
+   enquanto a referência usa o arquivo real, de 1536x1024px. Como as
+   duas imagens têm proporções diferentes e a caixa é quadrada com
+   object-fit:contain, elas renderizavam em tamanhos diferentes:
+   140x133 nas quatro páginas contra 140x93 na referência.
+
+   As quatro passaram a apontar para o mesmo logo_EsCom.png, então
+   basta repetir aqui a MESMA caixa da referência — o tamanho visível
+   fica idêntico por construção, sem depender de conta minha.
+
+   Os breakpoints também são os da referência: a página do Assunto 01
+   usava 74px onde as outras usavam 83px.
+   ==================================================================== */
+
+.hero-logo {
+  width: 140px;
+  height: 140px;
+  top: 16px;
+  right: 30px;
+  object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  .hero-logo {
+    width: 83px;
+    height: 83px;
+    top: 12px;
+    right: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-logo {
+    width: 60px;
+    height: 60px;
+    top: 10px;
+    right: 10px;
+  }
+  /* Em telas estreitas a pílula de tema encostaria no brasão; ela vai
+     para a esquerda em vez de sobrepor. */
+  .top-ctrl-wrap {
+    right: auto;
+    left: 10px;
+    top: 10px;
+  }
+}
+
+/* ====================================================================
+   4. BOTÕES FLUTUANTES — MESMA COR E MESMO TAMANHO
+   ==================================================================== */
+
+/* A referência usa 17px; três das quatro páginas usavam 18px. */
+#back-to-top {
+  font-size: 17px;
+}
+
+/* O botão de imprimir é ancorado à direita da barra lateral. Com o menu
+   recolhido ele ficaria boiando no meio do texto — acompanha a barra. */
+#print-btn {
+  transition: left .3s cubic-bezier(.4, 0, .2, 1);
+}
+
+body.sidebar-collapsed #print-btn {
+  left: 20px;
+}
+
+#back-to-top:hover {
+  background: #e0b050;
+  transform: translateY(-2px);
+}
+
+/* ====================================================================
+   5. MODO ESCURO
+   --------------------------------------------------------------------
+   5.1 — Troca dos tokens. Cobre sozinha toda regra escrita com var(),
+         que é cerca de metade das declarações de cor das páginas.
+   ==================================================================== */
+
+body.dark-theme {
+  --navy: #0f172a;
+  --navy2: #1e293b;
+  --steel: #334155;
+  --ice: #334155;
+  --ice2: #0b1120;
+  --sky: #38bdf8;
+  --gold: #f59e0b;
+  --white: #1e293b;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+
+  --code-bg: #0b1120;
+  --code-fg: #e2e8f0;
+  --resp-bg: #052e1a;
+  --resp-fg: #7dd3fc;
+}
+
+body.dark-theme,
+body.dark-theme #main-area {
+  background: var(--ice2);
+  color: var(--text);
+}
+
+/* --------------------------------------------------------------------
+   5.2 — Superfícies com cor fixa no CSS antigo. Não usam var(), então
+         a troca de token acima não as alcança: precisam ser nomeadas.
+         A lista veio de uma varredura das 4 páginas por cor clara
+         escrita à mão (background:#f..., #e..., white).
+   -------------------------------------------------------------------- */
+
+body.dark-theme .card,
+body.dark-theme .quiz-section-body,
+body.dark-theme .feature-box,
+body.dark-theme .table-wrapper,
+body.dark-theme .comparison-col,
+body.dark-theme .objetivos-box,
+body.dark-theme .summary-box,
+body.dark-theme .reflection-box,
+body.dark-theme .image-container {
+  background: var(--navy2);
+  color: var(--text);
+  border-color: var(--steel);
+}
+
+/* Caixas de destaque: mantêm a cor da borda (é ela que dá o significado
+   de dica/aviso/perigo) e escurecem só o preenchimento. */
+body.dark-theme .callout {
+  background: #0f2233;
+  color: var(--text);
+}
+body.dark-theme .callout.tip {
+  background: #06281a;
+}
+body.dark-theme .callout.warn {
+  background: #2b1f06;
+}
+body.dark-theme .callout.danger {
+  background: #2d0f0f;
+}
+body.dark-theme .callout.purple {
+  background: #241033;
+}
+body.dark-theme .callout strong {
+  color: var(--text);
+}
+
+/* Tabelas: as faixas zebradas e o hover eram tons claríssimos. */
+body.dark-theme .data-table tr:nth-child(even) td {
+  background: #16233a;
+}
+body.dark-theme .data-table tbody tr:hover,
+body.dark-theme .data-table tr:hover td {
+  background: #1f3350;
+}
+body.dark-theme .data-table .highlight-row {
+  background: #33280c;
+}
+body.dark-theme .data-table .known-row td {
+  background: #16233a;
+}
+body.dark-theme .data-table td,
+body.dark-theme .data-table th {
+  border-color: var(--steel);
+  color: var(--text);
+}
+
+/* Quiz: fundo, texto e os estados de acerto/erro tinham cor fixa. */
+body.dark-theme .quiz-option {
+  background: #0f172a;
+  color: var(--text);
+  border-color: var(--steel);
+}
+body.dark-theme .quiz-option:hover:not(.disabled) {
+  background: #1e293b;
+  border-color: var(--sky);
+}
+body.dark-theme .quiz-option.correct {
+  background: #06281a;
+  border-color: #2e9e60;
+}
+body.dark-theme .quiz-option.wrong {
+  background: #2d0f0f;
+  border-color: #c0392b;
+}
+body.dark-theme .quiz-question {
+  color: var(--text);
+}
+body.dark-theme .quiz-feedback.acerto {
+  background: #06281a;
+  color: #7ee2a8;
+}
+body.dark-theme .quiz-feedback.erro {
+  background: #2d0f0f;
+  color: #f5a3a3;
+}
+body.dark-theme .verify-table .vt-value {
+  color: var(--text);
+}
+
+/* --------------------------------------------------------------------
+   5.3 — Texto escrito com color:var(--navy).
+         Este é o ponto que mais quebra numa troca de tema ingênua: no
+         modo escuro o marinho passa a ser #0f172a, praticamente a cor
+         do fundo da página, e o texto some sem dar nenhum sinal de
+         erro. Os 14 seletores abaixo saíram de uma varredura das 4
+         páginas por color:var(--navy) / var(--navy2).
+
+         Critério, o mesmo da referência: título de seção ganha o
+         azul-celeste (é o destaque do tema); o resto vira texto comum.
+         #back-to-top fica de fora de propósito — lá o marinho está
+         sobre o dourado, e continua legível.
+   -------------------------------------------------------------------- */
+
+body.dark-theme .section-sep .sep-title,
+body.dark-theme .item-sep .sep-title,
+body.dark-theme .learned-item .li-num,
+body.dark-theme .verify-table .vt-label {
+  color: var(--sky);
+}
+
+body.dark-theme .card h4,
+body.dark-theme .card-title,
+body.dark-theme .feature-box h5,
+body.dark-theme .principle-body h5,
+body.dark-theme .rule-box h5,
+body.dark-theme .ref-card .ref-title,
+body.dark-theme .lang-box .lang-phrase {
+  color: var(--text);
+}
+
+/* Código dentro do texto: era marinho sobre fundo claro. */
+body.dark-theme code.ic {
+  background: #0f172a;
+  color: var(--sky);
+}
+
+/* Texto solto que herdava preto de regras genéricas. */
+body.dark-theme p,
+body.dark-theme li,
+body.dark-theme td,
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5 {
+  color: var(--text);
+}
+
+/* .highlight-box já é marinho no modo claro (texto branco). No escuro
+   o marinho vira quase o fundo da página, então ganha contorno. */
+body.dark-theme .highlight-box {
+  background: #16233a;
+  border: 1px solid var(--steel);
+}
+
+body {
+  transition: background-color .2s, color .2s;
+}
+
+/* ====================================================================
+   6. IMPRESSÃO — os controles novos não vão para o papel
+   ==================================================================== */
+
+@media print {
+  .sidebar-toggle-fixed,
+  .top-ctrl-wrap {
+    display: none !important;
+  }
+}
