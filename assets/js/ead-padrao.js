@@ -1,17 +1,15 @@
 /* ====================================================================
    PADRÃO DE INTERAÇÃO COMPARTILHADO — CBIAA / EsCom EAD
    --------------------------------------------------------------------
-   Acrescenta aos Assuntos 01–04 o controle que só existia no
-   Assunto 05 (Ética em IA).
+   Acrescenta aos Assuntos 01–04 os dois controles que só existiam no
+   Assunto 05 (Ética em IA):
 
-   Acrescenta o modo claro / modo escuro.
+     • Recolher / expandir o menu lateral
+     • Modo claro / modo escuro
 
    Não depende de nada da página e não toca na navegação existente
-   (abas, quizzes, imprimir, voltar ao topo): só cria um botão,
-   alterna uma classe no <body> e grava a escolha.
-
-   O botão de recolher o menu lateral foi removido a pedido — não há
-   mais nada aqui que mexa na largura da barra ou do #main-area.
+   (abas, quizzes, imprimir, voltar ao topo): só cria os dois botões,
+   alterna duas classes no <body> e grava a escolha.
 
    Carregar imediatamente antes de </body>, junto com o CSS
    assets/css/ead-padrao.css.
@@ -31,6 +29,7 @@
   // sentidos — trocar o tema em qualquer página vale para todas.
   // Chave própria nossa só funcionaria de um lado.
   var CHAVE_TEMA = 'ead_etica_ia_user_theme';
+  var CHAVE_MENU = 'ead_etica_ia_sidebar_collapsed';
 
   function disponivel() {
     try {
@@ -108,8 +107,56 @@
     });
   }
 
+  /* ------------------------------------------------------------------
+     RECOLHER / EXPANDIR O MENU LATERAL
+     ------------------------------------------------------------------ */
+
+  function criarBotaoMenu() {
+    var existente = document.getElementById('sidebar-toggle');
+    if (existente) return existente;
+
+    var botao = document.createElement('button');
+    botao.id = 'sidebar-toggle';
+    botao.className = 'sidebar-toggle-fixed';
+    botao.type = 'button';
+    botao.innerHTML = '<span class="sb-toggle-icon">◀</span>' +
+                      '<span class="sb-toggle-text">Recolher Menu</span>';
+
+    document.body.appendChild(botao);
+    return botao;
+  }
+
+  function aplicarMenu(recolhido, botao) {
+    document.body.classList.toggle('sidebar-collapsed', recolhido);
+
+    var icone = botao.querySelector('.sb-toggle-icon');
+    var texto = botao.querySelector('.sb-toggle-text');
+    if (icone) icone.textContent = recolhido ? '▶' : '◀';
+    if (texto) texto.textContent = recolhido ? 'Expandir Menu' : 'Recolher Menu';
+
+    botao.title = recolhido ? 'Expandir Menu Lateral' : 'Recolher Menu Lateral';
+    botao.setAttribute('aria-label', botao.title);
+    botao.setAttribute('aria-expanded', recolhido ? 'false' : 'true');
+  }
+
+  function iniciarMenu() {
+    // Abaixo de 900px o CSS das páginas já esconde a barra lateral por
+    // completo; o botão de recolher não teria o que recolher.
+    if (!document.getElementById('sidebar')) return;
+
+    var botao = criarBotaoMenu();
+    aplicarMenu(ler(CHAVE_MENU, false), botao);
+
+    botao.addEventListener('click', function () {
+      var recolhido = !document.body.classList.contains('sidebar-collapsed');
+      aplicarMenu(recolhido, botao);
+      gravar(CHAVE_MENU, recolhido);
+    });
+  }
+
   function iniciar() {
     iniciarTema();
+    iniciarMenu();
   }
 
   if (document.readyState === 'loading') {
