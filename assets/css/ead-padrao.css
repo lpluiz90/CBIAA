@@ -10,10 +10,13 @@
    embutido da página (ou seja, imediatamente antes de </head>).
 
    O que ele entrega:
-     1. Recolher / expandir o menu lateral
-     2. Modo claro / modo escuro
-     3. Brasão da EsCom com o mesmo tamanho renderizado em todas
-     4. Botões flutuantes com a mesma cor e o mesmo tamanho
+     1. Modo claro / modo escuro
+     2. Brasão da EsCom com o mesmo tamanho renderizado em todas
+     3. Botões flutuantes com a mesma cor e o mesmo tamanho
+
+   NÃO mexe em largura de barra lateral nem de #main-area: o botão de
+   recolher o menu foi removido a pedido, e com ele todas as regras de
+   layout que eu havia acrescentado.
 
    A barra lateral (fontes, cores, espaçamentos) já era idêntica à da
    referência em todas as páginas — não há nada a corrigir nela aqui.
@@ -22,87 +25,7 @@
    ==================================================================== */
 
 /* ====================================================================
-   1. RECOLHER / EXPANDIR O MENU LATERAL
-   ==================================================================== */
-
-/* A transição fica só na camada padrão: a regra original do #sidebar
-   não tem transition, então animar aqui não conflita com nada. */
-#sidebar {
-  transition: margin-left .3s cubic-bezier(.4, 0, .2, 1),
-              width .3s cubic-bezier(.4, 0, .2, 1),
-              min-width .3s cubic-bezier(.4, 0, .2, 1);
-}
-
-/* Contenção do layout — as duas regras que faltavam.
-   -------------------------------------------------------------------
-   A referência declara #wrapper{overflow-x:hidden} e
-   #main-area{min-width:0}; as quatro páginas têm as duas versões sem
-   essas linhas. São elas que seguram o layout quando a barra recolhe:
-   sem min-width:0, o mínimo de um item flex é o tamanho do conteúdo,
-   então o #main-area não encolhe e empurra a página para o lado. */
-#wrapper {
-  overflow-x: hidden;
-}
-
-#main-area {
-  min-width: 0;
-  overflow-x: hidden;
-}
-
-/* Recolhe pela LARGURA, e só por ela.
-   -------------------------------------------------------------------
-   Cuidado ao mexer aqui: largura zero e margem negativa recolhem a
-   barra cada uma por si, mas somam quando usadas juntas. Com
-   width:0 no #sidebar o flex já devolve o espaço ao #main-area
-   sozinho, e não é preciso dizer mais nada sobre a largura dele —
-   um width:100% ali dentro de um flex do tamanho da janela força
-   100vw e volta a deslocar tudo. */
-body.sidebar-collapsed #sidebar {
-  width: 0;
-  min-width: 0;
-  overflow: hidden;
-}
-
-.sidebar-toggle-fixed {
-  position: fixed;
-  top: 14px;
-  left: calc(var(--sidebar-w) + 14px);
-  z-index: 10000;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  height: 34px;
-  padding: 0 14px;
-  background: var(--navy);
-  border: 1.5px solid var(--gold);
-  color: #fff;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .5px;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
-  transition: left .3s cubic-bezier(.4, 0, .2, 1), background .2s ease,
-              transform .2s ease, border-color .2s ease;
-  user-select: none;
-}
-
-.sidebar-toggle-fixed:hover {
-  background: var(--sky);
-  border-color: #fff;
-  transform: translateY(-1px);
-}
-
-body.sidebar-collapsed .sidebar-toggle-fixed {
-  left: 14px;
-  background: var(--navy);
-  border-color: var(--sky);
-  box-shadow: 0 4px 16px rgba(74, 159, 200, .45);
-}
-
-/* ====================================================================
-   2. BOTÃO DE TEMA (pílula no topo direito, igual à referência)
+   1. BOTÃO DE TEMA (pílula no topo direito, igual à referência)
    ==================================================================== */
 
 .top-ctrl-wrap {
@@ -133,7 +56,7 @@ body.sidebar-collapsed .sidebar-toggle-fixed {
 }
 
 /* ====================================================================
-   3. BRASÃO DA ESCOM — MESMO TAMANHO RENDERIZADO EM TODAS AS PÁGINAS
+   2. BRASÃO DA ESCOM — MESMO TAMANHO RENDERIZADO EM TODAS AS PÁGINAS
    --------------------------------------------------------------------
    Antes, cada página trazia o brasão embutido em base64 com 120x114px,
    enquanto a referência usa o arquivo real, de 1536x1024px. Como as
@@ -183,22 +106,12 @@ body.sidebar-collapsed .sidebar-toggle-fixed {
 }
 
 /* ====================================================================
-   4. BOTÕES FLUTUANTES — MESMA COR E MESMO TAMANHO
+   3. BOTÕES FLUTUANTES — MESMA COR E MESMO TAMANHO
    ==================================================================== */
 
 /* A referência usa 17px; três das quatro páginas usavam 18px. */
 #back-to-top {
   font-size: 17px;
-}
-
-/* O botão de imprimir é ancorado à direita da barra lateral. Com o menu
-   recolhido ele ficaria boiando no meio do texto — acompanha a barra. */
-#print-btn {
-  transition: left .3s cubic-bezier(.4, 0, .2, 1);
-}
-
-body.sidebar-collapsed #print-btn {
-  left: 20px;
 }
 
 #back-to-top:hover {
@@ -207,9 +120,9 @@ body.sidebar-collapsed #print-btn {
 }
 
 /* ====================================================================
-   5. MODO ESCURO
+   4. MODO ESCURO
    --------------------------------------------------------------------
-   5.1 — Troca dos tokens. Cobre sozinha toda regra escrita com var(),
+   4.1 — Troca dos tokens. Cobre sozinha toda regra escrita com var(),
          que é cerca de metade das declarações de cor das páginas.
    ==================================================================== */
 
@@ -238,7 +151,7 @@ body.dark-theme #main-area {
 }
 
 /* --------------------------------------------------------------------
-   5.2 — Superfícies com cor fixa no CSS antigo. Não usam var(), então
+   4.2 — Superfícies com cor fixa no CSS antigo. Não usam var(), então
          a troca de token acima não as alcança: precisam ser nomeadas.
          A lista veio de uma varredura das 4 páginas por cor clara
          escrita à mão (background:#f..., #e..., white).
@@ -334,7 +247,7 @@ body.dark-theme .verify-table .vt-value {
 }
 
 /* --------------------------------------------------------------------
-   5.3 — Texto escrito com color:var(--navy).
+   4.3 — Texto escrito com color:var(--navy).
          Este é o ponto que mais quebra numa troca de tema ingênua: no
          modo escuro o marinho passa a ser #0f172a, praticamente a cor
          do fundo da página, e o texto some sem dar nenhum sinal de
@@ -394,11 +307,10 @@ body {
 }
 
 /* ====================================================================
-   6. IMPRESSÃO — os controles novos não vão para o papel
+   5. IMPRESSÃO — os controles novos não vão para o papel
    ==================================================================== */
 
 @media print {
-  .sidebar-toggle-fixed,
   .top-ctrl-wrap {
     display: none !important;
   }

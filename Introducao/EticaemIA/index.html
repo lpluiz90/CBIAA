@@ -143,11 +143,14 @@
     <!-- Área Principal de Conteúdo -->
     <div id="main-area">
 
-      <!-- Botão Flutuante Fixo de Recolher / Expandir Menu Lateral -->
-      <button id="sidebar-toggle" class="sidebar-toggle-fixed" title="Recolher Menu Lateral" aria-label="Alternar Menu Lateral">
-        <span class="sb-toggle-icon">◀</span>
-        <span class="sb-toggle-text">Recolher Menu</span>
-      </button>
+      <!-- Botão de recolher/expandir o menu lateral REMOVIDO a pedido.
+           initSidebarToggle() em js/navigation.js sai logo na primeira
+           linha quando não acha #sidebar-toggle, então tirar o botão
+           daqui basta: o JS vira no-op e o CSS .sidebar-toggle-fixed /
+           body.sidebar-collapsed (css/layout.css) fica inerte.
+           ATENÇÃO: esta pasta espelha
+           github.com/sgt-matheus-henrique/minicurso-etica-em-ia — numa
+           re-sincronização o botão volta e terá de sair de novo. -->
 
       <!-- Global Hero Header -->
       <section id="hero-global">
