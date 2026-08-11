@@ -22,17 +22,29 @@
   transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1), min-width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* CORREÇÃO LOCAL — recolhia demais e cortava a esquerda do hero.
+   -------------------------------------------------------------------
+   Havia aqui dois mecanismos de recolhimento somados:
+
+     margin-left: calc(-1 * var(--sidebar-w));   (junto com width: 0)
+
+   Cada um sozinho recolhe a barra. Juntos, ela some pela largura E a
+   margem de -252px ainda puxa o #main-area para x = -252, jogando a
+   faixa esquerda do hero para fora da tela. O width:100% que estava no
+   #main-area piorava: num flex do tamanho da janela ele força 100vw.
+
+   Agora recolhe só pela largura — o flex devolve o espaço sozinho, e
+   não é preciso declarar mais nada sobre a largura do #main-area.
+
+   ATENÇÃO: esta pasta espelha
+   github.com/sgt-matheus-henrique/minicurso-etica-em-ia. Numa
+   re-sincronização as regras antigas voltam e esta correção precisa
+   ser aplicada de novo. As outras quatro páginas do curso recebem o
+   equivalente por assets/css/ead-padrao.css. */
 body.sidebar-collapsed #sidebar {
-  margin-left: calc(-1 * var(--sidebar-w));
   width: 0;
   min-width: 0;
   overflow: hidden;
-}
-
-body.sidebar-collapsed #main-area {
-  flex: 1;
-  width: 100%;
-  min-width: 0;
 }
 
 /* Botão Flutuante Fixo de Recolher / Expandir Menu Lateral */

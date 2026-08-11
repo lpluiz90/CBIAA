@@ -3,7 +3,7 @@
    Minicurso: Ética em Inteligência Artificial (EsCom EAD)
    ==================================================================== */
 
-@import url('layout.css');
+@import url('layout.css?v=2');  /* ?v= força recarga: layout.css tem correção local */
 @import url('components.css');
 
 :root {
