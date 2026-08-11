@@ -1,0 +1,859 @@
+      <div class="page-panel" id="page-aula2">
+        <div class="content">
+
+          <!-- OBJETIVOS DA AULA 02 -->
+          <div class="objetivos-box">
+            <div class="obj-title">⊞ Objetivos da Aula 02</div>
+            <div class="obj-grid">
+              <div class="obj-item"><div class="dot"></div><div><strong>(2)</strong> Identificar vieses algorítmicos em dados, modelos e processos de decisão, reconhecendo seus efeitos sobre os resultados de sistemas inteligentes. <em>(FACTUAL — Pilar 2: Robustez Sociotécnica)</em></div></div>
+              <div class="obj-item"><div class="dot"></div><div><strong>(5)</strong> Aplicar técnicas simples para identificar, mitigar e documentar vieses, aumentando a equidade, a auditabilidade e a confiabilidade dos modelos. <em>(PROCEDIMENTAL — Transversal a todas as aulas)</em></div></div>
+            </div>
+          </div>
+
+          <!-- ABERTURA DA AULA 02 -->
+          <div id="sec-a2-abertura" class="card">
+            <div class="card-title">🔍 AULA 2 – EXTERNALIDADES NEGATIVAS E DILEMAS ÉTICOS DA INTELIGÊNCIA ARTIFICIAL</div>
+            
+            <div class="citation citation-author" style="font-style: italic; border-left-color: var(--pink);">
+              <span class="citation-label">📜 Epígrafe de Abertura</span>
+              "É muito mais fácil enganar as pessoas do que convencê-las de que foram enganadas." (Twain, Mark).
+            </div>
+
+            <p style="margin-top: 14px;">Para contextualizar a aula, vamos analisar o caso da deepfake veiculada em 16 de março de 2022, que se tornou viral em plataformas de redes sociais, em que o presidente ucraniano, Volodymyr Zelensky, declarou (falsamente) rendição à Rússia. A falsificação não era de qualidade elevada e, comparando um vídeo verdadeiro e o falso, era possível distinguir claramente a mídia sintética, todavia teve repercussão suficiente para ser noticiado em um canal de TV da mídia tradicional ucraniana. Os riscos dessa prática foram analisados por mim em trabalho anterior da seguinte forma:</p>
+            <p>Embora pobre, a fraude atinge um objetivo estratégico muito importante na guerra de informação: descredibilizar, em qualquer medida, os canais de comunicação e o próprio líder do país. Falsificações dessa natureza dificilmente serão recebidas como ordens pelas tropas, todavia essas falsificações podem ser lembradas em futuros pronunciamentos autênticos de autoridades, levantando dúvida e incerteza sobre sua veracidade. Essa desconfiança da fonte pode ser particularmente prejudicial se acarretar demora na reação a informações críticas, que demandam respostas urgentes, como a evacuação de áreas com risco iminente de serem atingidas pelo conflito armado (de Souza; dos Santos; da Silva, 2026).</p>
+          </div>
+
+          <!-- ESTUDO DE CASO MOTIVADOR: CASO ZELENSKY DEEPFAKE -->
+          <div id="sec-a2-zelensky" class="section-sep">
+            <span class="sep-num">Estudo de Caso</span>
+            <span class="sep-title">Contextualização da Aula: Mídia Sintética e o Caso Zelensky (2022)</span>
+            <span class="sep-line"></span>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Guerra de Informação e o Caso da Mídia Sintética de Volodymyr Zelensky</div>
+
+            <p>Para elucidação, segue a imagem de comparação entre vídeos do presidente ucraniano, um real e o outro sintético:</p>
+
+            <!-- FIGURA 5: COMPARAÇÃO ZELENSKY -->
+            <div class="panel-spec panel-observation" style="margin: 20px 0; text-align: center;">
+              <div class="panel-header">📷 Figura 5 — Comparação de Mídia Real e Sintética de Volodymyr Zelensky</div>
+              <div class="panel-body" style="padding: 16px;">
+                <img src="assets/images/aula02/figura5_zelensky.jpeg" alt="Figura 5 — Comparação de mídia real e sintética de Volodymyr Zelensky" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--steel); filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));"/>
+                <div style="font-size: 13px; color: var(--muted); margin-top: 10px; font-style: italic;">
+                  Figura 5 — Comparação entre captura de mídia real (à esquerda) e manipulação sintética de vídeo tipo deepfake (à direita) do presidente ucraniano Volodymyr Zelensky. Fonte: Apostila Oficial (2026).
+                </div>
+              </div>
+            </div>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta & Análise Técnica</span>
+              Fonte: CLULEY, Graham. Deepfake President Zelensky calls on Ukraine to surrender, as TV station hacked. Bitdefender. Publicado em 17 mar. 2022.
+            </div>
+
+            <p style="margin-top: 14px;">Diante do risco de receber ordens de uma autoridade sintética, em cenários de graves consequências, como são os conflitos armados, o questionamento que surge é: como garantir a integridade das informações que transitam nos canais de comunicações? Vamos analisar as externalidades negativas da IA mais a fundo e enfrentaremos essa questão ao final da aula.</p>
+          </div>
+
+          <!-- CAPÍTULO 1 -->
+          <div id="sec-a2-cap1" class="section-sep">
+            <span class="sep-num">Capítulo 1</span>
+            <span class="sep-title">Danos aos Direitos Fundamentais Individuais</span>
+            <span class="sep-line"></span>
+          </div>
+
+          <div class="card">
+            <p>Neste capítulo, apresento o entendimento de que cada uma das externalidades negativas exploradas fere direitos individuais ou coletivo(s) previstos no art. 5º da CF/1988. Este minicurso, porém, não parte de um estudo exaustivo para identificar relação entre externalidades e direitos violados; essa relação é meramente didática e não elimina outros direitos que eventualmente não sejam mencionados. Nesse ensejo, é possível apontar que:</p>
+            <ul class="bullet-list">
+              <li>Opacidade algorítmica: fere o direito ao acesso à informação previsto no art. 5º , inciso XIV, e o direito à informação, previsto no art. 5º, inciso XXXIII, ambos da CF/1988;</li>
+              <li>Vieses discriminatórios: ferem o direito à igualdade, previsto no caput do art. 5º, além de poderem causar discriminação e racismo, taxativamente vedados nos incisos XLI e XLII do art. 5º, ambos da CF/1988;</li>
+              <li>Vigilância excessiva: fere os direitos da personalidade (intimidade, vida privada, honra e a imagem) previstos no inciso X do art. 5º, quando relacionados à privacidade, e o direito à proteção de dados, previsto no recente inciso LXXIX do art. 5º, tudo da CF/1988.</li>
+            </ul>
+          </div>
+
+          <!-- SEÇÃO 1: OPACIDADE E INEXPLICABILIDADE -->
+          <div id="a2-sec-1-1" class="card">
+            <div class="card-title">Seção 1 — Opacidade e Inexplicabilidade</div>
+
+            <p>A primeira externalidade negativa das arquiteturas de IA é a opacidade, característica de um sistema que: ou não pode ser compreendido na sua integralidade; ou foi desenvolvido para não se integralmente compreendido; ou não há esforço efetivo para torná-lo compreensível. Essa natureza de caixa preta atinge diretamente o princípio ético da explicabilidade, porque diante de danos causados por outputs controversos de arquiteturas de IA, a opacidade impede o rastreamento da cadeia de processamento e a responsabilização dos envolvidos.</p>
+            <p>Conceito de opacidade e inexplicabilidade</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Burrell, 2016, p. 1-2)</span>
+              O conceito de opacidade é bem apresentado nos seguintes termos:
+            </div>
+
+            <p style="margin-top: 14px;">Na IA, as redes neurais que se movem na direção da autonomia não são explicáveis. Não se pode explicar a alguém o processo decisório de um algoritmo e dizer precisamente por que ele produziu uma previsão específica. Os engenheiros não podem dar uma olhada debaixo do capô e explicar com facilidade o que causou certo evento. O GPT-4, o AlphaGo e os outros são caixas-pretas, com outputs e decisões baseados em opacas e intrincadas cadeias de sinais minúsculos (Suleyman; Bhaskar, 2023, p. 136).</p>
+            <p>Esse conceito permite perceber que existe uma relação intrínseca entre a opacidade algorítmica e a metáfora com as caixas pretas, o que é bem explicado por Frank Pasquale:</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Pasquale, 2015, p. 3-4)</span>
+              O termo 'caixa-preta' é uma metáfora útil para fazê-lo, dado o seu próprio duplo significado. Pode se referir a um dispositivo de gravação, como os sistemas de monitoramento de dados em aviões, trens e carros. Ou pode significar um sistema cujos funcionamentos são misteriosos; podemos observar suas entradas e saídas, mas não podemos dizer como uma se torna a outra. Enfrentamos esses dois significados diariamente: rastreados cada vez mais de perto por empresas e pelo governo, não temos uma ideia clara de até onde grande parte dessas informações pode viajar, como são usadas ou suas consequências (Pasquale, 2015, p. 6-7).
+            </div>
+
+            <p style="margin-top: 14px;">O autor ainda esclarece que existem três estratégias usadas para manter essas caixas-pretas fechadas, de modo que o resultado final seja justamente a opacidade desses algoritmos. Nas palavras do autor (Pasquale, 2015, p. 6-7), elas são:</p>
+
+            <ul class="bullet-list">
+              <li>“O segredo real estabelece uma barreira entre o conteúdo oculto e o acesso não autorizado a ele. Usamos o segredo real diariamente quando trancamos nossas portas ou protegemos nosso e-mail com senhas.”</li>
+              <li>“O segredo legal obriga aqueles que têm acesso a certas informações a mantê-las em segredo; um funcionário de banco é obrigado, tanto por autoridade estatutária quanto por termos de emprego, a não revelar os saldos dos clientes para seus amigos.”</li>
+              <li>“A ofuscação envolve tentativas deliberadas de ocultação quando o segredo foi comprometido. Por exemplo, uma empresa pode responder a um pedido de informações entregando 30 milhões de páginas de documentos, forçando seu investigador a perder tempo procurando uma agulha em um palheiro.”</li>
+            </ul>
+
+            <p style="margin-top: 14px;">Consequências práticas da opacidade algorítmica</p>
+            <p>Para ilustrar os danos que podem ser causados pela opacidade algorítmica, nada melhor do que o estudo sobre um caso concreto. Para isso, Frank Pasquale descreve o desentendimento entre o Google e uma empresa de busca virtual do Reino Unidade, que demonstra a fronteira tênue entre outputs negativos incompreendidos e políticas maliciosas deliberadas.</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta — Caso Foundem vs. Google (Pasquale, 2015)</span>
+              A Foundem é uma empresa sediada no Reino Unido que fornece um serviço especializado de ‘busca vertical’ para comparação de preços. Importantes órgãos de defesa do consumidor e de tecnologia do Reino Unido classificaram a Foundem em posição extremamente elevada em estudos comparativos de seu nicho. Menos de seis meses após o lançamento da Foundem, o Google aparentemente a bloqueou das primeiras páginas de seus resultados de busca orgânica (isto é, não pagos) quando os usuários pesquisavam por comparações de preços. Segundo o Google, a razão era que a Foundem era um site de “baixa qualidade”, composto principalmente por links para outros sites. Mas às vezes há uma razão legítima para que um site agregue conteúdo de outros sites – na verdade, é exatamente isso que os mecanismos de busca fazem, inclusive o Google. O Google reconhece isso. Assim, afirma que distingue esses sites rebaixando aqueles cujas estimativas sobre o que um usuário procura são inferiores às suas próprias. A Foundem oferece outra explicação. Se o Google não tem interesse em determinada área, ele deixa que um novo concorrente prospere. Mas, assim que entra (ou planeja entrar) no mercado de um serviço menor de busca, rebaixa esse serviço para assegurar a proeminência de suas próprias ofertas (Pasquale, 2015, p. 66-69).
+            </div>
+
+            <p style="margin-top: 14px;">Esse cenário levanta o questionamento: como apontar quem tem razão nessa disputa, se os algoritmos não são auditáveis e/ou não geram logs que justificam as suas políticas de listagem?</p>
+            <p>Métricas para buscar esclarecimento no trato com IA</p>
+            <p>Nesse ponto, é lícito questionar como podemos lidar com a opacidade em uma sociedade que parece ter incorporado esse fenômeno em sua cultura e estruturas econômicas. Pasquale esclarece que essa solução passa por declaras os objetivos de transparência que variam conforme a temática:</p>
+
+            <ul class="bullet-list">
+              <li>Qualquer solução de transparência para problemas de caixa-preta deve ser específica sobre três questões principais: Quanto a empresa de caixa-preta tem que revelar? Para quem ela deve revelar? E quão rápido a revelação deve ocorrer? A Tabela 5.1 sugere a gama de opções: [...] (Pasquale, 2015, p. 142).</li>
+              <li>A tabela citada pelo autor é a que consta na figura a seguir:</li>
+            </ul>
+
+            <!-- FIGURA 6: TABELA PASQUALE -->
+            <div class="panel-spec panel-observation" style="margin: 20px 0; text-align: center;">
+              <div class="panel-header">📊 Figura 6 — Tabela de Graus de Transparência de Pasquale</div>
+              <div class="panel-body" style="padding: 16px;">
+                <img src="assets/images/aula02/figura6_transparencia_pasquale.png" alt="Figura 6 — Tabela de graus de transparência de Pasquale" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--steel); filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));"/>
+                <div style="font-size: 13px; color: var(--muted); margin-top: 10px; font-style: italic;">
+                  Figura 6 — Sistematização dos níveis de transparência e opacidade algorítmica segundo Frank Pasquale. Fonte: Apostila Oficial (2026).
+                </div>
+              </div>
+            </div>
+
+            <p>Fonte: Pasquale, 2015, p. 142.</p>
+            <p>Isso, porque a definição sobre o grau de sigilo de sistemas ajuda a pensar sobre políticas de transparências setoriais. É o que o autor depois explica com estratégias centradas em três áreas distintas (Pasquale, 2015, p. 142-158):</p>
+            <p>Transparência qualificada: “uma sociedade totalmente transparente seria um pesadelo de invasão de privacidade, voyeurismo e roubo de propriedade intelectual. Às vezes, o caminho para uma investigação ordenada e produtiva é confiar o trabalho a um pequeno grupo de especialistas”.</p>
+            <p>Práticas Justas de Dados: “algumas das caixas-pretas da reputação, da busca e das finanças simplesmente precisam ser abertas. Por exemplo, os corretores de dados precisam revelar os dados que estão acumulando, negociando e vendendo. Os indivíduos deveriam ter o direito de inspecionar, corrigir e contestar dados imprecisos. Também deveríamos conhecer as fontes dos dados, salvo quando houver razões muito fortes para manter seu anonimato”.</p>
+            <p>Unidade de armazenamento WORM: “uma unidade de armazenamento “escreva uma vez, leia muitas” (write once, read-many — WORM) poderia registrar todos os usos do sistema, uma vez que pode ser “projetada de modo que os dados não possam ser alterados depois de serem gravados no disco”. Para assegurar a robustez do sistema, “os registros podem ser serializados por um contador gerado pelo sistema e, em seguida, receber uma assinatura digital”. Embora tais processos pudessem ter criado uma montanha de documentação na era analógica, a redução dos custos de armazenamento digital e os registros baseados em wiki tornam isso plausível hoje”.</p>
+
+            <!-- PAUSA PARA REFLEXÃO 1 -->
+            <div class="reflection-box">
+              <div class="reflection-header">
+                <span class="reflection-title">🤔 Pausa para Reflexão</span>
+                <span class="reflection-saved-badge">💾 Aguardando digitação</span>
+              </div>
+              <div class="reflection-question">Questionamento do interlocutor: Como seria possível discutir regimes de transparência se o processamento neural da IA muitas vezes é ininteligível?</div>
+              <textarea class="reflection-textarea" data-reflection-id="a2-ref-1" placeholder="Registre suas impressões e reflexões neste campo..."></textarea>
+              
+              <div class="reflection-footer-actions">
+                <button class="reflection-submit-btn">Enviar Reflexão</button>
+              </div>
+
+              <div class="reflection-instructor-reply">
+                <div class="comic-instructor-wrap">
+                  <div class="comic-instructor-figure">
+                    <img src="assets/images/instrutor_avatar.png" alt="2º Sgt Matheus Henrique — Autor e Instrutor" class="instructor-standing-img"/>
+                    <div class="comic-author-tag">2º Sgt Matheus Henrique</div>
+                  </div>
+                  <div class="comic-speech-bubble">
+                    <div class="comic-bubble-title">💡 Considerações do Autor</div>
+                    <p>Resposta do instrutor: Muitos autores têm discutido o conceito de explainable AI (com acrônimo XAI e tradução livre para IA explicável). Autores como Sanz, Gabardo e Ongarato, no artigo publicado na Revista de Direito Público 2024, que trata sobre discriminação algorítmica no Brasil, defendem que a caixa preta deve transformar-se em uma caixa de vidro. Embora o uso de redes neurais artificiais e o aprendizado profundo impliquem em um nível de inexplicabilidade, deve-se admitir como requisito no desenvolvimento dessas ferramentas que elas sejam capazes ao menos de permitir atribuição de responsabilidades em caso de danos.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEÇÃO 2: VIÉS ALGORÍTMICO E DISCRIMINAÇÃO -->
+          <div id="a2-sec-1-2" class="card">
+            <div class="card-title">Seção 2 — Viés Algorítmico e Discriminação</div>
+
+            <p>A segunda externalidade negativa das arquiteturas de IA são os vieses causadores de discriminação. Os vieses são tendências de que essas arquiteturas produzam resultados tendenciosos por questões estruturais e decorrentes do processamento interno, não necessariamente intencionais. Eles podem decorrer da lógica de funcionamento dos modelos de IA ou do banco de dados selecionado para treinamento, que pode carregar vetores de discriminação que serão internalizados pela arquitetura.</p>
+            <p style="font-weight: 600; color: var(--gold); margin-top: 12px;">Conceito e classificação dos vieses</p>
+            <p>O conceito de opacidade é bem definido pelo Grupo de Peritos de Alto Nível em IA da União Europeia nos seguintes termos:</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (GPAN IA, 2019, p. 47)</span>
+              Entende-se por enviesamento uma tendência parcial a favor ou contra uma pessoa, um objeto ou uma posição. [...] Não estão necessariamente relacionados com preconceitos humanos ou uma recolha de dados baseada no ser humano. Podem ser suscitados, por exemplo, pelos contextos limitados em que um sistema é utilizado, não havendo nesse caso oportunidades de generalização para outros contextos. O enviesamento pode ser bom ou mau, intencional ou não intencional. Em alguns casos, o enviesamento pode causar resultados discriminatórios e/ou injustos, designados no presente documento por enviesamentos injustos (GPAN IA, 2019, p 47).
+            </div>
+
+            <p style="margin-top: 14px;">Os vieses podem ser classificados quanto ao momento em que surgem ou quanto ao tipo de resultado que produzem. Quanto o momento em que surgem (Kaufman; Junquilho; Reis, 2023, p. 44):</p>
+
+            <ul class="bullet-list">
+              <li>Friedman e Nissenbaum (1996), com base em análise de casos reais, identificam três categorias de viés: preexistente, técnica e emergente.</li>
+              <li>Preexistente: tem suas raízes nas instituições, em práticas e atitudes sociais.</li>
+              <li>Técnica: surge de restrições técnicas dos sistemas.</li>
+            </ul>
+
+            <p style="margin-top: 14px;">Emergente: aparece em um contexto de uso.</p>
+            <p style="font-weight: 600; color: var(--sky);">Quanto ao tipo, podem ser (Cavalcante, 2024, p. 25):</p>
+
+            <ul class="bullet-list">
+              <li>No desenvolvimento de uma IA, a qualidade e a natureza do aprendizado são intrinsicamente influenciadas tanto pelos algoritmos utilizados para o treinamento, como pelo conjunto de dados recebidos, o que acabam por introduzir vieses inerentes a esse processo de aprendizado.</li>
+              <li>Viés de representação do algoritmo: surge da forma como o algoritmo interpreta e compreende os dados. Cada algoritmo possui um modelo de representação específico, influenciando quais padrões e relações são considerados relevantes. Isso direciona o aprendizado para um tipo particular de resultado e, potencialmente, acaba por ignorar outras soluções possivelmente válidas.</li>
+              <li>Viés de seleção de dados: surge da escolha dos dados utilizados para treinar os modelos de IA. A seleção de um conjunto de dados limitado pode induzir a informações enviesadas e comprometer a capacidade da IA representar a realidade em sua totalidade. O viés da seleção de dados também pode ser influenciado pela subjetividade dos indivíduos envolvidos no desenvolvimento da IA. Mesmo sem intenção, suas próprias visões de mundo e entendimentos do tema podem levar à escolha de dados que reforçam suas perspectivas, comprometendo a imparcialidade do modelo (Navigli; Conia; Ross, 2023, p. 3).</li>
+            </ul>
+
+            <p style="margin-top: 14px;">Fontes dos vieses: como IA pode levar à discriminação</p>
+            <p style="font-weight: 600; color: var(--gold);">Borgesius relaciona cinco formas de que uma decisão algorítmica leve a um resultado discriminatório de forma não intencional, além de uma sexta possibilidade de que a decisão algorítmica seja intencionalmente direcionada para produzir um resultado discriminatório. A seguir estão relacionadas as cinco primeiras categorias, nas palavras do autor deste minicurso, em interpretação ao texto de Borgesius; e a sexta categoria nas palavras do próprio Borgesius:</p>
+            <p>“Variável-alvo” e “rótulos de classe”: “Rótulos usados para filtrar resultados, que podem direcionar a IA para excluir do processo seletivo determinadas classes sociais. É o caso hipotético de uma seleção para vagas de emprego feita por IA em que um dos requisitos seria que o candidato não chegasse atrasado com frequência. Esse filtro pode gerar uma desvantagem para aqueles que residem longe do local de emprego ou que enfrentam maiores dificuldades com o transporte (o que normalmente ocorre com as pessoas mais pobres ou que residem longe do local de trabalho)” (de Souza; Barros, 2026).</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Borgesius, 2018, p. 11)</span>
+              Rotulagem dos dados de treinamento: “Passada pelo banco de dados que treina a IA e reproduzida automaticamente. O exemplo de Borgesius25 é a seleção para uma Faculdade de Medicina feita na década de 1980 por um programa de computador. Os dados de treinamento da máquina foram as seleções dos anos anteriores e o resultado observado foi de que o programa discriminou mulheres e imigrantes. Essa constatação levou à percepção de que as seleções anteriores também tinham esse mesmo viés, o qual simplesmente foi observado e reproduzido pelo computador” (de Souza; Barros, 2026).
+            </div>
+
+            <p style="margin-top: 14px;">Coleta dos dados de treinamento: “Oriunda da amostragem enviesada, já que a IA tende a interpretar que as estatísticas extraídas de um banco de dados representam fielmente a realidade. Seria o caro hipotético em que a polícia concentra suas operações em um bairro de imigrantes, fazendo com que os bancos de dados policiais registrem uma maior propensão à criminalidade nesses locais. Nesse contexto, se a IA vier a ser utilizada para direcionar o trabalho policial, ela designará cada vez mais patrulhamento a essas áreas, criando um sistema de loop, desguarnecendo outras localidades potencialmente perigosas “(de Souza; Barros, 2026).</p>
+
+            <ul class="bullet-list">
+              <li>Seleção de atributos: “Seleção de dados enviesada, quando a IA é abastecida com apenas um tipo de dados desejados em detrimento de outros. Borgesius cita as empresas que buscam seus funcionários apenas em universidades famosas e caras. Dessa forma, se o banco de dados contar com currículos oriundos apenas dessas faculdades, a IA sequer vai tomar conhecimento de outros candidatos que, por falta de recursos e/ou oportunidades, não puderam ingressar nessas universidades” (de Souza; Barros, 2026).</li>
+              <li>Proximidade: “Ocorre por proximidade, quando uma característica usada para filtrar um dado tem uma relação íntima com uma outra característica não manifesta. Seria a hipótese de um banco usar IA para evitar insolvência em empréstimos e o algoritmo, ao analisar os registros, indicar que as pessoas de determinado código postal têm uma maior incidência de insolvência. Isso pode levar o banco a restringir o crédito dos habitantes do local, o que pode impactar um grupo social específico” (de Souza; Barros, 2026).</li>
+              <li>Uso deliberado para fins discriminatórios: “Outra situação também pode ocorrer: discriminação deliberada. Por exemplo, uma organização poderia utilizar intencionalmente proxies para discriminar com base na origem racial. Como observam Kroll et al.: "Um tomador de decisão preconceituoso poderia enviesar os dados de treinamento ou selecionar proxies para classes protegidas com a intenção de gerar resultados discriminatórios." Quando uma organização utiliza proxies, a discriminação seria mais difícil de detectar do que quando a organização discrimina de forma aberta” (Borgesius et al., 2018, p. 15-30).</li>
+            </ul>
+
+            <p style="margin-top: 14px;">Quais são as técnicas de mitigação e métricas de equidade</p>
+            <p style="font-weight: 600; color: var(--sky);">Para mitigar os riscos discriminatórios de sistemas de IA, o próprio Grupo de Peritos de Alto Nível em IA da União Europeia indica algumas soluções:</p>
+            <p>O enviesamento identificável e discriminatório deve ser eliminado na fase de recolha de dados, sempre que possível. A forma como os sistemas de IA são desenvolvidos (p. ex., a programação de algoritmos) também pode ser afetada por um enviesamento injusto. Tal pode ser combatido mediante a adoção de processos de supervisão para analisar e abordar a finalidade, os condicionalismos, os requisitos e as decisões do sistema de forma clara e transparente. Além disso, o recrutamento de pessoal de diferentes origens, culturas e disciplinas pode assegurar a diversidade de opiniões e deve ser incentivado. (Grupo de Peritos de Alto Nível em IA da UE, 2019, p. 22).</p>
+
+            <ul class="bullet-list">
+              <li>Outros autores apresentação soluções de outras ordens. Há autores que identificam a detecção do problema como fator central para a solução:</li>
+              <li>Para detectar o viés, é imprescindível compreender suas origens, reconhecendo que a tendência é atribuir o enviesamento exclusivamente aos dados de treinamento tendenciosos, quando pode surgir nas várias etapas do processo, particularmente: a) no enquadramento do problema, quando o desenvolvedor traduz o objetivo a ser alcançado em linguagem computável; b) na coleta dos dados, no caso de a base não ser representativa da realidade ou refletir os preconceitos existentes na sociedade; e c) na preparação das bases de dados. Mesmo quando detectado, contudo, é difícil corrigir o viés, particularmente no caso de a detecção ocorrer em sistemas em pleno uso, o que explica a solução do Google Photos em eliminar da base de dados a categoria legendada como “ Gorilas” (Kaufman; Junquilho; Reis, 2023, p. 56)</li>
+              <li>Outros autores, por sua vez, trabalham o conceito de “desenviesamento” humano e algorítmico:</li>
+            </ul>
+
+            <p style="margin-top: 14px;">Indícios dessa busca pelo combate aos vieses na utilização da IA podem ser observados na Resolução 332 do CNJ, que estabelece a criação de condições para eliminar ou minimizar decisões discriminatórias baseadas em preconceitos, além de exigir a homologação de modelos de IA capazes de “identificar se preconceitos ou generalizações influenciaram seu desenvolvimento”. No entanto, uma crítica relevante feita nessa literatura está relacionada à aparente omissão da regulamentação do CNJ em relação à origem dos dados que alimentam os algoritmos de IA, os quais provêm de uma sociedade marcada por preconceitos e desigualdades. Essa questão ressalta a importância de considerar os agentes responsáveis pela construção dos algoritmos e pela implementação das IAs na sociedade (Sainz; Gabardo; Ongarato, 2024, p. 280).</p>
+
+            <!-- PAUSA PARA REFLEXÃO 2 -->
+            <div class="reflection-box">
+              <div class="reflection-header">
+                <span class="reflection-title">🤔 Pausa para Reflexão</span>
+                <span class="reflection-saved-badge">💾 Aguardando digitação</span>
+              </div>
+              <div class="reflection-question">Questionamento do interlocutor: Esses riscos de vieses são apenas hipotéticos, ou existem registros de casos concretos de discriminação por ferramentas de IA?</div>
+              <textarea class="reflection-textarea" data-reflection-id="a2-ref-2" placeholder="Registre suas impressões e reflexões neste campo..."></textarea>
+
+              <div class="reflection-footer-actions">
+                <button class="reflection-submit-btn">Enviar Reflexão</button>
+              </div>
+
+              <div class="reflection-instructor-reply">
+                <div class="comic-instructor-wrap">
+                  <div class="comic-instructor-figure">
+                    <img src="assets/images/instrutor_avatar.png" alt="2º Sgt Matheus Henrique — Autor e Instrutor" class="instructor-standing-img"/>
+                    <div class="comic-author-tag">2º Sgt Matheus Henrique</div>
+                  </div>
+                  <div class="comic-speech-bubble">
+                    <div class="comic-bubble-title">💡 Considerações do Autor</div>
+                    <p>Resposta do instrutor: Na verdade, graves denúncias têm despontado no mundo todo, relacionadas ao risco de vieses em ferramentas de IA. No artigo que escrevi com o Dr. João Pedro, aceito para publicação na Revista de Direito do Consumidor ainda neste ano de 2026, indicamos dois desses casos. O primeiro é o software usado por tribunais estadunidenses para prever reincidência de criminosos, chamado COMPAS (sigla em inglês para Perfil de Gerenciamento de Infratores para Sanções Alternativas), que estava frequentemente errado e mostrou-se tendencioso contra pessoas pretas. O segundo caso foi relatado pela própria Amazon, sobre um software que tentava desenvolver para recrutar profissionais e que mostrou viés contra mulheres na indicação para contratação; o banco de dados enviesado maculava os resultados obtidos e depois de não conseguirem corrigir o problema, a empresa decidiu descontinuar o projeto.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEÇÃO 3: VIGILÂNCIA E FALTA DE PRIVACIDADE -->
+          <div id="a2-sec-1-3" class="card">
+            <div class="card-title">Seção 3 — Vigilância e Falta de Privacidade</div>
+
+            <p>A segunda externalidade negativa das arquiteturas de IA são os vieses causadores de discriminação. Os vieses são tendências de que essas arquiteturas produzam resultados tendenciosos por questões estruturais e decorrentes do processamento interno, não necessariamente intencionais. Eles podem decorrer da lógica de funcionamento dos modelos de IA ou do banco de dados selecionado para treinamento, que pode carregar vetores de discriminação que serão internalizados pela arquitetura.</p>
+            <p style="font-weight: 600; color: var(--gold);">Definição de vigilância em um contexto de IA</p>
+            <p>Para compreender os excessos de vigilância é preciso analisar a dinâmica que está sendo adotada pelo capitalismo contemporâneo, bem explicada por Frazão:</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Frazão, 2019, p. 2)</span>
+              Os dados pessoais dos cidadãos têm sido utilizados por governos e grandes players econômicos para a criação do que chama de one way mirror, possibilitando que tais agentes saibam tudo dos cidadãos, enquanto estes nada sabem dos primeiros. E tudo isso acontece por meio de um monitoramento e vigília constantes sobre cada passo da vida das pessoas, o que leva a um verdadeiro capitalismo de vigilância, cuja principal consequência é a consolidação de uma sociedade também de vigilância (Frazão, 2019, p.2).
+            </div>
+
+            <p style="margin-top: 14px;">O conceito que muito aparece na literatura é o capitalismo de vigilância, que surge com novas perspectivas em um contexto de Big Data:</p>
+            <p style="font-weight: 600; color: var(--sky);">Um dos principais estudos recentes sobre o tema é o de Shoshana Zuboff, para quem o capitalismo de vigilância utiliza-se de toda a experiência humana, incluindo vozes, personalidades e emoções, como matéria-prima gratuita para ser traduzida em dados comportamentais. Embora o que esteja em jogo seja a nossa própria autonomia individual, essas pretensões invasivas, segundo a autora, são alimentadas pela ausência de leis para conter o fenômeno, pela mutualidade de interesses entre os capitalistas e as agências de inteligência estatais e pela tenacidade com que as corporações defendem seus novos territórios (Frazão, 2019, p. 2).</p>
+            <p>O capitalismo de vigilância leva ao reconhecimento de um novo estado de vigilância, bem explicado no seguinte texto:</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Frenkel, 2021, p. 119)</span>
+              A configuração dessa “economia política dos dados” parte de um longo processo de transformação sócio-técnica, chamado por James Beninger, em livro clássico de 1986, de “revolução do controle”, decorrente de uma série de inovações no campo da física, das telecomunicações e da computação, que ampliaram a capacidade de controle da informação. Recentemente, livros [...] colocaram em evidência uma especificidade dessa economia após o advento de Google, Alibaba e Facebook: a enorme capacidade de empresas de tecnologia de monetizar e extrair valor do “material cru” composto por nossas relações sociais cotidianas, graças à ubiquidade dos smartphones, computadores e barateamento dos custos de coleta e transmissão de informações relacionadas a nossa atuação diante de tais dispositivos e aplicações. Tornou-se evidente,  enfim, que a Internet é (e sempre foi) uma rede de controle e que a digitalização promove uma espécie de “capitalismo de vigilância”, com uma lógica econômica específica. Para os juristas, a reconfiguração dessas economias para um modelo de vigilância gera um conjunto de questões passíveis de aprofundamento.
+            </div>
+
+            <p style="margin-top: 14px;">Cookies como ferramentas que tensionam privacidade</p>
+            <p>Nesse novo cenário de vigilância digital exacerbada, algumas ferramentas sustentam os propósitos de violação da privacidade dos usuários, como é o caso dos cookies, assim definidos:</p>
+            <p>[...] o cookie é um “pequeno arquivo de texto armazenado pelo navegador (web browser), funcionando como uma ‘carteira de identidade’ do usuário, permitindo a memorização de dados e o reconhecimento de hábitos de navegação”, de modo que podem ser convertidos em importantes informações para a manutenção de sites e a veiculação de publicidade personalizada mediante mecanismo de vigilância da atividade do usuário em rede. Os cookies são arquivos que são depositados no computador do indivíduo pelo site acessado e que possibilitam a identificação deste usuário com o intuito de facilitar a funcionalidade da página e o monitoramento da navegação, de forma que podem ser oriundos das páginas visitadas, de outras entidades (cookies de terceiros), apagáveis (cookies de sessão) ou persistentes (cookies permanentes). Os principais tipos de cookies seriam (Tobbin; Cardin, 2021, p. 241; 244-245):</p>
+
+            <ul class="bullet-list">
+              <li>os do próprio domínio (primários ou first party cookies);</li>
+              <li>(ii) os definidos por terceiros (denominados third party cookies);</li>
+              <li>os que somente funcionam enquanto estiver aberta determinada página (cookies de sessão ou session cookies); e</li>
+              <li>os que atuam mesmo depois que o site ou página for fechada (cookies permanentes).</li>
+            </ul>
+
+            <p style="margin-top: 14px;">Os efeitos negativos desses cookies foram registrados por miim em trabalho anterior, nos seguintes termos:</p>
+
+            <ul class="bullet-list">
+              <li>Os cookies podem ainda ser utilizados para gravar os dados do usuário sem sua aquiescência, para posterior envio de promoções, promover triagem de quais os produtos que são adquiridos com habitualidade, sempre tendo em conta a avidez pela venda e lucro. Nesse cenário de disponibilidade massiva de dados de consumidores na rede, os fornecedores ocupam uma posição de superioridade notável (de Souza; Barros, 2026).</li>
+              <li>Em um cenário de intensificação de processamento por ferramentas de IA, essas externalidades são intensificadas, como esclarecido pelas autoras citadas:</li>
+            </ul>
+
+            <p style="margin-top: 14px;">A privacidade é ameaçada pela IA em distintos momentos e usabilidades, desde as bases de dados pessoais utilizadas no desenvolvimento e treinamento de seus algoritmos, particularmente em sistemas de previsão de comportamento futuro de usuários, clientes ou consumidores, até o aperfeiçoamento de sistemas de vigilância, tais como o sistema de vigilância doméstico da ANS americana, o Sistema de Crédito Pessoal chinês (Social Credit System), ou o sistema de câmeras de vigilância de Londres/Inglaterra (em janeiro de 2020, incorporou as tecnologias de reconhecimento facial/IA) (Kaufman; Junquilho; Reis, 2023, p. 61).</p>
+            <p>Métricas para garantir privacidade digital</p>
+            <p style="font-weight: 600; color: var(--gold);">A busca pela preservação da privacidade passa por reconhecer uma crise do consentimento, como ensinam as autoras:</p>
+            <p>Para Schermer, Custers e Hof (2014) há atualmente uma “crise do consentimento”, uma vez que a possibilidade de o usuário ser protagonista acerca do controle de seus dados é altamente questionável. As pessoas costumam não ler as políticas de privacidade e, mesmo que as leiam, dificilmente as compreendem, especialmente se há termos técnicos da informática e da tecnologia. Segundo Rodotà (2008), dificilmente o cidadão é capaz de constatar os reais riscos trazidos pelo fornecimento de seus dados no ambiente virtual, principalmente em razão da sofisticação desses sistemas. Mendes e Fonseca (2020) ressaltam que há uma limitação cognitiva do titular acerca da utilização de seus dados no ambiente online, bem como uma assimetria na relação deste com os agentes responsáveis pelo tratamento dos dados. Neste cenário, o consentimento seria fictício, já o cidadão teria duas escolhas: consentir ou não desfrutar da gama de serviços/produtos que influenciam na sociabilidade, mercado de trabalho e acesso à informação. Para superar esta tendência de materialização e monetização dos dados seriam soluções plausíveis responsabilizar mais a atividade de tratamento de dados:</p>
+
+            <ul class="bullet-list">
+              <li>por meio da tecnologia e do desenho dos sistemas informacionais (privacy by design), que podem auxiliar o titular no controle de seus dados;</li>
+              <li>(ii) por meio de um sistema robusto de prestação de contas pelos agentes de tratamento (accountability), apto a dimensionar os riscos prévios ao tratamento de dados pessoais; e</li>
+              <li>(iii) por meio do controle substantivo e contextual do consentimento.</li>
+            </ul>
+
+            <!-- PAUSA PARA REFLEXÃO 3 -->
+            <div class="reflection-box">
+              <div class="reflection-header">
+                <span class="reflection-title">🤔 Pausa para Reflexão</span>
+                <span class="reflection-saved-badge">💾 Aguardando digitação</span>
+              </div>
+              <div class="reflection-question">Questionamento do interlocutor: O bloqueio dos cookies não é suficiente para enfrentar as ameaças à privacidade apontadas?</div>
+              <textarea class="reflection-textarea" data-reflection-id="a2-ref-3" placeholder="Registre suas impressões e reflexões neste campo..."></textarea>
+
+              <div class="reflection-footer-actions">
+                <button class="reflection-submit-btn">Enviar Reflexão</button>
+              </div>
+
+              <div class="reflection-instructor-reply">
+                <div class="comic-instructor-wrap">
+                  <div class="comic-instructor-figure">
+                    <img src="assets/images/instrutor_avatar.png" alt="2º Sgt Matheus Henrique — Autor e Instrutor" class="instructor-standing-img"/>
+                    <div class="comic-author-tag">2º Sgt Matheus Henrique</div>
+                  </div>
+                  <div class="comic-speech-bubble">
+                    <div class="comic-bubble-title">💡 Considerações do Autor</div>
+                    <p>Resposta do instrutor: Na verdade não, o simples ato de recusar cookies ao visitar um site não é suficiente para garantir sua privacidade. Tobbin e Cardin, no seu artigo publicado na Revista de Direito da UFRGS, apontam que existem cookies complexos, chamados de supercookies e evercookies. O primeiro tipo gerencia a navegação independentemente do controle dos usuários; o segundo tipo pode manipular o armazenamento temporário (cachê) e permanecer no computador mesmo que aparentemente deletados. Isso leva à conclusão de que as mensagens de cookies às quais reagimos não dizem respeito a todos os cookies necessários para o funcionamento de um site, mas somente àqueles opcionais.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CAPÍTULO 2 -->
+          <div id="sec-a2-cap2" class="section-sep">
+            <span class="sep-num">Capítulo 2</span>
+            <span class="sep-title">Impactos Coletivos e Sociais</span>
+            <span class="sep-line"></span>
+          </div>
+
+          <div class="card">
+            <p>Neste capítulo, apresento o entendimento de que cada uma das externalidades negativas exploradas fere direitos de dimensão coletiva (embora trate-se de direitos individuais fundamentais, podem atingir uma coletividade) previstos no art. 5º da CF/1988 e direitos sociais previstos no art. 6º da CF/1988. Este minicurso, porém, não parte de um estudo exaustivo para identificar relação entre externalidades e direitos violados; essa relação é meramente didática e não elimina outros direitos que eventualmente não sejam mencionados. Nesse ensejo, é possível apontar que:</p>
+            <ul class="bullet-list">
+              <li>Industrialização da desinformação: fere de forma coletiva os direitos de liberdade de expressão, previsto no artigo 5º, inciso IX, e de acesso à informação, previsto no art. 5º, inciso XIV, ambos da CF/1988;</li>
+              <li>Manipulação do consumidor: fere de forma coletiva o direito dos consumidores, previsto no art. 5º, inciso XXXII, e instrumentalizado como fundamento da ordem econômica no art. 170, inciso V, ambos da CF/1988;</li>
+              <li>Deslocamento do trabalhador: fere o direito social ao trabalho, previsto no caput do art. 6º, além de vulnerar um princípio basilar da ordem econômica, previsto no inciso VIII do art. 170, da busca do pleno emprego, tudo da CF/1988; e</li>
+            </ul>
+            <p style="margin-top: 14px;">Atrofia de habilidades: fere de forma transversal os direitos sociais à educação e ao trabalho, previsto no caput do art. 6º, além de vulnerar a própria dignidade da pessoa humana, prevista no art. 1º, inciso III, por mitigar o desenvolvimento pessoal dos indivíduos, tudo da CF/1988.</p>
+          </div>
+
+          <!-- SEÇÃO 1: DESINFORMAÇÃO E INFOCALIPSE -->
+          <div id="a2-sec-2-1" class="card">
+            <div class="card-title">Seção 1 — Industrialização da Desinformação e Erosão da Verdade</div>
+
+            <p>A “verdade” já foi um conceito absoluto perseguido por filósofos e cientistas, mas a contemporaneidade inaugurou o conceito de pós-verdade, muito associado à relativização de conceitos característica da pós-modernidade.  Arendt (2000, p. 548), ao tratar da relação entre a verdade e a política, diferenciou a verdade matemática (derivada da razão) da verdade factual (derivada dos fatos documentáveis) para esclarecer que o domínio dos fatos é um campo de disputa intensa. Ocorre que a verdade no geral, incluindo a matemático-científica, foi atraída pela força gravitacional da indústria da desinformação, que se permitiu contestar pressupostos consolidados, como a forma do planeta Terra.</p>
+            <p style="font-weight: 600; color: var(--gold);">A industrialização da desinformação e a erosão da verdade</p>
+            <p>A relativização da verdade não é recente e sobram relatos históricos sobre ataques institucionalizados a ela:</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Scharre, 2023, p. 147)</span>
+              Na década de 1980, a União Soviética financiou campanhas de desinformação sugerindo que o vírus da AIDS era resultado de um programa americano de armas biológicas. Anos depois, algumas comunidades ainda lidavam com a desconfiança e outras consequências dessas campanhas. Que, aliás, nunca pararam. De acordo com o Facebook, agentes russos criaram nada menos que 8 mil peças de conteúdo orgânico, que chegaram a 126 milhões de americanos em sua plataforma durante a eleição de 2016.
+            </div>
+
+            <p style="margin-top: 14px;">Ferramentas digitais aprimoradas pela IA exacerbarão operações de desinformação como essas, interferindo em eleições, explorando divisões sociais e criando elaboradas campanhas de astroturfing para semear o caos. Infelizmente, não se trata somente da Rússia. Mais de setenta países foram descobertos promovendo campanhas de desinformação. A China rapidamente alcança a Rússia; outros países, da Turquia ao Irã, aprimoram suas habilidades. A CIA tampouco é estranha às operações de desinformação (Suleyman; Bhaskar, 2013, p. 197).</p>
+            <p>O ritmo acelerado de produção e veiculação de informação, característica marcante do século XXI, não foi acompanhado do crescimento de credibilidade das fontes, e esse descompasso entre informação disponível e compromisso com a verdade gera um cenário informacional apocalíptico, o “infocalipse”:</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Schick, 2020, p. 48)</span>
+              A palavra “Infocalypse” foi cunhada pelo tecnólogo norte-americano Aviv Ovadya em 2016, quando a utilizou para alertar sobre como a má informação estava sobrecarregando a sociedade e para questionar se existe um limiar crítico a partir do qual a sociedade deixará de ser capaz de lidar com isso. Ovadya empregou o termo em relação a um conjunto de ideias, sem estabelecer uma definição única. Contudo, como observou corretamente, o Infocalypse não é uma “coisa” estática nem um evento isolado, mas sim um estado de coisas em constante evolução, no qual todos nós existimos cada vez mais. Sustento que o Infocalypse está evoluindo para um fenômeno cada vez mais potente, com implicações perigosas para tudo, desde a geopolítica até nossas vidas individuais.
+            </div>
+
+            <p style="margin-top: 14px;">É difícil determinar com exatidão quando o Infocalypse surgiu ou em que medida ele se consolidou. Mas ele certamente pode ser relacionado aos avanços tecnológicos exponenciais do início deste século. Antes da virada do milênio, nosso ambiente informacional evoluía em um ritmo mais lento, o que dava à sociedade mais tempo para se ajustar aos avanços tecnológicos. Houve quatro séculos entre a invenção da prensa tipográfica e o desenvolvimento da fotografia, por exemplo. Mas, nas últimas três décadas, a Internet, o smartphone e as mídias sociais transformaram nosso ambiente informacional. Em 2023, aproximadamente dois terços do mundo — 5,3 bilhões de pessoas — estarão conectados a esse ambiente informacional em rápida evolução. O outro terço logo se juntará a eles. O vídeo emergiu como o meio de comunicação mais poderoso nesse ecossistema (Schick, 2020, p. 9-10).</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Scharre, 2023, p. 143)</span>
+              Mídias sintéticas: agravantes da pós-verdade
+            </div>
+
+            <p style="margin-top: 14px;">Para entender o papel das mídias sintéticas, gênero no qual está inserida a deepfake, é importante compreender o conceito de pós-verdade:</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Suleyman; Bhaskar, 2023, p. 219)</span>
+              O dicionário de Oxford declarou “pós-verdade” como a palavra do ano de 2016 (Dunker et al., 2018, p. 7), definida, em tradução própria,  como “relacionado a circunstâncias nas quais as pessoas respondem mais a sentimentos e crenças do que aos fatos”. Os autores estabelecem que a pós-verdade é consequência direta das transformações promovidas na pós-modernidade, tempo em que debates relevantes questionaram a verdade como valor absoluto, permitindo o esgarçamento dos limites aceitáveis que separam os fatos das opiniões. Nesse cenário de relativização da verdade e, consequentemente, da credibilidade das fontes de informação, as mídias sintéticas produzidas por IA generativa surgem como uma arma poderosa com potencial para fragilizar o que se entendia por “verdade” (De Souza, Barros, 2026).
+            </div>
+
+            <p style="margin-top: 14px;">Nesse cenário de relativização da verdade e de intensa disputa factual, as mídias sintéticas despontam como ferramentas nefastas para rasgas a linha entre fato e a crença. Logicamente, nem todo uso de mídia sintética é perverso, mas os usos mal-intencionados despertam grande preocupação:</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Schick, 2020, p. 14)</span>
+              Os deepfakes automatizam ataques. Até agora, as campanhas efetivas de desinformação exigiam mão de obra intensiva. Embora bots e fakes não sejam difíceis de criar, a maioria é de baixa qualidade, facilmente identificável e só moderadamente efetiva em modificar o comportamento dos alvos. A mídia sintética de alta qualidade muda essa equação. Nem todas as nações possuem fundos para construir grandes programas de desinformação, com escritórios dedicados e legiões de técnicos treinados, mas essa barreira diminui quando material de alta fidelidade pode ser gerado a um clicar do mouse. Muito do caos futuro não será acidental. Ele ocorrerá quando as campanhas de desinformação atuais forem turbinadas, expandidas e delegadas a um grupo de atores motivados
+            </div>
+
+            <p style="margin-top: 14px;">A ascensão da mídia sintética em larga escala e com custos mínimos amplifica tanto a desinformação (informação intencional e maliciosamente falsa) quanto a informação errônea (uma poluição mais ampla e não intencional do espaço informacional). É a deixa para o “infocalipse”, o ponto no qual a sociedade já não consegue gerir a torrente de material duvidoso, no qual o ecossistema informacional que embasa o conhecimento, a confiança e a coesão social, a cola mantendo a sociedade unida, entra em colapso. Nas palavras de um relatório da Brookings Institution, mídia sintética onipresente e perfeita significa “distorção do discurso democrático; manipulação das eleições; erosão da confiança nas instituições; enfraquecimento do jornalismo; exacerbação das divisões sociais; solapamento da saúde pública; e imposição de danos difíceis de reparar à reputação de indivíduos proeminentes, incluindo políticos eleitos e candidatos” (Suleyman; Bhaskar, 2013, p. 197-198).</p>
+            <p>Métricas para recuperar a credibilidade no mundo transformado pela IA</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Schick, 2020, p. 64)</span>
+              Uma parte da resposta passa pela transparência de intenções e de ações:
+            </div>
+
+            <p style="margin-top: 14px;">A confiança vem da transparência. Precisamos ser capazes de verificar, em todos os níveis, a segurança, integridade ou natureza não comprometida de um sistema. Isso, por sua vez, está relacionado a direitos de acesso e capacidade de auditoria, a realizar testes adversários nos sistemas e ter equipes de hackers de chapéu branco ou mesmo Ias explorando fraquezas, falhas ou vieses. Trata-se de construir tecnologias de uma maneira inteiramente diferente, com ferramentas e técnicas que ainda não existem (Suleyman; Bhaskar, 2013, p. 274).</p>
+            <p style="font-weight: 600; color: var(--sky);">Se a transparência não for suficiente para garantir credibilidade, Schick apresente três instâncias de resposta (Schick, 2020, p. 109-113):</p>
+
+            <ul class="bullet-list">
+              <li>A primeira linha de defesa no Infocalypse é garantir que tenhamos acesso a informações precisas. A pandemia de Covid-19 ilustrou o quão vital isso é. Agora, mais do que nunca, é o momento de apoiar o jornalismo confiável e as organizações de checagem de fatos. Dezenas dessas organizações já existem. Nos Estados Unidos, elas incluem a PolitiFact, que ganhou um Prêmio Pulitzer por sua checagem de fatos durante a eleição de 2008, a Snopes e a AP Fact Check (da Associated Press). Na Europa, outras três dignas de destaque incluem a Agence Presse France Fact Check, a FullFact e a Reality Check da BBC.</li>
+              <li>A segunda linha de defesa é utilizar as ferramentas tecnológicas que estão sendo desenvolvidas pelos “mocinhos”. A tecnologia é meramente um amplificador da intenção humana e, por isso, é utilizada tanto para o bem quanto para o mal. Quando descobri pela primeira vez os deepfakes, no final de 2017, eu trabalhava na Faculty, uma empresa de IA sediada em Londres. A Faculty havia anteriormente desenvolvido o software de IA do governo britânico para ajudar a detectar vídeos de propaganda do ISIS. Ela alcançou isso treinando um sistema de aprendizado de máquina com vídeos de propaganda do ISIS até que a IA fosse capaz de “reconhecer” suas características distintivas e detectá-las quando aparecessem online.</li>
+              <li>Abordagens sociais mais amplas ao Infocalypse, por meio de políticas públicas, provavelmente constituem a linha de defesa menos desenvolvida e mais complexa. Em parte, isso se deve ao fato de que é necessário um debate mais robusto sobre os trade-offs entre segurança, liberdade e privacidade à medida que avançamos. A questão central é quem deve ter o poder de decidir quais informações são boas ou más e como isso pode ser decidido sem vieses. É de suma importância alcançar o equilíbrio adequado. Isso é especialmente difícil nas democracias ocidentais, onde a liberdade de expressão e a liberdade de informação se tornarão cada vez mais difíceis de conciliar com as ameaças representadas pela desinformação e pela informação enganosa. (Schick, 2020, p. 109-113).</li>
+            </ul>
+          </div>
+
+          <!-- SEÇÃO 2: MANIPULAÇÃO COMPORTAMENTAL DO CONSUMIDOR -->
+          <div id="a2-sec-2-2" class="card">
+            <div class="card-title">Seção 2 — Manipulação Comportamental do Consumidor e Erosão da Vontade</div>
+
+            <p>Bauman (2007, p. 71) definiu a nossa sociedade como de consumidores, nos acusando de termos nos tornado mercadorias de consumo e termos confundido o que somos com o que temos. Em alguma medida, parece que as redes sociais corroboram essa crítica, porque são vitrines sociais que expõem pessoas como produtos em uma estante. Ocorre que nós não somos apenas produtos nessa nova versão de capitalismo de consumo, somos também consumidores ávidos, impactados por campanhas publicitárias que parecem cada vais mais nos conhecer no íntimo dos nossos desejos; o que ficou fácil de ser atingido com a disponibilidade massiva de padrões de comportamento digital na era da big data.</p>
+            <p style="font-weight: 600; color: var(--gold);">Algoritmos de recomendação e a autonomia da vontade</p>
+            <p>Antes de entendermos como um sistema de filtro de conteúdo, inicialmente pensado para facilitar a navegação no oceano de conteúdo digital, tornou-se uma externalidade negativa, vamos compreender o seu conceito:</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Pasquale, 2015, p. 9)</span>
+              Os maiores sites de E-commerce oferecem milhões de produtos à venda. Escolher entre tantas opções é um desafio para os consumidores. Os sistemas de recomendação surgiram como resposta a esse problema. Um sistema de recomendação para um site de E-commerce recebe informações de um consumidor sobre quais produtos ele/ela tem interesse e recomenda produtos que provavelmente se encaixam em suas necessidades. Hoje, os sistemas de recomendação são implantados em centenas de sites diferentes, atendendo milhões de consumidores” (Sarwar, 2020, p. 138).
+            </div>
+
+            <p style="margin-top: 14px;">Entendendo o que são algoritmos de recomendação, é importante esclarecer que eles não são sinônimos de IA:</p>
+            <p>IA, segundo Abrardi (2022, p.970), é “uma tecnologia preditiva baseada em Aprendizado de Máquina (ML) [...], um ramo da estatística computacional, [por meio do qual] os sistemas de IA podem produzir novo conhecimento encontrando estruturas e padrões complexos em um grupo de dados”. Esse conceito permite entender que IA é um termo genérico usado para definir as tecnologias de produção de conhecimento, enquanto os algoritmos de recomendação são tecnologias voltadas para a indicação de produtos/serviços/conteúdos, com o intuito de estimular o comércio digital ou o uso de plataformas digitais, podendo ou não se utilizar de IA.</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Pasquale, 2015, p. 9-10)</span>
+              Embora não sejam sinônimos, algoritmos de recomendação podem ser impulsionados com o uso de modelos de IA, e o resultado são sistemas que podem vulnerar o interesse mais basilar do consumidor, que é buscar o menor preço de aquisição de um produto ou serviço:
+            </div>
+
+            <p style="margin-top: 14px;">Há muito, práticas de economia comportamental já eram empregadas para manipular o comportamento do indivíduo e induzir a compra de um bem. Já neste momento, havia certa preocupação com as tentativas de enganar o consumidor. Atualmente, o perigo foi elevado, uma vez que são associados sistemas de inteligência artificial aos anteriores conhecimentos de economia comportamental. Assim, com o advento desta tecnologia, cada vez mais aperfeiçoada, as vulnerabilidades do consumidor podem estar sendo exploradas economicamente por meio da publicidade comportamental. [...] O perigo destas práticas comerciais reside em forçar excessivamente o consumo, ao explorar as fraquezas e incompreensões do consumidor. Então, essa união entre a economia comportamental e a inteligência artificial pode transformar a publicidade convencional, que apresenta o produto ao consumidor, em uma publicidade que objetiva forçar excessivamente o consumo de bens. (Barros; Maranhão in Veiga et al., 2022, p. 211).</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Genovesi; Kaesling; Robbins, 2023, p. 150)</span>
+              É comum, inclusive, que para atingir os fins maliciosos e maximizar o lucro dos fornecedores, os algoritmos de recomendação sejam associados a padrões ocultos (dark patterns), que apresentam o conteúdo de forma a confundir as intenções manifestas e latentes. Padrões ocultos são “interfaces de usuário cujos designers confundem conscientemente os usuários, dificultam que eles expressem suas preferências reais ou manipulam os usuários para que realizem determinadas ações” (Luguri; Strahilevitz, 2021, p. 44).
+            </div>
+
+            <p style="margin-top: 14px;">O resultado, para o consumidor, é um cenário em que os seus interesses e direitos podem ser vulnerados de várias formas pelos algoritmos de recomendação:</p>
+            <p>[...] existem forças que distorcem os resultados dos algoritmos quando se trata do valorativo. Essas forças são: (1) que as saídas do sistema de recomendação são baseadas exclusivamente em padrões valorativos passados; (2) que as saídas são baseadas exclusivamente em informações computáveis; (3) que esses algoritmos são ensinados usando substitutos [proxies] para o bem; e (4) os algoritmos são caixas-pretas – significando que não podemos saber as considerações que levam ao resultado [...]. Essas saídas distorcidas alimentam, então, nossos futuros julgamentos valorativos. Isso cria um ciclo vicioso pelo qual os humanos são retirados do banco do motorista no que diz respeito ao valorativo. Corremos o risco de perder o controle humano significativo sobre o que devemos fazer e como o mundo deve ser (Robbins in Genovesi; Kaesling; Robbins, 2023, p. 150).</p>
+            <p>Discriminação Dinâmica de Preços e Publicidade Personalizada</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Calo, 2014, p. 1025)</span>
+              Em obra anterior, defini esses conceitos, com apoio de fontes importantes, de modo que vale a pena transcrevê-las:
+            </div>
+
+            <p style="margin-top: 14px;">A discriminação de preços é definida como “a prática de cobrar aos clientes diferentes preços, para um mesmo serviço” (Hoffman, 2022, p. 1017). Não é uma estratégia recente, havendo relatos de diferença na precificação conforme o perfil do consumidor desde a década de 2000, mas novos contornos têm surgido na era da Big Data, em que as empresas buscam o preço máximo que cada indivíduo está disposto a pagar por um produto (Abreu, 2018, p. 310–312).</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Calo, 2014, p. 1027)</span>
+              A publicidade personalizada, por sua vez, “é uma técnica que tem como objetivo criar anúncios altamente direcionados e relevantes para cada usuário” (Moreira; Da Rosa; Barth, 2024, p. 3). [...] Os críticos ainda destacam a possibilidade de que essa prática leve à manipulação do consumidor, quando a publicidade usa das tendências do usuário para criar ou modificar o desejo de compra, levando-o a praticar um ato contrário aos seus interesses (de Souza; Barros, 2026).
+            </div>
+
+            <p style="margin-top: 14px;">Para esclarecer o fato de que esses dois conceitos sejam tratados juntos, é preciso compreender que na sociedade do consumo, em que o “ter” e o “ser” se confunde, a conversão da venda muitas vezes se resumo a descobrir o gatilho de compra do consumidor. Essa lógica, tratada com naturalizada muitas vezes no meio do marketing, pode se tornar uma prática nefasta quando o fornecedor da publicidade conhece os seus padrões mais íntimos de consumo de conteúdo digital:</p>
+            <p style="font-weight: 600; color: var(--sky);">Pesquisadores como Maurits Kaptein vão além da simples correspondência entre o anúncio certo e a pessoa certa. Em vez disso, para cada anúncio específico, as técnicas que esses pesquisadores investigam buscam identificar exatamente a forma de persuasão mais adequada para cada indivíduo. Essa nova linha de pesquisa parte da premissa, discutida anteriormente, de que os consumidores diferem quanto à sua suscetibilidade às diversas formas de persuasão. Alguns consumidores, por exemplo, respondem mais favoravelmente ao consenso social. Outros, ao contrário, rejeitam seguir a maioria e tendem a reagir mais intensamente à escassez ou a outro tipo de enquadramento persuasivo. Kaptein e seus colaboradores demonstram que as empresas podem descobrir quais fatores motivam determinado consumidor e modificar dinamicamente o anúncio em tempo real de acordo com essas características – técnica denominada perfilamento persuasivo (persuasion profiling). Assim, para o consumidor naturalmente inclinado a seguir os demais, o anúncio de um creme dental o apresentará como um produto “mais vendido”. Já para o consumidor mais sensível ao argumento da escassez, o mesmo anúncio exibirá, de forma sugestiva, a mensagem “enquanto durarem os estoques” (Calo, 2014, p. 1017).</p>
+            <p>É bom destacar que o problema vai além de criar a necessidade de consumo, mas abarca também a modulação do preço conforme a disponibilidade de compra do consumidor. Calamote (2014, p. 5) contribui para esse debate esclarecendo que existem diversos tipos de discriminação de preços:</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Calo, 2014, p. 1028)</span>
+              Diferentes tipos de discriminação:
+            </div>
+
+            <p style="margin-top: 14px;">frequência de uso (por exemplo: clientes frequentes ou ocasionais);</p>
+
+            <ul class="bullet-list">
+              <li>localização (por exemplo: plateia ou balcão);</li>
+              <li>idade (por exemplo: adultos ou crianças).</li>
+              <li>Tipos fundamentais de práticas de discriminação através do preço:</li>
+            </ul>
+
+            <p style="margin-top: 14px;">a que segmenta segundo o timing de compra:  segmenta o cliente tendo como base a altura de compra, isto é, depende da antecipação ou não da compra. Estes autores afirmam que, clientes que antecipam a sua compra são mais sensíveis ao preço do que aqueles que compram tardiamente.</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Calo, 2014, p. 1042)</span>
+              a que segmenta segundo a identificação do comprador: é usada pelas empresas para favorecer um determinado tipo de cliente, ou seja, oferece diferentes preços consoante os comportamentos passados. Neste caso, a segmentação é feita tendo em conta o tipo de cliente - novos vs. atuais – e pode assumir três vertentes:
+            </div>
+
+            <p style="margin-top: 14px;">a vantagem na desigualdade, onde o cliente alvo recebe um benefício superior quando comparado com os outros clientes;</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Calo, 2014, p. 1043)</span>
+              a igualdade, onde o cliente alvo recebe o mesmo que os outros clientes;
+            </div>
+
+            <p style="margin-top: 14px;">e a desvantagem na desigualdade, onde o cliente alvo recebe um benefício inferior quando comparado com os outros clientes.</p>
+            <p>Métricas para garantir autonomia do consumidor</p>
+            <p>A autonomia do consumidor não pode ser dissociada do seu direito à informação, porque uma escolha livre só pode ocorrer em um cenário de disponibilidade de informação. Por isso, o autor a seguir ilustra duas técnicas informacionais importantes para mitigar o cenário de crise da autonomia:</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Calo, 2014, p. 1033)</span>
+              Um indiciamento recente e exaustivo da estratégia regulatória de divulgação mandatória, embora firmemente fundamentado nas limitações de consumidores, empresas e funcionários para realizar análises eficazes de custo-benefício, terminou, no entanto, com uma nota positiva sobre o poder do “aconselhamento”.
+            </div>
+
+            <p style="margin-top: 14px;">Outro exemplo é o conceito de “aviso visceral” – um aviso que é vivenciado em vez de ouvido ou lido – como uma alternativa viável aos regimes de divulgação inadequados de hoje.</p>
+            <p>Os autores do livro mais vendido Nudge, Thaler e Sunstein, também dependem fortemente de estratégias de informação – particularmente “feedback” e “mapeamento” – em sua tentativa de encontrar um meio-termo entre o paternalismo e o laissez-faire (Calo, 2014, p. 2014).</p>
+            <p style="font-weight: 600; color: var(--gold);">Não basta somente informar, é preciso fazê-lo com qualidade:</p>
+
+            <ul class="bullet-list">
+              <li>Contrariamente ao que recentes textos da Comissão apregoam, não é a quantidade da informação que conta; a informação deve corresponder às reais necessidades e às expectativas dos consumidores e a sua adequação deve ser aferida em função da finalidade, do conteúdo, da apresentação e do contexto. Deve ainda ser permanentemente submetida ao teste da “adequabilidade” (suitability) para se aferir da sua qualidade para o fim a que se destina e o público consumidor a que se dirige e cujos parâmetros fundamentais são fiabilidade, atualidade, imparcialidade, exatidão, relevância, dimensão sucinta, compreensibilidade, clareza, legibilidade e fácil acesso. É ainda necessário que a informação prestada (teor e formato) e o respectivo quadro regulamentar se mantenham estáveis por longos períodos. Alterar frequentemente os parâmetros da informação pode dificultar ao consumidor a compreensão da mesma (Liz, 2011, p. 102-103).</li>
+              <li>Há outros autores que trabalham a necessidade de informação no nível regulatório:</li>
+              <li>Há claro espaço para uma nova entidade ou entidades nas questões técnicas. Um regulador dedicado que navegue geopolíticas contenciosas (tanto quanto possível), evite excessos e cumpra uma função pragmática de monitoramento segundo critérios objetivos é urgentemente necessário. [...] Em vez de ter uma organização que regule, construa ou controle a tecnologia diretamente, eu começaria com algo como uma Autoridade de Auditoria da IA, a AAI. Focada na descoberta de fatos, na auditoria de modelos e nos limites de capacidades, a AAI aumentaria a transparência global na fronteira tecnológica, fazendo perguntas como: o sistema dá sinais de possuir capacidade de autoaprimoramento? Pode especificar seus próprios objetivos? Pode adquirir mais recursos sem supervisão humana? Foi deliberadamente treinado para enganar ou manipular? (Suleyman; Bhaskar, 2023, p. 300).</li>
+            </ul>
+          </div>
+
+          <!-- SEÇÃO 3: DESEMPREGO TECNOLÓGICO -->
+          <div id="a2-sec-2-3" class="card">
+            <div class="card-title">Seção 3 — Desemprego Tecnológico e Erosão das Oportunidades</div>
+
+            <p>A lógica subjacente do sistema capitalista é a circulação de riqueza (não necessariamente a acumulação de capital) e uma importante válvula para fluxo de renda é o trabalho. Ocorre que sistemas de IA estã o substituindo postos de trabalho em velocidade alarmante, inclusive em áreas antes impensáveis, que dependiam da compreensão da fala e da linguagem. Se a produção continua crescendo, talvez até sendo ampliada com os sistemas de IA, mas a renda para de fluir para uma parcela significativa da população que poderia fazê-la circular (o trabalhador), o cenário que se avizinha é da já conhecida crise de superprodução. Mais do que isso, antes da crise, se o problema não for remediado, a precarização do mercado de trabalho também causará problemas.</p>
+            <p style="font-weight: 600; color: var(--gold);">Desemprego decorrente da automação do trabalho na era da IA</p>
+            <p>A relação entre desenvolvimento tecnológico e substituição da força de trabalho não é recente, conforme ensinam Suleyman; Bhaskar (2023, p. 203), porque ao longo da história sobram relatos de deslocamentos de trabalhos, quando a máquina assume determinada função e a sociedade passa a ocupar novos postos. Todavia, na era da IA a preocupação é de que essa lógica seja superada e o desenvolvimento tecnológico não signifique a criação de novos postos de trabalho, em áreas antes pouco exploradas, mas a redução efetiva de trabalhos desenvolvidos por humanos, o que implicaria no aumento substancial do desemprego. A preocupação é de que a IA, diferente das tecnologias anteriores, torne-se um substituto de baixíssimo custo para o trabalho humano:</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Suleyman; Bhaskar, 2023, p. 209)</span>
+              Essas ferramentas só aumentarão a inteligência humana temporariamente. Por algum tempo, elas nos tornarão mais inteligentes e eficientes e produzirão enorme crescimento econômico, mas são fundamentalmente substitutas do trabalho. Em algum momento, realizarão o trabalho cognitivo de maneira mais eficiente e barata que muitas pessoas trabalhando em administração, entrada de dados, serviço ao cliente (incluindo telefonemas), e-mails, sumários, tradução de documentos, produção de conteúdo, criação de anúncios e assim por diante. Diante da abundância de equivalentes de custo baixíssimo, os dias desse tipo de “trabalho manual cognitivo” estão contados (Suleyman; Bhaskar (2023, p. 204).
+            </div>
+
+            <p style="margin-top: 14px;">Essa preocupação não é unânime e há que aponte que essas tecnologias aumentarão a riqueza global, criarão mais demanda por trabalho e viabilizarão a circulação de renda (Suleyman; Bhaskar, 2023, p. 204). Os autores, porém, não acreditam nessa tese e apontam a automação como fato decisivo para o desemprego, porque as máquinas estão imitando rapidamente as habilidades humanas, sem um indicativo de limitação próximo. O palpite dos autores é de que a IA extinguirá empregos em uma velocidade muito maior do que pode criar e o impacto recairá inclusive na capacidade de arrecadação de impostos, consequentemente, na capacidade do estado de custear programas públicos atrelados ao bem-estar social.</p>
+            <p style="font-weight: 600; color: var(--sky);">Os novos postos de trabalho podem ser subempregos</p>
+            <p>Ainda que a era da IA consiga replicar a façanha das fases de desenvolvimento tecnológico anterior, e substituir os empregos disponíveis, a ressignificação do mercado de trabalho será necessariamente positiva? A autores que destacam a preocupação de que os postos de trabalho que têm surgido apresentam precarizações diversas:</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Dubber; Pasquale; Das, 2020, p. 281)</span>
+              Coletivamente, essas tendências delimitam de maneira cada vez mais restrita aquilo que é considerado trabalho passível de remuneração, ao contabilizar determinadas tarefas, mas não outras. Ao restringirem o que é considerado trabalho remunerável e otimizarem os processos exclusivamente em função desse critério, os sistemas orientados por IA podem aumentar a proporção de atividades classificadas como residuais e, por isso, consideradas indignas de pagamento, como produzir uma música (que, ao final, pode não se tornar popular), dirigir até o local de embarque de um passageiro ou repor balas de hortelã para assegurar uma boa avaliação. Essas atividades laborais — aquilo que Craig Lambert denominou “trabalho invisível” (shadow work) — não deixam de existir simplesmente porque não são contabilizadas. Ao contrário, esses sistemas transferem tais riscos e custos do empregador para o trabalhador, que passa a internalizar esse trabalho efetivamente realizado, mas que não "conta" para fins de remuneração (Moradi; Levy in Dubber; Pasquale; Das; 2020, p. 281).
+            </div>
+
+            <p style="margin-top: 14px;">Agrava essa percepção, o risco de que os países do Sul Global sejam mais afetados por essas transformações, não só pelo processo de cerceamento tecnológico que afeta esses países:</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Suleyman; Bhaskar, 2023, p. 211)</span>
+              Há inúmeras maneiras pelas quais a inteligência artificial pode causar graves prejuízos aos países do Sul Global e afetar os direitos humanos de suas populações. Na ausência de regulamentação local nesses países, a IA pode ser implementada ainda em suas fases experimentais, fazendo com que suas populações assumam os riscos dos danos que possam decorrer dessa utilização. Em uma escala mais ampla, a IA pode afetar as economias desses países ao alterar sua posição na economia global: diversos países em desenvolvimento que se beneficiaram de seu papel na economia global impulsionada pela internet podem, gradualmente, ver os serviços terceirizados de baixa qualificação que oferecem serem substituídos pela automação (Arun in Dubber; Pasquale; Das; 2020, p. 592).
+            </div>
+
+            <p style="margin-top: 14px;">Métricas para enfrentar o desemprego tecnológico</p>
+            <p style="font-weight: 600; color: var(--gold);">Os riscos ao trabalho na era da IA são principalmente de três ordens: desemprego, salários reduzidos e aumento da desigualdade pela polarização do mercado de trabalho (Moradi; Levy in Dubber; Pasquale; Das; 2020, p. 286). Como soluções a esses problemas, os autores sugerem:</p>
+
+            <ul class="bullet-list">
+              <li>fortalecimento de instituições sociais de longa data;</li>
+              <li>investimento tanto na educação básica quanto na superior (frequentemente com foco nos campos de STEM [ciência, tecnologia, engenharia e matemática]);</li>
+              <li>requalificação de trabalhadores deslocados para fornecer-lhes habilidades comercializáveis para a nova economia;</li>
+              <li>reforço da rede de segurança social por meio de reformas nos programas de seguro-desemprego e de benefícios públicos; e</li>
+              <li>(de forma um pouco mais controversa) algum apoio a programas de renda básica universal que forneceriam garantias financeiras incondicionais para todos os indivíduos, independentemente das circunstâncias (Moradi; Levy in Dubber; Pasquale; Das; 2020, p. 286).</li>
+            </ul>
+
+            <p style="margin-top: 14px;">Na mesma obra, outro autor sugere soluções centradas na iniciativa governamental, com a efetiva criação de demanda por mão de obra, como na área de pesquisa patrocinada pelo governo direcionada para tecnologias que melhores a situação econômica dos trabalhadores (Arun in Dubber; Pasquale; Das; 2020, p. 592).</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Suleyman; Bhaskar, 2023, p. 211)</span>
+              A solução também pode passar por uma mudança de perspectiva sobre o sistema financeiro, no sentido de perceber que a lógica consolidada de taxação do trabalho talvez precise mudar para a lógica de taxação do capital:
+            </div>
+
+            <p style="margin-top: 14px;">A taxação também precisa ser completamente reformulada para financiar a segurança e o bem-estar social conforme passamos pela maior transição de valor – do trabalho para o capital – da história. Se a tecnologia criar perdedores, eles precisarão de compensação material. Hoje, nos Estados Unidos, a mão de obra é taxada em uma alíquota média de 25%, e equipamentos e softwares, em somente 5%. O sistema foi projetado para deixar que o capital se reproduza sem atrito, em nome da criação de empresas prósperas. No futuro, a taxação precisará mudar a ênfase na direção do capital, não somente financiando uma redistribuição em benefício dos adversamente afetados, mas também criando uma transição mais lenta e justa. A política fiscal é uma válvula importante nessa transição, uma maneira de exercer controle sobre os gargalos e, ao mesmo tempo, aumentar a resiliência do Estado (Suleyman; Bhaskar, 2013, p. 295).</p>
+          </div>
+
+          <!-- SEÇÃO 4: VIÉS DE AUTOMAÇÃO E ATROFIA DE HABILIDADES -->
+          <div id="a2-sec-2-4" class="card">
+            <div class="card-title">Seção 4 — Viés de Automação e Atrofia de Habilidades</div>
+
+            <p>Existe uma relação genérica inversamente proporcional entre qualidade e velocidade, no que diz respeito a entrega de um resultado. Nem sempre, mas normalmente a maior velocidade para atingir um objetivo, implica em um menor refinamento de detalhes, ou na menor profundidade crítica, ou até menos no não atingimento de todos os objetivos propostos. Essa dicotomia também pode ser aplicada ao uso de IA quando tratamos do princípio human-in-the-loop, porque a mera presença de validação humana no processo não implica necessariamente em filtro crítico dos outputs da IA. Na verdade, a sobrecarga de validação majora o risco de que as validações sejam cada vez menos críticas e só confirmem as externalidades negativas da máquina.</p>
+            <p style="font-weight: 600; color: var(--gold);">Definição de atrofia de habilidades</p>
+            <p>É fato que as arquiteturas de IA estão substituindo cada vez mais a capacidade humana de tomada de decisão, inclusive após o desenvolvimento de um projeto, ou seja, durante o uso das soluções desenvolvidas (Spaulding in Dubber; Pasquale; Das; 2020, p. 375). Conforme o autor, esse fato não é necessariamente ruim, afinal de contas os sistemas de IA apresentam decisão melhores que as humanas em muitos aspectos, o que decorre da capacidade de processamento de quantidade muito maior de dados em menos tempo. A questão é que, ao se demonstrar superior em determinados domínios de decisão, a deferência para com as capacidades da ferramenta leva à sua utilização também em outros domínios nos quais a capacidade de julgamento deveria ser preservada:</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Dubber; Pasquale; Das, 2020, p. 377)</span>
+              A deferência é, evidentemente, apenas um eufemismo para o deslocamento do julgamento humano. Essa forma de deslocamento pode ou não gerar problemas quando são os próprios projetistas que optam por confiar nas máquinas; porém, quando usuários, reguladores e o público em geral passam a fazê-lo, amplia-se o chamado “vazio de responsabilidade” (responsibility gap). Passam a operar processos que, sob a perspectiva de seus resultados, parecem funcionar de modo semelhante – ou até superior – ao julgamento humano. Contudo, até que ocorra uma falha suficientemente catastrófica, talvez ninguém perceba as vulnerabilidades inerentes à substituição do julgamento humano. Além disso, o “motivo” pelo qual o sistema agiu de determinada maneira pode ser impossível de descobrir, e as circunstâncias de sua utilização podem dificultar a identificação de um ser humano juridicamente ou moralmente responsável. Em sistemas nos quais o risco de falhas catastróficas é reduzido ou os custos informacionais para identificá-las são elevados – como programas destinados à resolução on-line de litígios de pequeno valor econômico, nos quais a investigação dos fatos raramente é aprofundada –, tais vulnerabilidades podem permanecer completamente despercebidas (Spaulding in Dubber; Pasquale; Das; 2020, p. 376).
+            </div>
+
+            <p style="margin-top: 14px;">O problema que o autor critica não é necessariamente o deslocamento do julgamento, mas a consequência que dele decorre, que é a perda de capacidade de decidir no futuro. Como todas as habilidades humanas, a capacidade de decidir também é treinada e se perde se não for exercida rotineiramente. Esse é o problema que assombra as gerações na era da IA:</p>
+            <p>Para historiadores, teóricos críticos, eticistas e sociólogos, o deslocamento do julgamento humano e a deterioração das condições para seu exercício são fenômenos bastante familiares. [...] A IA centraliza, incorpora e obscurece juízos de valor na fase de projeto; durante sua utilização, substitui o julgamento humano, inclusive em situações nas quais foi concebida para ampliá-lo ou auxiliá-lo; altera o campo epistemológico no qual o julgamento humano é exercido; e pode ainda ser empregada de outras maneiras que deterioram as condições para o exercício desse julgamento, produzindo nos usuários padrões de obediência reflexa e de simples estímulo-resposta (Spaulding in Dubber; Pasquale; Das; 2020, p. 377).</p>
+            <p style="font-weight: 600; color: var(--sky);">Definição de viés de automação</p>
+            <p>A atrofia de habilidades tem relação estreita com o viés de automação, no sentido de que quanto menor a capacidade de posicionar-se criticamente sobre determinado assunto, maior é a confiança que se cria na decisão produzida pela IA. Para entender a relação entre esses dois conceitos, vamos inicialmente compreendê-los segund Cavalcante (2024, p. 47):</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Cavalcante, 2024, p. 27-28)</span>
+              Atrofia de Habilidades - A confiança excessiva na IA pode levar à diminuição das habilidades de tomada de decisão dos comandantes ao longo do tempo;
+              <br/><br/>
+              Viés de Automação - Os tomadores de decisão podem tender a aceitar as recomendações da IA sem o devido escrutínio crítico, potencialmente ignorando informações contextuais importantes; [...].
+            </div>
+
+            <p style="margin-top: 14px;">O risco do viés de automação surge principalmente diante das inúmeras externalidades negativas dos sistemas de IA citados até aqui. Existe uma gama de outputs das IA que pdocuzem resultados discriminatórios, enviesados, equivocados e até alucinados. Por isso o viés de automação é perigoso, porque implica no risco de que o humano valide um resultado errado da IA:</p>
+
+            <div class="citation citation-author">
+              <span class="citation-label">📘 Citação Direta (Cavalcante, 2024, p. 28)</span>
+              Esse episódio [viés discriminatório] também evidencia o chamado viés de automação (automation bias), isto é, a tendência das pessoas a depositarem confiança excessiva em sistemas automatizados. Um experimento conduzido por pesquisadores da Universidade Georgia Tech para avaliar o grau de confiança que participantes depositavam em um robô mostrou que eles estavam dispostos a segui-lo em direção ao que aparentava ser um edifício em chamas, utilizando trajetos claramente inconvenientes. No caso do palestino que foi preso em razão de uma publicação contendo a expressão “bom dia”, as autoridades confiaram no sistema de tradução e sequer verificaram o texto original antes de efetuar a prisão (Gebru in Dubber; Pasquale; Das; 2020, p. 281).
+            </div>
+
+            <p style="margin-top: 14px;">E o risco de validação de equívocos da IA aumenta de probabilidade na medida em que aumentam os resultados a serem validados. A sobrecarga de trabalho, na era da IA, significa uma tendência crescente de validar outputs sem estabelecer parâmetros mínimos de verificação de qualidade:</p>
+            <p>Diante desse volume de produção em escala quase industrial, o papel do operador humano deixa de consistir na identificação ativa de alvos e na deliberação aprofundada, passando a concentrar-se na validação rápida das recomendações produzidas pelo sistema, sob intensa pressão cognitiva e temporal. Essa dinâmica é fundamental para compreender a operacionalização do viés de automação (automation bias) (Mohee, 2026, p. 8).</p>
+            <p style="font-weight: 600; color: var(--gold);">Métricas para preservar a autonomia intelectual</p>
+
+            <ul class="bullet-list">
+              <li>Em um cenário de possível deterioração da capacidade de decisão, é importante desenvolver preocupações sobre como aproveitar as vantagens trazidas pelos sistemas de IA, mitigando os malefícios. O debate estabelecido aqui não é de reagir ao desenvolvimento tecnológico, mas de aproveitá-lo com responsabilidade. Um passo importante nessa direção é a preservação da autonomia intelectual:</li>
+              <li>Autonomia intelectual, de maneira geral, é a habilidade de pensar por si mesmo e de não ser excessivamente dependente de outras pessoas e dispositivos externos ao formular crenças e engajar-se em cognição. A principal forma pela qual artefatos externos destinados ao aprimoramento da memória nos tornam menos autônomos, segundo Carr, consiste em nos tornar menos conhecedores. A internet, em particular, reduz nosso conhecimento ao minimizar a quantidade de informações que precisamos armazenar na memória biológica (Turner; Schneider in Dubber; Pasquale; Das; 2020, p. 319).</li>
+              <li>A deterioração da capacidade de decisão é especialmente relevante em cenários cuja decisão produz efeitos de grandes proporções e/ou irreversíveis. Uma dessas áreas é o campo militar, que muitas vezes abarca decisões sobre o emprego de força letal. Por isso, existe uma preocupação especial sobre a inserção de sistemas de IA no meio militar e os impactos dessa tecnologia para o processo decisório:</li>
+              <li>Diante dos desafios apresentados pela integração da IA nos processos decisórios militares, o papel do decisor humano torna-se ainda mais crítico e complexo. O Comandante militar deve agora não apenas dominar os conceitos de tática e estratégia tradicionais, mas também compreender as capacidades e limitações dos sistemas de IA à sua disposição. O decisor deve manter um equilíbrio delicado entre aproveitar as vantagens oferecidas pela IA e evitar a dependência excessiva. Isso requer uma compreensão profunda das tecnologias empregadas, bem como a capacidade de avaliar criticamente as recomendações fornecidas pelos sistemas de IA. O Comandante deve estar preparado para questionar, quando necessário, as sugestões da IA, baseando-se em sua experiência (Cavalcante, 2024, p. 49).</li>
+            </ul>
+          </div>
+
+          <!-- CAPÍTULO 3 — ENCERRAMENTO E MITIGAÇÃO -->
+          <div id="sec-a2-cap3" class="section-sep">
+            <span class="sep-num">Capítulo 3</span>
+            <span class="sep-title">Encerramento da Aula & Mitigação dos Riscos</span>
+            <span class="sep-line"></span>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Considerações Finais — Linhas de Mitigação dos Riscos de Mídia Sintética</div>
+            <p>Ao encerrar esta aula, o questionamento suscitado é: como garantir a integridade das informações que transitam nos canais de comunicações? Para enfrentar esse questionamento, vamos retomar o caso paradigmático da aula e responder ao questionário de verificação do aprendizado.</p>
+            <p>CONSIDERAÇÕES FINAIS</p>
+            <p>Antes de tudo, é importante esclarecer que as medidas de mitigação e combate às deepfakes são difíceis de serem implementadas com sucesso. Existe uma tendência de que o vetor de profusão da mídia sintética seja mais eficiente de que os vetores de confirmação e checagem de fatos, fazendo com que muitas vezes a mentira se espalhe mais do que o fato. Todavia, em um contexto militar, a preocupação de contenção da mídia sintética está muito relacionada com a proteção da infraestrutura e pode ser resumida na figura a seguir:</p>
+
+            <!-- FIGURA 7: QUADRO MITIGAÇÃO DE MÍDIA SINTÉTICA -->
+            <div class="panel-spec panel-observation" style="margin: 20px 0; text-align: center;">
+              <div class="panel-header">🛡️ Figura 7 — Quadro de Linhas de Mitigação dos Riscos de Mídia Sintética em Conflitos Armados</div>
+              <div class="panel-body" style="padding: 16px;">
+                <img src="assets/images/aula02/figura7_mitigacao_sintetica.png" alt="Figura 7 — Quadro de linhas de mitigação dos riscos de mídia sintética em conflitos armados" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--steel); filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));"/>
+                <div style="font-size: 13px; color: var(--muted); margin-top: 10px; font-style: italic;">
+                  Figura 7 — Quadro 1: Linhas de mitigação operacional e técnica dos riscos de mídia sintética em cenários de conflitos armados. Fonte: de Souza; dos Santos; da Silva (2026).
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- QUESTIONÁRIO FORMATATIVO 02 (10 QUESTÕES INTEGRARIAIS) -->
+          <div id="a2-quiz" class="quiz-section">
+            <div class="quiz-section-header">
+              <div>
+                <span class="qs-label">Exercício Formatativo 02</span>
+                <span class="qs-title">Externalidades Negativas e Dilemas Éticos da IA</span>
+              </div>
+              <span class="quiz-score-badge">Pontuação: -- / 100</span>
+            </div>
+            <div class="quiz-section-body">
+
+              <!-- QUESTÃO 1 -->
+              <div class="quiz-block" data-quiz-id="a2-q1" data-correct="b">
+                <div class="quiz-question">Questão 01 — Na Seção 1 do Capítulo 1, aborda-se a metáfora de Frank Pasquale sobre as caixas-pretas e as estratégias de opacidade. Como o autor conceitua a estratégia de "ofuscação" (obfuscation)?</div>
+                <div class="quiz-options">
+                  <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Segredo real, caracterizado pelo trancamento físico de portas ou proteção de senhas de acesso.</div>
+                  <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Tentativa deliberada de ocultação quando o segredo foi comprometido, como a entrega de um volume massivo de dados irrelevantes para dificultar a análise e fazer o investigador perder tempo.</div>
+                  <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Segredo legal, resultante de imposição contratual ou legal que proíbe formalmente a divulgação de informações.</div>
+                  <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Mecanismo de transparência técnica qualificada, no qual o código-fonte é disponibilizado publicamente.</div>
+                  <div class="quiz-option" data-opt="e"><span class="opt-letter">E</span> Unidade de armazenamento imutável do tipo WORM (Write Once, Read Many).</div>
+                </div>
+                <div class="quiz-feedback acerto" style="display:none;">
+                  ✅ <strong>Correto!</strong> Conforme a Seção 1 do Capítulo 1, Pasquale define ofuscação como a tentativa deliberada de ocultação quando o segredo foi comprometido (ex.: entregar 30 milhões de páginas para que o investigador perca tempo procurando uma agulha no palheiro).
+                </div>
+                <div class="quiz-feedback erro" style="display:none;">
+                  ❌ <strong>Incorreto.</strong> A alternativa correta é B. Ofuscação é a ocultação por excesso de dados irrelevantes.
+                </div>
+                <button class="quiz-retry" style="display:none;margin-top:10px;padding:6px 14px;background:var(--sky);color:#fff;border:none;border-radius:4px;cursor:pointer;">↺ Tentar novamente</button>
+              </div>
+
+              <!-- QUESTÃO 2 -->
+              <div class="quiz-block" data-quiz-id="a2-q2" data-correct="c">
+                <div class="quiz-question">Questão 02 — No estudo do viés algorítmico (Seção 2 do Capítulo 1), os modelos de IA podem internalizar preconceitos históricos presentes nos bancos de dados de treinamento. Como a literatura classifica esse tipo de viés?</div>
+                <div class="quiz-options">
+                  <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Viés emergente, que decorre exclusivamente do uso indevido da ferramenta pelos operadores no momento da entrevista.</div>
+                  <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Viés técnico, que surge unicamente devido a limitações no hardware de processamento e falhas de conexão de rede.</div>
+                  <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Viés preexistente, que possui raízes nas práticas e atitudes sociais das instituições, cujos preconceitos anteriores foram reproduzidos automaticamente pela rotulagem dos dados.</div>
+                  <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Viés de automação, que se caracteriza pela ausência de dados cadastrados na base de treinamento da máquina.</div>
+                  <div class="quiz-option" data-opt="e"><span class="opt-letter">E</span> Viés de representação nula, que ocorre quando a IA cria deliberadamente novas leis de proteção social.</div>
+                </div>
+                <div class="quiz-feedback acerto" style="display:none;">
+                  ✅ <strong>Correto!</strong> O viés preexistente possui raízes nas atitudes e instituições sociais, cujos preconceitos históricos são reproduzidos ao treinar o modelo com dados marcados por desigualdades.
+                </div>
+                <div class="quiz-feedback erro" style="display:none;">
+                  ❌ <strong>Incorreto.</strong> A alternativa correta é C (Viés preexistente).
+                </div>
+                <button class="quiz-retry" style="display:none;margin-top:10px;padding:6px 14px;background:var(--sky);color:#fff;border:none;border-radius:4px;cursor:pointer;">↺ Tentar novamente</button>
+              </div>
+
+              <!-- QUESTÃO 3 -->
+              <div class="quiz-block" data-quiz-id="a2-q3" data-correct="b">
+                <div class="quiz-question">Questão 03 — Na análise sobre vigilância digital e falta de privacidade (Seção 3 do Capítulo 1), descreve-se o rastreamento contínuo exercido por arquivos que permanecem no computador mesmo após o fechamento do navegador. Como são denominados esses arquivos e qual conceito descreve essa exploração de dados comportamentais?</div>
+                <div class="quiz-options">
+                  <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Supercookies; e Economia Positiva de Soma Zero.</div>
+                  <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Cookies permanentes (ou third-party); e Capitalismo de Vigilância.</div>
+                  <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Evercookies; e Imperativo Categórico Digital.</div>
+                  <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Cookies de sessão; e Sociedade do Conhecimento Aberto.</div>
+                  <div class="quiz-option" data-opt="e"><span class="opt-letter">E</span> Cookies primários de rápida expiração; e Soberania Digital Plena.</div>
+                </div>
+                <div class="quiz-feedback acerto" style="display:none;">
+                  ✅ <strong>Correto!</strong> Cookies permanentes continuam atuando após o fechamento do navegador, alimentando a extração contínua de dados comportamentais no Capitalismo de Vigilância (Shoshana Zuboff / Frazão).
+                </div>
+                <div class="quiz-feedback erro" style="display:none;">
+                  ❌ <strong>Incorreto.</strong> A alternativa correta é B (Cookies permanentes / Capitalismo de Vigilância).
+                </div>
+                <button class="quiz-retry" style="display:none;margin-top:10px;padding:6px 14px;background:var(--sky);color:#fff;border:none;border-radius:4px;cursor:pointer;">↺ Tentar novamente</button>
+              </div>
+
+              <!-- QUESTÃO 4 -->
+              <div class="quiz-block" data-quiz-id="a2-q4" data-correct="d">
+                <div class="quiz-question">Questão 04 — No Capítulo 2 (Seção 1), analisa-se o colapso da credibilidade da informação provocado pelo volume industrial de mídias sintéticas, além de campanhas automatizadas que simulam apoio popular. Quais conceitos definem esses dois fenômenos?</div>
+                <div class="quiz-options">
+                  <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Pós-verdade factual; e Fact-checking.</div>
+                  <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Crise de consentimento; e Dark pattern.</div>
+                  <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Opacidade algorítmica; e Deepfake.</div>
+                  <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Infocalipse (Infocalypse); e Astroturfing.</div>
+                  <div class="quiz-option" data-opt="e"><span class="opt-letter">E</span> Deslocamento de julgamento; e Shadow work.</div>
+                </div>
+                <div class="quiz-feedback acerto" style="display:none;">
+                  ✅ <strong>Correto!</strong> Infocalipse (Aviv Ovadya) define o colapso da confiança pública perante mídias sintéticas em massa, enquanto Astroturfing define a simulação artificial de movimentos populares.
+                </div>
+                <div class="quiz-feedback erro" style="display:none;">
+                  ❌ <strong>Incorreto.</strong> A alternativa correta é D (Infocalipse e Astroturfing).
+                </div>
+                <button class="quiz-retry" style="display:none;margin-top:10px;padding:6px 14px;background:var(--sky);color:#fff;border:none;border-radius:4px;cursor:pointer;">↺ Tentar novamente</button>
+              </div>
+
+              <!-- QUESTÃO 5 -->
+              <div class="quiz-block" data-quiz-id="a2-q5" data-correct="a">
+                <div class="quiz-question">Questão 05 — A Seção 2 do Capítulo 2 examina como plataformas utilizam dados comportamentais para precificação individualizada e componentes de interface projetados para induzir escolhas prejudiciais. Como são conceituados esses dois elementos?</div>
+                <div class="quiz-options">
+                  <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Discriminação dinâmica de preços; e Padrões ocultos (dark patterns).</div>
+                  <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Aconselhamento ostensivo; e Profilaxia de rede.</div>
+                  <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Publicidade de escassez; e Vieses emergentes.</div>
+                  <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Filtro de conformidade; e Avisos viscerais.</div>
+                  <div class="quiz-option" data-opt="e"><span class="opt-letter">E</span> Subvenção comercial; e Unidades de armazenamento WORM.</div>
+                </div>
+                <div class="quiz-feedback acerto" style="display:none;">
+                  ✅ <strong>Correto!</strong> Discriminação dinâmica de preços altera o valor conforme o perfil do comprador, e dark patterns são interfaces projetadas por design para manipular a vontade do consumidor (Ryan Calo).
+                </div>
+                <div class="quiz-feedback erro" style="display:none;">
+                  ❌ <strong>Incorreto.</strong> A alternativa correta é A.
+                </div>
+                <button class="quiz-retry" style="display:none;margin-top:10px;padding:6px 14px;background:var(--sky);color:#fff;border:none;border-radius:4px;cursor:pointer;">↺ Tentar novamente</button>
+              </div>
+
+              <!-- QUESTÃO 6 -->
+              <div class="quiz-block" data-quiz-id="a2-q6" data-correct="a">
+                <div class="quiz-question">Questão 06 — Na Seção 3 do Capítulo 2, analisa-se a transferência de tarefas operacionais não remuneradas para os próprios trabalhadores e a necessidade de reformular a tributação na era da automação. Como são denominados esse tipo de trabalho e a diretriz fiscal proposta por Suleyman?</div>
+                <div class="quiz-options">
+                  <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Trabalho de sombra (shadow work); e deslocamento da incidência da taxação da mão de obra para o capital.</div>
+                  <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Subemprego digital; e eliminação de toda forma de imposto corporativo.</div>
+                  <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Trabalho invisível de plataforma; e criação de taxas exclusivamente sobre a coleta de cookies primários.</div>
+                  <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Encargo cognitivo residual; e isenção total sobre investimentos em softwares de inteligência artificial.</div>
+                  <div class="quiz-option" data-opt="e"><span class="opt-letter">E</span> Automação coercitiva; e taxação regressiva sobre a folha de pagamento de trabalhadores de baixa renda.</div>
+                </div>
+                <div class="quiz-feedback acerto" style="display:none;">
+                  ✅ <strong>Correto!</strong> Craig Lambert cunhou "shadow work" para descrever tarefas invisíveis transferidas ao trabalhador. Suleyman defende mudar a tributação da folha de pagamento (mão de obra) para o capital acumulado pela automação.
+                </div>
+                <div class="quiz-feedback erro" style="display:none;">
+                  ❌ <strong>Incorreto.</strong> A alternativa correta é A.
+                </div>
+                <button class="quiz-retry" style="display:none;margin-top:10px;padding:6px 14px;background:var(--sky);color:#fff;border:none;border-radius:4px;cursor:pointer;">↺ Tentar novamente</button>
+              </div>
+
+              <!-- QUESTÃO 7 -->
+              <div class="quiz-block" data-quiz-id="a2-q7" data-correct="d">
+                <div class="quiz-question">Questão 07 — A Seção 4 do Capítulo 2 explora dois fenômenos comportamentais críticos: a tendência de aceitar acriticamente as recomendações da máquina e a perda progressiva de capacidade decisória autônoma pelo desuso. Quais os conceitos exatos desses dois fenômenos?</div>
+                <div class="quiz-options">
+                  <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Viés de seleção; e opacidade algorítmica.</div>
+                  <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Viés de representação; e perda de soberania de dados.</div>
+                  <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Viés preexistente; e limitação cognitiva de consentimento.</div>
+                  <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Viés de automação (automation bias); e atrofia de habilidades.</div>
+                  <div class="quiz-option" data-opt="e"><span class="opt-letter">E</span> Viés técnico; e deslocamento de competência estatal.</div>
+                </div>
+                <div class="quiz-feedback acerto" style="display:none;">
+                  ✅ <strong>Correto!</strong> Viés de automação (automation bias - Skitka) é a aceitação acrítica do output da máquina. Atrofia de habilidades é a deterioração da capacidade autônoma de julgamento pelo desuso contínuo.
+                </div>
+                <div class="quiz-feedback erro" style="display:none;">
+                  ❌ <strong>Incorreto.</strong> A alternativa correta é D.
+                </div>
+                <button class="quiz-retry" style="display:none;margin-top:10px;padding:6px 14px;background:var(--sky);color:#fff;border:none;border-radius:4px;cursor:pointer;">↺ Tentar novamente</button>
+              </div>
+
+              <!-- QUESTÃO 8 -->
+              <div class="quiz-block" data-quiz-id="a2-q8" data-correct="e">
+                <div class="quiz-question">Questão 08 — Considerando o emprego de IA em tomada de decisão militar (como no caso Lavender) e a ocorrência do viés de automação sob extrema pressão de tempo, assinale a conduta que atende ao Direito Internacional Humanitário (DIH):</div>
+                <div class="quiz-options">
+                  <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> O operador humano atua de forma irrepreensível se validar a lista em escassos segundos, pois a probabilidade estatística da IA isenta a cadeia de comando de verificações.</div>
+                  <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> A melhor estratégia de mitigação é eliminar o elemento humano do circuito decisório para acelerar o ciclo de fogos.</div>
+                  <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> A responsabilidade pelo erro letal recai exclusivamente sobre os programadores que escreveram o código do modelo.</div>
+                  <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Sistemas de IA de seleção de alvos dispensam protocolos de supervisão humana ao atingirem 95% de precisão.</div>
+                  <div class="quiz-option" data-opt="e"><span class="opt-letter">E</span> A validação precipitada decorre do viés de automação e viola os princípios de distinção, proporcionalidade e precaução do DIH, exigindo supervisão humana efetiva e substantiva.</div>
+                </div>
+                <div class="quiz-feedback acerto" style="display:none;">
+                  ✅ <strong>Correto!</strong> Revisões humanas pro forma (superficiais) violam frontalmente os princípios de distinção, proporcionalidade e precaução do DIH. A responsabilidade final e a supervisão efetiva permanecem humanas.
+                </div>
+                <div class="quiz-feedback erro" style="display:none;">
+                  ❌ <strong>Incorreto.</strong> A alternativa correta é E.
+                </div>
+                <button class="quiz-retry" style="display:none;margin-top:10px;padding:6px 14px;background:var(--sky);color:#fff;border:none;border-radius:4px;cursor:pointer;">↺ Tentar novamente</button>
+              </div>
+
+              <!-- QUESTÃO 9 -->
+              <div class="quiz-block" data-quiz-id="a2-q9" data-correct="c">
+                <div class="quiz-question">Questão 09 — Antes de autorizar o emprego operacional de um sistema de IA que apresente opacidade e risco de viés em um contexto institucional, qual diretriz representa a decisão técnica mais adequada alinhada às métricas de governança?</div>
+                <div class="quiz-options">
+                  <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Aprovar o emprego imediato do sistema, condicionando a utilização ao compromisso verbal dos operadores de não sofrerem viés de automação.</div>
+                  <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Recusar o sistema para qualquer uso, sustentando que toda ferramenta baseada em IA é intrinsecamente ineficiente.</div>
+                  <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Condicionar a adoção do sistema à implementação de arquiteturas com auditabilidade/explicabilidade (XAI), estabelecimento de registros imutáveis (WORM), mitigação de rastreamentos indevidos e protocolos rígidos de supervisão humana crítica (human-in/on-the-loop).</div>
+                  <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Substituir os operadores por módulos inteiramente autônomos de execução para eliminar o viés de automação.</div>
+                  <div class="quiz-option" data-opt="e"><span class="opt-letter">E</span> Autorizar o uso do sistema apenas durante a noite, alegando que a ausência de luz atenua a opacidade algorítmica.</div>
+                </div>
+                <div class="quiz-feedback acerto" style="display:none;">
+                  ✅ <strong>Correto!</strong> A governança exige explicabilidade (XAI), auditabilidade via WORM, mitigação de rastreamento e supervisão humana crítica com tempo adequado de análise.
+                </div>
+                <div class="quiz-feedback erro" style="display:none;">
+                  ❌ <strong>Incorreto.</strong> A alternativa correta é C.
+                </div>
+                <button class="quiz-retry" style="display:none;margin-top:10px;padding:6px 14px;background:var(--sky);color:#fff;border:none;border-radius:4px;cursor:pointer;">↺ Tentar novamente</button>
+              </div>
+
+              <!-- QUESTÃO 10 -->
+              <div class="quiz-block" data-quiz-id="a2-q10" data-correct="e">
+                <div class="quiz-question">Questão 10 — Em um cenário de crise internacional, um Centro de Operações recebe uma transmissão em vídeo de alta definição de uma autoridade aliada ordenando o cancelamento imediato de uma missão. Suspeitando tratar-se de uma mídia sintética (deepfake) para paralisar a unidade, qual a conduta operacional correta com base no quadro de mitigação (Figura 7)?</div>
+                <div class="quiz-options">
+                  <div class="quiz-option" data-opt="a"><span class="opt-letter">A</span> Parar imediatamente todas as ações táticas com base na transmissão recebida, pois a alta definição de vídeos impede a falsificação por IA.</div>
+                  <div class="quiz-option" data-opt="b"><span class="opt-letter">B</span> Deletar os registros do canal de transmissão para evitar contaminação da rede de rádio.</div>
+                  <div class="quiz-option" data-opt="c"><span class="opt-letter">C</span> Ignorar permanentemente qualquer comunicação emitida por autoridades superiores via canais digitais.</div>
+                  <div class="quiz-option" data-opt="d"><span class="opt-letter">D</span> Divulgar imediatamente a mídia nas redes sociais abertas para que a opinião pública decida se o vídeo é verdadeiro.</div>
+                  <div class="quiz-option" data-opt="e"><span class="opt-letter">E</span> Executar o protocolo de autenticação de conteúdo, consultar canais de comunicações redundantes e acionar a verificação por "challenge-response" e células de OSINT forense antes de alterar o planejamento.</div>
+                </div>
+                <div class="quiz-feedback acerto" style="display:none;">
+                  ✅ <strong>Correto!</strong> Com base na Figura 7 (Quadro 1), a mitigação contra deepfakes exige autenticação de conteúdo, uso de canais redundantes de comunicação, validação challenge-response e análise forense por OSINT.
+                </div>
+                <div class="quiz-feedback erro" style="display:none;">
+                  ❌ <strong>Incorreto.</strong> A alternativa correta é E.
+                </div>
+                <button class="quiz-retry" style="display:none;margin-top:10px;padding:6px 14px;background:var(--sky);color:#fff;border:none;border-radius:4px;cursor:pointer;">↺ Tentar novamente</button>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- RESUMO FINAL DA AULA 02 -->
+          <div id="sec-a2-resumo" class="summary-box">
+            <div class="summary-header">
+              <span class="summary-title">Resumo Sintético da Aula 02</span>
+              <span class="summary-ai-badge">🤖 Gerado por IA</span>
+            </div>
+            <p>Nesta segunda aula, examinamos detalhadamente as externalidades negativas da Inteligência Artificial sob a perspectiva da Robustez Sociotécnica (Pilar 2). Investigamos os danos aos direitos fundamentais individuais — opacidade algorítmica (caixas-pretas e a classificação de Pasquale: segredo real, segredo legal e ofuscação), viés algorítmico e discriminação (vieses preexistentes, técnicos e emergentes, exemplificados pelos casos COMPAS e Amazon) e capitalismo de vigilância (supercookies, evercookies e o mito do consentimento). No âmbito dos impactos coletivos e sociais, analisamos o Infocalipse (mídias sintéticas, astroturfing e o caso Zelensky), a manipulação comportamental do consumidor (dark patterns e discriminação dinâmica de preços), o desemprego tecnológico (shadow work e redistribuição da tributação para o capital) e o viés de automação aliado à atrofia de habilidades em contextos decisórios e militares. Por fim, apresentamos as linhas técnicas e operacionais de mitigação contra mídias sintéticas em conflitos armados.</p>
+            <div class="summary-citation-ia">
+              Resumo elaborado automaticamente com auxílio de Inteligência Artificial (Modelo Gemini 1.5 Pro, Google DeepMind, 2026), em observância às normas do Design Master.
+            </div>
+          </div>
+
+          <!-- ENCERRAMENTO E TRANSIÇÃO PARA A AULA 03 -->
+          <div class="dark-card">
+            <p><strong>Encerramento da Aula 02:</strong></p>
+            <p style="margin-top:10px;"><em>“É muito mais fácil enganar as pessoas do que convencê-las de que foram enganadas.”</em><br/>
+            — <strong>Mark Twain</strong>.</p>
+            
+            <p style="margin-top:14px;font-size:14px;color:rgba(255,255,255,.7);">
+              <strong>Responsável pela Apresentação:</strong> 2º Sgt Matheus Henrique — Instrutor da EsCom (<a href="mailto:matheushenrique.souza@eb.mil.br" style="color:var(--sky);">matheushenrique.souza@eb.mil.br</a>).<br/>
+              Com a compreensão das externalidades negativas da IA e das medidas de mitigação sociotécnica, você concluiu com êxito a Aula 02!
+            </p>
+
+            <!-- PAINEL DE TRANSIÇÃO E ENCAMINHAMENTO PARA A AULA 3 -->
+            <div style="margin-top: 24px; text-align: center; background: linear-gradient(135deg, rgba(25,36,55,0.9), rgba(41,56,83,0.9)); border: 1px solid var(--steel); border-radius: 12px; padding: 20px;">
+              <div style="font-family: 'Rajdhani', sans-serif; font-size: 20px; font-weight: 700; color: var(--gold); margin-bottom: 8px;">🛡️ Pronto para a Etapa Final do Curso?</div>
+              <p style="font-size: 14px; color: var(--text-main); margin-bottom: 16px;">Avance para a <strong>Aula 03 – Regulação da IA e Aspectos Jurídicos</strong> para conhecer os marcos normativos (AI Act, GDPR, LGPD, Marco Civil) e os frameworks formais de governança (CNJ, NIST AI RMF, ISO 42001).</p>
+              <button class="action-btn-pdf" onclick="CourseNavigation.activate(3, true);" style="font-size: 15px; padding: 10px 24px; background: var(--sky); border: none; color: #fff; border-radius: 20px; cursor: pointer; box-shadow: 0 4px 14px rgba(74,159,200,0.4);">
+                ➡️ Iniciar Aula 03 — Regulação da IA e Aspectos Jurídicos
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <footer>Exército Brasileiro · Escola de Comunicações (Escola Coronel Hygino Corsetti) · EAD</footer>
+      </div>

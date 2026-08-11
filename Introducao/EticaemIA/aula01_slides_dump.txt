@@ -1,0 +1,430 @@
+=== SLIDE 01 ===
+  • Ética em Inteligência Artificial
+  • Exército Brasileiro
+  • Escola de Comunicações
+  • (Escola Coronel Hygino Corsetti)
+  • Minicurso:
+  • Aula 1: Fundamentos de Ética em IA
+
+=== SLIDE 02 ===
+  • Introdução contextualizada
+  • Verificação do Aprendizado
+  • Definição de ética
+  • Definição de ética em IA
+  • Princípios éticos em IA
+  • Aplicação Prática
+  • ÍNDICE
+  • Planejamento de carga horária:
+  • 4 horas das 20 horas do minicurso.
+
+=== SLIDE 03 ===
+  • Introdução
+
+=== SLIDE 04 ===
+  • Apresentação do Minicurso
+  • FINALIDADE
+  • Este minicurso tem por finalidade proporcionar aos participantes uma compreensão introdutória dos fundamentos da Ética em Inteligência Artificial (IA), capacitando-os a reconhecer os principais riscos éticos associados ao desenvolvimento e ao emprego de sistemas inteligentes, compreender os mecanismos de governança e conformidade aplicáveis e aplicar critérios básicos para a avaliação ética de soluções baseadas em IA.
+  • PÚBLICO-ALVO
+  • Este minicurso destina-se a militares (oficias, subtenentes e sargentos), alunos do Curso Básico de Inteligência Artificial sediado na Escola de Comunicações. O conteúdo também é aplicável a gestores, analistas, desenvolvedores, operadores e tomadores de decisão que necessitem compreender os aspectos éticos envolvidos na utilização dessas tecnologias em ambientes organizacionais.
+  • COMPETÊNCIAS
+  • Ao final do minicurso, o aluo será capaz de:
+  • reconhecer riscos éticos em aplicações de IA;
+  • analisar criticamente sistemas baseados em IA;
+  • aplicar princípios éticos na avaliação de sistemas; e
+  • compreender os principais instrumentos de governança e conformidade.
+
+=== SLIDE 05 ===
+  • Estrutura do Minicurso
+  • Nr
+  • Título do material
+  • Assunto PLADIS
+  • CH
+  • 1
+  • Fundamentos de Ética em IA
+  • (1) Conhecer os fundamentos da ética em inteligência artificial, incluindo justiça algorítmica, transparência, responsabilidade e impacto social. (FACTUAL)
+  • 4
+  • 2
+  • Externalidades Negativas da IA
+  • (2) Identificar vieses algorítmicos em dados, modelos e processos de decisão, reconhecendo seus efeitos sobre os resultados de sistemas inteligentes. (FACTUAL)
+  • 8
+  • 3
+  • Conformidade e Regulação da IA
+  • (4) Compreender os requisitos básicos de conformidade e regulação aplicáveis à IA, como LGPD, AI Act e boas práticas de governança. (CONCEITUAL)
+  • 4
+  • 4
+  • Governança da IA no EB
+  • (3) Compreender conceitos de explicabilidade, interpretabilidade e monitoramento de riscos em sistemas de IA, relacionando-os à tomada de decisão responsável. (CONCEITUAL)
+  • Obs.: todas as aulas trarão exercícios práticos para atingir o objetivo de aplicar técnicas simples para identificar, mitigar e documentar vieses, aumentando a equidade, a auditabilidade e a confiabilidade dos modelos. (PROCEDIMENTAL)
+
+=== SLIDE 06 ===
+  • Identificação autoral deste material
+  • Ficha Catalográfica
+  • Título da obra
+  • Minicurso: Ética em IA – Aula 1: Fundamentos de ética em IA.
+  •  
+  • Autor
+  • 2º Sgt Matheus Henrique de Souza
+  •  
+  • Versão
+  • Versão 1.0 – Julho de 2026
+  •  
+  • Instituição
+  • Escola de Comunicações (EsCom) – Exército Brasileiro
+  •  
+  • Área do conhecimento
+  • Inteligência Artificial • Ética • Direito • Segurança e Defesa
+  •  
+  • Natureza da obra
+  • Material didático destinado ao Curso Básico de Inteligência Artificial.
+  •  
+  • Licença de uso
+  • Material de apoio ao ensino. Reprodução permitida para fins educacionais, mediante citação da autoria.
+  • Sobre o autor
+  • Bacharel em Direito pela Pontifícia Universidade Católica de Minas Gerais (PUC Minas) e especialista em Direito Público Aplicado pela Escola Brasileira de Direito (EBRADI). Mestrando em Segurança, Desenvolvimento e Defesa na Escola Superior de Defesa (ESD) e cursando MBA em Privacidade e Segurança da Informação na Universidade de Brasília (UnB). Atuou na área de contencioso administrativo militar e, atualmente, leciona na Escola de Comunicações, em Brasília-DF, com ênfase nas áreas de Comunicações Militares, Comando e Controle e tecnologias aplicadas ao ambiente operacional. Pesquisador voluntário do Grupo de Pesquisa em Políticas Públicas de Segurança e Defesa (GPESD/ESD), desenvolve estudos sobre a mediação algorítmica dos processos decisórios e seus impactos éticos, jurídicos e políticos, especialmente nos campos da Inteligência Artificial, conflitos armados e proteção da autonomia decisória. <http://lattes.cnpq.br/1223216000628908>
+
+=== SLIDE 07 ===
+  • Conformidade com a Lei de Direitos Autorais (Lei 9.610/1998
+  • Este material não tem por finalidade substituir a consulta às obras originais, tampouco reproduzi-las integralmente, mas sim reunir, organizar e contextualizar excertos considerados relevantes para o estudo da Ética em Inteligência Artificial. Para aprofundamento e/ou compreensão integral do contexto em que cada autor desenvolve suas ideias, recomenda-se que os alunos consultem as referências originais.
+  • Citações
+  • O material apresentado consiste, em sua maior parte, em um compilado organizado de citações.
+  • Referências Bibliográficas
+  • As referências consultadas não estão relacionadas ao final, mas abaixo dos slides que contam com seus textos.
+  • Produção autoral própria
+  • A organização dos conteúdos, a sequência didática adotada, a seleção das referências, a articulação entre os autores, as notas de contextualização, as conexões temáticas e as contribuições analíticas da aula constituem elaboração intelectual deste autor.
+  • Tradução
+  • Os excertos das obras estrangeiras foram traduzidos pelo autor do minicurso com auxílio de IA.
+  • Por fim, qualquer reprodução, adaptação, distribuição ou utilização deste material deverá respeitar os direitos morais e patrimoniais dos autores das obras citadas, bem como as disposições da Lei nº 9.610/1998, preservando-se, em qualquer hipótese, a adequada atribuição de autoria e a indicação das fontes utilizadas.
+  • Legenda
+  • A partir do próximo slide, todos os balões de texto azuis (exceto os títulos de slides) são constituídos majoritariamente de citações diretas, com algumas citações indiretas. Os balões de texto amarelos, como este, são minhas impressões pessoais.
+
+=== SLIDE 08 ===
+  • Contextualização da aula
+  • Sistema Lavender
+  • O Lavender integra o sistema israelense de seleção de alvos por inteligência artificial que se tornou paradigmático na demonstração da guerra algorítmica. Ele integra um sistema mais complexo que demonstra uma camada de influência sociotécnica da IA na sociedade israelense.  Segundo Mohee (2026, p. 8), “O sistema [Lavender] funciona processando enormes volumes de dados, incluindo ligações telefônicas interceptadas e mensagens de texto, para identificar pessoas suspeitas de integrar o braço militar do Hamas. O modelo de IA atribui aos indivíduos uma pontuação de adequação como alvo (target suitability score), com base em padrões observados em seu comportamento e em suas comunicações. Segundo reportagem do The Guardian, baseada em fontes militares, o sistema Lavender gerou uma lista de até 37.000 potenciais alvos humanos durante a campanha militar. Sua função consiste em identificar supostos integrantes dos braços armados do Hamas ou da Jihad Islâmica Palestina, produzindo de forma automatizada listas de alvos para eliminação (automated kill lists).
+  • MOHEE, Ahmad. Algorithmic Warfare in Evolution: A Cyber-Conflict Analysis of Israel's AI Targeting from Gaza 2021 to Gaza 2023-2025. 2026.
+
+=== SLIDE 09 ===
+  • Contextualização da aula
+  • “O paradoxo central da arquitetura de seleção de alvos baseada em IA empregada por Israel reside no fato de que sua busca por hipereficiência, por meio da integração e da automação, a torna sistemicamente frágil. O ciclo OODA (Observar–Orientar–Decidir–Agir) comprimido não dispõe de margem para a correção de erros; assim, um fluxo de dados comprometido ou um ataque bem-sucedido de spoofing pode propagar-se pelas redes dos sistemas Lavender e Gospel na velocidade das máquinas, produzindo falhas em cascata. O modelo tradicional de guerra priorizava a proteção conferida por blindagens e abrigos reforçados. O modelo algorítmico, por sua vez, prioriza a integridade dos fluxos de dados e a segurança das dependências de software. Em termos de conflito cibernético, o novo centro de gravidade passa a ser o pipeline de fusão de dados (data fusion pipeline) e o próprio modelo algorítmico” (Mohee, 2026, p. 12).
+  • Se o Lavender identifica equivocadamente um civil como combatente atribuindo-lhe uma probabilidade de 95%, quem responde por esse erro?
+  • Buscaremos enfrentar essa questão ao final da aula.
+  • Programador do sistema
+  • Analista de inteligência
+  • Comandante da operação
+  • Operador que validou o alvo
+  • Asse. jurídico que aprova o sistema
+  • MOHEE, Ahmad. Algorithmic Warfare in Evolution: A Cyber-Conflict Analysis of Israel's AI Targeting from Gaza 2021 to Gaza 2023-2025. 2026.
+
+=== SLIDE 10 ===
+  • Definição de ética
+
+=== SLIDE 11 ===
+  • Antecedentes históricos do termo “ética”
+  • Antiguidade: ética grega clássica
+  • A preocupação com os problemas éticos teve início de forma mais sistematizada na época de Sócrates, filósofo também conhecido como “o pai da moral”.
+  • Sofistas: afirmavam que não existem normas e verdades universalmente válidas. Tinham, portanto, uma concepção ética relativista ou subjetivista.
+  • Sócrates: sustentou a existência de um saber universalmente válido, que decorre do conhecimento da essência humana, a partir da qual se pode conceber a fundamentação de uma moral universal.
+  • Platão: desenvolveu o racionalismo ético iniciado por Sócrates, aprofundando a diferença entre corpo e alma. Argumentava que o corpo, por ser a sede dos desejos e paixões, muitas vezes desvia o indivíduo de seu caminho para o bem.
+  • Transcrições ipsis litteris da obra: COTRIM, Gilberto; Fernandes, Mirna. Fundamentos de Filosofia. Vol. Único, São Paulo, Editora Saraiva, 2010.
+  • Antiguidade: do clássico ao helenismo
+  • Aristóteles: também desenvolveu uma reflexão ética racionalista (Ética do equilíbrio), mas sem o dualismo corpo-alma platônico. Procurou construir uma ética mais realista, mais próxima do indivíduo concreto. 
+  • Epicurismo: defendia a atitude de desvio da dor e procura do prazer espiritual, do autodomínio e da paz de espírito (ataraxia).
+  • Estoicismo: desenvolveu uma ética baseada na procura da paz interior e no autocontrole individual, fora dos contornos da vida política. O princípio da ética estoica é a apatia (apatheia), atitude de aceitação de tudo o que acontece, e o amor ao destino (amor fati), porque tudo faria parte de um plano superior guiado por uma razão universal que a tudo abrangeria. Desse modo atingia-se a ataraxia, ou imperturbabilidade da alma.
+
+=== SLIDE 12 ===
+  • Antecedentes históricos do termo “ética”
+  • Transcrições ipsis litteris da obra: COTRIM, Gilberto; Fernandes, Mirna. Fundamentos de Filosofia. Vol. Único, São Paulo, Editora Saraiva, 2010.
+  • Idade média: ética cristã
+  • O que diferencia radicalmente a ética cristã da ética grega são dois pontos: abandono do racionalismo – deixou de lado a ideia de que é pela razão que se alcança a perfeição moral e centrou a busca dessa perfeição no amor a Deus e na boa vontade; emergência da subjetividade – acentuando a tendência de estoicos e epicuristas, tratou a moral do ponto de vista estritamente pessoal, como uma relação entre cada indivíduo e Deus, isolando-o de sua condição social e atribuindo à subjetividade uma importância até então desconhecida.
+  • São Tomás de Aquino: recuperou da ética aristotélica a ideia de felicidade como fim último do ser humano, mas cristianizou essa noção.
+  • Santo Agostinho: introduziu a ideia de liberdade como livre-arbítrio, isto é, a noção de que cada indivíduo pode escolher livremente entre aproximar-se de Deus ou afastar-se Dele. O afastamento de Deus é que seria o mal, de acordo com o filósofo.
+  • Idade moderna: ética antropocêntrica
+  • Com o final da Idade Média, marcado pelo Renascimento, há uma retomada do humanismo. No terreno da reflexão ética, esse fato orientou uma nova concepção moral, centrada na autonomia humana. No Iluminismo, essa orientação fica mais evidente, pois os filósofos passam a defender a ideia de que a moral deve ser fundamentada não mais em valores religiosos, e sim naqueles oriundos da compreensão do que é a natureza humana.
+  • Immanuel Kant: aponta a razão humana como uma razão legisladora (ética do dever), capaz de elaborar normas universais, uma vez que constitui um predicado universal dos seres humanos. As normas morais teriam, portanto, sua origem na razão. As normas morais devam ser obedecidas como deveres, porque o indivíduo que obedece a uma norma moral atende à liberdade da razão. [Isso leva ao] Imperativo categórico, uma determinação imperativa, que deve ser observada sempre, em toda e qualquer decisão ou ato moral que venhamos a praticar.
+
+=== SLIDE 13 ===
+  • Antecedentes históricos do termo “ética”
+  • Transcrições ipsis litteris da obra: COTRIM, Gilberto; Fernandes, Mirna. Fundamentos de Filosofia. Vol. Único, São Paulo, Editora Saraiva, 2010.
+  • Fundamentação histórico-social
+  • O filósofo alemão Friedrich Hegel (1770-1831) questionou o formalismo da ética kantiana. Para ele, ao não levar em consideração a história e a relação do indivíduo com a sociedade, a ética de Kant não apreende os conflitos reais existentes nas decisões morais. Kant teria considerado a moral apenas como uma questão pessoal, íntima e subjetiva, na qual o sujeito tem que se decidir entre suas inclinações (desejos, medos etc.) e sua razão. De acordo com Hegel, portanto, a moralidade assume conteúdos diferenciados ao longo da história das sociedades, e a vontade individual seria apenas um dos elementos da vida ética de uma sociedade em seu conjunto.
+  • Idade Contemporânea: ética do indivíduo concreto
+  • Fundamentação ideológica
+  • O filósofo alemão Karl Marx (1818-1883) entendia a moral como uma produção social que atende a determinada demanda da sociedade. Como as relações sociais se transformam ao longo da história, transformam-se também os indivíduos e as moralidades que regulam essas relações. Assim, os valores que fundamentam as normas morais derivam da existência social e, portanto, não são absolutos, não valem de forma universal para todos os indivíduos e para todos os tempos. A moral seria, para Marx, uma das formas assumidas pela ideologia dominante em sociedade, pois difunde determinados valores necessários à manutenção dessa sociedade.
+  • Ética discursiva
+  • Jürgen Habermas (1929-2026) é um dos maiores representantes dessa corrente, com sua ética discursiva, ou seja, fundada no diálogo e no consenso entre os sujeitos. O que se buscaria nesse diálogo é a razão que, tendo sido reconhecida pelos participantes do diálogo, sirva como fundamentação última para a ação moral. O conceito de razão em Habermas não é o mesmo do Iluminismo. Trata-se de uma razão comunicativa, que não existe pronta nem acabada, mas que se constrói a partir de uma argumentação que leva a um entendimento entre os indivíduos. É uma razão interpessoal e não subjetiva; é uma razão processual e não definitiva e acabada.
+
+=== SLIDE 14 ===
+  • Por que a ética, enquanto disciplina de uma ciência humana, possui um objeto de estudo subjetivo e histórica, conforme ensina Minayo no livro “O desafio do conhecimento”, de 2004. Portanto, a análise sobre o dever-ser não é atual só pela contemporaneidade das tecnologias de machine learning e de conexões neurais, mas porque elas refletem os valores da sociedade atual. Por isso, a compreensão desses valores passa necessariamente por entender como as sociedades anteriores absorveram as transformações tecnológicas da sua época e reagiram a isso.
+  • Pausa para a reflexão
+  • Por que o entendimento da história da ética seria importante para o estudo de ética em IA? 
+
+=== SLIDE 15 ===
+  • Ética vs. Moral
+  • Moral
+  • Embora os termos ética e moral por vezes sejam usados como sinónimos, é possível fazer uma distinção a entre eles. A palavra moral vem do latim mos, mor-, “costumes”, e refere-se ao conjunto de normas que orientam o comportamento humano tendo como base os valores próprios a uma dada comunidade ou cultura. Como as comunidades humanas são distintas entre si, tanto no espaço quanto no tempo, os valores também podem ser distintos de uma comunidade para outra, o que origina códigos morais diferentes.
+  • Transcrições ipsis litteris da obra: COTRIM, Gilberto; Fernandes, Mirna. Fundamentos de Filosofia. Vol. Único, São Paulo, Editora Saraiva, 2010.
+  • Ética
+  • A palavra ética, por sua vez, vem do grego ethikos, “modo de ser”, “comportamento”. Portanto, etimologicamente os dois termos querem dizer quase a mesma coisa. No entanto, ética designa mais especificamente a disciplina filosófica que investiga o que é a moral, como ela se fundamenta e se aplica. Ou seja, a ética estuda os diversos sistemas morais elaborados pelos seres humanos, buscando compreender a fundamentação das normas e interdições (proibições) próprias a cada um e explicitar seus pressupostos, isto é, as concepções sobre o ser humano e a existência humana que os sustentam.
+
+=== SLIDE 16 ===
+  • Moral vs. Direito
+  • Se a ação real não corresponde à ação prescrita, afirma-se que a norma foi violada. É da natureza de toda prescrição ser violada, enquanto exprime não o que é, mas o que deve ser. À violação, dá-se o nome de ilícito. O ilícito consiste em uma ação quando a norma é um imperativo negativo e em uma omissão quando a norma é um imperativo positivo. No primeiro caso, afirma-se que a norma não foi observada, no segundo, que não foi executada. A transgressão distingue uma norma de uma lei científica (a lei científica não admite exceções): tanto a norma quanto a lei científica estabelecem uma relação entre uma condição e uma consequência; se a consequência, no segundo caso, não se verifica, a lei científica deixa de ser verdadeira; se, ao invés, não se verifica no primeiro caso, a norma continua a ser válida. A sanção pode ser definida, por este ponto de vista, como o expediente através do qual se busca, em um sistema normativo, salvaguardar a lei da erosão das ações contrárias; é, portanto, uma consequência do fato de que em um sistema normativo, diferentemente do que ocorre em um sistema científico, os princípios dominam os fatos, ao invés dos fatos os princípios.
+  • BOBBIO, Norberto. Teoria da Norma Jurídica. Tradução de Ariani Bueno Sudatti e Fernando Pavan Baptista. 5ª ed. São Paulo: Edipro, 2014.
+  • DINSTINÇÃO ENTRE NORMA MORAL E NORMA JURÍDICA PELO ÓTICA DA SANÇÃO
+  • Sanção moral
+  • Afirma-se que são morais aquelas normas cuja sanção é puramente interior. Por sanção, entende-se sempre uma consequência desagradável da violação, cujo fim é prevenir a violação ou, no caso em que a violação seja verificada, eliminar as consequências nocivas. A única consequência desagradável da violação de uma norma moral seria o sentimento de culpa, um estado de incômodo, de perturbação, às vezes de angústia, que se diz, na linguagem da ética, "remorso" ou "arrependimento".
+  • Sanção Jurídica
+  • A sanção jurídica se distingue da moral por ser externa, isto é, por ser uma resposta de grupo, e da social por ser institucionalizada, isto é, por ser regulada, em geral, com as mesmas formas e através das mesmas fontes de produção das regras primárias. Ela nos oferece um critério para distinguir as normas que habitualmente se denominam jurídicas das normas morais e das normas sociais. Trata-se das normas cuja violação tem por consequência uma resposta externa e institucionalizada.
+
+=== SLIDE 17 ===
+  • Definição de ética no contexto de IA
+  • Dubber MD; Pasquale F; Das S (eds). The Oxford handbook of ethics of AI. Oxford University Press, New York, 2020.
+  • “Em escalas históricas longas, apesar das notícias desanimadoras do cotidiano, parece que as sociedades do mundo estão se tornando mais fortes, mais seguras, mais saudáveis, mais prósperas e mais justas e inclusivas para seus membros. Duas fontes conceituais ajudam a explicar essas mudanças” (Kuipers in Dubber; Pasquale; Das; 2020, p. 422-423).
+  • Teoria dos Jogos
+  • Oferece a abstração de certos tipos de interações entre pessoas como jogos, e a economia comportamental demonstra que esses jogos não apenas produzem vencedores e perdedores, mas também que seu impacto coletivo sobre os participantes pode ser descrito como de soma positiva (positive-sum), soma zero (zero-sum) ou soma negativa (negative-sum).
+  • Positive-sum: quando uma pessoa vende ou troca voluntariamente algo com outra, cada uma das partes recebe algo que valoriza mais do que aquilo de que abriu mão
+  • Negative-sum: no roubo, o ladrão obtém algum benefício com o furto, mas a perda sofrida pela vítima costuma ser maior do que o ganho obtido pelo autor do crime.
+  • Teoria da Evolução
+  • Aplicada à cognição e à sociabilidade humanas e dos grandes primatas, mostra que um modo de vida baseado na cooperação de soma positiva entre indivíduos tende a proporcionar à sociedade maior aptidão evolutiva (fitness) do que formas de vida menos cooperativas.
+  • Desse modo, a função da ética é promover a sobrevivência e o florescimento da sociedade, influenciando o comportamento de seus membros individuais, o que pode ser sintetizado da seguinte forma: Ética é um conjunto de crenças que uma sociedade transmite aos seus membros individuais para incentivá-los a participar de interações de soma positiva e a evitar interações de soma negativa.
+
+=== SLIDE 18 ===
+  • Definição de ética em IA
+
+=== SLIDE 19 ===
+  • Antecedentes históricos do termo “IA”
+  • LIMA, Julia Ferrari Oliveira. Inteligência Artificial: uma análise sobre caminhos para regulação de novas tecnologias no Brasil. 2022. Trabalho de Graduação em Direito.
+  • Dubber MD; Pasquale F; Das S (eds). The Oxford handbook of ethics of AI. Oxford University Press, New York, 2020.
+  • “Em 1956 o termo ‘inteligência artificial’ foi usado pela primeira vez em uma plaqueta para homenagear os alunos do Summer Research Project na Dartmouth College, que consolidou o assunto como disciplina de pesquisa (Dick, 2019). Embora o nome tenha surgido em 1956, o início da inteligência artificial (IA) se deu bem antes de construirmos robôs e computadores. Há registros de matemáticos, filósofos e poetas da antiguidade que já falavam na emulação do raciocínio humano (Spiegeleire; Maas; Sweijs, 2017). A ideia de reproduzir a inteligência humana em outros corpos materiais atravessou gerações por pensadores do Ocidente e Oriente antigos” (Lima, 2022, p. 7).
+  • “A IA, por contraste, desenvolveu-se através de um casamento entre a computação e o militarismo durante a Segunda Guerra Mundial, onde as máquinas de decifração de códigos fizeram a sua estreia. O termo ‘IA’ não foi cunhado até muito mais tarde, na década de 1950, e foi nos Estados Unidos que se desenvolveram os primeiros programas de investigação especializados. Os pioneiros britânicos da computação, como Alan Turing, concentraram-se em máquinas ‘pensantes’, enquanto os seus homólogos americanos escolheram o termo ‘inteligência’. Poder-se-ia argumentar que existe pouca diferença entre uma máquina pensante e uma inteligente, mas a distinção é importante devido à bagagem cultural colonial e elitista ligada à inteligência. Enquanto o pensamento descreve um processo cognitivo (todos os humanos pensam independentemente da sua inteligência), a inteligência, por contraste, foi desenvolvida especificamente como um projeto de dominação da classe dominante para separar os governantes dos governados” (Richardson in Dubber; Pasquale; Das; 2020, p. 559).
+  • Figura – máquina anti-enigma.
+  • Fonte: Revista Época.
+
+=== SLIDE 20 ===
+  • Definição de Inteligência Artificial
+  • “É a inteligência, o chamado aprendizado profundo (deep learning), que os engenheiros têm buscado alcançar, precisamente à custa – ou pela superação – da artificialidade. Quanto menos artificial uma máquina inteligente parece ser, mais inteligente ela é presumida. Esse é o fundamento do Teste de Turing e do artifício que o caracteriza: verificar se uma máquina, baseada no sistema simbólico da sintaxe algorítmica, é capaz de nos induzir a acreditar que está ‘realmente pensando’, em virtude da maneira como utiliza a linguagem natural, nosso sistema simbólico fundamental. Quando esse artifício é bem-sucedido, supõe-se que estamos diante de uma INTELIGÊNCIA artificial” (Spaulding in Dubber; Pasquale; Das; 2020, p. 375).
+  • “Sistemas de Inteligência Artificial (IA) são softwares (e possivelmente hardwares) desenhados por humanos que, dado um objetivo complexo, atuam na dimensão física ou digital percebendo o seu ambiente por meio da aquisição de dados, interpretando os dados estruturados e não estruturados coletados, raciocinando sobre o conhecimento ou processando a informação derivada desse dado e decidindo a(s) melhor(es) ação(ões) para alcançar aquele objetivo. Sistemas de IA podem usar regras simbólicas ou aprenderem com modelos numéricos, e também podem adaptar seu comportamento analisando como o ambiente é afetado por suas ações pretéritas” (Grupo Independente de Peritos de Alto Nível sobre a Inteligência Artificial da Comissão Europeia apud Mulholland; Frajhof, 2019, p. 5).
+  • MULHOLLAND, C.; FRAJHOF, I. Z. Entre as leis da robótica e a ética: regulação para o adequado desenvolvimento da IA. São Paulo: Thomson Reuters Brasil, 2019.
+  • Dubber MD; Pasquale F; Das S (eds). The Oxford handbook of ethics of AI. Oxford University Press, New York, 2020.
+  • Figura – representação do conceito de IA
+  • Fonte: do autor, gerada com auxílio de IA.
+
+=== SLIDE 21 ===
+  • Desafios éticos cotidianos
+  • “Um impulsionador-chave por trás desse progresso [eliminar outputs ruins, como os discriminatórios] é chamado de aprendizado por reforço de feedback humano. Para consertar os LLMs tendenciosos, os pesquisadores tiveram conversas multiturnos astuciosamente construídas com os modelos, incentivando-os a dizer coisas odiosas, tóxicas ou ofensivas para ver onde e como as coisas davam errado. Localizando esses passos em falso, eles reintegravam insights humanos nos modelos, ensinando-os a ter uma visão de mundo mais desejável, não muito diferente da maneira como ensinamos crianças a não dizerem coisas inapropriadas à mesa de jantar. Quando os engenheiros ficaram mais conscientes dos problemas éticos inerentes a seus sistemas, eles se tornaram mais abertos à necessidade de encontrar inovações técnicas para ajudar a solucioná-los. Abordar o racismo e o viés em LLMs é um exemplo de como a implementação cuidadosa e responsável é necessária para melhorar a segurança desses modelos. O contato com a realidade ajuda os desenvolvedores a aprenderem, corrigirem erros e aprimorarem a segurança” (Suleyman, 2023, p. 270).
+  • Suleyman, Mustafa; Bhaskar, Michael. A próxima onda: inteligência artificial, poder e o maio dilemma do século XXI. Record, Rio de Janeiro, 2023.
+  • Figura – ilustração dos riscos de outputs discriminatórios gerados por IA
+  • Fonte: do autor, gerada com auxílio de IA.
+
+=== SLIDE 22 ===
+  • Como o capítulo anterior da nossa aula esclareceu, a moral é o conjunto de normas que regula o comportamento humano em um determinado momento histórico e em cada cultura. Não é possível esperar comportamento moral de uma máquina; consequentemente, não é possível desenvolver estudo de ética da IA. Por isso, esse campo da ética em IA estuda os valores difundidos por usuários, desenvolvedores, governos nacionais, empresas e organizações internacionais, tidos como desejáveis no trato com essa tecnologia disruptiva.
+  • Pausa para a reflexão
+  • Como eu vou exigir comportamento ético de um ente despersonalizado como uma IA? 
+
+=== SLIDE 23 ===
+  • Definição de ética em Inteligência Artificial
+  • “Toda tecnologia é social e humana. Seus efeitos dependem do que os seres humanos fazem com ela e como a inserem nos ambientes técnico-sociais. Cabe à sociedade humana deliberar, entre inúmeras questões, sobre se a IA deve ser aplicada em todos os domínios e para executar todas as tarefas, e se o uso da IA em aplicações de alto risco se justifica. O desafio é buscar o equilíbrio entre mitigar (ou eliminar) os riscos e preservar o ambiente de inovação, sem supervalorizar nem demonizar a IA (Coeckelbergh, 2020; Kaufman, 2022). A ética é um atributo da sociedade humana. Os humanos é que definem como criar e usar a IA, observando as especificidades da tecnologia e as especificidades dos domínios de aplicação. A tecnologia não é determinista, mas molda e é moldada pelas escolhas humanas (Kaufman, 2022)” (Kaufman; Junquilho; Reis, 2023, p. 232).
+  • PORTO, Daniel de Paula et al. Ethical Requirements in the Age of Artificial Intelligence: A Systematic Literature Review. SBSI, 2025.
+  • KAUFMAN, Dora; JUNQUILHO, Tainá; REIS, Priscila. Externalidades negativas da IA: conflitos entre limites da técnica e dos Direitos Humanos.FDV Publicações, 2023.
+  • ÉTICA É UM REQUISITO TÉCNICO DA IA!
+  • “A integração da ética de IA como requisitos na engenharia de software está progredindo, principalmente porque a sociedade depende cada vez mais de IA e de sistemas baseados em IA. Questões éticas na engenharia de requisitos dizem respeito às complexas preocupações morais que surgem durante o projeto, desenvolvimento e implantação de artefatos de software. Pesquisas indicam que os requisitos éticos raramente são priorizados nos níveis gerenciais, principalmente em razão da percepção de que exercem baixo impacto sobre a vida das pessoas e não agregam valor financeiro. Os tomadores de decisão raramente participam de projetos voltados à promoção da ética, deixando a maior parte das responsabilidades para os projetistas e os membros das equipes de desenvolvimento. Além disso, as equipes de desenvolvimento raramente discutem os requisitos éticos com as partes interessadas (stakeholders), exceto quando o escopo do software inclui requisitos legais, como aqueles decorrentes das leis de proteção de dados e privacidade” (Porto et al., 2025, p. 265).
+
+=== SLIDE 24 ===
+  • Expectativas éticas sobre a IA
+  • Dubber MD; Pasquale F; Das S (eds). The Oxford handbook of ethics of AI. Oxford University Press, New York, 2020.
+  • “Em todas as áreas de aplicação em que a IA seja empregada para tomar decisões que afetem pessoas e a sociedade, o raciocínio da IA deve ser capaz de:
+  • levar em consideração os valores da sociedade;
+  • avaliar aspectos morais e éticos;
+  • ponderar as prioridades relativas dos valores sustentados por diferentes partes interessadas em contextos multiculturais;
+  • explicar os fundamentos de seu raciocínio; e
+  • garantir transparência.
+  • À medida que as capacidades de tomada de decisão autônoma se ampliam, talvez a questão mais importante a ser considerada seja a necessidade de repensar a responsabilidade. Independentemente de seu nível de autonomia, de consciência social e de sua capacidade de aprendizagem, os sistemas de IA são artefatos, construídos por pessoas para cumprir determinados objetivos” (Dignum in Dubber; Pasquale; Das; 2020, p. 217).
+  • São necessárias teorias, métodos e algoritmos para integrar valores sociais, jurídicos e morais ao desenvolvimento tecnológico da IA em todas as suas etapas:
+  • Esses referenciais não devem apenas lidar com o raciocínio autônomo da máquina acerca de questões que consideramos possuir impacto ético, mas, sobretudo, orientar as escolhas de projeto para regular o alcance dos sistemas de IA, assegurar uma gestão adequada dos dados (data stewardship) e auxiliar as pessoas a determinar seu próprio grau de envolvimento.
+
+=== SLIDE 25 ===
+  • Níveis de Relação entre a Ética e a IA
+  • Dubber MD; Pasquale F; Das S (eds). The Oxford handbook of ethics of AI. Oxford University Press, New York, 2020.
+  • Isto é, o raciocínio da IA deve ser capaz de levar em consideração os valores da sociedade, bem como aspectos morais e éticos; ponderar as prioridades relativas dos valores sustentados por diferentes partes interessadas em diversos contextos multiculturais; explicar seu processo de raciocínio; e garantir transparência. A IA Responsável trata da responsabilidade humana pelo desenvolvimento de sistemas inteligentes de acordo com princípios e valores humanos fundamentais, garantindo assim o florescimento e o bem-estar humanos em um mundo sustentável (Dignum in Dubber; Pasquale; Das; 2020, p. 217).
+
+=== SLIDE 26 ===
+  • Princípios éticos em IA
+
+=== SLIDE 27 ===
+  • As origens dos princípios da ética em IA
+  • CALO, Ryan. Digital Market Manipulation. The George Washington Law Review, 2014.
+  • MULHOLLAND, C.; FRAJHOF, I. Z. Entre as leis da robótica e a ética: regulação para o adequado desenvolvimento da IA. São Paulo: Thomson Reuters Brasil, 2019.
+  • Na década de 1970, o Departamento de Saúde, Educação e Bem-Estar dos Estados Unidos (United States Department of Health, Education, and Welfare) designou um grupo de onze especialistas, entre eles dois professores de Direito, para estudar a ética na pesquisa biomédica e comportamental e elaborar recomendações detalhadas sobre o tema. O resultado desse trabalho foi o Relatório Belmont (Belmont Report) – assim denominado em referência a um workshop intensivo realizado no Belmont Conference Center, do Instituto Smithsonian (Smithsonian Institution). O relatório consiste em uma declaração de princípios destinada a auxiliar pesquisadores na resolução de problemas éticos relacionados à pesquisa envolvendo seres humanos” (Calo, 2014, p. 1045).
+  • Consentimento informado
+  • Princípio que se tornou um dos pilares da proteção jurídica em matéria de privacidade, assistência à saúde e diversos outros contextos normativos
+  • Beneficência
+  • Consiste em minimizar os danos ao participante da pesquisa e à sociedade, ao mesmo tempo em que se busca maximizar os benefícios.
+  • Justiça
+  • Veda a distribuição injusta de ônus e benefícios, proibindo tanto a imposição indevida de encargos quanto a privação injustificada de benefícios
+  • Os  princípios-guias que foram primeiramente eleitos para iniciar a construção de uma "Ética para  a IA" foram importados da experiência da Bioética , considerada exemplar por promover, ao mesmo tempo, a proteção da pessoa humana e o desenvolvimento da ciência: beneficência, não-maleficência, autonomia e justiça (Mulholland; Frajhof, 2019, p. 1).
+
+=== SLIDE 28 ===
+  • Princípios específicos da ética em IA
+  •  
+  • MULHOLLAND, C.; FRAJHOF, I. Z. Entre as leis da robótica e a ética: regulação para o adequado desenvolvimento da IA. São Paulo: Thomson Reuters Brasil, 2019.
+  • Os princípios importados da bioética (beneficência, autonomia e justiça) sustentam o novo conjunto de princípios apresentados especificamente para a IA (embora ainda sem um rol taxativa e/ou unânime).
+  • Justiça (fairness)
+  • Adoção de medidas que impeçam a aplicação de sistemas de IA que violem o princípio da igualdade de tratamento.
+  • Acurácia (accuracy)
+  • Adoção de medidas que permitam reconhecer que os insumos utilizados pela IA e os resultados que advém de seu tratamento sejam precisos.
+  • Inteligibilidade (intelligibility)
+  • Adoção de medidas que proporcionem à pessoa humana o conhecimento dos processos de decisão tomados pela IA
+  • “Os princípios éticos indicados pelos documentos consultados partem de um mesmo pressuposto, qual seja, a necessidade de fomentar o desenvolvimento de uma Inteligência  Artificial confiável e que seja auditável, permitindo que seus processos sejam conhecidos e  controlados - ou controláveis - pelo ser humano” (Mulholland; Frajhof, 2019, p. 1).
+
+=== SLIDE 29 ===
+  • Nuvem de palavras: requisitos éticos da IA
+  • Nuvem de palavras gerada pelo autor, com auxílio de IA. 
+  • PORTO, Daniel de Paula et al. Ethical Requirements in the Age of Artificial Intelligence: A Systematic Literature Review. SBSI, 2025.
+  • Os requisitos éticos correspondem aos princípios e padrões que orientam o desenvolvimento e a implementação de sistemas, particularmente em contextos de IA. Seu objetivo é assegurar que esses sistemas sejam concebidos e operados de modo a respeitar os direitos humanos, promover a equidade e evitar danos. Entre os principais aspectos abrangidos pelos requisitos éticos destacam-se (Porto et al., 2025, p. 268):
+
+=== SLIDE 30 ===
+  • Conforme Yeung e Pogrebna, no livro de mão de Oxford para ética em IA, não existe um conjunto consensual de padrões éticos para orientar o funcionamento ou desenvolvimento de uma IA. Alguns valores, como transparência (transparency), equidade (fairness) e explicabilidade (explainability), são recorrentes na literatura. Por isso, os autores sugerem uma aplicação dos padrões internacionais de direitos humanos, difundidos a partir do fim da 2ª Guerra Mundial, como norteadores da ética em IA. Porém, ainda, assim, é preciso entender a diferença entre soft ethics e hard ethics para distinguir o que é norma vinculante e o que é costume ou bom senso.
+  • Pausa para a reflexão
+  • Com esses inúmeros princípios e requisitos, o que de fato vincula a atuação do profissional que trabalha com IA? 
+
+=== SLIDE 31 ===
+  • A ética da conformidade e a ética do bom-senso
+  • Dubber MD; Pasquale F; Das S (eds). The Oxford handbook of ethics of AI. Oxford University Press, New York, 2020. 
+  • MULHOLLAND, C.; FRAJHOF, I. Z. Entre as leis da robótica e a ética: regulação para o adequado desenvolvimento da IA. São Paulo: Thomson Reuters Brasil, 2019.
+  • “Na ausência de regulação jurídica sobre o assunto, a observação de princípios éticos pode ser importante para maximizar os benefícios da IA e diminuir seus riscos. A questão que se coloca é: quais princípios éticos? A utilização de princípios éticos como instrumento  para a regulação da Inteligência Artificial, apesar de não conter uma natureza coercitiva e  sancionatória típica da regulação jurídica, permite a criação de guias deontológicos [conjuntos de normas, deveres e princípios que orientam como alguém deve agir, independentemente das consequências de suas ações] que serão  constituídos como a razão prima facie e o fundamento para o desenvolvimento e  implementação da IA” (Mulholland; Frajhof, 2019, p. 1).
+  • O grupo de especialistas de alto nível em IA da União Europeia (AI HLEG) procurou identificar princípios éticos operacionalizáveis em IA, em um cenário saturado por iniciativas diversas nesse sentido. As discussões conduziram para um cenário em que os usuários demandavam por sistemas de IA que pudessem ser confiáveis, particularmente após o escândalo da Cambridge Analytica. A comunidade europeia, engajada no debate após a publicação da primeira versão das Diretrizes Éticas em 2018, indicou a necessidade de fazer uma abordagem mais ampla, além do simples alinhamento ética, na direção de  diferenciar as normas de conformidade (coercitivas) das normas de conduta (do bom senso). Esses são os dois conjuntos de normas, ilustrados baixo, que deram origem aos três pilares da ética confiável.
+
+=== SLIDE 32 ===
+  • Os três pilares da IA confiável
+  •  
+  • Dubber MD; Pasquale F; Das S (eds). The Oxford handbook of ethics of AI. Oxford University Press, New York, 2020.
+  • “As partes interessadas na Europa [à época da redação das Diretrizes Éticas] pareciam atribuir prioridade à confiabilidade (trustworthiness) em relação à ética, compreendendo o alinhamento ético como apenas um dos elementos constitutivos da confiabilidade geral dos sistemas de IA” (Renda in Dubber; Pasquale; Das; 2020, p. 655). Isso levou à seguinte divisão:
+  • Conformidade Legal
+  • Qualquer abordagem centrada no ser humano para a IA exige plena conformidade com os direitos fundamentais, [que] protegem os indivíduos e, em certa medida, os grupos em razão de seu status moral como seres humanos, independentemente de sua força jurídica. Assim, eles constituem os principais fundamentos tanto da conformidade jurídica quanto do alinhamento dos sistemas de IA aos princípios éticos, mesmo quando estes últimos não possuem caráter vinculante.
+  • Alinhamento Ético
+  • Os quatro "imperativos" éticos definidos pelo AI HLEG são: o respeito à autonomia humana, a prevenção de danos, a justiça (fairness) e a explicabilidade (explicability). É importante notar que, diferentemente do que normalmente ocorre em áreas mais consolidadas, como a bioética, essa lista não incluiu um imperativo de "fazer o bem", isto é, o princípio da beneficência (beneficence). Os quatro imperativos éticos revelam-se amplamente convergentes com aqueles identificados em documentos semelhantes.
+  • Robustez Sociotécnica
+  • Uma IA confiável (Trustworthy AI) deve ser robusta, tanto do ponto de vista técnico quanto social, uma vez que, mesmo com boas intenções, sistemas de IA podem causar danos não intencionais. Esse constitui um componente essencial da confiabilidade, tanto sob a perspectiva técnica – assegurando que o sistema apresente robustez técnica compatível com o contexto específico de sua utilização, como o domínio de aplicação ou a fase de seu ciclo de vida – quanto sob a perspectiva social, levando em devida consideração o contexto e o ambiente em que o sistema opera.
+  • Veremos quais são esses direitos na aula 4
+
+=== SLIDE 33 ===
+  • Imperativos éticos em IA
+  • Renda in Dubber; Pasquale; Das; 2020, p. 657-658. Analisando as Diretrizes Éticas estabelecidas pelo parlamento Europeu.
+  • Dubber MD; Pasquale F; Das S (eds). The Oxford handbook of ethics of AI. Oxford University Press, New York, 2020.
+  • Justiça
+  • Em sua dimensão substantiva, refere-se: à necessidade de uma distribuição igualitária e justa dos benefícios e dos custos; à promoção da igualdade de oportunidades; à proteção da liberdade de escolha dos indivíduos; ao respeito à proporcionalidade entre meios e fins; e sob uma perspectiva procedimental, à garantia da contestação efetiva das decisões tomadas por sistemas de IA e pelas pessoas responsáveis por sua operação.
+  • Prevenção de Danos
+  • A discussão não faz qualquer referência explícita ao princípio da precaução, ao contrário do que havia sido defendido pelo Parlamento Europeu em 2017. Isso significa que as Diretrizes Éticas não esclarecem qual critério deve ser utilizado para determinar quando um determinado sistema de IA pode ser considerado prejudicial.
+  • Supervisão Humana
+  • Mantidas constantes todas as demais condições, quanto menor for o grau de supervisão que um ser humano puder exercer sobre um sistema de IA, mais extensivos deverão ser os testes e mais rigorosa deverá ser sua governança. [Isso exige diferenciar situações em que o ser humano está]:
+  • No circuito (in the loop);
+  • Sobre o circuito (on the loop); e
+  • No comando (in command).
+  • Respeito à Autonomia Humana
+  • Necessidade de adotar princípios de design centrado no ser humano na distribuição de funções entre pessoas e sistemas de IA. Esse requisito é posteriormente especificado como a obrigação de preservar oportunidades significativas para a escolha humana e assegurar a supervisão humana sobre os processos de trabalho conduzidos por sistemas de IA.
+  • Podem surgir tensões entre esses quatro princípios éticos [o que exige] o engajamento democrático e a adoção de métodos de deliberação responsáveis para solucioná-las, sempre apoiados em reflexão fundamentada em evidências, e não em intuições ou decisões arbitrárias. O efeito combinado desses princípios, ainda que sejam objetivos aspiracionais, constitui um importante referencial para desenvolvedores e implementadores de sistemas de IA e pode abrir caminho para a construção de um marco consistente de políticas públicas para a IA.
+  • Veremos a definição desse imperativo na aula 3
+
+=== SLIDE 34 ===
+  • Aplicação Prática
+
+=== SLIDE 35 ===
+  • Retomando o caso Lavender, podemos extrair dois questionamentos éticos: (1) quem seria responsabilizado em caso de erro na seleção de alvos pelo  Lavender; e (2) como mitigar a validação de erros do sistema?
+  • A resposta para a primeira pergunta é complexa e não há uma resposta cabal, mas a sua problematização pode ser vista no tópico 5.2 do artigo de Mohee (2026). Quanto às medidas de mitigação, vamos tentar abordar algumas estratégias na sequência. 
+  • Pausa para a reflexão
+  • Com isso tudo lido, ficou a dúvida: e o caso Lavender?
+
+=== SLIDE 36 ===
+  • Mitigação da validação de outputs negativos
+  •  
+  • Nadibaidze, Anna; Bode, Ingvild; Zhang, Qiaochu. AI in military decision support systems: a review of developments and debates. Center for War Studies, 2024.
+  • A gravidade da validação de um outuput negativo fornecido por uma IA está relacionada com o seu conteúdo. No caso em tela, validar um hipotético equívoco do Lavender na seleção de alvos implica empregar força letal de forma equivocada. Esse ato desrespeitaria os princípios da distinção (separar civis de combatentes), proporcionalidade (compatibilidade entre danos provocados e vantagens militares atingidas) e precaução (adotar medidas para evitar danos a civis) do Direito Internacional Humanitário.
+  • Sabendo dos riscos, as estratégias de mitigação passam por garantir supervisão humana de todos os resultados de IA. Mais do que isso, a pressão por majoração de resultados limita o tempo de supervisão, favorecendo o viés de automação que será tratado na próxima aula. Assim, a inserção de seres humanos no processo de desenvolvimento e emprego de IA (human in the loop, on the loop, in command) não pode ficar apenas na intenção, mas ser praticado de fato e com criticidade, especialmente nos sistemas de apoio á decisão militares.
+  • Um primeiro passo para mitigar os desafios discutidos na seção 4 [do artigo] envolve garantir e fortalecer a supervisão humana contínua, o envolvimento e o exercício da agência ao longo de todo o ciclo de vida dos AI DSS [decision support systems], desde o pré-projeto, passando pelo projeto, testes, até a implantação e a avaliação pós-uso. Embora o cruzamento de inteligência faça parte da prática militar mesmo sem DSS, no caso de uma rede que integra vários sistemas, os operadores humanos devem ter oportunidade suficiente para considerar os resultados baseados em IA juntamente com outras fontes de dados. Especialmente em contextos de alta velocidade e escala, os operadores humanos devem seguir protocolos que lhes permitam realizar 1) avaliações críticas dos resultados dos sistemas e 2) avaliações dos impactos jurídicos, estratégicos e humanitários de uma decisão.
+
+=== SLIDE 37 ===
+  • Verificação do Aprendizado
+  • Anote em um papel as alternativas escolhidas. Ao final, há gabarito para conferência.
+
+=== SLIDE 38 ===
+  • Questionário – pergunta 1 de 5
+  • Durante a elaboração de um código de conduta para o emprego de sistemas de IA em uma Organização Militar, um militar afirma que basta copiar as normas morais atualmente aceitas pela sociedade. Outro argumenta que antes é necessário compreender como esses valores surgiram, como variaram ao longo da história e quais fundamentos sustentam cada sistema moral.
+  • À luz do capítulo sobre definição de ética, qual posicionamento está mais alinhado ao conteúdo da aula?
+  • A) O primeiro militar está correto, porque ética e moral são sinônimos e possuem exatamente o mesmo objeto.
+  • B) O segundo militar está correto, porque a ética é a disciplina filosófica que investiga a moral, sua fundamentação e seus pressupostos.
+  • C) O primeiro militar está correto, porque a moral possui validade universal e independe do contexto histórico.
+  • D) Ambos estão incorretos, pois ética limita-se ao estudo das sanções jurídicas.
+  • E) Ambos estão corretos, pois ética preocupa-se apenas com normas positivadas pelo Estado.
+
+=== SLIDE 39 ===
+  • Questionário – pergunta 2 de 5
+  • Uma equipe do Exército desenvolve um sistema de IA para apoiar o planejamento logístico. Durante a reunião de projeto, um desenvolvedor afirma que o sistema precisa "agir moralmente". Outro responde que o foco da ética em IA deve recair sobre as escolhas humanas relacionadas ao desenvolvimento e ao uso da tecnologia.
+  • Considerando a definição apresentada na aula, assinale a alternativa correta.
+  • A) A ética em IA exige que a máquina desenvolva consciência moral própria.
+  • B) O comportamento moral depende exclusivamente do nível de autonomia técnica do sistema.
+  • C) Quanto mais avançada a IA, menor a responsabilidade humana sobre suas decisões.
+  • D) A ética em IA restringe-se ao cumprimento das leis de proteção de dados.
+  • E) A ética em IA preocupa-se principalmente com os valores difundidos por pessoas e organizações na criação e no emprego da IA, uma vez que a ética é atributo da sociedade humana.
+
+=== SLIDE 40 ===
+  • Questionário – pergunta 3 de 5
+  • Uma Organização Militar pretende adquirir um sistema inteligente para apoiar a seleção de prioridades logísticas. Antes da contratação, a equipe estabelece que o sistema deverá permitir compreender como chegou às suas recomendações, possibilitando auditorias posteriores.
+  • Qual princípio ético específico da IA está sendo priorizado?
+  • A) Justiça (fairness).
+  • B) Beneficência.
+  • C) Inteligibilidade (intelligibility).
+  • D) Acurácia (accuracy).
+  • E) Não maleficência.
+
+=== SLIDE 41 ===
+  • Questionário – pergunta 4 de 5
+  • Após estudar o caso do sistema Lavender, uma equipe discute quais medidas poderiam reduzir o risco de validação de resultados incorretos produzidos por um sistema de apoio à decisão militar.
+  • Segundo a apresentação, qual alternativa representa a estratégia mais adequada?
+  • A) Eliminar completamente a supervisão humana para reduzir atrasos operacionais.
+  • B) Transferir integralmente a responsabilidade para o desenvolvedor do sistema.
+  • C) Aceitar automaticamente as recomendações da IA sempre que sua probabilidade de acerto for elevada.
+  • D) Garantir supervisão humana efetiva durante todo o ciclo de vida do sistema, realizando avaliação crítica dos resultados e de seus impactos jurídicos, estratégicos e humanitários. 
+  • E) Concentrar todos os esforços apenas no aumento da velocidade de processamento da IA.
+
+=== SLIDE 42 ===
+  • Questionário – pergunta 5 de 5
+  • Um Estado-Maior avalia a adoção de um sistema de IA para apoiar decisões operacionais. O sistema apresenta elevada precisão técnica, porém seus critérios de decisão não podem ser explicados, a supervisão humana foi reduzida ao mínimo para acelerar o ciclo decisório e ainda não existe legislação específica disciplinando sua utilização. Com base em toda a apresentação, qual alternativa melhor representa a decisão mais consistente com os fundamentos da ética em IA estudados na aula?
+  • A) Prosseguir com o emprego do sistema apenas após incorporar mecanismos de supervisão humana, inteligibilidade, avaliação ética ao longo do ciclo de vida e análise crítica dos riscos, reconhecendo que a responsabilidade permanece humana mesmo diante de sistemas autônomos.
+  • B) Autorizar imediatamente o emprego do sistema, pois a ausência de legislação específica elimina preocupações éticas.
+  • C) Utilizar o sistema somente porque apresenta elevada acurácia, independentemente da possibilidade de auditoria ou supervisão humana.
+  • D) Adiar indefinidamente qualquer utilização de IA em operações militares, pois toda IA é incompatível com decisões humanas.
+  • E) Transferir a responsabilidade decisória para o operador, independentemente das características técnicas do sistema.
+
+=== SLIDE 43 ===
+  • Gabarito
+  • Questão 1: B - Justificativa: A apresentação distingue ética de moral ao definir a ética como disciplina filosófica que investiga os sistemas morais, sua fundamentação e seus pressupostos históricos e filosóficos. As demais alternativas confundem ética com moral ou com Direito.
+  • Questão 2: E - Justificativa: A aula afirma que não é possível exigir comportamento moral de uma máquina; por isso, a ética em IA estuda os valores difundidos por usuários, desenvolvedores, governos e organizações no desenvolvimento e no emprego da tecnologia. As demais alternativas atribuem moralidade própria à IA ou reduzem indevidamente o escopo da ética em IA.
+  • Questão 3: C - Justificativa: Inteligibilidade corresponde à adoção de medidas que permitam conhecer os processos de decisão da IA. As demais alternativas tratam de princípios distintos.
+  • Questão 4: D - Justificativa: A aplicação prática sobre o caso Lavender enfatiza que a principal estratégia de mitigação consiste em assegurar supervisão humana efetiva durante todo o ciclo de vida do sistema, com avaliação crítica dos resultados e de seus impactos. As demais alternativas contrariam expressamente a orientação apresentada.
+  • Questão 5: A - Justificativa: A alternativa integra os principais conteúdos da apresentação: responsabilidade humana, supervisão humana, inteligibilidade, avaliação ética contínua e mitigação de riscos. As demais ignoram princípios centrais estudados ou apresentam conclusões incompatíveis com o material.
+
+=== SLIDE 44 ===
+  • Conclusão
+  • ?
+  • ?
+  • ?
+  • ?
+  • ?
+  • ?
+  • Espaço para dúvidas
+  • Além do tema: reflexão pessoal
+  • Responsável pela apresentação
+  • 2º Sgt Matheus Henrique
+  • Instrutor da EsCom
+  • matheushenrique.souza@eb.mil.br
+  • “Mas este é o meu ensinamento: quem um dia quiser aprender a voar, deve primeiramente aprender a ficar em pé, andar, correr, saltar, escalar e dançar: — não se aprende a voar voando!”
+  • Nietzsche, Friedrich. Assim Falou Zaratustra. 1883 a 1885.
+  • Compartilhe no fórum do curso o seu resultado no questionário, além das suas impressões gerais e dúvidas relacionadas à aula.
+
+=== SLIDE 45 ===
+  • Convite à continuidade do aprendizado
+  • https://netacad.com
+  • https://academia-escom.eb.mil.br/
+  • Instituto Rondon de Capacitação Continuada
+  • Cisco Networking Academy
+

@@ -1,0 +1,370 @@
+DESIGN MASTER
+MINICURSO: ÉTICA EM INTELIGÊNCIA ARTIFICIAL
+
+Versão 2.0 (Atualizada para Conversão a partir da Apostila)
+
+====================================================================
+1. FILOSOFIA DO CURSO
+====================================================================
+
+O curso foi concebido como um material didático autossuficiente para
+Educação a Distância (EAD), destinado prioritariamente a militares do
+Curso Básico de Inteligência Artificial da Escola de Comunicações,
+mas suficientemente abrangente para atender gestores,
+desenvolvedores, analistas, operadores e tomadores de decisão.
+
+Seu objetivo não é formar filósofos nem especialistas em
+desenvolvimento de Inteligência Artificial, mas capacitar o aluno para
+compreender criticamente os fundamentos da Ética em IA, reconhecer
+riscos éticos, compreender mecanismos de governança e conformidade e
+aplicar critérios básicos de avaliação ética de sistemas inteligentes.
+
+O HTML constitui a versão digital oficial do minicurso.
+
+Seu objetivo é transformar o conteúdo elaborado pelo autor em uma
+experiência de aprendizagem superior, preservando integralmente sua
+estrutura intelectual, pedagógica e autoral.
+
+====================================================================
+2. FILOSOFIA PEDAGÓGICA
+====================================================================
+
+Toda aula deverá seguir a seguinte lógica narrativa:
+
+• abertura com um caso concreto, problema ou situação motivadora;
+
+• apresentação da dúvida central da aula;
+
+• desenvolvimento dos conceitos;
+
+• fundamentação teórica;
+
+• aplicações práticas;
+
+• pausas para reflexão;
+
+• retorno ao caso inicial;
+
+• verificação da aprendizagem;
+
+• conclusão.
+
+O caso apresentado no início da aula não deverá ser resolvido
+imediatamente.
+
+Sua finalidade é despertar curiosidade e orientar toda a construção
+da aprendizagem.
+
+O aluno aprende pela sequência:
+
+Caso concreto
+
+↓
+
+Conceitos
+
+↓
+
+Fundamentação
+
+↓
+
+Aplicação
+
+↓
+
+Reflexão
+
+↓
+
+Retorno ao caso
+
+↓
+
+Avaliação
+
+↓
+
+Conclusão
+
+====================================================================
+3. ESTRUTURA DO CURSO
+====================================================================
+
+O curso será composto por um único arquivo HTML.
+
+Sua estrutura será:
+
+• Home;
+
+• Aula 1;
+
+• Aula 2;
+
+• Aula 3;
+
+• Aula 4.
+
+Cada aula corresponderá a um documento-fonte independente.
+
+O aluno poderá navegar livremente entre todas as aulas.
+
+A Home funcionará como página inicial do curso.
+
+====================================================================
+4. ESTRUTURA DAS AULAS
+====================================================================
+
+Cada aula seguirá sua própria estrutura interna.
+
+As divisões não precisam ser idênticas entre todas as aulas, mas
+deverão preservar a lógica geral do curso.
+
+Os capítulos serão definidos pelos títulos principais existentes no
+documento-fonte.
+
+Dentro de cada capítulo poderão existir seções adicionais.
+
+O HTML poderá:
+
+• reorganizar visualmente o conteúdo;
+
+• utilizar cartões;
+
+• utilizar grids;
+
+• utilizar painéis;
+
+• utilizar componentes interativos;
+
+• utilizar linhas do tempo;
+
+• utilizar ícones.
+
+É vedada:
+
+• a criação de conteúdo novo;
+
+• a supressão de conteúdo existente;
+
+• a alteração da sequência lógica.
+
+====================================================================
+5. REGRA DE INTEGRALIDADE ABSOLUTA
+====================================================================
+
+Todo o conteúdo elaborado pelo autor deverá ser convertido
+integralmente para o HTML.
+
+O sistema NÃO DEVE:
+
+• resumir;
+
+• condensar;
+
+• selecionar conteúdo;
+
+• simplificar;
+
+• eliminar explicações;
+
+• substituir exemplos.
+
+A organização visual poderá ser livre, desde que preserve integralmente
+o conteúdo intelectual.
+
+O produto final deverá ser percebido pelo aluno como um curso EAD
+nativo.
+
+Nenhum elemento visual deverá indicar a existência de um documento de
+origem.
+
+====================================================================
+6. LINGUAGEM
+====================================================================
+
+A linguagem deverá permanecer:
+
+• acadêmica;
+
+• técnica;
+
+• objetiva;
+
+• explicativa.
+
+O estilo deverá aproximar-se de uma apostila universitária de alta
+qualidade.
+
+====================================================================
+7. REFERÊNCIAS E DIREITOS AUTORAIS
+====================================================================
+
+Este minicurso constitui uma obra de compilação.
+
+O HTML deverá preservar rigorosamente essa característica.
+
+Toda referência permanecerá associada exatamente ao trecho
+correspondente.
+
+As referências permanecerão ocultas por padrão, sendo exibidas apenas
+mediante interação do usuário.
+
+Sempre que houver dúvida quanto à autoria de determinado trecho, a
+conversão deverá ser interrompida para esclarecimento.
+
+As citações deverão permanecer claramente diferenciadas do texto
+autoral.
+
+O curso deverá distinguir visualmente:
+
+• texto autoral;
+
+• citação direta;
+
+• paráfrase;
+
+• comentário do autor.
+
+Essa diferenciação ocorrerá exclusivamente por componentes próprios.
+
+====================================================================
+8. POLÍTICA DE IMAGENS
+====================================================================
+
+Toda imagem deverá possuir finalidade pedagógica.
+
+Figuras meramente decorativas deverão ser descartadas.
+
+Sempre que possível:
+
+• reutilizar imagens existentes;
+
+• reconstruir imagens em baixa resolução;
+
+• redesenhar diagramas em SVG;
+
+• preservar a intenção didática original.
+
+Toda imagem deverá possuir:
+
+• legenda;
+
+• texto alternativo.
+
+====================================================================
+9. EXPERIÊNCIA DO ALUNO
+====================================================================
+
+O sistema deverá oferecer:
+
+• barra de progresso;
+
+• registro automático do ponto de leitura;
+
+• modo escuro;
+
+• impressão;
+
+• exportação em PDF.
+
+Os PDFs deverão conter:
+
+• identificação autoral;
+
+• direitos autorais;
+
+• referências bibliográficas consolidadas.
+
+====================================================================
+10. PAUSAS PARA REFLEXÃO
+====================================================================
+
+As pausas para reflexão constituem parte integrante da metodologia do
+curso.
+
+No HTML deverão tornar-se componentes interativos.
+
+O aluno poderá registrar sua resposta.
+
+Após o envio da resposta, o sistema exibirá automaticamente as
+considerações oficiais do instrutor.
+
+Ao final da última aula haverá um botão:
+
+"Consolidar Reflexões"
+
+Esse botão deverá gerar automaticamente um PDF contendo todas as
+reflexões registradas durante o curso.
+
+====================================================================
+11. QUESTIONÁRIOS
+====================================================================
+
+Os questionários deverão:
+
+• corrigir automaticamente as respostas;
+
+• apresentar feedback;
+
+• preservar integralmente o conteúdo elaborado pelo autor.
+
+====================================================================
+12. RESUMOS
+====================================================================
+
+Cada aula deverá terminar com um resumo produzido automaticamente.
+
+O resumo deverá:
+
+• sintetizar exclusivamente a aula correspondente;
+
+• facilitar a transição para a aula seguinte;
+
+• indicar expressamente que foi produzido por Inteligência Artificial;
+
+• informar o modelo utilizado e sua desenvolvedora.
+
+Não deverão existir resumos ao final de cada seção.
+
+====================================================================
+13. IDENTIDADE VISUAL
+====================================================================
+
+A identidade visual deverá permanecer:
+
+• militar;
+
+• institucional;
+
+• sóbria;
+
+• técnica.
+
+O curso não deverá assumir aparência semelhante a plataformas
+comerciais de ensino.
+
+A interface deverá privilegiar a leitura prolongada e minimizar a
+fadiga visual.
+
+====================================================================
+14. COMPONENTES FUTUROS
+====================================================================
+
+Não deverão ser implementados nesta versão componentes de
+aprofundamento ("Saiba mais").
+
+Essa funcionalidade permanece registrada como oportunidade para versões
+futuras.
+
+====================================================================
+15. PRINCÍPIO GERAL
+====================================================================
+
+Toda decisão de design deverá obedecer ao seguinte princípio:
+
+"O HTML existe para transformar integralmente o conteúdo elaborado pelo
+autor em uma experiência digital de aprendizagem superior,
+preservando rigorosamente sua estrutura intelectual, pedagógica,
+bibliográfica e autoral, sem qualquer omissão, simplificação ou
+reinterpretação do conteúdo."

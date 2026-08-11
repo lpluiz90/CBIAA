@@ -1,0 +1,408 @@
+ARQUITETURA DE CONVERSÃO
+MINICURSO: ÉTICA EM INTELIGÊNCIA ARTIFICIAL
+
+Versão 2.0 (Atualizada para Conversão a partir da Apostila)
+
+====================================================================
+OBJETIVO
+====================================================================
+
+Este documento define as regras obrigatórias para a transformação da
+apostila oficial do minicurso em um curso HTML.
+
+Nenhuma conversão deverá violar qualquer regra aqui estabelecida.
+
+O objetivo da conversão é transformar a apostila em um ambiente de
+aprendizagem completo, preservando integralmente:
+
+• conteúdo intelectual;
+• organização pedagógica;
+• autoria;
+• referências;
+• identidade visual;
+• coerência estrutural.
+
+A apostila constitui o documento-fonte oficial do curso.
+
+====================================================================
+1. PRINCÍPIO GERAL E REGRA DE INTEGRALIDADE ABSOLUTA
+====================================================================
+
+A conversão NÃO constitui uma reescrita.
+
+A conversão NÃO constitui uma adaptação livre do texto.
+
+A conversão NÃO constitui uma simplificação didática.
+
+REGRA DE INTEGRALIDADE ABSOLUTA (VERSÃO 2.0):
+
+ABSOLUTAMENTE TODO O CONTEÚDO da apostila deverá ser convertido para o
+curso HTML.
+
+O assistente/conversor NÃO DEVE:
+
+• resumir;
+
+• selecionar conteúdo;
+
+• omitir trechos;
+
+• condensar explicações;
+
+• reorganizar argumentos;
+
+• substituir exemplos.
+
+Todo processo de seleção de conteúdo é realizado exclusivamente pelo autor
+durante a elaboração da apostila.
+
+O HTML possui exclusivamente a função de transformar o material em uma
+experiência de aprendizagem digital.
+
+====================================================================
+2. UNIDADE DE CONVERSÃO
+====================================================================
+
+A unidade de origem é a AULA.
+
+Cada apostila corresponde exatamente a uma aula.
+
+A unidade intermediária é o CAPÍTULO.
+
+Os capítulos são definidos pelos títulos principais existentes na apostila.
+
+A unidade final é a SEÇÃO HTML.
+
+Uma seção poderá reunir:
+
+• um tópico;
+
+• um subtópico;
+
+• vários parágrafos;
+
+• um bloco conceitual.
+
+A organização deverá priorizar a fluidez da leitura, mantendo rigorosamente
+a sequência lógica da apostila.
+
+====================================================================
+3. ORGANIZAÇÃO DO CONTEÚDO
+====================================================================
+
+Durante a conversão:
+
+Jamais alterar a sequência lógica da apostila.
+
+Jamais alterar a progressão pedagógica.
+
+Jamais modificar a estrutura argumentativa.
+
+Jamais remover explicações consideradas "repetidas".
+
+Jamais condensar conceitos.
+
+====================================================================
+4. TÍTULOS
+====================================================================
+
+Todos os títulos deverão ser preservados.
+
+Todos os subtítulos deverão ser preservados.
+
+Nunca transformar títulos em texto corrido.
+
+A hierarquia entre títulos deverá ser mantida integralmente.
+
+====================================================================
+5. TEXTO
+====================================================================
+
+Todo o texto deverá ser preservado integralmente.
+
+É expressamente proibido:
+
+• resumir;
+
+• reescrever;
+
+• simplificar;
+
+• adaptar linguagem;
+
+• condensar explicações;
+
+• substituir terminologia técnica.
+
+====================================================================
+6. CITAÇÕES
+====================================================================
+
+Toda citação deverá permanecer integralmente preservada.
+
+É proibido:
+
+• alterar redação;
+
+• condensar trechos;
+
+• retirar partes;
+
+• modernizar linguagem;
+
+• converter citações diretas em paráfrases.
+
+As citações deverão ser claramente diferenciadas do texto autoral.
+
+====================================================================
+7. IDENTIFICAÇÃO DAS CITAÇÕES
+====================================================================
+
+O sistema deverá identificar automaticamente:
+
+Texto do autor
+
+↓
+
+Texto citado
+
+↓
+
+Paráfrase (quando existente)
+
+↓
+
+Comentário do autor
+
+Caso exista qualquer ambiguidade, a conversão deverá ser interrompida e
+solicitado esclarecimento.
+
+====================================================================
+8. REFERÊNCIAS
+====================================================================
+
+Toda referência deverá permanecer vinculada ao trecho correspondente.
+
+As referências serão convertidas em componente expansível.
+
+Antes da geração do HTML deverá ocorrer:
+
+• validação;
+
+• revisão ortográfica;
+
+• padronização.
+
+Caso exista qualquer inconsistência, solicitar confirmação do autor.
+
+====================================================================
+9. IMAGENS
+====================================================================
+
+Toda imagem existente deverá ser analisada.
+
+Fluxo de decisão:
+
+Imagem possui função didática?
+
+↓
+
+NÃO
+
+Descartar.
+
+↓
+
+SIM
+
+Verificar resolução.
+
+↓
+
+Alta resolução
+
+Reutilizar.
+
+↓
+
+Baixa resolução
+
+Reconstruir.
+
+Diagramas deverão ser preferencialmente convertidos para SVG.
+
+====================================================================
+10. COMPONENTIZAÇÃO
+====================================================================
+
+Todo conteúdo deverá ser convertido utilizando exclusivamente os
+componentes definidos no Design System.
+
+É autorizada a reorganização gráfica utilizando:
+
+• cartões;
+
+• grids;
+
+• painéis;
+
+• caixas de destaque;
+
+• componentes interativos;
+
+desde que nenhum conteúdo seja omitido.
+
+====================================================================
+11. PAUSAS PARA REFLEXÃO
+====================================================================
+
+Toda pausa para reflexão deverá ser convertida em componente interativo.
+
+Cada componente conterá:
+
+Pergunta
+
+Campo de resposta
+
+Botão de envio
+
+Feedback oficial
+
+Salvamento automático
+
+====================================================================
+12. QUESTIONÁRIOS
+====================================================================
+
+Todo questionário deverá ser convertido para componente interativo.
+
+Preservar:
+
+enunciado;
+
+alternativas;
+
+gabarito;
+
+feedback.
+
+====================================================================
+13. NAVEGAÇÃO
+====================================================================
+
+Toda navegação ocorrerá internamente.
+
+Jamais criar múltiplos arquivos HTML para uma mesma aula.
+
+A estrutura utilizará apenas:
+
+Home
+
+Aulas
+
+Capítulos
+
+Seções
+
+Âncoras
+
+====================================================================
+14. RESUMOS
+====================================================================
+
+Ao final de cada aula gerar automaticamente um resumo.
+
+O resumo:
+
+não poderá substituir o conteúdo da aula;
+
+deverá ser claramente identificado como conteúdo produzido por IA;
+
+deverá informar modelo utilizado e desenvolvedora.
+
+====================================================================
+15. PDF
+====================================================================
+
+Gerar automaticamente:
+
+PDF da aula.
+
+PDF consolidado.
+
+PDF das reflexões.
+
+Todo PDF deverá conter:
+
+dados autorais;
+
+direitos autorais;
+
+referências consolidadas.
+
+====================================================================
+16. VALIDAÇÃO
+====================================================================
+
+Antes da conclusão da conversão verificar:
+
+✔ 100% do texto convertido;
+
+✔ todos os títulos convertidos;
+
+✔ todas as imagens presentes;
+
+✔ todas as legendas presentes;
+
+✔ todas as referências vinculadas;
+
+✔ todas as citações preservadas;
+
+✔ todos os componentes interativos funcionando;
+
+✔ todos os links funcionando;
+
+✔ todos os caminhos relativos válidos.
+
+====================================================================
+17. TRATAMENTO DE ERROS
+====================================================================
+
+Sempre que surgir qualquer situação ambígua, a conversão deverá parar.
+
+Nunca realizar inferências sobre:
+
+autoria;
+
+referências;
+
+conteúdo;
+
+citações;
+
+imagens;
+
+legendas.
+
+Toda dúvida deverá gerar solicitação de esclarecimento ao autor.
+
+====================================================================
+18. EVOLUÇÃO
+====================================================================
+
+A arquitetura deverá permanecer compatível com versões futuras da apostila.
+
+Novas edições poderão acrescentar conteúdo, mas jamais justificar a supressão
+de conteúdo anteriormente convertido.
+
+====================================================================
+19. PRINCÍPIO FUNDAMENTAL
+====================================================================
+
+Toda conversão deverá obedecer ao seguinte princípio:
+
+"A apostila constitui a versão canônica do minicurso. O HTML não substitui nem
+altera sua autoria. Sua única função é transpor integralmente o conteúdo
+intelectual da apostila para uma experiência digital de aprendizagem, sem
+qualquer omissão, simplificação ou reinterpretação, preservando a estrutura
+pedagógica concebida pelo autor."

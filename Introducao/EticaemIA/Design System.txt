@@ -1,0 +1,525 @@
+DESIGN SYSTEM
+MINICURSO: ÉTICA EM INTELIGÊNCIA ARTIFICIAL
+
+Versão 2.0 (Atualizada para Conversão a partir da Apostila)
+
+====================================================================
+1. PRINCÍPIOS GERAIS
+====================================================================
+
+O sistema deverá priorizar:
+
+• simplicidade;
+
+• legibilidade;
+
+• consistência;
+
+• acessibilidade;
+
+• reutilização de componentes;
+
+• baixo acoplamento entre elementos;
+
+• identidade visual institucional.
+
+Nenhum componente poderá ser criado para uso único.
+
+Todo componente deverá ser reutilizável.
+
+O sistema deverá ser capaz de acomodar integralmente qualquer conteúdo
+proveniente do documento-fonte oficial, sem exigir simplificações,
+condensações ou adaptações do texto.
+
+A plataforma deverá ser percebida pelo aluno como um ambiente EAD
+nativo, sem qualquer referência visual ao processo de conversão.
+
+====================================================================
+2. ARQUITETURA
+====================================================================
+
+Todo o curso será composto por um único arquivo HTML.
+
+Estrutura do projeto:
+
+index.html
+
+assets/
+
+    images/
+        aula01/
+        aula02/
+        aula03/
+        aula04/
+
+    diagrams/
+
+    icons/
+
+    logos/
+
+    backgrounds/
+
+css/
+
+js/
+
+Todas as referências utilizarão caminhos relativos.
+
+É proibido utilizar caminhos absolutos.
+
+====================================================================
+3. SISTEMA DE CORES
+====================================================================
+
+A paleta deverá transmitir:
+
+• institucionalidade;
+
+• sobriedade;
+
+• profissionalismo.
+
+As cores deverão ser organizadas em variáveis globais.
+
+Categorias mínimas:
+
+Cor primária
+
+Cor secundária
+
+Cor de destaque
+
+Cor para links
+
+Cor para sucesso
+
+Cor para alerta
+
+Cor para erro
+
+Cor para citações
+
+Cor para comentários
+
+Cor para fundo
+
+Cor para superfícies
+
+Cor para bordas
+
+Cor para texto
+
+Cor para texto secundário
+
+O modo escuro deverá utilizar a mesma lógica cromática.
+
+====================================================================
+4. TIPOGRAFIA
+====================================================================
+
+Toda tipografia deverá utilizar escala hierárquica.
+
+Categorias:
+
+Título principal
+
+Título de aula
+
+Título de capítulo
+
+Título de seção
+
+Subtítulo
+
+Texto
+
+Legenda
+
+Referência
+
+Comentário
+
+Código (quando aplicável)
+
+O comprimento das linhas deverá privilegiar conforto de leitura durante
+sessões prolongadas de estudo.
+
+====================================================================
+5. GRID
+====================================================================
+
+Todo o layout deverá utilizar grid consistente.
+
+Não utilizar posicionamento manual.
+
+Todo componente deverá alinhar-se ao grid.
+
+====================================================================
+6. ESPAÇAMENTOS
+====================================================================
+
+Todos os espaçamentos deverão seguir escala fixa.
+
+Nunca utilizar valores arbitrários.
+
+Margens
+
+Padding
+
+Espaçamento vertical
+
+Espaçamento horizontal
+
+Gap entre cards
+
+Gap entre seções
+
+====================================================================
+7. COMPONENTES ESTRUTURAIS
+====================================================================
+
+Componentes obrigatórios:
+
+Home
+
+Hero
+
+Sidebar
+
+Menu superior
+
+Conteúdo principal
+
+Rodapé
+
+Barra de progresso
+
+Indicador de aula
+
+Indicador de capítulo
+
+Breadcrumb
+
+Botão "Voltar ao topo"
+
+====================================================================
+8. COMPONENTES DE CONTEÚDO
+====================================================================
+
+Os componentes disponíveis serão:
+
+Título
+
+Texto
+
+Lista
+
+Lista numerada
+
+Tabela
+
+Imagem
+
+Legenda
+
+Diagrama
+
+Linha do tempo
+
+Quadro comparativo
+
+Card
+
+Feature Grid
+
+Accordion
+
+Callout
+
+Painel de conceito
+
+Painel de definição
+
+Painel de observação
+
+Painel de exemplo
+
+Painel de aplicação
+
+Resumo
+
+Cada componente possuirá finalidade pedagógica específica.
+
+A organização visual poderá ser alterada livremente entre esses
+componentes, desde que o conteúdo permaneça integralmente preservado.
+
+====================================================================
+9. COMPONENTES DE CITAÇÃO
+====================================================================
+
+Existirão quatro componentes exclusivos:
+
+Texto autoral
+
+Citação direta
+
+Paráfrase
+
+Comentário do autor
+
+Cada componente possuirá identidade visual própria.
+
+Nunca poderão ser confundidos.
+
+====================================================================
+10. COMPONENTES DE REFERÊNCIA
+====================================================================
+
+Toda referência permanecerá recolhida por padrão.
+
+O usuário poderá expandi-la.
+
+Cada referência permanecerá vinculada ao trecho correspondente.
+
+A abertura e o fechamento deverão utilizar animações discretas.
+
+====================================================================
+11. COMPONENTES DE REFLEXÃO
+====================================================================
+
+As pausas para reflexão constituirão componentes próprios.
+
+Cada componente deverá conter:
+
+Título
+
+Pergunta
+
+Área de resposta
+
+Botão de envio
+
+Exibição das considerações oficiais do instrutor
+
+Salvamento automático
+
+Indicador de resposta salva
+
+As respostas deverão permanecer armazenadas durante todo o curso.
+
+====================================================================
+12. COMPONENTES DE AVALIAÇÃO
+====================================================================
+
+Questionário
+
+Questão
+
+Alternativas
+
+Feedback
+
+Correção
+
+Pontuação
+
+Resumo da avaliação
+
+As correções deverão ocorrer automaticamente.
+
+====================================================================
+13. COMPONENTES DE NAVEGAÇÃO
+====================================================================
+
+Home
+
+Menu lateral
+
+Mudança de aula
+
+Mudança de capítulo
+
+Próxima seção
+
+Seção anterior
+
+Próxima aula
+
+Aula anterior
+
+Voltar ao topo
+
+Toda navegação deverá ocorrer sem recarregamento da página.
+
+====================================================================
+14. IMAGENS
+====================================================================
+
+Toda imagem deverá possuir:
+
+Legenda
+
+Texto alternativo
+
+Fonte (quando aplicável)
+
+As imagens deverão ser carregadas da pasta assets.
+
+Diagramas deverão ser preferencialmente convertidos para SVG.
+
+Ícones deverão ser preferencialmente vetoriais.
+
+====================================================================
+15. ÍCONES
+====================================================================
+
+Todo ícone deverá possuir finalidade funcional ou pedagógica.
+
+Permite-se a utilização de ícones para facilitar a identificação de
+conceitos, categorias e elementos didáticos.
+
+É vedado o uso de ícones meramente decorativos.
+
+====================================================================
+16. ANIMAÇÕES
+====================================================================
+
+As animações deverão ser discretas.
+
+Nunca poderão competir com o conteúdo.
+
+Permitidas:
+
+Fade
+
+Expand
+
+Collapse
+
+Hover
+
+Scroll
+
+Proibidas:
+
+Piscar
+
+Movimentos contínuos
+
+Animações excessivas
+
+====================================================================
+17. RESPONSIVIDADE
+====================================================================
+
+O sistema deverá adaptar-se a:
+
+Desktop
+
+Notebook
+
+Tablet
+
+Celular
+
+Nenhum conteúdo poderá tornar-se inacessível em qualquer resolução.
+
+====================================================================
+18. ACESSIBILIDADE
+====================================================================
+
+Todo componente deverá respeitar:
+
+Contraste adequado
+
+Navegação por teclado
+
+Texto alternativo
+
+Hierarquia semântica
+
+Botões acessíveis
+
+Foco visível
+
+====================================================================
+19. IMPRESSÃO
+====================================================================
+
+O sistema deverá possuir:
+
+Modo impressão próprio.
+
+Exportação em PDF.
+
+As páginas deverão ser reorganizadas automaticamente para impressão.
+
+====================================================================
+20. PERSISTÊNCIA
+====================================================================
+
+O sistema deverá armazenar:
+
+Aula atual
+
+Capítulo atual
+
+Posição de leitura
+
+Modo escuro
+
+Respostas dos questionários
+
+Reflexões
+
+====================================================================
+21. NOMENCLATURA
+====================================================================
+
+Classes CSS deverão utilizar nomenclatura consistente.
+
+IDs deverão representar apenas elementos únicos.
+
+Os componentes deverão possuir nomes semânticos.
+
+====================================================================
+22. REUTILIZAÇÃO
+====================================================================
+
+Sempre que um novo recurso for necessário:
+
+1. reutilizar componente existente;
+
+2. parametrizar componente existente;
+
+3. criar novo componente apenas quando tecnicamente indispensável.
+
+====================================================================
+23. GOVERNANÇA
+====================================================================
+
+Nenhuma alteração futura deverá:
+
+duplicar componentes;
+
+duplicar CSS;
+
+duplicar JavaScript;
+
+quebrar identidade visual;
+
+alterar comportamento consolidado.
+
+Toda evolução deverá preservar compatibilidade com versões anteriores.
+
+====================================================================
+24. PRINCÍPIO FUNDAMENTAL
+====================================================================
+
+Todo elemento visual deverá possuir finalidade pedagógica.
+
+Os componentes deverão existir para organizar, tornar navegável e
+valorizar o conteúdo elaborado pelo autor, preservando integralmente sua
+estrutura intelectual e favorecendo uma experiência de aprendizagem
+digital clara, consistente e confortável.
