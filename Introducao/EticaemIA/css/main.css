@@ -1,0 +1,168 @@
+/* ====================================================================
+   DESIGN SYSTEM - TOKENS GLOBAIS, CORES E TIPOGRAFIA DEFINITIVA
+   Minicurso: Ética em Inteligência Artificial (EsCom EAD)
+   ==================================================================== */
+
+@import url('layout.css');
+@import url('components.css');
+
+:root {
+  /* ------------------------------------------------------------------
+     1. PALETA DE CORES INSTITUCIONAL E SEMÂNTICA (MODO CLARO)
+     ------------------------------------------------------------------ */
+  --navy: #192437;        /* Marinho institucional principal */
+  --navy2: #1e2d42;       /* Marinho secundário */
+  --steel: #2d4a6b;       /* Azul Aço */
+  --ice: #dfe6eb;         /* Divisores e bordas claras */
+  --ice2: #eef3f6;        /* Fundo da aplicação (Canvas) */
+  --sky: #4a9fc8;         /* Azul Celeste (Destaques, links, ações) */
+  --gold: #c89b3c;        /* Dourado institucional */
+  --white: #ffffff;       /* Superfícies de cards */
+  --text: #1a2535;        /* Texto principal de alto contraste */
+  --muted: #5a6a7e;       /* Subtítulos e textos de apoio */
+
+  /* Cores Semânticas de Apoio */
+  --success: #2e7d32;
+  --success-bg: #f0fff4;
+  --warning: #c89b3c;
+  --warning-bg: #fff8e6;
+  --danger: #c62828;
+  --danger-bg: #fdecea;
+  --purple: #7b1fa2;
+  --purple-bg: #f3e5f5;
+  --info-bg: #f0f7ff;
+
+  /* Citações — Cores Específicas */
+  --citation-author-border: #2d4a6b;
+  --citation-author-bg: #f4f6f9;
+  --citation-direct-border: #192437;
+  --citation-direct-bg: #f9f9f9;
+  --citation-paraphrase-border: #4a9fc8;
+  --citation-paraphrase-bg: #f0f4f8;
+  --citation-comment-border: #c89b3c;
+  --citation-comment-bg: #fffdf0;
+
+  /* Painéis Especiais — Cores Específicas */
+  --panel-concept-border: #4a9fc8;
+  --panel-concept-bg: #f0f7ff;
+  --panel-definition-border: #2d4a6b;
+  --panel-definition-bg: #f4f7fa;
+  --panel-observation-border: #c89b3c;
+  --panel-observation-bg: #fffbf0;
+  --panel-example-border: #2e7d32;
+  --panel-example-bg: #f0fff4;
+  --panel-application-border: #7b1fa2;
+  --panel-application-bg: #f7f0ff;
+
+  /* ------------------------------------------------------------------
+     2. ESPAÇAMENTOS PADRONIZADOS
+     ------------------------------------------------------------------ */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* ------------------------------------------------------------------
+     3. GEOMETRIA E ELEVAÇÕES
+     ------------------------------------------------------------------ */
+  --section-w: 1200px;
+  --sidebar-w: 252px;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --radius-pill: 20px;
+  --shadow-card: 0 1px 7px rgba(0,0,0,.055);
+  --shadow-elevated: 0 3px 12px rgba(0,0,0,.07);
+  --shadow-floating: 0 4px 16px rgba(0,0,0,.25);
+}
+
+/* --------------------------------------------------------------------
+   4. SOBRESCRIÇÕES PARA O MODO ESCURO (DARK THEME)
+   -------------------------------------------------------------------- */
+body.dark-theme {
+  --navy: #0f172a;
+  --navy2: #1e293b;
+  --steel: #334155;
+  --ice: #334155;
+  --ice2: #0b1120;
+  --sky: #38bdf8;
+  --gold: #f59e0b;
+  --white: #1e293b;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --shadow-card: 0 1px 7px rgba(0,0,0,.4);
+
+  --info-bg: #0f172a;
+  --success-bg: #064e3b;
+  --warning-bg: #451a03;
+  --danger-bg: #450a0a;
+  --purple-bg: #3b0764;
+
+  --citation-author-bg: #1e293b;
+  --citation-direct-bg: #0f172a;
+  --citation-paraphrase-bg: #1e293b;
+  --citation-comment-bg: #1e293b;
+
+  --panel-concept-bg: #0f172a;
+  --panel-definition-bg: #1e293b;
+  --panel-observation-bg: #1e293b;
+  --panel-example-bg: #064e3b;
+  --panel-application-bg: #3b0764;
+}
+
+body.dark-theme .card,
+body.dark-theme .objetivos-box,
+body.dark-theme .summary-box,
+body.dark-theme .quiz-section-body,
+body.dark-theme .reflection-box,
+body.dark-theme .comparison-col,
+body.dark-theme .table-wrapper,
+body.dark-theme .reference-box,
+body.dark-theme .image-container {
+  background: var(--navy2);
+  color: var(--text);
+  border-color: var(--steel);
+}
+
+body.dark-theme .quiz-option,
+body.dark-theme .reflection-textarea,
+body.dark-theme .reference-content,
+body.dark-theme .reference-toggle {
+  background: #0f172a;
+  color: var(--text);
+  border-color: var(--steel);
+}
+
+body.dark-theme .section-sep .sep-title {
+  color: var(--sky);
+}
+
+/* Reset CSS Semântico e Acessível */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--ice2);
+  color: var(--text);
+  display: block;
+  min-height: 100vh;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color .2s, color .2s;
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+  outline: 3px solid var(--sky);
+  outline-offset: 2px;
+}
