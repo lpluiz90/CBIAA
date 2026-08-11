@@ -13,7 +13,8 @@
      1. Recolher / expandir o menu lateral
      2. Modo claro / modo escuro
      3. Brasão da EsCom com o mesmo tamanho renderizado em todas
-     4. Botões flutuantes com a mesma cor e o mesmo tamanho
+     4. Abas de aula no mesmo tamanho da referência
+     5. Botões flutuantes com a mesma cor e o mesmo tamanho
 
    A barra lateral (fontes, cores, espaçamentos) já era idêntica à da
    referência em todas as páginas — não há nada a corrigir nela aqui.
@@ -183,7 +184,44 @@ body.sidebar-collapsed .sidebar-toggle-fixed {
 }
 
 /* ====================================================================
-   4. BOTÕES FLUTUANTES — MESMA COR E MESMO TAMANHO
+   4. ABAS DE AULA — MESMO TAMANHO DA REFERÊNCIA
+   --------------------------------------------------------------------
+   As quatro páginas usavam 26px / padding 12px 30px / borda 2.5px,
+   contra 20px / 10px 22px / 2px do Assunto 05. Nos breakpoints a
+   diferença era ainda maior: 18px e 17px aqui contra 16px e 14px lá,
+   e o Assunto 01 trazia um segundo override que derrubava a aba para
+   11.5px abaixo de 900px.
+
+   CUIDADO — usar `border-width`, nunca o atalho `border`.
+   A cor de cada aba vem de .aula-tab-1..5 { border-color: ... }, que
+   tem a MESMA especificidade (0,1,0) desta regra e é declarada ANTES
+   dela (mora no <style> embutido; esta folha carrega depois). Um
+   `border: 2px solid rgba(255,255,255,.25)` aqui venceria no
+   desempate por ordem e apagaria a borda colorida de todas as abas.
+   ==================================================================== */
+
+.aula-tab {
+  font-size: 20px;
+  border-width: 2px;
+  padding: 10px 22px;
+}
+
+@media (max-width: 900px) {
+  .aula-tab {
+    font-size: 16px;
+    padding: 8px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .aula-tab {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+}
+
+/* ====================================================================
+   5. BOTÕES FLUTUANTES — MESMA COR E MESMO TAMANHO
    ==================================================================== */
 
 /* A referência usa 17px; três das quatro páginas usavam 18px. */
@@ -207,9 +245,9 @@ body.sidebar-collapsed #print-btn {
 }
 
 /* ====================================================================
-   5. MODO ESCURO
+   6. MODO ESCURO
    --------------------------------------------------------------------
-   5.1 — Troca dos tokens. Cobre sozinha toda regra escrita com var(),
+   6.1 — Troca dos tokens. Cobre sozinha toda regra escrita com var(),
          que é cerca de metade das declarações de cor das páginas.
    ==================================================================== */
 
@@ -238,7 +276,7 @@ body.dark-theme #main-area {
 }
 
 /* --------------------------------------------------------------------
-   5.2 — Superfícies com cor fixa no CSS antigo. Não usam var(), então
+   6.2 — Superfícies com cor fixa no CSS antigo. Não usam var(), então
          a troca de token acima não as alcança: precisam ser nomeadas.
          A lista veio de uma varredura das 4 páginas por cor clara
          escrita à mão (background:#f..., #e..., white).
@@ -334,7 +372,7 @@ body.dark-theme .verify-table .vt-value {
 }
 
 /* --------------------------------------------------------------------
-   5.3 — Texto escrito com color:var(--navy).
+   6.3 — Texto escrito com color:var(--navy).
          Este é o ponto que mais quebra numa troca de tema ingênua: no
          modo escuro o marinho passa a ser #0f172a, praticamente a cor
          do fundo da página, e o texto some sem dar nenhum sinal de
@@ -394,7 +432,7 @@ body {
 }
 
 /* ====================================================================
-   6. IMPRESSÃO — os controles novos não vão para o papel
+   7. IMPRESSÃO — os controles novos não vão para o papel
    ==================================================================== */
 
 @media print {
