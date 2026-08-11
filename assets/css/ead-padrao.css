@@ -13,8 +13,9 @@
      1. Recolher / expandir o menu lateral
      2. Modo claro / modo escuro
      3. Brasão da EsCom com o mesmo tamanho renderizado em todas
-     4. Abas de aula no mesmo tamanho da referência
-     5. Botões flutuantes com a mesma cor e o mesmo tamanho
+     4. Topo do hero com folga para o botão de recolher
+     5. Abas de aula no mesmo tamanho da referência
+     6. Botões flutuantes com a mesma cor e o mesmo tamanho
 
    A barra lateral (fontes, cores, espaçamentos) já era idêntica à da
    referência em todas as páginas — não há nada a corrigir nela aqui.
@@ -184,7 +185,30 @@ body.sidebar-collapsed .sidebar-toggle-fixed {
 }
 
 /* ====================================================================
-   4. ABAS DE AULA — MESMO TAMANHO DA REFERÊNCIA
+   4. TOPO DO HERO — ESPAÇO PARA OS DIZERES NÃO ENCOSTAREM NO BOTÃO
+   --------------------------------------------------------------------
+   O botão fixo "Recolher Menu" fica em top:14px com 34px de altura,
+   ou seja, ocupa até 48px do topo da janela. As quatro páginas davam
+   44px de padding ao #hero-global, então a primeira linha do
+   breadcrumb ("Escola de Comunicações") nascia debaixo do botão.
+
+   64px é o valor da referência e deixa 16px de folga. No mobile o
+   botão não existe (a barra lateral some abaixo de 900px), então ali
+   volta a valer o respiro menor, também igual ao da referência.
+   ==================================================================== */
+
+#hero-global {
+  padding-top: 64px;
+}
+
+@media (max-width: 900px) {
+  #hero-global {
+    padding-top: 28px;
+  }
+}
+
+/* ====================================================================
+   5. ABAS DE AULA — MESMO TAMANHO DA REFERÊNCIA
    --------------------------------------------------------------------
    As quatro páginas usavam 26px / padding 12px 30px / borda 2.5px,
    contra 20px / 10px 22px / 2px do Assunto 05. Nos breakpoints a
@@ -221,7 +245,7 @@ body.sidebar-collapsed .sidebar-toggle-fixed {
 }
 
 /* ====================================================================
-   5. BOTÕES FLUTUANTES — MESMA COR E MESMO TAMANHO
+   6. BOTÕES FLUTUANTES — MESMA COR E MESMO TAMANHO
    ==================================================================== */
 
 /* A referência usa 17px; três das quatro páginas usavam 18px. */
@@ -245,9 +269,9 @@ body.sidebar-collapsed #print-btn {
 }
 
 /* ====================================================================
-   6. MODO ESCURO
+   7. MODO ESCURO
    --------------------------------------------------------------------
-   6.1 — Troca dos tokens. Cobre sozinha toda regra escrita com var(),
+   7.1 — Troca dos tokens. Cobre sozinha toda regra escrita com var(),
          que é cerca de metade das declarações de cor das páginas.
    ==================================================================== */
 
@@ -276,7 +300,7 @@ body.dark-theme #main-area {
 }
 
 /* --------------------------------------------------------------------
-   6.2 — Superfícies com cor fixa no CSS antigo. Não usam var(), então
+   7.2 — Superfícies com cor fixa no CSS antigo. Não usam var(), então
          a troca de token acima não as alcança: precisam ser nomeadas.
          A lista veio de uma varredura das 4 páginas por cor clara
          escrita à mão (background:#f..., #e..., white).
@@ -372,7 +396,7 @@ body.dark-theme .verify-table .vt-value {
 }
 
 /* --------------------------------------------------------------------
-   6.3 — Texto escrito com color:var(--navy).
+   7.3 — Texto escrito com color:var(--navy).
          Este é o ponto que mais quebra numa troca de tema ingênua: no
          modo escuro o marinho passa a ser #0f172a, praticamente a cor
          do fundo da página, e o texto some sem dar nenhum sinal de
@@ -432,7 +456,7 @@ body {
 }
 
 /* ====================================================================
-   7. IMPRESSÃO — os controles novos não vão para o papel
+   8. IMPRESSÃO — os controles novos não vão para o papel
    ==================================================================== */
 
 @media print {
